@@ -1,0 +1,4290 @@
+{
+  "source": "3__20251105_Kuesioner_Seruti_Inti_2026__VSERUTI26_INTI_.pdf",
+  "page": 1,
+  "size_pt": [
+    595.32,
+    841.92
+  ],
+  "coords": "bbox_pt dalam titik PDF (asal kiri-atas, y ke bawah); bbox_n = dibagi ukuran halaman",
+  "counts": {
+    "struct": 69,
+    "digit": 54,
+    "fields": 21,
+    "tables": 2
+  },
+  "tables": [
+    {
+      "id": 0,
+      "bbox_pt": [
+        15.48,
+        252.75,
+        580.75,
+        541.25
+      ],
+      "n_rows": 12,
+      "n_cols": 4,
+      "x_lines_pt": [
+        15.48,
+        42.25,
+        244.62,
+        433.5,
+        580.75
+      ],
+      "y_lines_pt": [
+        252.75,
+        276.45,
+        299.75,
+        322.62,
+        345.5,
+        368.5,
+        391.5,
+        414.38,
+        437.25,
+        460.28,
+        483.25,
+        506.25,
+        541.25
+      ],
+      "cells": [
+        "p1_c005",
+        "p1_c006",
+        "p1_c007",
+        "p1_c008",
+        "p1_c009",
+        "p1_c012",
+        "p1_c013",
+        "p1_c014",
+        "p1_c015",
+        "p1_c018",
+        "p1_c019",
+        "p1_c020",
+        "p1_c021",
+        "p1_c025",
+        "p1_c026",
+        "p1_c027",
+        "p1_c028",
+        "p1_c032",
+        "p1_c033",
+        "p1_c034",
+        "p1_c035",
+        "p1_c037",
+        "p1_c038",
+        "p1_c039",
+        "p1_c040",
+        "p1_c046",
+        "p1_c047",
+        "p1_c048",
+        "p1_c049",
+        "p1_c056",
+        "p1_c057",
+        "p1_c058",
+        "p1_c059",
+        "p1_c060",
+        "p1_c061",
+        "p1_c062",
+        "p1_c063",
+        "p1_c066",
+        "p1_c067",
+        "p1_c068",
+        "p1_c069",
+        "p1_c070",
+        "p1_c071"
+      ]
+    },
+    {
+      "id": 1,
+      "bbox_pt": [
+        15.46,
+        561.25,
+        580.75,
+        808.25
+      ],
+      "n_rows": 6,
+      "n_cols": 6,
+      "x_lines_pt": [
+        15.46,
+        42.88,
+        99.62,
+        245.12,
+        368.62,
+        432.38,
+        580.75
+      ],
+      "y_lines_pt": [
+        561.25,
+        582.96,
+        610.38,
+        620.0,
+        676.12,
+        732.33,
+        808.25
+      ],
+      "cells": [
+        "p1_c072",
+        "p1_c073",
+        "p1_c074",
+        "p1_c075",
+        "p1_c076",
+        "p1_c077",
+        "p1_c078",
+        "p1_c079",
+        "p1_c080",
+        "p1_c081",
+        "p1_c082",
+        "p1_c083",
+        "p1_c084",
+        "p1_c085",
+        "p1_c086",
+        "p1_c087",
+        "p1_c088",
+        "p1_c099",
+        "p1_c100",
+        "p1_c101",
+        "p1_c102",
+        "p1_c103",
+        "p1_c104",
+        "p1_c115",
+        "p1_c116",
+        "p1_c117"
+      ]
+    }
+  ],
+  "cells": [
+    {
+      "id": "p1_c000",
+      "kind": "digit",
+      "bbox_pt": [
+        307.25,
+        136.25,
+        333.75,
+        148.25
+      ],
+      "bbox_n": [
+        0.51611,
+        0.16183,
+        0.56062,
+        0.17609
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F_triwulan",
+      "field_label": "TRIWULAN",
+      "box_index": 0,
+      "total_boxes": 1,
+      "label": "TRIWULAN_b00",
+      "role": "triwulan"
+    },
+    {
+      "id": "p1_c001",
+      "kind": "digit",
+      "bbox_pt": [
+        532.0,
+        236.25,
+        546.25,
+        250.5
+      ],
+      "bbox_n": [
+        0.89364,
+        0.28061,
+        0.91757,
+        0.29753
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F000",
+      "field_label": "WAKTU_MULAI",
+      "box_index": 1,
+      "total_boxes": 4,
+      "label": "WAKTU_MULAI_b01",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c002",
+      "kind": "digit",
+      "bbox_pt": [
+        551.5,
+        236.25,
+        565.75,
+        250.5
+      ],
+      "bbox_n": [
+        0.92639,
+        0.28061,
+        0.95033,
+        0.29753
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F000",
+      "field_label": "WAKTU_MULAI",
+      "box_index": 2,
+      "total_boxes": 4,
+      "label": "WAKTU_MULAI_b02",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c003",
+      "kind": "digit",
+      "bbox_pt": [
+        565.75,
+        236.25,
+        580.0,
+        250.5
+      ],
+      "bbox_n": [
+        0.95033,
+        0.28061,
+        0.97427,
+        0.29753
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F000",
+      "field_label": "WAKTU_MULAI",
+      "box_index": 3,
+      "total_boxes": 4,
+      "label": "WAKTU_MULAI_b03",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c004",
+      "kind": "digit",
+      "bbox_pt": [
+        517.5,
+        236.5,
+        531.75,
+        250.5
+      ],
+      "bbox_n": [
+        0.86928,
+        0.28091,
+        0.89322,
+        0.29753
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F000",
+      "field_label": "WAKTU_MULAI",
+      "box_index": 0,
+      "total_boxes": 4,
+      "label": "WAKTU_MULAI_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c005",
+      "kind": "struct",
+      "bbox_pt": [
+        15.48,
+        252.75,
+        580.75,
+        276.45
+      ],
+      "bbox_n": [
+        0.026,
+        0.30021,
+        0.97553,
+        0.32836
+      ],
+      "fill": "title",
+      "fill_rgb": [
+        188,
+        213,
+        237
+      ],
+      "text": "BLOK I. KETERANGAN TEMPAT",
+      "table": 0,
+      "row": 0,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 4
+    },
+    {
+      "id": "p1_c006",
+      "kind": "struct",
+      "bbox_pt": [
+        15.48,
+        276.45,
+        42.25,
+        299.75
+      ],
+      "bbox_n": [
+        0.026,
+        0.32836,
+        0.07097,
+        0.35603
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "101",
+      "table": 0,
+      "row": 1,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c007",
+      "kind": "struct",
+      "bbox_pt": [
+        42.25,
+        276.45,
+        244.62,
+        299.75
+      ],
+      "bbox_n": [
+        0.07097,
+        0.32836,
+        0.41091,
+        0.35603
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Provinsi",
+      "table": 0,
+      "row": 1,
+      "col": 1,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c008",
+      "kind": "struct",
+      "bbox_pt": [
+        244.62,
+        276.45,
+        433.5,
+        299.75
+      ],
+      "bbox_n": [
+        0.41091,
+        0.32836,
+        0.72818,
+        0.35603
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 0,
+      "row": 1,
+      "col": 2,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c009",
+      "kind": "struct",
+      "bbox_pt": [
+        433.5,
+        276.45,
+        580.75,
+        299.75
+      ],
+      "bbox_n": [
+        0.72818,
+        0.32836,
+        0.97553,
+        0.35603
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 0,
+      "row": 1,
+      "col": 3,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c010",
+      "kind": "digit",
+      "bbox_pt": [
+        549.25,
+        281.0,
+        563.25,
+        295.5
+      ],
+      "bbox_n": [
+        0.92261,
+        0.33376,
+        0.94613,
+        0.35098
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F001",
+      "field_label": "101_prov",
+      "box_index": 0,
+      "total_boxes": 2,
+      "label": "101_prov_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c011",
+      "kind": "digit",
+      "bbox_pt": [
+        563.25,
+        281.0,
+        577.25,
+        295.5
+      ],
+      "bbox_n": [
+        0.94613,
+        0.33376,
+        0.96965,
+        0.35098
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F001",
+      "field_label": "101_prov",
+      "box_index": 1,
+      "total_boxes": 2,
+      "label": "101_prov_b01",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c012",
+      "kind": "struct",
+      "bbox_pt": [
+        15.48,
+        299.75,
+        42.25,
+        322.62
+      ],
+      "bbox_n": [
+        0.026,
+        0.35603,
+        0.07097,
+        0.3832
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "102",
+      "table": 0,
+      "row": 2,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c013",
+      "kind": "struct",
+      "bbox_pt": [
+        42.25,
+        299.75,
+        244.62,
+        322.62
+      ],
+      "bbox_n": [
+        0.07097,
+        0.35603,
+        0.41091,
+        0.3832
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Kabupaten/Kota*)",
+      "table": 0,
+      "row": 2,
+      "col": 1,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c014",
+      "kind": "struct",
+      "bbox_pt": [
+        244.62,
+        299.75,
+        433.5,
+        322.62
+      ],
+      "bbox_n": [
+        0.41091,
+        0.35603,
+        0.72818,
+        0.3832
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 0,
+      "row": 2,
+      "col": 2,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c015",
+      "kind": "struct",
+      "bbox_pt": [
+        433.5,
+        299.75,
+        580.75,
+        322.62
+      ],
+      "bbox_n": [
+        0.72818,
+        0.35603,
+        0.97553,
+        0.3832
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 0,
+      "row": 2,
+      "col": 3,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c016",
+      "kind": "digit",
+      "bbox_pt": [
+        549.25,
+        303.75,
+        563.25,
+        318.25
+      ],
+      "bbox_n": [
+        0.92261,
+        0.36078,
+        0.94613,
+        0.37801
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F002",
+      "field_label": "102_kab",
+      "box_index": 0,
+      "total_boxes": 2,
+      "label": "102_kab_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c017",
+      "kind": "digit",
+      "bbox_pt": [
+        563.25,
+        303.75,
+        577.25,
+        318.25
+      ],
+      "bbox_n": [
+        0.94613,
+        0.36078,
+        0.96965,
+        0.37801
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F002",
+      "field_label": "102_kab",
+      "box_index": 1,
+      "total_boxes": 2,
+      "label": "102_kab_b01",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c018",
+      "kind": "struct",
+      "bbox_pt": [
+        15.48,
+        322.62,
+        42.25,
+        345.5
+      ],
+      "bbox_n": [
+        0.026,
+        0.3832,
+        0.07097,
+        0.41037
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "103",
+      "table": 0,
+      "row": 3,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c019",
+      "kind": "struct",
+      "bbox_pt": [
+        42.25,
+        322.62,
+        244.62,
+        345.5
+      ],
+      "bbox_n": [
+        0.07097,
+        0.3832,
+        0.41091,
+        0.41037
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Kecamatan",
+      "table": 0,
+      "row": 3,
+      "col": 1,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c020",
+      "kind": "struct",
+      "bbox_pt": [
+        244.62,
+        322.62,
+        433.5,
+        345.5
+      ],
+      "bbox_n": [
+        0.41091,
+        0.3832,
+        0.72818,
+        0.41037
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 0,
+      "row": 3,
+      "col": 2,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c021",
+      "kind": "struct",
+      "bbox_pt": [
+        433.5,
+        322.62,
+        580.75,
+        345.5
+      ],
+      "bbox_n": [
+        0.72818,
+        0.3832,
+        0.97553,
+        0.41037
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 0,
+      "row": 3,
+      "col": 3,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c022",
+      "kind": "digit",
+      "bbox_pt": [
+        534.5,
+        326.75,
+        548.5,
+        341.25
+      ],
+      "bbox_n": [
+        0.89784,
+        0.3881,
+        0.92135,
+        0.40532
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F003",
+      "field_label": "103_kec",
+      "box_index": 0,
+      "total_boxes": 3,
+      "label": "103_kec_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c023",
+      "kind": "digit",
+      "bbox_pt": [
+        548.75,
+        326.75,
+        562.75,
+        341.25
+      ],
+      "bbox_n": [
+        0.92177,
+        0.3881,
+        0.94529,
+        0.40532
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F003",
+      "field_label": "103_kec",
+      "box_index": 1,
+      "total_boxes": 3,
+      "label": "103_kec_b01",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c024",
+      "kind": "digit",
+      "bbox_pt": [
+        562.75,
+        326.75,
+        576.75,
+        341.25
+      ],
+      "bbox_n": [
+        0.94529,
+        0.3881,
+        0.96881,
+        0.40532
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F003",
+      "field_label": "103_kec",
+      "box_index": 2,
+      "total_boxes": 3,
+      "label": "103_kec_b02",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c025",
+      "kind": "struct",
+      "bbox_pt": [
+        15.48,
+        345.5,
+        42.25,
+        368.5
+      ],
+      "bbox_n": [
+        0.026,
+        0.41037,
+        0.07097,
+        0.43769
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "104",
+      "table": 0,
+      "row": 4,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c026",
+      "kind": "struct",
+      "bbox_pt": [
+        42.25,
+        345.5,
+        244.62,
+        368.5
+      ],
+      "bbox_n": [
+        0.07097,
+        0.41037,
+        0.41091,
+        0.43769
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Desa/Kelurahan*)",
+      "table": 0,
+      "row": 4,
+      "col": 1,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c027",
+      "kind": "struct",
+      "bbox_pt": [
+        244.62,
+        345.5,
+        433.5,
+        368.5
+      ],
+      "bbox_n": [
+        0.41091,
+        0.41037,
+        0.72818,
+        0.43769
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 0,
+      "row": 4,
+      "col": 2,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c028",
+      "kind": "struct",
+      "bbox_pt": [
+        433.5,
+        345.5,
+        580.75,
+        368.5
+      ],
+      "bbox_n": [
+        0.72818,
+        0.41037,
+        0.97553,
+        0.43769
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 0,
+      "row": 4,
+      "col": 3,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c029",
+      "kind": "digit",
+      "bbox_pt": [
+        534.5,
+        349.75,
+        548.5,
+        364.25
+      ],
+      "bbox_n": [
+        0.89784,
+        0.41542,
+        0.92135,
+        0.43264
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F004",
+      "field_label": "104_desa",
+      "box_index": 0,
+      "total_boxes": 3,
+      "label": "104_desa_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c030",
+      "kind": "digit",
+      "bbox_pt": [
+        548.75,
+        349.75,
+        562.75,
+        364.25
+      ],
+      "bbox_n": [
+        0.92177,
+        0.41542,
+        0.94529,
+        0.43264
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F004",
+      "field_label": "104_desa",
+      "box_index": 1,
+      "total_boxes": 3,
+      "label": "104_desa_b01",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c031",
+      "kind": "digit",
+      "bbox_pt": [
+        562.75,
+        349.75,
+        576.75,
+        364.25
+      ],
+      "bbox_n": [
+        0.94529,
+        0.41542,
+        0.96881,
+        0.43264
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F004",
+      "field_label": "104_desa",
+      "box_index": 2,
+      "total_boxes": 3,
+      "label": "104_desa_b02",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c032",
+      "kind": "struct",
+      "bbox_pt": [
+        15.48,
+        368.5,
+        42.25,
+        391.5
+      ],
+      "bbox_n": [
+        0.026,
+        0.43769,
+        0.07097,
+        0.46501
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "105",
+      "table": 0,
+      "row": 5,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c033",
+      "kind": "struct",
+      "bbox_pt": [
+        42.25,
+        368.5,
+        244.62,
+        391.5
+      ],
+      "bbox_n": [
+        0.07097,
+        0.43769,
+        0.41091,
+        0.46501
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Klasifikasi Desa/Kelurahan",
+      "table": 0,
+      "row": 5,
+      "col": 1,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c034",
+      "kind": "struct",
+      "bbox_pt": [
+        244.62,
+        368.5,
+        433.5,
+        391.5
+      ],
+      "bbox_n": [
+        0.41091,
+        0.43769,
+        0.72818,
+        0.46501
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Perkotaan -1 Perdesaan -2",
+      "table": 0,
+      "row": 5,
+      "col": 2,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c035",
+      "kind": "struct",
+      "bbox_pt": [
+        433.5,
+        368.5,
+        580.75,
+        391.5
+      ],
+      "bbox_n": [
+        0.72818,
+        0.43769,
+        0.97553,
+        0.46501
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 0,
+      "row": 5,
+      "col": 3,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c036",
+      "kind": "digit",
+      "bbox_pt": [
+        563.0,
+        372.75,
+        577.0,
+        387.25
+      ],
+      "bbox_n": [
+        0.94571,
+        0.44274,
+        0.96923,
+        0.45996
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F005",
+      "field_label": "105_klasifikasi",
+      "box_index": 0,
+      "total_boxes": 1,
+      "label": "105_klasifikasi_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c037",
+      "kind": "struct",
+      "bbox_pt": [
+        15.48,
+        391.5,
+        42.25,
+        414.38
+      ],
+      "bbox_n": [
+        0.026,
+        0.46501,
+        0.07097,
+        0.49218
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "106",
+      "table": 0,
+      "row": 6,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c038",
+      "kind": "struct",
+      "bbox_pt": [
+        42.25,
+        391.5,
+        244.62,
+        414.38
+      ],
+      "bbox_n": [
+        0.07097,
+        0.46501,
+        0.41091,
+        0.49218
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Nomor Kode Sampel SLS",
+      "table": 0,
+      "row": 6,
+      "col": 1,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c039",
+      "kind": "struct",
+      "bbox_pt": [
+        244.62,
+        391.5,
+        433.5,
+        414.38
+      ],
+      "bbox_n": [
+        0.41091,
+        0.46501,
+        0.72818,
+        0.49218
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 0,
+      "row": 6,
+      "col": 2,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c040",
+      "kind": "struct",
+      "bbox_pt": [
+        433.5,
+        391.5,
+        580.75,
+        414.38
+      ],
+      "bbox_n": [
+        0.72818,
+        0.46501,
+        0.97553,
+        0.49218
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 0,
+      "row": 6,
+      "col": 3,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c041",
+      "kind": "digit",
+      "bbox_pt": [
+        505.75,
+        395.75,
+        519.75,
+        410.25
+      ],
+      "bbox_n": [
+        0.84954,
+        0.47006,
+        0.87306,
+        0.48728
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F006",
+      "field_label": "106_sls",
+      "box_index": 0,
+      "total_boxes": 5,
+      "label": "106_sls_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c042",
+      "kind": "digit",
+      "bbox_pt": [
+        520.0,
+        395.75,
+        534.0,
+        410.25
+      ],
+      "bbox_n": [
+        0.87348,
+        0.47006,
+        0.897,
+        0.48728
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F006",
+      "field_label": "106_sls",
+      "box_index": 1,
+      "total_boxes": 5,
+      "label": "106_sls_b01",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c043",
+      "kind": "digit",
+      "bbox_pt": [
+        534.25,
+        395.75,
+        548.25,
+        410.25
+      ],
+      "bbox_n": [
+        0.89742,
+        0.47006,
+        0.92093,
+        0.48728
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F006",
+      "field_label": "106_sls",
+      "box_index": 2,
+      "total_boxes": 5,
+      "label": "106_sls_b02",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c044",
+      "kind": "digit",
+      "bbox_pt": [
+        548.25,
+        395.75,
+        562.25,
+        410.25
+      ],
+      "bbox_n": [
+        0.92093,
+        0.47006,
+        0.94445,
+        0.48728
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F006",
+      "field_label": "106_sls",
+      "box_index": 3,
+      "total_boxes": 5,
+      "label": "106_sls_b03",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c045",
+      "kind": "digit",
+      "bbox_pt": [
+        562.5,
+        395.75,
+        576.5,
+        410.25
+      ],
+      "bbox_n": [
+        0.94487,
+        0.47006,
+        0.96839,
+        0.48728
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F006",
+      "field_label": "106_sls",
+      "box_index": 4,
+      "total_boxes": 5,
+      "label": "106_sls_b04",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c046",
+      "kind": "struct",
+      "bbox_pt": [
+        15.48,
+        414.38,
+        42.25,
+        437.25
+      ],
+      "bbox_n": [
+        0.026,
+        0.49218,
+        0.07097,
+        0.51935
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "107",
+      "table": 0,
+      "row": 7,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c047",
+      "kind": "struct",
+      "bbox_pt": [
+        42.25,
+        414.38,
+        244.62,
+        437.25
+      ],
+      "bbox_n": [
+        0.07097,
+        0.49218,
+        0.41091,
+        0.51935
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Satuan Lingkungan Setempat (SLS)/ Sub SLS",
+      "table": 0,
+      "row": 7,
+      "col": 1,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c048",
+      "kind": "struct",
+      "bbox_pt": [
+        244.62,
+        414.38,
+        433.5,
+        437.25
+      ],
+      "bbox_n": [
+        0.41091,
+        0.49218,
+        0.72818,
+        0.51935
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 0,
+      "row": 7,
+      "col": 2,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c049",
+      "kind": "struct",
+      "bbox_pt": [
+        433.5,
+        414.38,
+        580.75,
+        437.25
+      ],
+      "bbox_n": [
+        0.72818,
+        0.49218,
+        0.97553,
+        0.51935
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 0,
+      "row": 7,
+      "col": 3,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c050",
+      "kind": "digit",
+      "bbox_pt": [
+        492.25,
+        418.5,
+        506.25,
+        433.25
+      ],
+      "bbox_n": [
+        0.82687,
+        0.49708,
+        0.85038,
+        0.5146
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F007",
+      "field_label": "107_sub_sls",
+      "box_index": 0,
+      "total_boxes": 6,
+      "label": "107_sub_sls_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c051",
+      "kind": "digit",
+      "bbox_pt": [
+        506.5,
+        418.5,
+        520.5,
+        433.25
+      ],
+      "bbox_n": [
+        0.8508,
+        0.49708,
+        0.87432,
+        0.5146
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F007",
+      "field_label": "107_sub_sls",
+      "box_index": 1,
+      "total_boxes": 6,
+      "label": "107_sub_sls_b01",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c052",
+      "kind": "digit",
+      "bbox_pt": [
+        520.5,
+        418.5,
+        534.5,
+        433.25
+      ],
+      "bbox_n": [
+        0.87432,
+        0.49708,
+        0.89784,
+        0.5146
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F007",
+      "field_label": "107_sub_sls",
+      "box_index": 2,
+      "total_boxes": 6,
+      "label": "107_sub_sls_b02",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c053",
+      "kind": "digit",
+      "bbox_pt": [
+        534.75,
+        418.5,
+        548.75,
+        433.25
+      ],
+      "bbox_n": [
+        0.89826,
+        0.49708,
+        0.92177,
+        0.5146
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F007",
+      "field_label": "107_sub_sls",
+      "box_index": 3,
+      "total_boxes": 6,
+      "label": "107_sub_sls_b03",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c054",
+      "kind": "digit",
+      "bbox_pt": [
+        549.0,
+        418.5,
+        563.0,
+        433.25
+      ],
+      "bbox_n": [
+        0.92219,
+        0.49708,
+        0.94571,
+        0.5146
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F007",
+      "field_label": "107_sub_sls",
+      "box_index": 4,
+      "total_boxes": 6,
+      "label": "107_sub_sls_b04",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c055",
+      "kind": "digit",
+      "bbox_pt": [
+        563.0,
+        418.5,
+        577.0,
+        433.25
+      ],
+      "bbox_n": [
+        0.94571,
+        0.49708,
+        0.96923,
+        0.5146
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F007",
+      "field_label": "107_sub_sls",
+      "box_index": 5,
+      "total_boxes": 6,
+      "label": "107_sub_sls_b05",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c056",
+      "kind": "struct",
+      "bbox_pt": [
+        15.48,
+        437.25,
+        42.25,
+        460.28
+      ],
+      "bbox_n": [
+        0.026,
+        0.51935,
+        0.07097,
+        0.5467
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "108",
+      "table": 0,
+      "row": 8,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c057",
+      "kind": "struct",
+      "bbox_pt": [
+        42.25,
+        437.25,
+        244.62,
+        460.28
+      ],
+      "bbox_n": [
+        0.07097,
+        0.51935,
+        0.41091,
+        0.5467
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Nomor Urut Bangunan Tempat Tinggal",
+      "table": 0,
+      "row": 8,
+      "col": 1,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c058",
+      "kind": "struct",
+      "bbox_pt": [
+        244.62,
+        437.25,
+        433.5,
+        460.28
+      ],
+      "bbox_n": [
+        0.41091,
+        0.51935,
+        0.72818,
+        0.5467
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 0,
+      "row": 8,
+      "col": 2,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c059",
+      "kind": "struct",
+      "bbox_pt": [
+        433.5,
+        437.25,
+        580.75,
+        460.28
+      ],
+      "bbox_n": [
+        0.72818,
+        0.51935,
+        0.97553,
+        0.5467
+      ],
+      "fill": "na",
+      "fill_rgb": [
+        165,
+        166,
+        165
+      ],
+      "text": "",
+      "table": 0,
+      "row": 8,
+      "col": 3,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c060",
+      "kind": "struct",
+      "bbox_pt": [
+        15.48,
+        460.28,
+        42.25,
+        483.25
+      ],
+      "bbox_n": [
+        0.026,
+        0.5467,
+        0.07097,
+        0.57399
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "109",
+      "table": 0,
+      "row": 9,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c061",
+      "kind": "struct",
+      "bbox_pt": [
+        42.25,
+        460.28,
+        244.62,
+        483.25
+      ],
+      "bbox_n": [
+        0.07097,
+        0.5467,
+        0.41091,
+        0.57399
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Nomor Urut Sampel Rumah Tangga",
+      "table": 0,
+      "row": 9,
+      "col": 1,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c062",
+      "kind": "struct",
+      "bbox_pt": [
+        244.62,
+        460.28,
+        433.5,
+        483.25
+      ],
+      "bbox_n": [
+        0.41091,
+        0.5467,
+        0.72818,
+        0.57399
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 0,
+      "row": 9,
+      "col": 2,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c063",
+      "kind": "struct",
+      "bbox_pt": [
+        433.5,
+        460.28,
+        580.75,
+        483.25
+      ],
+      "bbox_n": [
+        0.72818,
+        0.5467,
+        0.97553,
+        0.57399
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 0,
+      "row": 9,
+      "col": 3,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c064",
+      "kind": "digit",
+      "bbox_pt": [
+        549.25,
+        464.5,
+        563.25,
+        479.0
+      ],
+      "bbox_n": [
+        0.92261,
+        0.55172,
+        0.94613,
+        0.56894
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F008",
+      "field_label": "109_sampel",
+      "box_index": 0,
+      "total_boxes": 2,
+      "label": "109_sampel_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c065",
+      "kind": "digit",
+      "bbox_pt": [
+        563.25,
+        464.5,
+        577.25,
+        479.0
+      ],
+      "bbox_n": [
+        0.94613,
+        0.55172,
+        0.96965,
+        0.56894
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F008",
+      "field_label": "109_sampel",
+      "box_index": 1,
+      "total_boxes": 2,
+      "label": "109_sampel_b01",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c066",
+      "kind": "struct",
+      "bbox_pt": [
+        15.48,
+        483.25,
+        42.25,
+        506.25
+      ],
+      "bbox_n": [
+        0.026,
+        0.57399,
+        0.07097,
+        0.6013
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "110",
+      "table": 0,
+      "row": 10,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c067",
+      "kind": "struct",
+      "bbox_pt": [
+        42.25,
+        483.25,
+        244.62,
+        506.25
+      ],
+      "bbox_n": [
+        0.07097,
+        0.57399,
+        0.41091,
+        0.6013
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Nama Kepala Rumah Tangga",
+      "table": 0,
+      "row": 10,
+      "col": 1,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c068",
+      "kind": "struct",
+      "bbox_pt": [
+        244.62,
+        483.25,
+        580.75,
+        506.25
+      ],
+      "bbox_n": [
+        0.41091,
+        0.57399,
+        0.97553,
+        0.6013
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "......................................................................................................................................",
+      "table": 0,
+      "row": 10,
+      "col": 2,
+      "rowspan": 1,
+      "colspan": 2
+    },
+    {
+      "id": "p1_c069",
+      "kind": "struct",
+      "bbox_pt": [
+        15.48,
+        506.25,
+        42.25,
+        541.25
+      ],
+      "bbox_n": [
+        0.026,
+        0.6013,
+        0.07097,
+        0.64288
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "111",
+      "table": 0,
+      "row": 11,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c070",
+      "kind": "struct",
+      "bbox_pt": [
+        42.25,
+        506.25,
+        244.62,
+        541.25
+      ],
+      "bbox_n": [
+        0.07097,
+        0.6013,
+        0.41091,
+        0.64288
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Alamat (Nama Jalan/Gang, RT/RW/Dusun)",
+      "table": 0,
+      "row": 11,
+      "col": 1,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c071",
+      "kind": "struct",
+      "bbox_pt": [
+        244.62,
+        506.25,
+        580.75,
+        541.25
+      ],
+      "bbox_n": [
+        0.41091,
+        0.6013,
+        0.97553,
+        0.64288
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "...................................................................................................................................... ......................................................................................................................................",
+      "table": 0,
+      "row": 11,
+      "col": 2,
+      "rowspan": 1,
+      "colspan": 2
+    },
+    {
+      "id": "p1_c072",
+      "kind": "struct",
+      "bbox_pt": [
+        15.46,
+        561.25,
+        580.75,
+        582.96
+      ],
+      "bbox_n": [
+        0.02597,
+        0.66663,
+        0.97553,
+        0.69242
+      ],
+      "fill": "title",
+      "fill_rgb": [
+        188,
+        213,
+        237
+      ],
+      "text": "BLOK II. KETERANGAN PENDATAAN",
+      "table": 1,
+      "row": 0,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 6
+    },
+    {
+      "id": "p1_c073",
+      "kind": "struct",
+      "bbox_pt": [
+        15.46,
+        582.96,
+        99.62,
+        610.38
+      ],
+      "bbox_n": [
+        0.02597,
+        0.69242,
+        0.16735,
+        0.72498
+      ],
+      "fill": "title",
+      "fill_rgb": [
+        222,
+        234,
+        246
+      ],
+      "text": "Uraian",
+      "table": 1,
+      "row": 1,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 2
+    },
+    {
+      "id": "p1_c074",
+      "kind": "struct",
+      "bbox_pt": [
+        99.62,
+        582.96,
+        245.12,
+        610.38
+      ],
+      "bbox_n": [
+        0.16735,
+        0.69242,
+        0.41175,
+        0.72498
+      ],
+      "fill": "title",
+      "fill_rgb": [
+        222,
+        234,
+        246
+      ],
+      "text": "Nama dan Kode",
+      "table": 1,
+      "row": 1,
+      "col": 2,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c075",
+      "kind": "struct",
+      "bbox_pt": [
+        245.12,
+        582.96,
+        368.62,
+        610.38
+      ],
+      "bbox_n": [
+        0.41175,
+        0.69242,
+        0.6192,
+        0.72498
+      ],
+      "fill": "title",
+      "fill_rgb": [
+        222,
+        234,
+        246
+      ],
+      "text": "Jabatan",
+      "table": 1,
+      "row": 1,
+      "col": 3,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c076",
+      "kind": "struct",
+      "bbox_pt": [
+        368.62,
+        582.96,
+        432.38,
+        610.38
+      ],
+      "bbox_n": [
+        0.6192,
+        0.69242,
+        0.72629,
+        0.72498
+      ],
+      "fill": "title",
+      "fill_rgb": [
+        222,
+        234,
+        246
+      ],
+      "text": "Waktu",
+      "table": 1,
+      "row": 1,
+      "col": 4,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c077",
+      "kind": "struct",
+      "bbox_pt": [
+        432.38,
+        582.96,
+        580.75,
+        610.38
+      ],
+      "bbox_n": [
+        0.72629,
+        0.69242,
+        0.97553,
+        0.72498
+      ],
+      "fill": "title",
+      "fill_rgb": [
+        222,
+        234,
+        246
+      ],
+      "text": "Tanda Tangan",
+      "table": 1,
+      "row": 1,
+      "col": 5,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c078",
+      "kind": "struct",
+      "bbox_pt": [
+        15.46,
+        610.38,
+        99.62,
+        620.0
+      ],
+      "bbox_n": [
+        0.02597,
+        0.72498,
+        0.16735,
+        0.73641
+      ],
+      "fill": "title",
+      "fill_rgb": [
+        222,
+        234,
+        246
+      ],
+      "text": "(1)",
+      "table": 1,
+      "row": 2,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 2
+    },
+    {
+      "id": "p1_c079",
+      "kind": "struct",
+      "bbox_pt": [
+        99.62,
+        610.38,
+        245.12,
+        620.0
+      ],
+      "bbox_n": [
+        0.16735,
+        0.72498,
+        0.41175,
+        0.73641
+      ],
+      "fill": "title",
+      "fill_rgb": [
+        222,
+        234,
+        246
+      ],
+      "text": "(2)",
+      "table": 1,
+      "row": 2,
+      "col": 2,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c080",
+      "kind": "struct",
+      "bbox_pt": [
+        245.12,
+        610.38,
+        368.62,
+        620.0
+      ],
+      "bbox_n": [
+        0.41175,
+        0.72498,
+        0.6192,
+        0.73641
+      ],
+      "fill": "title",
+      "fill_rgb": [
+        222,
+        234,
+        246
+      ],
+      "text": "(3)",
+      "table": 1,
+      "row": 2,
+      "col": 3,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c081",
+      "kind": "struct",
+      "bbox_pt": [
+        368.62,
+        610.38,
+        432.38,
+        620.0
+      ],
+      "bbox_n": [
+        0.6192,
+        0.72498,
+        0.72629,
+        0.73641
+      ],
+      "fill": "title",
+      "fill_rgb": [
+        222,
+        234,
+        246
+      ],
+      "text": "(4)",
+      "table": 1,
+      "row": 2,
+      "col": 4,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c082",
+      "kind": "struct",
+      "bbox_pt": [
+        432.38,
+        610.38,
+        580.75,
+        620.0
+      ],
+      "bbox_n": [
+        0.72629,
+        0.72498,
+        0.97553,
+        0.73641
+      ],
+      "fill": "title",
+      "fill_rgb": [
+        222,
+        234,
+        246
+      ],
+      "text": "(5)",
+      "table": 1,
+      "row": 2,
+      "col": 5,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c083",
+      "kind": "struct",
+      "bbox_pt": [
+        15.46,
+        620.0,
+        42.88,
+        676.12
+      ],
+      "bbox_n": [
+        0.02597,
+        0.73641,
+        0.07202,
+        0.80308
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "201",
+      "table": 1,
+      "row": 3,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c084",
+      "kind": "struct",
+      "bbox_pt": [
+        42.88,
+        620.0,
+        99.62,
+        676.12
+      ],
+      "bbox_n": [
+        0.07202,
+        0.73641,
+        0.16735,
+        0.80308
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Pendata",
+      "table": 1,
+      "row": 3,
+      "col": 1,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c085",
+      "kind": "struct",
+      "bbox_pt": [
+        99.62,
+        620.0,
+        245.12,
+        676.12
+      ],
+      "bbox_n": [
+        0.16735,
+        0.73641,
+        0.41175,
+        0.80308
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "…………………………................",
+      "table": 1,
+      "row": 3,
+      "col": 2,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c086",
+      "kind": "struct",
+      "bbox_pt": [
+        245.12,
+        620.0,
+        368.62,
+        676.12
+      ],
+      "bbox_n": [
+        0.41175,
+        0.73641,
+        0.6192,
+        0.80308
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Staf BPS Provinsi - 1 Staf BPS Kab/Kota - 2 Mitra - 3",
+      "table": 1,
+      "row": 3,
+      "col": 3,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c087",
+      "kind": "struct",
+      "bbox_pt": [
+        368.62,
+        620.0,
+        432.38,
+        676.12
+      ],
+      "bbox_n": [
+        0.6192,
+        0.73641,
+        0.72629,
+        0.80308
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Tgl Bln",
+      "table": 1,
+      "row": 3,
+      "col": 4,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c088",
+      "kind": "struct",
+      "bbox_pt": [
+        432.38,
+        620.0,
+        580.75,
+        676.12
+      ],
+      "bbox_n": [
+        0.72629,
+        0.73641,
+        0.97553,
+        0.80308
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 1,
+      "row": 3,
+      "col": 5,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c089",
+      "kind": "digit",
+      "bbox_pt": [
+        400.25,
+        635.25,
+        414.25,
+        649.75
+      ],
+      "bbox_n": [
+        0.67233,
+        0.75453,
+        0.69584,
+        0.77175
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F009",
+      "field_label": "201_pencacah_tgl",
+      "box_index": 0,
+      "total_boxes": 2,
+      "label": "201_pencacah_tgl_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c090",
+      "kind": "digit",
+      "bbox_pt": [
+        414.5,
+        635.25,
+        428.5,
+        649.75
+      ],
+      "bbox_n": [
+        0.69626,
+        0.75453,
+        0.71978,
+        0.77175
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F009",
+      "field_label": "201_pencacah_tgl",
+      "box_index": 1,
+      "total_boxes": 2,
+      "label": "201_pencacah_tgl_b01",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c091",
+      "kind": "digit",
+      "bbox_pt": [
+        348.5,
+        640.75,
+        363.25,
+        655.5
+      ],
+      "bbox_n": [
+        0.5854,
+        0.76106,
+        0.61018,
+        0.77858
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F010",
+      "field_label": "201_pencacah_jabatan",
+      "box_index": 0,
+      "total_boxes": 1,
+      "label": "201_pencacah_jabatan_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c092",
+      "kind": "digit",
+      "bbox_pt": [
+        141.75,
+        649.25,
+        155.75,
+        663.75
+      ],
+      "bbox_n": [
+        0.23811,
+        0.77115,
+        0.26162,
+        0.78838
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F011",
+      "field_label": "201_pencacah_nip",
+      "box_index": 0,
+      "total_boxes": 5,
+      "label": "201_pencacah_nip_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c093",
+      "kind": "digit",
+      "bbox_pt": [
+        156.0,
+        649.25,
+        170.0,
+        663.75
+      ],
+      "bbox_n": [
+        0.26204,
+        0.77115,
+        0.28556,
+        0.78838
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F011",
+      "field_label": "201_pencacah_nip",
+      "box_index": 1,
+      "total_boxes": 5,
+      "label": "201_pencacah_nip_b01",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c094",
+      "kind": "digit",
+      "bbox_pt": [
+        170.25,
+        649.25,
+        184.25,
+        663.75
+      ],
+      "bbox_n": [
+        0.28598,
+        0.77115,
+        0.3095,
+        0.78838
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F011",
+      "field_label": "201_pencacah_nip",
+      "box_index": 2,
+      "total_boxes": 5,
+      "label": "201_pencacah_nip_b02",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c095",
+      "kind": "digit",
+      "bbox_pt": [
+        184.25,
+        649.25,
+        198.25,
+        663.75
+      ],
+      "bbox_n": [
+        0.3095,
+        0.77115,
+        0.33301,
+        0.78838
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F011",
+      "field_label": "201_pencacah_nip",
+      "box_index": 3,
+      "total_boxes": 5,
+      "label": "201_pencacah_nip_b03",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c096",
+      "kind": "digit",
+      "bbox_pt": [
+        198.5,
+        649.25,
+        212.5,
+        663.75
+      ],
+      "bbox_n": [
+        0.33343,
+        0.77115,
+        0.35695,
+        0.78838
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F011",
+      "field_label": "201_pencacah_nip",
+      "box_index": 4,
+      "total_boxes": 5,
+      "label": "201_pencacah_nip_b04",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c097",
+      "kind": "digit",
+      "bbox_pt": [
+        400.25,
+        649.75,
+        414.25,
+        664.5
+      ],
+      "bbox_n": [
+        0.67233,
+        0.77175,
+        0.69584,
+        0.78927
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F012",
+      "field_label": "201_pencacah_bln",
+      "box_index": 0,
+      "total_boxes": 2,
+      "label": "201_pencacah_bln_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c098",
+      "kind": "digit",
+      "bbox_pt": [
+        414.5,
+        649.75,
+        428.5,
+        664.5
+      ],
+      "bbox_n": [
+        0.69626,
+        0.77175,
+        0.71978,
+        0.78927
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F012",
+      "field_label": "201_pencacah_bln",
+      "box_index": 1,
+      "total_boxes": 2,
+      "label": "201_pencacah_bln_b01",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c099",
+      "kind": "struct",
+      "bbox_pt": [
+        15.46,
+        676.12,
+        42.88,
+        732.33
+      ],
+      "bbox_n": [
+        0.02597,
+        0.80308,
+        0.07202,
+        0.86984
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "202",
+      "table": 1,
+      "row": 4,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c100",
+      "kind": "struct",
+      "bbox_pt": [
+        42.88,
+        676.12,
+        99.62,
+        732.33
+      ],
+      "bbox_n": [
+        0.07202,
+        0.80308,
+        0.16735,
+        0.86984
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Pemeriksa",
+      "table": 1,
+      "row": 4,
+      "col": 1,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c101",
+      "kind": "struct",
+      "bbox_pt": [
+        99.62,
+        676.12,
+        245.12,
+        732.33
+      ],
+      "bbox_n": [
+        0.16735,
+        0.80308,
+        0.41175,
+        0.86984
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "…………………………................",
+      "table": 1,
+      "row": 4,
+      "col": 2,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c102",
+      "kind": "struct",
+      "bbox_pt": [
+        245.12,
+        676.12,
+        368.62,
+        732.33
+      ],
+      "bbox_n": [
+        0.41175,
+        0.80308,
+        0.6192,
+        0.86984
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Staf BPS Provinsi - 1 Staf BPS Kab/Kota - 2 Mitra - 3",
+      "table": 1,
+      "row": 4,
+      "col": 3,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c103",
+      "kind": "struct",
+      "bbox_pt": [
+        368.62,
+        676.12,
+        432.38,
+        732.33
+      ],
+      "bbox_n": [
+        0.6192,
+        0.80308,
+        0.72629,
+        0.86984
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Tgl Bln",
+      "table": 1,
+      "row": 4,
+      "col": 4,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c104",
+      "kind": "struct",
+      "bbox_pt": [
+        432.38,
+        676.12,
+        580.75,
+        732.33
+      ],
+      "bbox_n": [
+        0.72629,
+        0.80308,
+        0.97553,
+        0.86984
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "table": 1,
+      "row": 4,
+      "col": 5,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c105",
+      "kind": "digit",
+      "bbox_pt": [
+        400.25,
+        691.25,
+        414.25,
+        705.75
+      ],
+      "bbox_n": [
+        0.67233,
+        0.82104,
+        0.69584,
+        0.83826
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F013",
+      "field_label": "202_pengawas_tgl",
+      "box_index": 0,
+      "total_boxes": 2,
+      "label": "202_pengawas_tgl_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c106",
+      "kind": "digit",
+      "bbox_pt": [
+        414.5,
+        691.25,
+        428.5,
+        705.75
+      ],
+      "bbox_n": [
+        0.69626,
+        0.82104,
+        0.71978,
+        0.83826
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F013",
+      "field_label": "202_pengawas_tgl",
+      "box_index": 1,
+      "total_boxes": 2,
+      "label": "202_pengawas_tgl_b01",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c107",
+      "kind": "digit",
+      "bbox_pt": [
+        348.5,
+        695.5,
+        363.0,
+        710.25
+      ],
+      "bbox_n": [
+        0.5854,
+        0.82609,
+        0.60976,
+        0.84361
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F014",
+      "field_label": "202_pengawas_jabatan",
+      "box_index": 0,
+      "total_boxes": 1,
+      "label": "202_pengawas_jabatan_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c108",
+      "kind": "digit",
+      "bbox_pt": [
+        141.75,
+        705.5,
+        155.75,
+        720.0
+      ],
+      "bbox_n": [
+        0.23811,
+        0.83797,
+        0.26162,
+        0.85519
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F015",
+      "field_label": "202_pengawas_nip",
+      "box_index": 0,
+      "total_boxes": 5,
+      "label": "202_pengawas_nip_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c109",
+      "kind": "digit",
+      "bbox_pt": [
+        156.0,
+        705.5,
+        170.0,
+        720.0
+      ],
+      "bbox_n": [
+        0.26204,
+        0.83797,
+        0.28556,
+        0.85519
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F015",
+      "field_label": "202_pengawas_nip",
+      "box_index": 1,
+      "total_boxes": 5,
+      "label": "202_pengawas_nip_b01",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c110",
+      "kind": "digit",
+      "bbox_pt": [
+        170.25,
+        705.5,
+        184.25,
+        720.0
+      ],
+      "bbox_n": [
+        0.28598,
+        0.83797,
+        0.3095,
+        0.85519
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F015",
+      "field_label": "202_pengawas_nip",
+      "box_index": 2,
+      "total_boxes": 5,
+      "label": "202_pengawas_nip_b02",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c111",
+      "kind": "digit",
+      "bbox_pt": [
+        184.25,
+        705.5,
+        198.25,
+        720.0
+      ],
+      "bbox_n": [
+        0.3095,
+        0.83797,
+        0.33301,
+        0.85519
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F015",
+      "field_label": "202_pengawas_nip",
+      "box_index": 3,
+      "total_boxes": 5,
+      "label": "202_pengawas_nip_b03",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c112",
+      "kind": "digit",
+      "bbox_pt": [
+        198.5,
+        705.5,
+        212.5,
+        720.0
+      ],
+      "bbox_n": [
+        0.33343,
+        0.83797,
+        0.35695,
+        0.85519
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F015",
+      "field_label": "202_pengawas_nip",
+      "box_index": 4,
+      "total_boxes": 5,
+      "label": "202_pengawas_nip_b04",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c113",
+      "kind": "digit",
+      "bbox_pt": [
+        400.25,
+        706.0,
+        414.25,
+        720.5
+      ],
+      "bbox_n": [
+        0.67233,
+        0.83856,
+        0.69584,
+        0.85578
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F016",
+      "field_label": "202_pengawas_bln",
+      "box_index": 0,
+      "total_boxes": 2,
+      "label": "202_pengawas_bln_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c114",
+      "kind": "digit",
+      "bbox_pt": [
+        414.5,
+        706.0,
+        428.5,
+        720.5
+      ],
+      "bbox_n": [
+        0.69626,
+        0.83856,
+        0.71978,
+        0.85578
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F016",
+      "field_label": "202_pengawas_bln",
+      "box_index": 1,
+      "total_boxes": 2,
+      "label": "202_pengawas_bln_b01",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c115",
+      "kind": "struct",
+      "bbox_pt": [
+        15.46,
+        732.33,
+        42.88,
+        808.25
+      ],
+      "bbox_n": [
+        0.02597,
+        0.86984,
+        0.07202,
+        0.96001
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "203",
+      "table": 1,
+      "row": 5,
+      "col": 0,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c116",
+      "kind": "struct",
+      "bbox_pt": [
+        42.88,
+        732.33,
+        99.62,
+        808.25
+      ],
+      "bbox_n": [
+        0.07202,
+        0.86984,
+        0.16735,
+        0.96001
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Hasil pendataan rumah tangga",
+      "table": 1,
+      "row": 5,
+      "col": 1,
+      "rowspan": 1,
+      "colspan": 1
+    },
+    {
+      "id": "p1_c117",
+      "kind": "struct",
+      "bbox_pt": [
+        99.62,
+        732.33,
+        580.75,
+        808.25
+      ],
+      "bbox_n": [
+        0.16735,
+        0.86984,
+        0.97553,
+        0.96001
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "Terisi lengkap ............................................................................................................................ 1 Terisi tidak lengkap .................................................................................................................... 2 Tidak ada ART/responden yang dapat memberi jawaban sampai akhir masa pendataan. ...... 3 Blok VII. Catatan Responden menolak ................................................................................................................. 4 Rumah tangga pindah/bangunan tempat tinggal sudah tidak ada ............................................ 5",
+      "table": 1,
+      "row": 5,
+      "col": 2,
+      "rowspan": 1,
+      "colspan": 4
+    },
+    {
+      "id": "p1_c118",
+      "kind": "digit",
+      "bbox_pt": [
+        553.0,
+        763.25,
+        567.75,
+        777.75
+      ],
+      "bbox_n": [
+        0.92891,
+        0.90656,
+        0.95369,
+        0.92378
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "",
+      "field_id": "p1_F017",
+      "field_label": "203_hasil_pencacahan",
+      "box_index": 0,
+      "total_boxes": 1,
+      "label": "203_hasil_pencacahan_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c_kesediaan_1",
+      "kind": "digit",
+      "bbox_pt": [
+        82.0,
+        196.75,
+        90.0,
+        204.5
+      ],
+      "bbox_n": [
+        0.13775,
+        0.2337,
+        0.151189,
+        0.242906
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "1",
+      "field_id": "p1_F_kesediaan",
+      "field_label": "KESEDIAAN_RESPONDEN",
+      "box_index": 0,
+      "total_boxes": 3,
+      "label": "KESEDIAAN_RESPONDEN_b00",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c_kesediaan_2",
+      "kind": "digit",
+      "bbox_pt": [
+        82.0,
+        208.25,
+        90.0,
+        216.0
+      ],
+      "bbox_n": [
+        0.13775,
+        0.24736,
+        0.151189,
+        0.256566
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "2",
+      "field_id": "p1_F_kesediaan",
+      "field_label": "KESEDIAAN_RESPONDEN",
+      "box_index": 1,
+      "total_boxes": 3,
+      "label": "KESEDIAAN_RESPONDEN_b01",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c_kesediaan_3",
+      "kind": "digit",
+      "bbox_pt": [
+        82.0,
+        219.75,
+        90.0,
+        227.5
+      ],
+      "bbox_n": [
+        0.13775,
+        0.26102,
+        0.151189,
+        0.270225
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "3",
+      "field_id": "p1_F_kesediaan",
+      "field_label": "KESEDIAAN_RESPONDEN",
+      "box_index": 2,
+      "total_boxes": 3,
+      "label": "KESEDIAAN_RESPONDEN_b02",
+      "role": "questionnaire_digit"
+    },
+    {
+      "id": "p1_c_hal",
+      "kind": "digit",
+      "bbox_pt": [
+        280.0,
+        824.0,
+        316.0,
+        840.0
+      ],
+      "bbox_n": [
+        0.47034,
+        0.97872,
+        0.53081,
+        0.99772
+      ],
+      "fill": "white",
+      "fill_rgb": [
+        255,
+        255,
+        255
+      ],
+      "text": "1",
+      "field_id": "p1_F_hal",
+      "field_label": "HAL_1",
+      "box_index": 0,
+      "total_boxes": 1,
+      "label": "HAL_1_b00",
+      "role": "page_number"
+    }
+  ],
+  "fields": [
+    {
+      "id": "p1_F_triwulan",
+      "row_label": "TRIWULAN",
+      "n_boxes": 1,
+      "boxes": [
+        "p1_c000"
+      ],
+      "parent": "sub_triwulan",
+      "parent_text": "TRIWULAN PENDATAAN",
+      "printed": false,
+      "bbox_pt": [
+        307.25,
+        136.25,
+        333.75,
+        148.25
+      ],
+      "label": "Triwulan Pendataan"
+    },
+    {
+      "id": "p1_F000",
+      "row_label": "WAKTU_MULAI",
+      "n_boxes": 4,
+      "boxes": [
+        "p1_c004",
+        "p1_c001",
+        "p1_c002",
+        "p1_c003"
+      ],
+      "parent": null,
+      "parent_text": "Waktu mulai wawancara",
+      "printed": null,
+      "bbox_pt": [
+        517.5,
+        236.25,
+        580.0,
+        250.5
+      ],
+      "label": "Waktu Mulai Wawancara (Jam : Menit)"
+    },
+    {
+      "id": "p1_F001",
+      "row_label": "101_prov",
+      "n_boxes": 2,
+      "boxes": [
+        "p1_c010",
+        "p1_c011"
+      ],
+      "parent": "p1_c009",
+      "parent_text": "",
+      "printed": null,
+      "bbox_pt": [
+        549.25,
+        281.0,
+        577.25,
+        295.5
+      ],
+      "label": "R101 Provinsi"
+    },
+    {
+      "id": "p1_F002",
+      "row_label": "102_kab",
+      "n_boxes": 2,
+      "boxes": [
+        "p1_c016",
+        "p1_c017"
+      ],
+      "parent": "p1_c015",
+      "parent_text": "",
+      "printed": null,
+      "bbox_pt": [
+        549.25,
+        303.75,
+        577.25,
+        318.25
+      ],
+      "label": "R102 Kabupaten/Kota"
+    },
+    {
+      "id": "p1_F003",
+      "row_label": "103_kec",
+      "n_boxes": 3,
+      "boxes": [
+        "p1_c022",
+        "p1_c023",
+        "p1_c024"
+      ],
+      "parent": "p1_c021",
+      "parent_text": "",
+      "printed": null,
+      "bbox_pt": [
+        534.5,
+        326.75,
+        576.75,
+        341.25
+      ],
+      "label": "R103 Kecamatan"
+    },
+    {
+      "id": "p1_F004",
+      "row_label": "104_desa",
+      "n_boxes": 3,
+      "boxes": [
+        "p1_c029",
+        "p1_c030",
+        "p1_c031"
+      ],
+      "parent": "p1_c028",
+      "parent_text": "",
+      "printed": null,
+      "bbox_pt": [
+        534.5,
+        349.75,
+        576.75,
+        364.25
+      ],
+      "label": "R104 Desa/Kelurahan"
+    },
+    {
+      "id": "p1_F005",
+      "row_label": "105_klasifikasi",
+      "n_boxes": 1,
+      "boxes": [
+        "p1_c036"
+      ],
+      "parent": "p1_c035",
+      "parent_text": "",
+      "printed": null,
+      "bbox_pt": [
+        563.0,
+        372.75,
+        577.0,
+        387.25
+      ],
+      "label": "R105 Klasifikasi Desa/Kelurahan (1: Perkotaan, 2: Perdesaan)"
+    },
+    {
+      "id": "p1_F006",
+      "row_label": "106_sls",
+      "n_boxes": 5,
+      "boxes": [
+        "p1_c041",
+        "p1_c042",
+        "p1_c043",
+        "p1_c044",
+        "p1_c045"
+      ],
+      "parent": "p1_c040",
+      "parent_text": "",
+      "printed": null,
+      "bbox_pt": [
+        505.75,
+        395.75,
+        576.5,
+        410.25
+      ],
+      "label": "R106 Nomor Blok Sensus / SLS"
+    },
+    {
+      "id": "p1_F007",
+      "row_label": "107_sub_sls",
+      "n_boxes": 6,
+      "boxes": [
+        "p1_c050",
+        "p1_c051",
+        "p1_c052",
+        "p1_c053",
+        "p1_c054",
+        "p1_c055"
+      ],
+      "parent": "p1_c049",
+      "parent_text": "",
+      "printed": null,
+      "bbox_pt": [
+        492.25,
+        418.5,
+        577.0,
+        433.25
+      ],
+      "label": "R107 Nomor Sub-SLS"
+    },
+    {
+      "id": "p1_F008",
+      "row_label": "109_sampel",
+      "n_boxes": 2,
+      "boxes": [
+        "p1_c064",
+        "p1_c065"
+      ],
+      "parent": "p1_c063",
+      "parent_text": "",
+      "printed": null,
+      "bbox_pt": [
+        549.25,
+        464.5,
+        577.25,
+        479.0
+      ],
+      "label": "R109 Nomor Urut Sampel Rumah Tangga"
+    },
+    {
+      "id": "p1_F009",
+      "row_label": "201_pencacah_tgl",
+      "n_boxes": 2,
+      "boxes": [
+        "p1_c089",
+        "p1_c090"
+      ],
+      "parent": "p1_c087",
+      "parent_text": "Tgl Bln",
+      "printed": null,
+      "bbox_pt": [
+        400.25,
+        635.25,
+        428.5,
+        649.75
+      ],
+      "label": "R201 Tanggal Pencacahan (Tgl)"
+    },
+    {
+      "id": "p1_F010",
+      "row_label": "201_pencacah_jabatan",
+      "n_boxes": 1,
+      "boxes": [
+        "p1_c091"
+      ],
+      "parent": "p1_c086",
+      "parent_text": "Staf BPS Provinsi - 1 Staf BPS Kab/Kota - 2 Mitra - 3",
+      "printed": null,
+      "bbox_pt": [
+        348.5,
+        640.75,
+        363.25,
+        655.5
+      ],
+      "label": "R201 Jabatan Pencacah (1: Staf Prov, 2: Staf Kab/Kota, 3: Mitra)"
+    },
+    {
+      "id": "p1_F011",
+      "row_label": "201_pencacah_nip",
+      "n_boxes": 5,
+      "boxes": [
+        "p1_c092",
+        "p1_c093",
+        "p1_c094",
+        "p1_c095",
+        "p1_c096"
+      ],
+      "parent": "p1_c085",
+      "parent_text": "…………………………................",
+      "printed": null,
+      "bbox_pt": [
+        141.75,
+        649.25,
+        212.5,
+        663.75
+      ],
+      "label": "R201 NIP / ID Mitra Pencacah"
+    },
+    {
+      "id": "p1_F012",
+      "row_label": "201_pencacah_bln",
+      "n_boxes": 2,
+      "boxes": [
+        "p1_c097",
+        "p1_c098"
+      ],
+      "parent": "p1_c087",
+      "parent_text": "Tgl Bln",
+      "printed": null,
+      "bbox_pt": [
+        400.25,
+        649.75,
+        428.5,
+        664.5
+      ],
+      "label": "R201 Bulan Pencacahan (Bln)"
+    },
+    {
+      "id": "p1_F013",
+      "row_label": "202_pengawas_tgl",
+      "n_boxes": 2,
+      "boxes": [
+        "p1_c105",
+        "p1_c106"
+      ],
+      "parent": "p1_c103",
+      "parent_text": "Tgl Bln",
+      "printed": null,
+      "bbox_pt": [
+        400.25,
+        691.25,
+        428.5,
+        705.75
+      ],
+      "label": "R202 Tanggal Pengawasan/Pemeriksaan (Tgl)"
+    },
+    {
+      "id": "p1_F014",
+      "row_label": "202_pengawas_jabatan",
+      "n_boxes": 1,
+      "boxes": [
+        "p1_c107"
+      ],
+      "parent": "p1_c102",
+      "parent_text": "Staf BPS Provinsi - 1 Staf BPS Kab/Kota - 2 Mitra - 3",
+      "printed": null,
+      "bbox_pt": [
+        348.5,
+        695.5,
+        363.0,
+        710.25
+      ],
+      "label": "R202 Jabatan Pengawas (1: Staf Prov, 2: Staf Kab/Kota, 3: Mitra)"
+    },
+    {
+      "id": "p1_F015",
+      "row_label": "202_pengawas_nip",
+      "n_boxes": 5,
+      "boxes": [
+        "p1_c108",
+        "p1_c109",
+        "p1_c110",
+        "p1_c111",
+        "p1_c112"
+      ],
+      "parent": "p1_c101",
+      "parent_text": "…………………………................",
+      "printed": null,
+      "bbox_pt": [
+        141.75,
+        705.5,
+        212.5,
+        720.0
+      ],
+      "label": "R202 NIP / ID Mitra Pengawas"
+    },
+    {
+      "id": "p1_F016",
+      "row_label": "202_pengawas_bln",
+      "n_boxes": 2,
+      "boxes": [
+        "p1_c113",
+        "p1_c114"
+      ],
+      "parent": "p1_c103",
+      "parent_text": "Tgl Bln",
+      "printed": null,
+      "bbox_pt": [
+        400.25,
+        706.0,
+        428.5,
+        720.5
+      ],
+      "label": "R202 Bulan Pengawasan/Pemeriksaan (Bln)"
+    },
+    {
+      "id": "p1_F017",
+      "row_label": "203_hasil_pencacahan",
+      "n_boxes": 1,
+      "boxes": [
+        "p1_c118"
+      ],
+      "parent": "p1_c117",
+      "parent_text": "",
+      "printed": null,
+      "bbox_pt": [
+        553.0,
+        763.25,
+        567.75,
+        777.75
+      ],
+      "label": "R203 Hasil Pencacahan Rumah Tangga"
+    },
+    {
+      "id": "p1_F_kesediaan",
+      "row_label": "KESEDIAAN_RESPONDEN",
+      "n_boxes": 3,
+      "boxes": [
+        "p1_c_kesediaan_1",
+        "p1_c_kesediaan_2",
+        "p1_c_kesediaan_3"
+      ],
+      "parent": null,
+      "parent_text": "Kesediaan responden diwawancarai (1: Ya, 2: Janji, 3: Tolak)",
+      "printed": null,
+      "bbox_pt": [
+        82.0,
+        196.75,
+        90.0,
+        227.5
+      ],
+      "label": "Kesediaan Responden Diwawancarai"
+    },
+    {
+      "id": "p1_F_hal",
+      "row_label": "HAL_1",
+      "n_boxes": 1,
+      "boxes": [
+        "p1_c_hal"
+      ],
+      "parent": null,
+      "parent_text": "Nomor Halaman 1",
+      "printed": "1",
+      "bbox_pt": [
+        280.0,
+        824.0,
+        316.0,
+        840.0
+      ],
+      "label": "Nomor Halaman 1"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "blok_kesediaan",
+      "code": "KESEDIAAN",
+      "title": "KESEDIAAN RESPONDEN & WAKTU MULAI WAWANCARA",
+      "bbox_pt": [
+        14.16,
+        185.0,
+        582.0,
+        251.66
+      ],
+      "sub_blocks": [
+        "sub_kesediaan",
+        "sub_waktu_mulai"
+      ]
+    },
+    {
+      "id": "blok_1",
+      "code": "BLOK I",
+      "title": "KETERANGAN TEMPAT",
+      "bbox_pt": [
+        14.16,
+        251.66,
+        582.0,
+        542.47
+      ],
+      "sub_blocks": [
+        "sub_101_111"
+      ]
+    },
+    {
+      "id": "blok_2",
+      "code": "BLOK II",
+      "title": "KETERANGAN PENDATAAN",
+      "bbox_pt": [
+        14.16,
+        560.23,
+        582.0,
+        809.5
+      ],
+      "sub_blocks": [
+        "sub_201_203"
+      ]
+    },
+    {
+      "id": "blok_halaman_p1",
+      "code": "HALAMAN",
+      "title": "NOMOR HALAMAN 1",
+      "bbox_pt": [
+        280.0,
+        824.0,
+        316.0,
+        840.0
+      ],
+      "sub_blocks": [
+        "sub_hal_p1"
+      ]
+    }
+  ],
+  "sub_blocks": [
+    {
+      "id": "sub_kesediaan",
+      "block_id": "blok_kesediaan",
+      "code": "KESEDIAAN",
+      "name": "Kesediaan Responden Diwawancarai (3 Opsi Respon)",
+      "type": "respondent_consent",
+      "bbox_pt": [
+        14.16,
+        185.0,
+        425.0,
+        251.66
+      ],
+      "cells_count": 3,
+      "fields_count": 1,
+      "digits_count": 3,
+      "fields": [
+        "p1_F_kesediaan"
+      ]
+    },
+    {
+      "id": "sub_waktu_mulai",
+      "block_id": "blok_kesediaan",
+      "code": "WAKTU_MULAI",
+      "name": "Waktu Mulai Wawancara (Jam : Menit)",
+      "type": "interview_time",
+      "bbox_pt": [
+        425.0,
+        185.0,
+        582.0,
+        251.66
+      ],
+      "cells_count": 4,
+      "fields_count": 1,
+      "digits_count": 4,
+      "fields": [
+        "p1_F000"
+      ]
+    },
+    {
+      "id": "sub_101_111",
+      "block_id": "blok_1",
+      "code": "R101-R111",
+      "name": "Pengenalan Wilayah Administrasi & Sampel",
+      "type": "admin_sample",
+      "bbox_pt": [
+        14.16,
+        251.66,
+        582.0,
+        542.47
+      ],
+      "cells_count": 67,
+      "fields_count": 8,
+      "digits_count": 24,
+      "fields": [
+        "p1_F001",
+        "p1_F002",
+        "p1_F003",
+        "p1_F004",
+        "p1_F005",
+        "p1_F006",
+        "p1_F007",
+        "p1_F008"
+      ]
+    },
+    {
+      "id": "sub_201_203",
+      "block_id": "blok_2",
+      "code": "R201-R203",
+      "name": "Keterangan Petugas PCL/PML & Hasil Pendataan",
+      "type": "survey_officer",
+      "bbox_pt": [
+        14.16,
+        560.23,
+        582.0,
+        809.5
+      ],
+      "cells_count": 47,
+      "fields_count": 9,
+      "digits_count": 21,
+      "fields": [
+        "p1_F009",
+        "p1_F010",
+        "p1_F011",
+        "p1_F012",
+        "p1_F013",
+        "p1_F014",
+        "p1_F015",
+        "p1_F016",
+        "p1_F017"
+      ]
+    },
+    {
+      "id": "sub_hal_p1",
+      "block_id": "blok_halaman_p1",
+      "code": "HAL_1",
+      "name": "Nomor Halaman 1",
+      "type": "page_number",
+      "bbox_pt": [
+        280.0,
+        824.0,
+        316.0,
+        840.0
+      ],
+      "cells_count": 1,
+      "fields_count": 1,
+      "digits_count": 1,
+      "fields": [
+        "p1_F_hal"
+      ]
+    }
+  ],
+  "text_fields": [
+    {
+      "id": "p1_txt_nama_krt",
+      "cell_id": "p1_c068",
+      "label": "Nama Kepala Rumah Tangga",
+      "question_code": "R110",
+      "bbox_pt": [
+        244.62,
+        483.25,
+        580.75,
+        506.25
+      ],
+      "type": "single_line_name"
+    },
+    {
+      "id": "p1_txt_alamat",
+      "cell_id": "p1_c071",
+      "label": "Alamat Tempat Tinggal Responden",
+      "question_code": "R111",
+      "bbox_pt": [
+        244.62,
+        506.25,
+        580.75,
+        541.25
+      ],
+      "type": "multi_line_address"
+    },
+    {
+      "id": "p1_txt_nama_pencacah",
+      "cell_id": "p1_c085",
+      "label": "Nama Petugas Pencacah",
+      "question_code": "R201_nama",
+      "bbox_pt": [
+        99.62,
+        620.0,
+        245.12,
+        676.12
+      ],
+      "type": "single_line_name"
+    },
+    {
+      "id": "p1_txt_nama_pengawas",
+      "cell_id": "p1_c101",
+      "label": "Nama Petugas Pengawas / Pemeriksa",
+      "question_code": "R202_nama",
+      "bbox_pt": [
+        99.62,
+        676.12,
+        245.12,
+        732.33
+      ],
+      "type": "single_line_name"
+    }
+  ]
+}

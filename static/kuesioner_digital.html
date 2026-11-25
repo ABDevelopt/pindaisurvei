@@ -1,0 +1,2589 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuesioner Digital VSERUTI26.INTI — Format Buku Kertas Putih</title>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================================================
+       SI-PERIKSA VIEWER SHELL (DARK SLATE DESK) + AUTHENTIC WHITE A4 BOOKLET
+       ========================================================================= */
+    :root {
+      --desk-bg: radial-gradient(circle at 15% 0%, #24364a 0%, #111924 70%);
+      --toolbar-bg: rgba(18, 27, 39, 0.92);
+      --toolbar-border: rgba(255, 255, 255, 0.09);
+      --accent: #8AB4F8;
+      --accent-soft: rgba(138, 180, 248, 0.16);
+
+      /* Paper & Form Colors (Official BPS White Questionnaire) */
+      --paper-bg: #ffffff;
+      --paper-ink: #111827;
+      --paper-muted: #4b5563;
+      --paper-border: #1f2937;
+      --paper-grid: #6b7280;
+      --paper-header-bg: #e5e7eb;
+      --paper-block-bg: #d1d5db;
+      --paper-sub-bg: #f3f4f6;
+      --ocr-ink: #1d4ed8;       /* Tinta biru pembacaan sistem */
+      --hitl-bg: #fef3c7;       /* Sorotan kuning lembut koreksi HITL */
+      --hitl-border: #d97706;
+      --ok-bg: #ecfdf5;         /* Sorotan hijau sangat lembut OCR valid */
+      --ok-border: #059669;
+
+      --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-paper: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-ui);
+      background-color: #111924;
+      background-image: var(--desk-bg);
+      background-attachment: fixed;
+      color: #f1f5f9;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-mono { font-family: var(--font-mono); }
+
+    /* =========================================================================
+       1. STICKY TOP VIEWER TOOLBAR (SI-PERIKSA MINIMALIST GLASS)
+       ========================================================================= */
+    .viewer-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--toolbar-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--toolbar-border);
+      padding: 12px 24px;
+    }
+
+    .toolbar-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toolbar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .bps-chip {
+      padding: 4px 10px;
+      border-radius: 9px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(138, 180, 248, 0.25);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+    }
+
+    .brand-meta h1 {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #f8fafc;
+    }
+    .brand-meta p {
+      font-size: 11.5px;
+      color: #94a3b8;
+      font-family: var(--font-mono);
+      margin-top: 1px;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tb-btn {
+      padding: 6px 13px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.06);
+      color: #e2e8f0;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: var(--font-ui);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .tb-btn:hover { background: rgba(255, 255, 255, 0.13); }
+    .tb-btn.active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .tb-btn.primary {
+      background: var(--accent);
+      border-color: transparent;
+      color: #0e151f;
+      font-weight: 600;
+    }
+    .tb-btn.primary:hover { background: #a8c7fa; }
+
+    .page-nav {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+    .page-pill {
+      padding: 5px 12px;
+      border-radius: 9999px;
+      border: none;
+      background: transparent;
+      color: #94a3b8;
+      font-size: 11.5px;
+      font-weight: 500;
+      font-family: var(--font-ui);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.14s ease;
+    }
+    .page-pill:hover { color: #f1f5f9; background: rgba(255, 255, 255, 0.07); }
+    .page-pill.active { background: var(--accent-soft); color: var(--accent); }
+
+    /* =========================================================================
+       2. PAPER BOOK DESK & A4 SHEET STYLING
+       ========================================================================= */
+    .book-desk {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 28px 20px 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    /* Book Spread Mode (2 portrait pages side-by-side; landscape pages stay full width) */
+    body.book-mode .book-desk {
+      max-width: 1680px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 794px));
+      justify-content: center;
+      align-items: start;
+      gap: 24px 12px;
+    }
+    body.book-mode .a4-sheet[data-page="1"],
+    body.book-mode .a4-sheet.a4-landscape {
+      grid-column: 1 / -1;
+      justify-self: center;
+    }
+
+    /* Individual White Paper Sheet (Authentic A4 Portrait & Landscape Proportions) */
+    .a4-sheet {
+      width: 100%;
+      background: var(--paper-bg);
+      color: var(--paper-ink);
+      font-family: var(--font-paper);
+      font-size: 11px;
+      line-height: 1.35;
+      padding: 26px 30px 34px;
+      border-radius: 3px;
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.48), 0 1px 4px rgba(0, 0, 0, 0.25);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .a4-sheet.a4-portrait {
+      max-width: 794px;
+      min-height: 1123px;
+      page: portrait-page;
+    }
+    .a4-sheet.a4-landscape {
+      max-width: 1123px;
+      min-height: 794px;
+      padding: 24px 30px 28px;
+      page: landscape-page;
+    }
+    .a4-sheet.hidden-page { display: none !important; }
+
+    /* Subtle orientation tag above sheet on desk (hidden when printing) */
+    .sheet-orient-tag {
+      position: absolute;
+      top: -20px;
+      right: 2px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: #94a3b8;
+      letter-spacing: 0.3px;
+      user-select: none;
+    }
+
+    /* Page Number Footer (exact bottom center like PDF) */
+    .sheet-footer-num {
+      margin-top: auto;
+      padding-top: 12px;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    /* Official PDF Header (Page 1) */
+    .pdf-top-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .form-code-box {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      border: 1.5px solid #111827;
+      padding: 3px 8px;
+      display: inline-block;
+    }
+    .set-note {
+      font-size: 9.5px;
+      text-align: right;
+      line-height: 1.3;
+    }
+    .rahasia-box {
+      border: 1.5px solid #111827;
+      padding: 3px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    .pdf-title-block {
+      text-align: center;
+      margin: 2px 0 4px;
+    }
+    .pdf-title-block .ri-text {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      margin-top: 2px;
+    }
+    .pdf-title-block h2 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 4px;
+      letter-spacing: 0.2px;
+    }
+    .pdf-title-block .sub-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .triwulan-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 6px;
+      font-weight: 700;
+      font-size: 11px;
+    }
+
+    /* Official Intro Box */
+    .intro-box {
+      border: 1px solid #111827;
+      padding: 8px 10px;
+      background: #fafafa;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+    .intro-box p {
+      font-weight: 700;
+      text-align: justify;
+      margin-bottom: 6px;
+    }
+
+    .omr-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 10.5px;
+    }
+    .omr-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      cursor: pointer;
+    }
+    .omr-row input[type="radio"] {
+      margin-top: 2px;
+      accent-color: #1d4ed8;
+    }
+
+    /* Official Block Banner Bar */
+    .blok-banner {
+      background: var(--paper-block-bg);
+      border: 1.2px solid var(--paper-border);
+      padding: 5px 8px;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+    }
+    .blok-banner.left { text-align: left; }
+
+    /* Official Paper Tables */
+    table.bps-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1.2px solid var(--paper-border);
+      font-size: 10.5px;
+    }
+    table.bps-table th,
+    table.bps-table td {
+      border: 1px solid var(--paper-grid);
+      padding: 3.5px 6px;
+      vertical-align: middle;
+    }
+    table.bps-table th {
+      background: var(--paper-header-bg);
+      font-weight: 700;
+      text-align: center;
+      font-size: 10px;
+      line-height: 1.25;
+    }
+    table.bps-table tr.col-num-row td {
+      background: #f3f4f6;
+      text-align: center;
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 2px 4px;
+    }
+    table.bps-table tr.group-row td {
+      background: #eef2f7;
+      font-weight: 700;
+    }
+    table.bps-table tr.total-row td {
+      background: #e2e8f0;
+      font-weight: 700;
+    }
+
+    /* Authentic Comb Boxes & Form Inputs inside Paper */
+    .paper-input {
+      width: 100%;
+      border: none;
+      background: transparent;
+      color: var(--ocr-ink);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 4px;
+      outline: none;
+    }
+    .paper-input.text-mode {
+      font-family: var(--font-paper);
+      font-weight: 600;
+    }
+    .paper-input.num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .paper-input.center {
+      text-align: center;
+    }
+    .paper-input:focus {
+      background: #eff6ff;
+      box-shadow: inset 0 0 0 1px #2563eb;
+    }
+
+    .code-box-input {
+      width: 34px;
+      height: 21px;
+      border: 1.2px solid #111827;
+      background: #ffffff;
+      color: var(--ocr-ink);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+      outline: none;
+    }
+    .code-box-input.w-md { width: 52px; }
+    .code-box-input.w-lg { width: 76px; }
+    .code-box-input:focus {
+      border-color: #2563eb;
+      background: #eff6ff;
+    }
+
+    .paper-select {
+      border: 1px solid #4b5563;
+      background: #ffffff;
+      color: var(--ocr-ink);
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 1.5px 4px;
+      outline: none;
+    }
+
+    /* OCR / HITL Highlighting on White Paper */
+    body.show-ocr .ocr-ok {
+      background: var(--ok-bg);
+    }
+    body.show-ocr .ocr-hitl {
+      background: var(--hitl-bg) !important;
+      box-shadow: inset 0 0 0 1.2px var(--hitl-border);
+    }
+
+    .computed-cell {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      text-align: right;
+      color: #0f172a;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      padding-right: 6px;
+    }
+
+    .sub-desc {
+      display: block;
+      font-size: 9px;
+      color: #4b5563;
+      font-weight: 400;
+      line-height: 1.25;
+      margin-top: 1px;
+    }
+
+    .footnote-box {
+      border: 1px solid #4b5563;
+      background: #f9fafb;
+      padding: 6px 8px;
+      font-size: 9px;
+      line-height: 1.35;
+      color: #1f2937;
+    }
+    .footnote-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 10px;
+    }
+    .footnote-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+
+    /* Notes Lined Box (Blok VII) */
+    .catatan-box {
+      border: 1.2px solid #111827;
+      padding: 8px 10px;
+      min-height: 170px;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 23px,
+        #d1d5db 23px,
+        #d1d5db 24px
+      );
+    }
+    .catatan-textarea {
+      width: 100%;
+      min-height: 150px;
+      border: none;
+      background: transparent;
+      color: var(--ocr-ink);
+      font-family: var(--font-paper);
+      font-size: 11.5px;
+      line-height: 24px;
+      resize: vertical;
+      outline: none;
+    }
+
+    /* Modal & Toast */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 13, 22, 0.65);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      width: 100%;
+      max-width: 660px;
+      max-height: 84vh;
+      background: #16202e;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 18px;
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      color: #f1f5f9;
+    }
+    pre.json-pre {
+      background: #0d1520;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 14px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      overflow: auto;
+      max-height: 58vh;
+      line-height: 1.45;
+    }
+
+    #toast-wrap {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 120;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .toast {
+      background: #16202e;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #f1f5f9;
+      padding: 10px 15px;
+      border-radius: 12px;
+      font-size: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    @media (max-width: 1280px) {
+      body.book-mode .book-desk {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 720px) {
+      .a4-sheet,
+      .a4-sheet.a4-portrait,
+      .a4-sheet.a4-landscape {
+        padding: 16px 14px 28px;
+        min-height: auto;
+      }
+      .footnote-grid, .footnote-grid-3 { grid-template-columns: 1fr; }
+    }
+
+    /* Authentic Mixed A4 Portrait & Landscape Print Mode */
+    @page portrait-page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+    @page landscape-page {
+      size: A4 landscape;
+      margin: 10mm;
+    }
+    @media print {
+      body { background: #ffffff !important; }
+      .viewer-toolbar, #toast-wrap, .modal-overlay, .sheet-orient-tag { display: none !important; }
+      .book-desk {
+        display: block !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+      }
+      .a4-sheet,
+      .a4-sheet.a4-portrait,
+      .a4-sheet.a4-landscape {
+        display: flex !important;
+        max-width: 100% !important;
+        min-height: auto !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 4mm 6mm !important;
+        break-after: page;
+        page-break-after: always;
+      }
+      .a4-sheet:last-child {
+        break-after: auto;
+        page-break-after: auto;
+      }
+    }
+  </style>
+</head>
+<body class="show-ocr">
+
+  <!-- =======================================================================
+       STICKY TOP VIEWER TOOLBAR (AUTHENTIC SI-PERIKSA GLASS)
+       ======================================================================= -->
+  <header class="viewer-toolbar">
+    <div class="toolbar-inner">
+      <div class="toolbar-row">
+        <div class="brand-left">
+          <span class="bps-chip">BPS REPUBLIK INDONESIA</span>
+          <div class="brand-meta">
+            <h1>VSERUTI26.INTI — Kuesioner Digital Resmi</h1>
+            <p id="booklet-info-meta">Format Fisik Kertas Putih A4 (7 Halaman) · <span id="active-booklet-name" style="font-weight:700; color:var(--accent);">booklet_01</span></p>
+          </div>
+        </div>
+        <div class="toolbar-actions">
+          <!-- Booklet Selector -->
+          <div style="display:flex; align-items:center; gap:6px; margin-right:4px;">
+            <label for="booklet-select" style="font-size:11px; color:#94a3b8; font-weight:600;">Buklet:</label>
+            <select id="booklet-select" class="paper-select" style="background:#16202e; color:#f1f5f9; border:1px solid rgba(255,255,255,0.18); border-radius:6px; padding:4px 8px; font-size:11.5px; font-family:var(--font-mono); cursor:pointer;" onchange="onBookletChange(this.value)">
+              <option value="booklet_01">booklet_01</option>
+            </select>
+          </div>
+
+          <!-- Zoom Controls Pill -->
+          <div class="zoom-controls-pill" style="display:inline-flex; align-items:center; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:9999px; padding:2px 8px; gap:4px;">
+            <button class="tb-icon-btn" onclick="zoomDigitalKuesionerStep(-0.15)" title="Perkecil / Zoom Out (Scroll ke bawah)" style="background:none; border:none; color:#cbd5e1; cursor:pointer; padding:3px; display:flex; align-items:center;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <span id="digital-zoom-badge" class="font-mono" onclick="resetDigitalKuesionerZoom()" title="Klik untuk reset 100%" style="font-size:11.5px; font-weight:700; min-width:44px; text-align:center; color:var(--accent); cursor:pointer;">100%</span>
+            <button class="tb-icon-btn" onclick="zoomDigitalKuesionerStep(0.15)" title="Perbesar / Zoom In (Scroll ke atas menuju kursor)" style="background:none; border:none; color:#cbd5e1; cursor:pointer; padding:3px; display:flex; align-items:center;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <button class="tb-btn-subtle" onclick="fitDigitalKuesionerWidth()" title="Sesuaikan Lebar" style="background:none; border:none; color:#94a3b8; font-size:11px; cursor:pointer; padding:2px 4px; font-weight:600;">Fit</button>
+          </div>
+
+          <button class="tb-btn" onclick="runGeminiTextInference()" title="Jalankan inferensi pembacaan tulisan tangan bebas via Gemini API" style="display:flex; align-items:center; gap:5px; border-color:rgba(138,180,248,0.4); color:var(--accent);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+            <span>Inferensi Teks Gemini</span>
+          </button>
+          <button class="tb-btn" id="btn-book" onclick="toggleBookMode()" title="Tampilkan 2 halaman berdampingan pada layar lebar">Mode Buku</button>
+          <button class="tb-btn active" id="btn-ocr" onclick="toggleOcrHighlight()" title="Sorot isian pembacaan OCR / verifikasi HITL">Sorotan Isian</button>
+          <button class="tb-btn active" id="btn-edit" onclick="toggleEditMode()" title="Buka/kunci mode edit nilai kuesioner">Kunci Dokumen</button>
+          <button class="tb-btn" id="btn-save" onclick="saveBookletCorrections()" style="display:inline-block; background:#059669; color:#fff; border-color:#059669; font-weight:600;">Simpan Koreksi</button>
+          <button class="tb-btn" onclick="openJsonModal()" title="Lihat dan salin data terstruktur JSON">Ekspor JSON</button>
+          <button class="tb-btn primary" onclick="window.print()" title="Cetak formulir fisik A4 resmi">Cetak A4</button>
+        </div>
+      </div>
+      <div class="toolbar-row" style="margin-top: 2px;">
+        <nav class="page-nav">
+          <button class="page-pill active" onclick="filterPage('all', this)">Semua Halaman (1–7)</button>
+          <button class="page-pill" onclick="filterPage('1', this)">Hal 1 · KOP &amp; Tempat</button>
+          <button class="page-pill" onclick="filterPage('2', this)">Hal 2 · Roster ART &amp; Konsumsi</button>
+          <button class="page-pill" onclick="filterPage('3', this)">Hal 3 · Non Makanan Lanjutan</button>
+          <button class="page-pill" onclick="filterPage('4', this)">Hal 4 · Kesehatan &amp; Persepsi</button>
+          <button class="page-pill" onclick="filterPage('5', this)">Hal 5 · Pendapatan [L]</button>
+          <button class="page-pill" onclick="filterPage('6', this)">Hal 6 · Transfer &amp; Aset [L]</button>
+          <button class="page-pill" onclick="filterPage('7', this)">Hal 7 · Keuangan &amp; Catatan [L]</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- =======================================================================
+       WHITE A4 PAPER BOOKLET (7 EXACT PAGES)
+       ======================================================================= -->
+  <main class="book-desk" id="book-desk">
+
+    <!-- =====================================================================
+         HALAMAN 1 (A4 PORTRAIT)
+         ===================================================================== -->
+    <article class="a4-sheet a4-portrait" data-page="1">
+      <span class="sheet-orient-tag">Hal 1 · A4 Portrait (210 × 297 mm)</span>
+      <div class="pdf-top-strip">
+        <div>
+          <div class="form-code-box">VSERUTI26.INTI</div>
+        </div>
+        <div style="text-align:center;">
+          <!-- Lambang Garuda Pancasila di atas tulisan REPUBLIK INDONESIA -->
+          <svg style="display:block; margin:0 auto 2px;" width="52" height="52" viewBox="0 0 100 100" fill="none" stroke="#111827" stroke-width="1.5">
+            <path d="M50 12 C46 12 43 16 44 22 C41 26 40 31 40 36 L26 22 C20 34 22 50 32 62 C36 67 42 70 46 72 L42 84 L50 80 L58 84 L54 72 C58 70 64 67 68 62 C78 50 80 34 74 22 L60 36 C60 31 59 26 56 22 C57 16 54 12 50 12 Z" fill="#f9fafb"/>
+            <path d="M40 36 H60 V56 C60 63 55 68 50 70 C45 68 40 63 40 56 Z" fill="#ffffff" stroke="#111827" stroke-width="1.6"/>
+            <path d="M45 45 H55 V55 L50 58 L45 55 Z" fill="#111827"/>
+            <polygon points="50,47 51.3,50.5 54.8,50.5 52,52.6 53,56 50,53.9 47,56 48,52.6 45.2,50.5 48.7,50.5" fill="#ffffff" stroke="none"/>
+            <path d="M30 76 Q50 87 70 76" stroke="#111827" stroke-width="2.2" fill="none"/>
+          </svg>
+          <div style="font-size:10px; font-weight:700; letter-spacing:1px;">REPUBLIK INDONESIA</div>
+        </div>
+        <div class="set-note">
+          <div>Dibuat 1 set untuk</div>
+          <div><strong>BPS Kab/Kota</strong></div>
+          <div class="rahasia-box">RAHASIA</div>
+        </div>
+      </div>
+
+      <div class="pdf-title-block">
+        <h2>SURVEI EKONOMI RUMAH TANGGA TRIWULANAN 2026</h2>
+        <div class="sub-title">KETERANGAN PENGELUARAN, PENDAPATAN, DAN INVESTASI RUMAH TANGGA</div>
+        <div class="triwulan-row">
+          <span>TRIWULAN:</span>
+          <input type="text" class="code-box-input editable-field" data-key="kop.triwulan" value="" readonly />
+        </div>
+      </div>
+
+      <div class="intro-box">
+        <p>SELAMAT PAGI/SIANG/SORE/MALAM. KAMI/SAYA DARI BPS SEDANG MENGUMPULKAN DATA/INFORMASI KEADAAN EKONOMI RUMAH TANGGA SEPERTI PENGELUARAN, PENDAPATAN, DAN INVESTASI RUMAH TANGGA. UNTUK ITU, KAMI/SAYA AKAN MEWAWANCARAI BAPAK/IBU BESERTA ANGGOTA RUMAH TANGGA LAINNYA. SELURUH DATA YANG BAPAK/IBU BERIKAN KEPADA KAMI AKAN DIRAHASIAKAN DAN HANYA AKAN DIGUNAKAN UNTUK KEPERLUAN PERENCANAAN PEMBANGUNAN. BOLEH SAYA MULAI WAWANCARA SEKARANG?</p>
+        <div class="omr-list">
+          <label class="omr-row" style="padding:2px 4px; border-radius:2px;">
+            <input type="radio" name="kesediaan" value="1" disabled class="editable-radio" data-key="kop.kesediaan" />
+            <span><strong>Ya bersedia</strong> ➡ Mulai wawancara</span>
+          </label>
+          <label class="omr-row" style="padding:2px 4px;">
+            <input type="radio" name="kesediaan" value="2" disabled class="editable-radio" data-key="kop.kesediaan" />
+            <span>Bersedia dengan perjanjian di lain waktu ➡ Blok VII. Catatan</span>
+          </label>
+          <label class="omr-row" style="padding:2px 4px;">
+            <input type="radio" name="kesediaan" value="3" disabled class="editable-radio" data-key="kop.kesediaan" />
+            <span>Tidak bersedia ➡ Lengkapi isian Blok I, Blok II, dan Blok Catatan. Lampirkan Berita Acara Nonrespon. Selesai dan segera laporkan ke pengawas</span>
+          </label>
+        </div>
+        <div style="display:flex; justify-content:flex-end; align-items:center; gap:6px; margin-top:6px; font-weight:700;">
+          <span>Waktu mulai wawancara:</span>
+          <input type="text" class="code-box-input w-lg editable-field" data-key="kop.waktu_mulai" value="" readonly />
+        </div>
+      </div>
+
+      <!-- BLOK I -->
+      <div class="blok-banner">BLOK I. KETERANGAN TEMPAT</div>
+      <table class="bps-table">
+        <tbody>
+          <tr>
+            <td style="width:36px; text-align:center;">101</td>
+            <td style="width:240px;">Provinsi</td>
+            <td><input type="text" class="paper-input text-mode editable-field" data-key="b1.r101_nama" value="" readonly /></td>
+            <td style="width:92px; text-align:right;"><input type="text" class="code-box-input w-md editable-field" data-key="b1.r101_kode" value="" readonly /></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">102</td>
+            <td>Kabupaten/Kota*)</td>
+            <td><input type="text" class="paper-input text-mode editable-field" data-key="b1.r102_nama" value="" readonly /></td>
+            <td style="text-align:right;"><input type="text" class="code-box-input w-md editable-field" data-key="b1.r102_kode" value="" readonly /></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">103</td>
+            <td>Kecamatan</td>
+            <td><input type="text" class="paper-input text-mode editable-field" data-key="b1.r103_nama" value="" readonly /></td>
+            <td style="text-align:right;"><input type="text" class="code-box-input w-md editable-field" data-key="b1.r103_kode" value="" readonly /></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">104</td>
+            <td>Desa/Kelurahan*)</td>
+            <td><input type="text" class="paper-input text-mode editable-field" data-key="b1.r104_nama" value="" readonly /></td>
+            <td style="text-align:right;"><input type="text" class="code-box-input w-md editable-field" data-key="b1.r104_kode" value="" readonly /></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">105</td>
+            <td>Klasifikasi Desa/Kelurahan</td>
+            <td style="font-size:10px;">Perkotaan - 1 &nbsp;&nbsp;&nbsp;&nbsp; Perdesaan - 2</td>
+            <td style="text-align:right;"><input type="text" class="code-box-input editable-field" data-key="b1.r105" value="" readonly /></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">106</td>
+            <td>Nomor Kode Sampel SLS</td>
+            <td></td>
+            <td style="text-align:right;"><input type="text" class="code-box-input w-lg editable-field" data-key="b1.r106" value="" readonly /></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">107</td>
+            <td>Satuan Lingkungan Setempat (SLS)/ Sub SLS</td>
+            <td colspan="2"><input type="text" class="paper-input text-mode editable-field" data-key="b1.r107" value="" readonly /></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">108</td>
+            <td>Nomor Urut Bangunan Tempat Tinggal</td>
+            <td></td>
+            <td style="text-align:right;"><input type="text" class="code-box-input w-md editable-field" data-key="b1.r108" value="" readonly /></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">109</td>
+            <td>Nomor Urut Sampel Rumah Tangga</td>
+            <td></td>
+            <td style="text-align:right;"><input type="text" class="code-box-input w-md editable-field" data-key="b1.r109" value="" readonly /></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">110</td>
+            <td>Nama Kepala Rumah Tangga</td>
+            <td colspan="2"><input type="text" class="paper-input text-mode editable-field" data-key="b1.r110" value="" readonly /></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">111</td>
+            <td>Alamat (Nama Jalan/Gang, RT/RW/Dusun)</td>
+            <td colspan="2"><input type="text" class="paper-input text-mode editable-field" data-key="b1.r111" value="" readonly /></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="font-size:9px; color:#374151; margin-top:-6px;">*) Coret yang tidak perlu</div>
+
+      <!-- BLOK II -->
+      <div class="blok-banner">BLOK II. KETERANGAN PENDATAAN</div>
+      <table class="bps-table">
+        <thead>
+          <tr>
+            <th colspan="2">Uraian</th>
+            <th>Nama dan Kode</th>
+            <th style="width:170px;">Jabatan</th>
+            <th style="width:92px;">Waktu</th>
+            <th style="width:82px;">Tanda Tangan</th>
+          </tr>
+          <tr class="col-num-row">
+            <td colspan="2">(1)</td>
+            <td>(2)</td>
+            <td>(3)</td>
+            <td>(4)</td>
+            <td>(5)</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="width:32px; text-align:center;">201</td>
+            <td style="width:74px;">Pendata</td>
+            <td><input type="text" class="paper-input text-mode editable-field" data-key="b2.r201_nama" value="" readonly /></td>
+            <td>
+              <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; font-size:9px;">
+                <div>Staf BPS Provinsi - 1<br/>Staf BPS Kab/Kota - 2<br/>Mitra - 3</div>
+                <input type="text" class="code-box-input editable-field" data-key="b2.r201_jabatan" value="" readonly />
+              </div>
+            </td>
+            <td style="text-align:center;">
+              <div style="font-size:8.5px; color:#4b5563;">Tgl / Bln</div>
+              <input type="text" class="paper-input center editable-field" data-key="b2.r201_waktu" value="" readonly />
+            </td>
+            <td style="text-align:center; font-size:9.5px; color:#059669; font-weight:700;">—</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">202</td>
+            <td>Pemeriksa</td>
+            <td><input type="text" class="paper-input text-mode editable-field" data-key="b2.r202_nama" value="" readonly /></td>
+            <td>
+              <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; font-size:9px;">
+                <div>Staf BPS Provinsi - 1<br/>Staf BPS Kab/Kota - 2<br/>Mitra - 3</div>
+                <input type="text" class="code-box-input editable-field" data-key="b2.r202_jabatan" value="" readonly />
+              </div>
+            </td>
+            <td style="text-align:center;">
+              <div style="font-size:8.5px; color:#4b5563;">Tgl / Bln</div>
+              <input type="text" class="paper-input center editable-field" data-key="b2.r202_waktu" value="" readonly />
+            </td>
+            <td style="text-align:center; font-size:9.5px; color:#059669; font-weight:700;">—</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">203</td>
+            <td>Hasil pendataan rumah tangga</td>
+            <td colspan="3" style="font-size:9.5px; line-height:1.45;">
+              1. Terisi lengkap<br/>
+              2. Terisi tidak lengkap ➡ Blok VII. Catatan<br/>
+              3. Tidak ada ART/responden yang dapat memberi jawaban sampai akhir masa pendataan<br/>
+              4. Responden menolak<br/>
+              5. Rumah tangga pindah/bangunan tempat tinggal sudah tidak ada
+            </td>
+            <td style="text-align:center;">
+              <input type="text" class="code-box-input editable-field" data-key="b2.r203" value="" readonly />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="sheet-footer-num">1</div>
+    </article>
+
+    <!-- =====================================================================
+         HALAMAN 2 (A4 PORTRAIT)
+         ===================================================================== -->
+    <article class="a4-sheet a4-portrait" data-page="2">
+      <span class="sheet-orient-tag">Hal 2 · A4 Portrait (210 × 297 mm)</span>
+      <div class="blok-banner">BLOK III. KETERANGAN RUMAH TANGGA</div>
+      <table class="bps-table">
+        <thead>
+          <tr>
+            <th style="width:36px;">No. Urut ART</th>
+            <th>Nama Anggota Rumah Tangga (ART)</th>
+            <th style="width:70px;">Hubungan dengan KRT (kode)</th>
+            <th style="width:92px;">Status Perkawinan<br/><span style="font-weight:400; font-size:8.5px;">Belum-1, Kawin-2, CH-3, CM-4</span></th>
+            <th style="width:74px;">Laki-laki -1<br/>Perempuan -2</th>
+            <th style="width:66px;">Umur (tahun)<br/><span style="font-weight:400; font-size:8.5px;">≥97 tulis 97</span></th>
+            <th style="width:72px;">ART ≥ 5 th:<br/>Ijazah Tertinggi (kode)</th>
+          </tr>
+          <tr class="col-num-row">
+            <td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td><td>(5)</td><td>(6)</td><td>(7)</td>
+          </tr>
+        </thead>
+        <tbody id="blok3-body"></tbody>
+      </table>
+
+      <div class="blok-banner" style="margin-top:4px;">
+        BLOK IV.1. KONSUMSI DAN PENGELUARAN BAHAN MAKANAN, BAHAN MINUMAN DAN ROKOK SEMINGGU TERAKHIR (DALAM RUPIAH)
+      </div>
+      <div style="border:1px solid #1f2937; padding:7px 10px; font-size:10px; text-align:center; background:#f9fafb;">
+        Pada triwulan II dan IV, isian blok ini menggunakan kuesioner Seruti Makanan (<strong>VSERUTI.MAK</strong>) yang disisipkan pada halaman ini.<br/>
+        Sedangkan pada triwulan I dan III, blok ini terintegrasi dengan kuesioner <strong>Susenas KP Maret</strong>.
+      </div>
+
+      <div class="blok-banner" style="margin-top:4px;">
+        BLOK IV.2.A PENGELUARAN BUKAN MAKANAN SELAMA SEBULAN DAN TIGA BULAN TERAKHIR (DALAM RUPIAH)
+      </div>
+      <table class="bps-table">
+        <thead>
+          <tr>
+            <th style="width:38px;">No.</th>
+            <th>Rincian</th>
+            <th style="width:130px;">Sebulan Terakhir (Rp)</th>
+            <th style="width:130px;">Tiga Bulan Terakhir (Rp)</th>
+          </tr>
+          <tr class="col-num-row">
+            <td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td>
+          </tr>
+        </thead>
+        <tbody id="blok42a-p2-body"></tbody>
+      </table>
+
+      <div class="sheet-footer-num">2</div>
+    </article>
+
+    <!-- =====================================================================
+         HALAMAN 3 (A4 PORTRAIT)
+         ===================================================================== -->
+    <article class="a4-sheet a4-portrait" data-page="3">
+      <span class="sheet-orient-tag">Hal 3 · A4 Portrait (210 × 297 mm)</span>
+      <div class="blok-banner">BLOK IV.2.A PENGELUARAN BUKAN MAKANAN (LANJUTAN)</div>
+      <table class="bps-table">
+        <thead>
+          <tr>
+            <th style="width:38px;">No.</th>
+            <th>Rincian</th>
+            <th style="width:130px;">Sebulan Terakhir (Rp)</th>
+            <th style="width:130px;">Tiga Bulan Terakhir (Rp)</th>
+          </tr>
+          <tr class="col-num-row">
+            <td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td>
+          </tr>
+        </thead>
+        <tbody id="blok42a-p3-body"></tbody>
+      </table>
+
+      <div class="sheet-footer-num">3</div>
+    </article>
+
+    <!-- =====================================================================
+         HALAMAN 4 (A4 PORTRAIT)
+         ===================================================================== -->
+    <article class="a4-sheet a4-portrait" data-page="4">
+      <span class="sheet-orient-tag">Hal 4 · A4 Portrait (210 × 297 mm)</span>
+      <div class="blok-banner">BLOK IV.2.B PENGELUARAN KESEHATAN DAN PENDIDIKAN SELAMA TIGA BULAN TERAKHIR (DALAM RUPIAH)</div>
+      <table class="bps-table">
+        <thead>
+          <tr>
+            <th style="width:38px;">No.</th>
+            <th>Rincian</th>
+            <th style="width:130px;">Total (Rp)</th>
+            <th style="width:130px;">Out of Pocket (OOP) (Rp)</th>
+          </tr>
+          <tr class="col-num-row">
+            <td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td>
+          </tr>
+        </thead>
+        <tbody id="blok42b-body"></tbody>
+      </table>
+
+      <div class="blok-banner" style="margin-top:4px;">
+        BLOK IV.3 PERSEPSI TERHADAP KONDISI EKONOMI RUMAH TANGGA TRIWULAN INI
+      </div>
+      <div style="font-size:9px; text-align:center; color:#374151; margin-top:-6px;">
+        (Mengacu pada Triwulan Kalender — TW I: Jan–Mar; TW II: Apr–Jun; TW III: Jul–Sep; TW IV: Okt–Des)
+      </div>
+
+      <table class="bps-table">
+        <thead>
+          <tr>
+            <th style="width:38px;">No.</th>
+            <th>Pertanyaan (dibanding triwulan sebelumnya)</th>
+            <th style="width:128px;">Perubahan (kode)<br/><span style="font-weight:400; font-size:8.5px;">Meningkat-1, Tetap-2, Menurun-3, Tdk relevan-5</span></th>
+            <th style="width:94px;">Jika kode 1 atau 3,<br/>Persentase (%)</th>
+          </tr>
+          <tr class="col-num-row">
+            <td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td>
+          </tr>
+        </thead>
+        <tbody id="blok43-body"></tbody>
+      </table>
+
+      <table class="bps-table">
+        <tbody>
+          <tr>
+            <td style="width:42px; text-align:center; font-weight:700;">470.a</td>
+            <td>Apakah pendapatan rumah tangga Anda pada triwulan ini dapat memenuhi konsumsi rumah tangga selama triwulan ini? &nbsp; <em>Ya - 1 (lanjut Blok V) &nbsp;|&nbsp; Tidak - 5 (lanjut ke 470.b)</em></td>
+            <td style="width:52px; text-align:center;"><input type="text" class="code-box-input editable-field" data-key="b43.r470a" value="" readonly /></td>
+          </tr>
+          <tr>
+            <td style="text-align:center; font-weight:700;">470.b</td>
+            <td colspan="2" style="padding:0;">
+              <table style="width:100%; border-collapse:collapse; font-size:10px;">
+                <tr>
+                  <td style="border:none; border-bottom:1px solid #9ca3af; padding:3px 6px;">i. Mengambil sisa simpanan triwulan sebelumnya? (Ya - 1, Tidak - 5)</td>
+                  <td style="width:52px; border:none; border-left:1px solid #6b7280; border-bottom:1px solid #9ca3af; text-align:center;"><input type="text" class="code-box-input editable-field" data-key="b43.r470bi" value="" readonly /></td>
+                </tr>
+                <tr>
+                  <td style="border:none; border-bottom:1px solid #9ca3af; padding:3px 6px;">ii. Melakukan kredit/pinjaman? (Ya - 1, Tidak - 5)</td>
+                  <td style="border:none; border-left:1px solid #6b7280; border-bottom:1px solid #9ca3af; text-align:center;"><input type="text" class="code-box-input editable-field" data-key="b43.r470bii" value="" readonly /></td>
+                </tr>
+                <tr>
+                  <td style="border:none; padding:3px 6px;">iii. Menjual aset/barang tahan lama? (Ya - 1, Tidak - 5)</td>
+                  <td style="border:none; border-left:1px solid #6b7280; text-align:center;"><input type="text" class="code-box-input editable-field" data-key="b43.r470biii" value="" readonly /></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Exact Page 4 Reference Footnote Box -->
+      <div class="footnote-box">
+        <div class="footnote-grid">
+          <div>
+            <strong>Kode Blok III Kolom (3): Hubungan dengan KRT</strong><br/>
+            1 - Kepala rumah tangga (KRT)<br/>
+            2 - Istri/suami &nbsp;|&nbsp; 3 - Anak kandung/tiri<br/>
+            4 - Anak angkat &nbsp;|&nbsp; 5 - Menantu &nbsp;|&nbsp; 6 - Cucu<br/>
+            7 - Orang tua/mertua &nbsp;|&nbsp; 8 - Pembantu/sopir/pekerja domestik<br/>
+            9 - Lainnya (famili lain/tidak ada hubungan famili)
+          </div>
+          <div>
+            <strong>Kode Blok III Kolom (7): Ijazah/STTB Tertinggi</strong><br/>
+            01-Paket A · 02-SDLB · 03-SD · 04-MI · 05-SPM/PDF Ula · 06-Paket B · 07-SMPLB · 08-SMP · 09-MTs · 10-SPM/PDF Wustha · 11-Paket C · 12-SMLB · 13-SMA · 14-MA · 15-SMK · 16-MAK · 17-SPM/PDF Ulya · 18-D1/D2 · 19-D3 · 20-D4 · 21-S1 · 22-Profesi · 23-S2 · 24-S3 · 25-Tidak punya ijazah SD
+          </div>
+        </div>
+      </div>
+
+      <div class="sheet-footer-num">4</div>
+    </article>
+
+    <!-- =====================================================================
+         HALAMAN 5 (A4 LANDSCAPE)
+         ===================================================================== -->
+    <article class="a4-sheet a4-landscape" data-page="5">
+      <span class="sheet-orient-tag">Hal 5 · A4 Landscape (297 × 210 mm)</span>
+      <div class="blok-banner">BLOK V. PENDAPATAN, PENERIMAAN, DAN PENGELUARAN SELAIN KONSUMSI SELAMA TIGA BULAN TERAKHIR (DALAM RUPIAH)</div>
+
+      <div style="font-size:10px; font-weight:700;">
+        501. Jika terdapat ART (10 tahun ke atas) yang bekerja dengan menerima upah/gaji selama tiga bulan terakhir, isikan pada tabel berikut:
+      </div>
+      <table class="bps-table">
+        <thead>
+          <tr>
+            <th style="width:42px;">No. Urut ART</th>
+            <th>Uraian Pekerjaan</th>
+            <th style="width:52px;">Kat. Lap. Usaha*)</th>
+            <th style="width:52px;">Jenis Pek.**)</th>
+            <th style="width:105px;">Upah/gaji Bentuk Uang</th>
+            <th style="width:100px;">Upah/gaji Barang/Jasa</th>
+            <th style="width:100px;">Lembur, Honor, THR, dsb</th>
+          </tr>
+          <tr class="col-num-row">
+            <td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td><td>(5)</td><td>(6)</td><td>(7)</td>
+          </tr>
+        </thead>
+        <tbody id="blok501-body"></tbody>
+      </table>
+
+      <div style="font-size:10px; font-weight:700; margin-top:6px;">
+        502. Jika terdapat ART (10 tahun ke atas) yang memiliki usaha rumah tangga selama tiga bulan terakhir, isikan pada tabel berikut:
+      </div>
+      <table class="bps-table">
+        <thead>
+          <tr>
+            <th style="width:40px;">No. ART</th>
+            <th>Uraian Kegiatan Usaha</th>
+            <th style="width:46px;">Kat. LU*)</th>
+            <th style="width:46px;">Jenis **)</th>
+            <th style="width:96px;">Nilai Produksi</th>
+            <th style="width:96px;">Biaya Produksi</th>
+            <th style="width:54px;">% Upah</th>
+            <th style="width:94px;">Stok Akhir</th>
+          </tr>
+          <tr class="col-num-row">
+            <td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td><td>(5)</td><td>(6)</td><td>(7)</td><td>(8)</td>
+          </tr>
+        </thead>
+        <tbody id="blok502-body"></tbody>
+      </table>
+
+      <div style="font-size:10px; font-weight:700; margin-top:6px;">
+        503. Pendapatan kepemilikan yang diterima dan dibayarkan oleh rumah tangga selama tiga bulan terakhir
+      </div>
+      <table class="bps-table">
+        <thead>
+          <tr>
+            <th style="width:36px;">No.</th>
+            <th>Rincian Pendapatan Kepemilikan</th>
+            <th style="width:130px;">Diterima (Rp)</th>
+            <th style="width:130px;">Dibayar (Rp)</th>
+          </tr>
+          <tr class="col-num-row">
+            <td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td>
+          </tr>
+        </thead>
+        <tbody id="blok503-body"></tbody>
+      </table>
+
+      <div class="sheet-footer-num">5</div>
+    </article>
+
+    <!-- =====================================================================
+         HALAMAN 6 (A4 LANDSCAPE)
+         ===================================================================== -->
+    <article class="a4-sheet a4-landscape" data-page="6">
+      <span class="sheet-orient-tag">Hal 6 · A4 Landscape (297 × 210 mm)</span>
+      <div class="blok-banner">BLOK V. PENDAPATAN, PENERIMAAN, DAN PENGELUARAN SELAIN KONSUMSI (LANJUTAN)</div>
+
+      <div style="font-size:10px; font-weight:700;">504. Transfer berjalan selama tiga bulan terakhir</div>
+      <table class="bps-table">
+        <thead>
+          <tr>
+            <th rowspan="2" style="width:36px;">No.</th>
+            <th rowspan="2">Rincian</th>
+            <th colspan="2">Transfer Diterima (dari)</th>
+            <th colspan="2">Transfer Dibayar/Diberikan (kepada)</th>
+          </tr>
+          <tr>
+            <th style="width:98px;">Uang</th>
+            <th style="width:98px;">Barang/Jasa</th>
+            <th style="width:98px;">Uang</th>
+            <th style="width:98px;">Barang/Jasa</th>
+          </tr>
+          <tr class="col-num-row">
+            <td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td><td>(5)</td><td>(6)</td>
+          </tr>
+        </thead>
+        <tbody id="blok504-body"></tbody>
+      </table>
+
+      <div style="font-size:10px; font-weight:700; margin-top:6px;">505. Aset Rumah Tangga/Usaha Rumah Tangga</div>
+      <table class="bps-table">
+        <thead>
+          <tr>
+            <th style="width:32px;">No.</th>
+            <th>Rincian</th>
+            <th style="width:108px;">Bangunan Tempat Tinggal</th>
+            <th style="width:108px;">Bangunan Bukan Tempat Tinggal (URT)</th>
+            <th style="width:108px;">Non Bangunan untuk URT</th>
+            <th style="width:108px;">Lahan</th>
+          </tr>
+          <tr class="col-num-row">
+            <td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td><td>(5)</td><td>(6)</td>
+          </tr>
+        </thead>
+        <tbody id="blok505-body"></tbody>
+      </table>
+
+      <!-- Exact Page 6 Reference Footnote Box -->
+      <div class="footnote-box" style="margin-top:4px;">
+        <div style="margin-bottom:4px;"><strong>*) Kategori Lapangan Usaha (1–26):</strong></div>
+        <div class="footnote-grid-3" style="margin-bottom:6px;">
+          <div>
+            1-Pertanian padi/palawija<br/>2-Hortikultura · 3-Perkebunan<br/>4-Perikanan · 5-Peternakan<br/>6-Kehutanan · 7-Pertambangan<br/>8-Industri pengolahan · 9-Listrik/gas
+          </div>
+          <div>
+            10-Air/sampah · 11-Konstruksi<br/>12-Perdagangan &amp; reparasi<br/>13-Pengangkutan · 14-Akomodasi/makan<br/>15-Informasi &amp; komunikasi<br/>16-Keuangan &amp; asuransi · 17-Real estate
+          </div>
+          <div>
+            18-Profesional/teknis · 19-Penyewaan<br/>20-Adm. pemerintahan · 21-Pendidikan<br/>22-Kesehatan/sosial · 23-Kesenian/hiburan<br/>24-Jasa lainnya · 25-RT pemberi kerja<br/>26-Badan internasional
+          </div>
+        </div>
+        <div>
+          <strong>**) Jenis Pekerjaan (0–9):</strong>
+          0-TNI/POLRI (tidak ada di URT) · 1-Manajer · 2-Tenaga profesional · 3-Teknisi &amp; asisten profesional · 4-Tenaga tata usaha · 5-Tenaga usaha jasa &amp; penjualan · 6-Pekerja terampil pertanian/kehutanan/perikanan · 7-Pekerja pengolahan/kerajinan · 8-Operator &amp; perakitan mesin · 9-Pekerja kasar
+        </div>
+      </div>
+
+      <div class="sheet-footer-num">6</div>
+    </article>
+
+    <!-- =====================================================================
+         HALAMAN 7 (A4 LANDSCAPE)
+         ===================================================================== -->
+    <article class="a4-sheet a4-landscape" data-page="7">
+      <span class="sheet-orient-tag">Hal 7 · A4 Landscape (297 × 210 mm)</span>
+      <div class="blok-banner">BLOK VI. POSISI ASET DAN KEWAJIBAN KEUANGAN RUMAH TANGGA PADA SAAT PENCACAHAN (DALAM RUPIAH)</div>
+
+      <table class="bps-table">
+        <thead>
+          <tr>
+            <th colspan="2">POSISI AKHIR ASET</th>
+            <th colspan="2">POSISI AKHIR KEWAJIBAN</th>
+          </tr>
+          <tr>
+            <th>Rincian</th>
+            <th style="width:118px;">Nilai (Rp)</th>
+            <th>Rincian</th>
+            <th style="width:118px;">Nilai (Rp)</th>
+          </tr>
+          <tr class="col-num-row">
+            <td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td>
+          </tr>
+        </thead>
+        <tbody id="blok6-combined-body"></tbody>
+      </table>
+
+      <!-- Kunjungan & Waktu Selesai -->
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px; margin-top:6px;">
+        <table class="bps-table" style="width:260px;">
+          <thead>
+            <tr>
+              <th style="width:90px;">Kunjungan</th>
+              <th>Tanggal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align:center;">Kunjungan 1</td>
+              <td><input type="text" class="paper-input center editable-field" data-key="b7.kunjungan1" value="" readonly /></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">Kunjungan 2</td>
+              <td><input type="text" class="paper-input center editable-field" data-key="b7.kunjungan2" value="" readonly /></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="display:flex; align-items:center; gap:8px; font-weight:700;">
+          <span>Waktu selesai wawancara:</span>
+          <input type="text" class="code-box-input w-lg editable-field" data-key="b7.waktu_selesai" value="" readonly />
+        </div>
+      </div>
+
+      <div class="blok-banner" style="margin-top:6px;">BLOK VII. CATATAN</div>
+      <div class="catatan-box">
+        <textarea class="catatan-textarea editable-field" data-key="b7.catatan" readonly></textarea>
+      </div>
+
+      <div class="sheet-footer-num">7</div>
+    </article>
+
+  </main>
+
+  <!-- JSON Modal -->
+  <div class="modal-overlay" id="json-modal" onclick="if(event.target===this) closeJsonModal()">
+    <div class="modal-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+        <h3 style="font-size:14.5px; font-weight:600;">Output JSON Terstruktur (VSERUTI26.INTI)</h3>
+        <div style="display:flex; gap:8px;">
+          <button class="tb-btn primary" onclick="copyJsonOutput()">Salin JSON</button>
+          <button class="tb-btn" onclick="closeJsonModal()">Tutup</button>
+        </div>
+      </div>
+      <pre class="json-pre" id="json-output-pre"></pre>
+    </div>
+  </div>
+
+  <div id="toast-wrap"></div>
+
+  <!-- =======================================================================
+       3. DATA MODEL, PAPER RENDERING & LIVE AUTO-CALCULATION ENGINE
+       ======================================================================= -->
+  <script>
+    let isEditMode = true;
+
+    // Blok III: 10 Rows (01..10 just like physical paper booklet)
+    const blok3Data = Array.from({ length: 10 }, (_, i) => ({
+      no: String(i + 1).padStart(2, '0'),
+      nama: '', hub: '', kawin: '', jk: '', umur: '', ijazah: ''
+    }));
+
+    // Blok IV.2.A Schema (Page 2: 401-414, Page 3: 415-451)
+    const blok42aItems = [
+      { page: 2, code: '401', label: 'Pakaian, alas kaki, dan tutup kepala [402 + 403]', group: ['402', '403'] },
+      { page: 2, code: '402', label: 'Pakaian dan tutup kepala', sub: '(kain, pakaian jadi, masker kain, seragam sekolah, topi, ongkos jahit, laundry, dsb)', m1: 0, m3: 0 },
+      { page: 2, code: '403', label: 'Alas kaki', sub: '(sendal, sepatu, sol dan jasa pemeliharaannya)', m1: 0, m3: 0 },
+
+      { page: 2, code: '404', label: 'Perumahan, listrik, air, dan bahan bakar memasak [406a..412]', group: ['406a', '406b', '406c', '406d', '407', '408', '409', '410', '411', '412'] },
+      { page: 2, code: '405', isStatusRow: true, statusVal: '' },
+      { page: 2, code: '406a', label: 'a. Jika milik sendiri/bebas sewa, perkiraan sewa* [VSEN.KP R.228]', m1: 0, m3: 0 },
+      { page: 2, code: '406b', label: 'b. Jika kontrak, nilai kontrak* [VSEN.KP R.229]', m1: 0, m3: 0 },
+      { page: 2, code: '406c', label: 'c. Jika sewa, nilai sewa* [VSEN.KP R.230]', m1: 0, m3: 0 },
+      { page: 2, code: '406d', label: 'd. Jika dinas/lainnya, perkiraan sewa* [VSEN.KP R.231]', m1: 0, m3: 0 },
+      { page: 2, code: '407', label: 'Pemeliharaan rumah dan perbaikan ringan (cat, genteng, kaca, engsel, dsb)', m1: 0, m3: 0 },
+      { page: 2, code: '408', label: 'Listrik (PLN, non PLN, termasuk bahan bakar generator)*', m1: 0, m3: 0 },
+      { page: 2, code: '409', label: 'Air (PAM, pikulan, beli, dsb)*', m1: 0, m3: 0 },
+      { page: 2, code: '410', label: 'Gas (LPG, gas kota, biogas)*', m1: 0, m3: 0 },
+      { page: 2, code: '411', label: 'Bahan bakar lainnya (minyak tanah, kayu bakar, arang, dsb)*', m1: 0, m3: 0 },
+      { page: 2, code: '412', label: 'Biaya pengumpulan/pemungutan sampah/limbah', m1: 0, m3: 0 },
+
+      { page: 2, code: '413', label: 'Furnitur, peralatan, dan pemeliharaan rumah [414 + 415 + 416]', group: ['414', '415', '416'] },
+      { page: 2, code: '414', label: 'Furnitur, peralatan, dan barang pecah belah (meja, mesin cuci, AC, piring, dsb)', m1: 0, m3: 0 },
+
+      // Page 3
+      { page: 3, code: '415', label: 'Bahan pembersih dan pemeliharaan rumah* (deterjen, sabun cuci, karbol, dsb)', m1: 0, m3: 0 },
+      { page: 3, code: '416', label: 'Biaya jasa pekerja domestik (pembantu ruta, supir, dsb)', m1: 0, m3: 0 },
+
+      { page: 3, code: '417', label: 'Transportasi [418 + 419 + 420 + 421 + 422 + 423 + 424 + 425]', group: ['418', '419', '420', '421', '422', '423', '424', '425'] },
+      { page: 3, code: '418', label: 'Pembelian kendaraan (sepeda motor, mobil, sepeda, perahu motor, dsb)', m1: 0, m3: 0 },
+      { page: 3, code: '419', label: 'Bahan bakar kendaraan (bensin, solar, dsb)*', m1: 0, m3: 0 },
+      { page: 3, code: '420', label: 'Pemeliharaan, pelumas, dan suku cadang kendaraan (servis, oli, ban, cuci, dsb)', m1: 0, m3: 0 },
+      { page: 3, code: '421', label: 'Sewa kendaraan, tol, parkir, dan biaya SIM (termasuk kursus mengemudi)', m1: 0, m3: 0 },
+      { page: 3, code: '422', label: 'Biaya angkutan penumpang darat (bus, angkot, taksi, ojek, kereta api, dsb)', m1: 0, m3: 0 },
+      { page: 3, code: '423', label: 'Biaya angkutan penumpang air (ferry, perahu motor, kapal laut, dsb)', m1: 0, m3: 0 },
+      { page: 3, code: '424', label: 'Biaya angkutan penumpang udara', m1: 0, m3: 0 },
+      { page: 3, code: '425', label: 'Ongkos kirim dan pengiriman barang lainnya (ongkir online, kurir, pesan antar)', m1: 0, m3: 0 },
+
+      { page: 3, code: '426', label: 'Komunikasi [427 + 428 + 429]', group: ['427', '428', '429'] },
+      { page: 3, code: '427', label: 'Alat komunikasi dan informasi (HP, komputer, laptop, printer, aksesoris)', m1: 0, m3: 0 },
+      { page: 3, code: '428', label: 'Rekening telepon, pulsa, paket data, dan biaya internet*', m1: 0, m3: 0 },
+      { page: 3, code: '429', label: 'Langganan TV kabel dan streaming film/musik', m1: 0, m3: 0 },
+
+      { page: 3, code: '430', label: 'Rekreasi, Olahraga, dan Budaya [431 + 432 + 433 + 434 + 435 + 436]', group: ['431', '432', '433', '434', '435', '436'] },
+      { page: 3, code: '431', label: 'Mainan, barang rekreasi, alat musik, dan alat olahraga', m1: 0, m3: 0 },
+      { page: 3, code: '432', label: 'Tiket wisata, bioskop, pertunjukan, dan biaya olahraga (gym, renang, game)', m1: 0, m3: 0 },
+      { page: 3, code: '433', label: 'Hewan dan tanaman peliharaan (kandang, pot, pupuk, makanan hewan, dsb)', m1: 0, m3: 0 },
+      { page: 3, code: '434', label: 'Buku, majalah, surat kabar, dan alat tulis', m1: 0, m3: 0 },
+      { page: 3, code: '435', label: 'Paket liburan, umroh, haji, dan perjalanan rohani', m1: 0, m3: 0 },
+      { page: 3, code: '436', label: 'Hotel dan akomodasi lainnya (hotel, villa, bungalow, homestay, dsb)', m1: 0, m3: 0 },
+
+      { page: 3, code: '437', label: 'Barang dan Jasa Lainnya [438 + 439 + 440 + 441 + 442]', group: ['438', '439', '440', '441', '442'] },
+      { page: 3, code: '438', label: 'Produk perawatan diri, kosmetik, dan kecantikan (sabun mandi, parfum, dsb)', m1: 0, m3: 0 },
+      { page: 3, code: '439', label: 'Jasa perawatan diri dan kecantikan* (salon, cukur rambut, dsb)', m1: 0, m3: 0 },
+      { page: 3, code: '440', label: 'Pembelian perhiasan, jam tangan, tas, koper, stroller, dan lainnya', m1: 0, m3: 0 },
+      { page: 3, code: '441', label: 'Biaya administrasi dan jasa lembaga keuangan (admin bank, transfer, top up)', m1: 0, m3: 0 },
+      { page: 3, code: '442', label: 'Biaya jasa lainnya (fotokopi, paspor/dokumen, penitipan anak/lansia, dsb)', m1: 0, m3: 0 },
+
+      { page: 3, code: '443', label: 'Pajak dan Premi Asuransi [444 + 445]', group: ['444', '445'] },
+      { page: 3, code: '444', label: 'Pajak (PBB, STNK, PPh, dsb. Dicatat saat rumah tangga sudah membayar)', m1: 0, m3: 0 },
+      { page: 3, code: '445', label: 'Premi asuransi (kesehatan, kerugian, kecelakaan, dsb)', m1: 0, m3: 0 },
+
+      { page: 3, code: '446', label: 'Keperluan Pesta dan Upacara/Kenduri [447 + 448 + 449 + 450]', group: ['447', '448', '449', '450'] },
+      { page: 3, code: '447', label: 'Perkawinan', m1: 0, m3: 0 },
+      { page: 3, code: '448', label: 'Ulang tahun dan khitanan', m1: 0, m3: 0 },
+      { page: 3, code: '449', label: 'Pemakaman', m1: 0, m3: 0 },
+      { page: 3, code: '450', label: 'Lainnya', m1: 0, m3: 0 },
+
+      { page: 3, code: '451', label: 'TOTAL PENGELUARAN BUKAN MAKANAN [401+404+413+417+426+430+437+443+446]', grandTotal: ['401', '404', '413', '417', '426', '430', '437', '443', '446'] }
+    ];
+
+    const blok42bItems = [
+      { code: '452', label: 'Kesehatan [453 + 454 + 455]', group: ['453', '454', '455'] },
+      { code: '453', label: 'Obat-obatan dan produk kesehatan (obat resep/bebas, vitamin, jamu, kacamata, alat KB)', total: 0, oop: 0 },
+      { code: '454', label: 'Biaya rawat jalan dan laboratorium (konsultasi, ambulans, pengobatan tradisional, imunisasi)', total: 0, oop: 0 },
+      { code: '455', label: 'Biaya rawat inap (biaya kamar, konsultasi, obat, dsb yang tidak dapat dipisahkan)', total: 0, oop: 0 },
+      { code: '456', label: 'Pendidikan [457 + 458 + 459 + 460 + 461 + 462]', group: ['457', '458', '459', '460', '461', '462'] },
+      { code: '457', label: 'Biaya pra sekolah', total: 0, oop: 0 },
+      { code: '458', label: 'Biaya sekolah dasar (SD) / sederajat', total: 0, oop: 0 },
+      { code: '459', label: 'Biaya sekolah menengah pertama (SMP) / sederajat', total: 0, oop: 0 },
+      { code: '460', label: 'Biaya sekolah menengah atas (SMA) / sederajat', total: 0, oop: 0 },
+      { code: '461', label: 'Biaya pendidikan tinggi', total: 0, oop: 0 },
+      { code: '462', label: 'Biaya kursus dan bimbingan belajar di luar sekolah', total: 0, oop: 0 },
+      { code: '463', label: 'TOTAL PENGELUARAN KESEHATAN DAN PENDIDIKAN [452 + 456]', grandTotal: ['452', '456'] }
+    ];
+
+    const blok43Items = [
+      { code: '464', q: 'Bagaimana kecenderungan pengeluaran konsumsi rumah tangga Anda pada triwulan ini dibanding triwulan sebelumnya? [kode 1,2,3]', val: '', pct: '' },
+      { code: '465', q: 'Bagaimana kecenderungan konsumsi bahan makanan/minuman rumah tangga Anda? [kode 1,2,3,5]', val: '', pct: '' },
+      { code: '466', q: 'Bagaimana kecenderungan konsumsi makanan/minuman jadi (restoran/warung/kaki lima)? [kode 1,2,3,5]', val: '', pct: '' },
+      { code: '467', q: 'Bagaimana kecenderungan belanja online rumah tangga Anda? [kode 1,2,3,5]', val: '', pct: '' },
+      { code: '468', q: 'Bagaimana kecenderungan upah/gaji yang diterima rumah tangga Anda? [kode 1,2,3,5]', val: '', pct: '' },
+      { code: '469', q: 'Bagaimana kecenderungan keuntungan dari usaha rumah tangga Anda? [kode 1,2,3,5]', val: '', pct: '' }
+    ];
+
+    const blok501Rows = [
+      { art: '', uraian: '', lu: '', jp: '', uang: 0, brg: 0, thr: 0 },
+      { art: '', uraian: '', lu: '', jp: '', uang: 0, brg: 0, thr: 0 },
+      { art: '', uraian: '', lu: '', jp: '', uang: 0, brg: 0, thr: 0 },
+      { art: '', uraian: '', lu: '', jp: '', uang: 0, brg: 0, thr: 0 },
+      { art: '', uraian: '', lu: '', jp: '', uang: 0, brg: 0, thr: 0 }
+    ];
+    const blok502Rows = [
+      { art: '', uraian: '', lu: '', jp: '', prod: 0, biaya: 0, pctUpah: '', stok: 0 },
+      { art: '', uraian: '', lu: '', jp: '', prod: 0, biaya: 0, pctUpah: '', stok: 0 },
+      { art: '', uraian: '', lu: '', jp: '', prod: 0, biaya: 0, pctUpah: '', stok: 0 },
+      { art: '', uraian: '', lu: '', jp: '', prod: 0, biaya: 0, pctUpah: '', stok: 0 },
+      { art: '', uraian: '', lu: '', jp: '', prod: 0, biaya: 0, pctUpah: '', stok: 0 }
+    ];
+    const blok503Rows = [
+      { no: '1', label: 'Sewa Lahan', terima: 0, bayar: 0 },
+      { no: '2', label: 'Keuntungan atas kepemilikan modal pada usaha rumah tangga dan usaha berbentuk CV, Firma, UD, PD, dsb', terima: 0, bayar: 0 },
+      { no: '3', label: 'Keuntungan atas kepemilikan saham pada usaha berbentuk PT, Yayasan, PT Persero dan Koperasi (Deviden)', terima: 0, bayar: 0 },
+      { no: '4', label: 'Bunga (bunga simpanan, bunga pinjaman)', terima: 0, bayar: 0 }
+    ];
+    const blok504Rows = [
+      { no: '1a', label: 'Uang Pensiun Pemerintah', tu: 0, tb: 0, bu: 0, bb: 0 },
+      { no: '1b', label: 'Bantuan Pemerintah (BPJS PBI, BLT, PKH, BOS, MBG, dll), pembayaran zakat ke BAZNAS', tu: 0, tb: 0, bu: 0, bb: 0 },
+      { no: '2',  label: 'Rumah Tangga Lain', tu: 0, tb: 0, bu: 0, bb: 0 },
+      { no: '3',  label: 'Lainnya (klaim asuransi, penerimaan/iuran pensiun, sumbangan lembaga nirlaba/LN)', tu: 0, tb: 0, bu: 0, bb: 0 }
+    ];
+    const blok505Rows = [
+      { header: 'Penambahan dan Pengurangan Aset selama tiga bulan terakhir' },
+      { no: '1', label: 'Pembelian/Pembuatan Sendiri', c3: 0, c4: 0, c5: 0, c6: 0 },
+      { no: '2', label: 'Pemberian dari Pihak Lain', c3: 0, c4: 0, c5: 0, c6: 0 },
+      { no: '3', label: 'Perbaikan/Pengurukan dan Biaya Pemindahan Kepemilikan Lahan', c3: 0, c4: 0, c5: 0, c6: 0 },
+      { no: '4', label: 'Penjualan', c3: 0, c4: 0, c5: 0, c6: 0 },
+      { no: '5', label: 'Memberikan kepada Pihak Lain', c3: 0, c4: 0, c5: 0, c6: 0 },
+      { header: 'Aset yang Dimiliki Rumah Tangga/Usaha Rumah Tangga saat Pendataan' },
+      { no: '6', label: 'Nilai Seluruh Aset yang Dimiliki (dinilai dengan harga aset saat pendataan)', c3: 0, c4: 0, c5: 0, c6: 0 },
+      { no: '7', label: 'Nilai Pembelian/Perolehan dari Aset yang Dimiliki (saat dibeli/diterima)', c3: 0, c4: 0, c5: 0, c6: 0 }
+    ];
+
+    // Blok VI Combined Rows (Left: Aset 601-607 | Right: Kewajiban 608-612)
+    const blok6Aset = [
+      { code: '601',  label: '601. Uang Tunai (di dompet, brankas, e-money/e-wallet)', val: 0 },
+      { code: '602a', label: '602. Simpanan — a. Bank & Lembaga Keuangan Lainnya', val: 0 },
+      { code: '602b', label: '602. Simpanan — b. Koperasi Simpan Pinjam/Credit Union', val: 0 },
+      { code: '602c', label: '602. Simpanan — c. Lainnya (tabungan sekolah, RT, dll)', val: 0 },
+      { code: '603',  label: '603. Sisa Piutang', val: 0 },
+      { code: '604a', label: '604. Surat Berharga — a. Saham terdaftar di Bursa Efek', val: 0 },
+      { code: '604b', label: '604. Surat Berharga — b. Saham tidak terdaftar di Bursa Efek', val: 0 },
+      { code: '604c', label: '604. Surat Berharga — c. Lainnya (SUN, obligasi, reksadana)', val: 0 },
+      { code: '605a', label: '605. Penyertaan Modal — a. Perusahaan Tidak Berbadan Hukum', val: 0 },
+      { code: '605b', label: '605. Penyertaan Modal — b. Di Usaha Rumah Tangga (milik pihak lain)', val: 0 },
+      { code: '606',  label: '606. Sisa Kredit Barang yang Belum Diterima (jika memiliki URT)', val: 0 },
+      { code: '607',  label: '607. Jumlah Iuran Arisan yang Telah Dibayar (Aktif Diikuti)', val: 0 }
+    ];
+
+    const blok6Kewajiban = [
+      { code: '608a', label: '608. Sisa Pinjaman — a. Bank dan Lembaga Pembiayaan', val: 0 },
+      { code: '608b', label: '608. Sisa Pinjaman — b. Koperasi Simpan Pinjam/Credit Union', val: 0 },
+      { code: '608c', label: '608. Sisa Pinjaman — c. Lainnya (rentenir, pinjaman online, dsb)', val: 0 },
+      { code: '609',  label: '609. Nilai Modal Usaha Milik Pihak Lain (jika memiliki URT)', val: 0 },
+      { code: '610',  label: '610. Sisa Kredit Barang yang Belum Dibayar', val: 0 },
+      { code: '611a', label: '611. Sisa Nilai Gadaian — a. Di PT. Pegadaian (Persero)', val: 0 },
+      { code: '611b', label: '611. Sisa Nilai Gadaian — b. Di Tempat Gadai Barang Lainnya', val: 0 },
+      { code: '612',  label: '612. Jumlah Uang Arisan yang Telah Diterima (Aktif Diikuti)', val: 0 }
+    ];
+
+    const fmtRp = (n) => Number(n || 0).toLocaleString('id-ID');
+    const parseNum = (v) => {
+      const c = String(v || '').replace(/[^\d]/g, '');
+      return c ? parseInt(c, 10) : 0;
+    };
+
+    function showToast(msg) {
+      const wrap = document.getElementById('toast-wrap');
+      const el = document.createElement('div');
+      el.className = 'toast';
+      el.textContent = msg;
+      wrap.appendChild(el);
+      setTimeout(() => el.remove(), 2500);
+    }
+
+    // =========================================================================
+    // RENDER ALL TABLES IN AUTHENTIC WHITE-PAPER FORM STYLE
+    // =========================================================================
+    function renderBlok3() {
+      document.getElementById('blok3-body').innerHTML = blok3Data.map((r, i) => `
+        <tr>
+          <td style="text-align:center; font-weight:700;">${r.no}</td>
+          <td><input type="text" class="paper-input text-mode editable-field ${r.nama ? 'ocr-ok' : ''}" value="${r.nama}" oninput="blok3Data[${i}].nama=this.value" /></td>
+          <td style="text-align:center;"><input type="text" class="code-box-input editable-field ${r.hub ? 'ocr-ok' : ''}" value="${r.hub}" oninput="blok3Data[${i}].hub=this.value" /></td>
+          <td style="text-align:center;"><input type="text" class="code-box-input editable-field ${r.kawin ? 'ocr-ok' : ''}" value="${r.kawin}" oninput="blok3Data[${i}].kawin=this.value" /></td>
+          <td style="text-align:center;"><input type="text" class="code-box-input editable-field ${r.jk ? 'ocr-ok' : ''}" value="${r.jk}" oninput="blok3Data[${i}].jk=this.value" /></td>
+          <td style="text-align:center;"><input type="text" class="code-box-input editable-field ${r.umur ? 'ocr-ok' : ''}" value="${r.umur}" oninput="blok3Data[${i}].umur=this.value" /></td>
+          <td style="text-align:center;"><input type="text" class="code-box-input editable-field ${r.ijazah ? 'ocr-ok' : ''}" value="${r.ijazah}" oninput="blok3Data[${i}].ijazah=this.value" /></td>
+        </tr>
+      `).join('');
+    }
+
+    function renderBlok42a() {
+      const p2 = document.getElementById('blok42a-p2-body');
+      const p3 = document.getElementById('blok42a-p3-body');
+      p2.innerHTML = '';
+      p3.innerHTML = '';
+
+      blok42aItems.forEach((item) => {
+        const target = item.page === 2 ? p2 : p3;
+        const tr = document.createElement('tr');
+
+        if (item.isStatusRow) {
+          tr.innerHTML = `
+            <td style="text-align:center;">405</td>
+            <td colspan="3">
+              <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+                <div>
+                  <strong>Status penguasaan bangunan tempat tinggal yang ditempati*</strong>
+                  <span class="sub-desc">Milik sendiri-1 · Kontrak-2 · Sewa-3 · Bebas sewa-4 · Dinas-5 · Lainnya-6 [TW I &amp; III disalin dari VSEN.KP R.227]</span>
+                </div>
+                <input type="text" class="code-box-input editable-field ocr-ok" data-key="b42a.r405" value="${item.statusVal || ''}" oninput="onStatusValChange(this.value)" />
+              </div>
+            </td>
+          `;
+        } else if (item.group || item.grandTotal) {
+          tr.className = item.grandTotal ? 'total-row' : 'group-row';
+          tr.innerHTML = `
+            <td style="text-align:center;">${item.code}</td>
+            <td>${item.label}</td>
+            <td class="computed-cell" id="calc-42a-m1-${item.code}">0</td>
+            <td class="computed-cell" id="calc-42a-m3-${item.code}">0</td>
+          `;
+        } else {
+          const ocrCls = item.hitl ? 'ocr-hitl' : (item.m1 > 0 || item.m3 > 0 ? 'ocr-ok' : '');
+          tr.innerHTML = `
+            <td style="text-align:center;">${item.code}</td>
+            <td>${item.label}${item.sub ? `<span class="sub-desc">${item.sub}</span>` : ''}</td>
+            <td><input type="text" class="paper-input num editable-field ${ocrCls}" value="${fmtRp(item.m1)}" oninput="update42a('${item.code}','m1',this.value)" /></td>
+            <td><input type="text" class="paper-input num editable-field ${ocrCls}" value="${fmtRp(item.m3)}" oninput="update42a('${item.code}','m3',this.value)" /></td>
+          `;
+        }
+        target.appendChild(tr);
+      });
+    }
+
+    function update42a(code, col, val) {
+      const found = blok42aItems.find(i => i.code === code);
+      if (found) found[col] = parseNum(val);
+      recalcAll();
+    }
+
+    function onStatusValChange(val) {
+      const found = blok42aItems.find(i => i.isStatusRow);
+      if (found) found.statusVal = val;
+    }
+
+    function renderBlok42b() {
+      const tbody = document.getElementById('blok42b-body');
+      tbody.innerHTML = '';
+      blok42bItems.forEach(item => {
+        const tr = document.createElement('tr');
+        if (item.group || item.grandTotal) {
+          tr.className = item.grandTotal ? 'total-row' : 'group-row';
+          tr.innerHTML = `
+            <td style="text-align:center;">${item.code}</td>
+            <td>${item.label}</td>
+            <td class="computed-cell" id="calc-42b-t-${item.code}">0</td>
+            <td class="computed-cell" id="calc-42b-o-${item.code}">0</td>
+          `;
+        } else {
+          const ocrCls = item.total > 0 ? 'ocr-ok' : '';
+          tr.innerHTML = `
+            <td style="text-align:center;">${item.code}</td>
+            <td>${item.label}</td>
+            <td><input type="text" class="paper-input num editable-field ${ocrCls}" value="${fmtRp(item.total)}" oninput="update42b('${item.code}','total',this.value)" /></td>
+            <td><input type="text" class="paper-input num editable-field ${ocrCls}" value="${fmtRp(item.oop)}" oninput="update42b('${item.code}','oop',this.value)" /></td>
+          `;
+        }
+        tbody.appendChild(tr);
+      });
+    }
+
+    function update42b(code, col, val) {
+      const found = blok42bItems.find(i => i.code === code);
+      if (found) found[col] = parseNum(val);
+      recalcAll();
+    }
+
+    function renderBlok43() {
+      document.getElementById('blok43-body').innerHTML = blok43Items.map((it, i) => `
+        <tr>
+          <td style="text-align:center;">${it.code}</td>
+          <td>${it.q}</td>
+          <td style="text-align:center;"><input type="text" class="code-box-input editable-field ocr-ok" value="${it.val}" oninput="blok43Items[${i}].val=this.value" /></td>
+          <td><input type="text" class="paper-input num editable-field ${it.pct ? 'ocr-ok' : ''}" value="${it.pct}" oninput="blok43Items[${i}].pct=this.value" /></td>
+        </tr>
+      `).join('');
+    }
+
+    function renderBlok5() {
+      // 501 (Upah/Gaji - 5 Baris Lengkap)
+      document.getElementById('blok501-body').innerHTML = blok501Rows.map((r, i) => `
+        <tr>
+          <td style="text-align:center;"><input type="text" class="paper-input center editable-field ${r.art ? 'ocr-ok' : ''}" value="${r.art}" oninput="blok501Rows[${i}].art=this.value" /></td>
+          <td><input type="text" class="paper-input text-mode editable-field ${r.uraian ? 'ocr-ok' : ''}" value="${r.uraian}" oninput="blok501Rows[${i}].uraian=this.value" /></td>
+          <td style="text-align:center;"><input type="text" class="paper-input center editable-field ${r.lu ? 'ocr-ok' : ''}" value="${r.lu}" oninput="blok501Rows[${i}].lu=this.value" /></td>
+          <td style="text-align:center;"><input type="text" class="paper-input center editable-field ${r.jp ? 'ocr-ok' : ''}" value="${r.jp}" oninput="blok501Rows[${i}].jp=this.value" /></td>
+          <td><input type="text" class="paper-input num editable-field ${r.uang ? 'ocr-ok' : ''}" value="${r.art || r.uang ? fmtRp(r.uang) : ''}" oninput="blok501Rows[${i}].uang=parseNum(this.value); recalcAll()" /></td>
+          <td><input type="text" class="paper-input num editable-field ${r.brg ? 'ocr-ok' : ''}" value="${r.art || r.brg ? fmtRp(r.brg) : ''}" oninput="blok501Rows[${i}].brg=parseNum(this.value); recalcAll()" /></td>
+          <td><input type="text" class="paper-input num editable-field ${r.thr ? 'ocr-ok' : ''}" value="${r.art || r.thr ? fmtRp(r.thr) : ''}" oninput="blok501Rows[${i}].thr=parseNum(this.value); recalcAll()" /></td>
+        </tr>
+      `).join('') + `
+        <tr class="total-row">
+          <td colspan="4" style="text-align:center;">JUMLAH</td>
+          <td class="computed-cell" id="sum-501-uang">0</td>
+          <td class="computed-cell" id="sum-501-brg">0</td>
+          <td class="computed-cell" id="sum-501-thr">0</td>
+        </tr>
+      `;
+
+      // 502 (Usaha Rumah Tangga - 5 Baris Lengkap)
+      document.getElementById('blok502-body').innerHTML = blok502Rows.map((r, i) => `
+        <tr>
+          <td style="text-align:center;"><input type="text" class="paper-input center editable-field ${r.art ? 'ocr-ok' : ''}" value="${r.art}" oninput="blok502Rows[${i}].art=this.value" /></td>
+          <td><input type="text" class="paper-input text-mode editable-field ${r.uraian ? 'ocr-ok' : ''}" value="${r.uraian}" oninput="blok502Rows[${i}].uraian=this.value" /></td>
+          <td style="text-align:center;"><input type="text" class="paper-input center editable-field ${r.lu ? 'ocr-ok' : ''}" value="${r.lu}" oninput="blok502Rows[${i}].lu=this.value" /></td>
+          <td style="text-align:center;"><input type="text" class="paper-input center editable-field ${r.jp ? 'ocr-ok' : ''}" value="${r.jp}" oninput="blok502Rows[${i}].jp=this.value" /></td>
+          <td><input type="text" class="paper-input num editable-field ${r.prod ? 'ocr-ok' : ''}" value="${r.art || r.prod ? fmtRp(r.prod) : ''}" oninput="blok502Rows[${i}].prod=parseNum(this.value); recalcAll()" /></td>
+          <td><input type="text" class="paper-input num editable-field ${r.biaya ? 'ocr-ok' : ''}" value="${r.art || r.biaya ? fmtRp(r.biaya) : ''}" oninput="blok502Rows[${i}].biaya=parseNum(this.value); recalcAll()" /></td>
+          <td><input type="text" class="paper-input num editable-field ${r.pctUpah ? 'ocr-ok' : ''}" value="${r.pctUpah}" oninput="blok502Rows[${i}].pctUpah=this.value" /></td>
+          <td><input type="text" class="paper-input num editable-field ${r.stok ? 'ocr-ok' : ''}" value="${r.art || r.stok ? fmtRp(r.stok) : ''}" oninput="blok502Rows[${i}].stok=parseNum(this.value); recalcAll()" /></td>
+        </tr>
+      `).join('') + `
+        <tr class="total-row">
+          <td colspan="4" style="text-align:center;">JUMLAH</td>
+          <td class="computed-cell" id="sum-502-prod">0</td>
+          <td class="computed-cell" id="sum-502-biaya">0</td>
+          <td style="background:#d1d5db;"></td>
+          <td class="computed-cell" id="sum-502-stok">0</td>
+        </tr>
+      `;
+
+      // 503 (Pendapatan & Biaya Kepemilikan)
+      document.getElementById('blok503-body').innerHTML = blok503Rows.map((r, i) => `
+        <tr>
+          <td style="text-align:center;">${r.no}</td>
+          <td>${r.label}</td>
+          <td><input type="text" class="paper-input num editable-field ${r.terima ? 'ocr-ok' : ''}" value="${fmtRp(r.terima)}" oninput="blok503Rows[${i}].terima=parseNum(this.value); recalcAll()" /></td>
+          <td><input type="text" class="paper-input num editable-field ${r.bayar ? 'ocr-ok' : ''}" value="${fmtRp(r.bayar)}" oninput="blok503Rows[${i}].bayar=parseNum(this.value); recalcAll()" /></td>
+        </tr>
+      `).join('') + `
+        <tr class="total-row">
+          <td></td>
+          <td>JUMLAH [1 + 2 + 3 + 4]</td>
+          <td class="computed-cell" id="sum-503-terima">0</td>
+          <td class="computed-cell" id="sum-503-bayar">0</td>
+        </tr>
+      `;
+
+      // 504 (Transfer & Pendapatan Lain)
+      document.getElementById('blok504-body').innerHTML = blok504Rows.map((r, i) => `
+        <tr>
+          <td style="text-align:center;">${r.no}</td>
+          <td>${r.label}</td>
+          <td><input type="text" class="paper-input num editable-field ${r.tu ? 'ocr-ok' : ''}" value="${fmtRp(r.tu)}" oninput="blok504Rows[${i}].tu=parseNum(this.value); recalcAll()" /></td>
+          <td><input type="text" class="paper-input num editable-field ${r.tb ? 'ocr-ok' : ''}" value="${fmtRp(r.tb)}" oninput="blok504Rows[${i}].tb=parseNum(this.value); recalcAll()" /></td>
+          <td><input type="text" class="paper-input num editable-field ${r.bu ? 'ocr-ok' : ''}" value="${fmtRp(r.bu)}" oninput="blok504Rows[${i}].bu=parseNum(this.value); recalcAll()" /></td>
+          <td><input type="text" class="paper-input num editable-field ${r.bb ? 'ocr-ok' : ''}" value="${fmtRp(r.bb)}" oninput="blok504Rows[${i}].bb=parseNum(this.value); recalcAll()" /></td>
+        </tr>
+      `).join('') + `
+        <tr class="total-row">
+          <td></td>
+          <td>JUMLAH [1a + 1b + 2 + 3]</td>
+          <td class="computed-cell" id="sum-504-tu">0</td>
+          <td class="computed-cell" id="sum-504-tb">0</td>
+          <td class="computed-cell" id="sum-504-bu">0</td>
+          <td class="computed-cell" id="sum-504-bb">0</td>
+        </tr>
+      `;
+
+      // 505 (Mutasi & Posisi Aset)
+      document.getElementById('blok505-body').innerHTML = blok505Rows.map((r, i) => {
+        if (r.header) {
+          return `<tr class="group-row"><td colspan="6">${r.header}</td></tr>`;
+        }
+        return `
+          <tr>
+            <td style="text-align:center;">${r.no}</td>
+            <td>${r.label}</td>
+            <td><input type="text" class="paper-input num editable-field ${r.c3 ? 'ocr-ok' : ''}" value="${fmtRp(r.c3)}" oninput="blok505Rows[${i}].c3=parseNum(this.value); recalcAll()" /></td>
+            <td><input type="text" class="paper-input num editable-field ${r.c4 ? 'ocr-ok' : ''}" value="${fmtRp(r.c4)}" oninput="blok505Rows[${i}].c4=parseNum(this.value); recalcAll()" /></td>
+            <td><input type="text" class="paper-input num editable-field ${r.c5 ? 'ocr-ok' : ''}" value="${fmtRp(r.c5)}" oninput="blok505Rows[${i}].c5=parseNum(this.value); recalcAll()" /></td>
+            <td><input type="text" class="paper-input num editable-field ${r.c6 ? 'ocr-ok' : ''}" value="${fmtRp(r.c6)}" oninput="blok505Rows[${i}].c6=parseNum(this.value); recalcAll()" /></td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function renderBlok6Combined() {
+      const maxLen = Math.max(blok6Aset.length, blok6Kewajiban.length);
+      let rowsHtml = '';
+      for (let i = 0; i < maxLen; i++) {
+        const a = blok6Aset[i];
+        const k = blok6Kewajiban[i];
+        rowsHtml += `
+          <tr>
+            <td>${a ? a.label : ''}</td>
+            <td>${a ? `<input type="text" class="paper-input num editable-field ${a.val ? 'ocr-ok' : ''}" value="${fmtRp(a.val)}" oninput="blok6Aset[${i}].val=parseNum(this.value); recalcAll()" />` : ''}</td>
+            <td>${k ? k.label : ''}</td>
+            <td>${k ? `<input type="text" class="paper-input num editable-field ${k.val ? 'ocr-ok' : ''}" value="${fmtRp(k.val)}" oninput="blok6Kewajiban[${i}].val=parseNum(this.value); recalcAll()" />` : ''}</td>
+          </tr>
+        `;
+      }
+      rowsHtml += `
+        <tr class="total-row">
+          <td>JUMLAH POSISI ASET [601 + 602 + ... + 607]</td>
+          <td class="computed-cell" id="sum-6-aset">0</td>
+          <td>JUMLAH POSISI KEWAJIBAN [608 + 609 + ... + 612]</td>
+          <td class="computed-cell" id="sum-6-kewajiban">0</td>
+        </tr>
+      `;
+      document.getElementById('blok6-combined-body').innerHTML = rowsHtml;
+    }
+
+    // =========================================================================
+    // LIVE AUTO-CALCULATION ENGINE
+    // =========================================================================
+    function recalcAll() {
+      const map42a = {};
+      blok42aItems.forEach(i => { if (!i.group && !i.grandTotal && !i.isStatusRow) map42a[i.code] = i; });
+
+      const gM1 = {}, gM3 = {};
+      blok42aItems.forEach(i => {
+        if (i.group) {
+          const s1 = i.group.reduce((a, c) => a + (map42a[c]?.m1 || 0), 0);
+          const s3 = i.group.reduce((a, c) => a + (map42a[c]?.m3 || 0), 0);
+          gM1[i.code] = s1; gM3[i.code] = s3;
+          const e1 = document.getElementById(`calc-42a-m1-${i.code}`);
+          const e3 = document.getElementById(`calc-42a-m3-${i.code}`);
+          if (e1) e1.textContent = fmtRp(s1);
+          if (e3) e3.textContent = fmtRp(s3);
+        }
+      });
+
+      const grand = blok42aItems.find(i => i.grandTotal);
+      if (grand) {
+        const t1 = grand.grandTotal.reduce((a, c) => a + (gM1[c] || 0), 0);
+        const t3 = grand.grandTotal.reduce((a, c) => a + (gM3[c] || 0), 0);
+        const e1 = document.getElementById('calc-42a-m1-451');
+        const e3 = document.getElementById('calc-42a-m3-451');
+        if (e1) e1.textContent = fmtRp(t1);
+        if (e3) e3.textContent = fmtRp(t3);
+      }
+
+      const map42b = {};
+      blok42bItems.forEach(i => { if (!i.group && !i.grandTotal) map42b[i.code] = i; });
+      const b42bT = {}, b42bO = {};
+      blok42bItems.forEach(i => {
+        if (i.group) {
+          const st = i.group.reduce((a, c) => a + (map42b[c]?.total || 0), 0);
+          const so = i.group.reduce((a, c) => a + (map42b[c]?.oop || 0), 0);
+          b42bT[i.code] = st; b42bO[i.code] = so;
+          const et = document.getElementById(`calc-42b-t-${i.code}`);
+          const eo = document.getElementById(`calc-42b-o-${i.code}`);
+          if (et) et.textContent = fmtRp(st);
+          if (eo) eo.textContent = fmtRp(so);
+        }
+      });
+      const setTxt = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = fmtRp(v); };
+      setTxt('calc-42b-t-463', (b42bT['452'] || 0) + (b42bT['456'] || 0));
+      setTxt('calc-42b-o-463', (b42bO['452'] || 0) + (b42bO['456'] || 0));
+
+      setTxt('sum-501-uang', blok501Rows.reduce((a, r) => a + (r.uang || 0), 0));
+      setTxt('sum-501-brg',  blok501Rows.reduce((a, r) => a + (r.brg || 0), 0));
+      setTxt('sum-501-thr',  blok501Rows.reduce((a, r) => a + (r.thr || 0), 0));
+
+      setTxt('sum-502-prod',  blok502Rows.reduce((a, r) => a + (r.prod || 0), 0));
+      setTxt('sum-502-biaya', blok502Rows.reduce((a, r) => a + (r.biaya || 0), 0));
+      setTxt('sum-502-stok',  blok502Rows.reduce((a, r) => a + (r.stok || 0), 0));
+
+      setTxt('sum-503-terima', blok503Rows.reduce((a, r) => a + r.terima, 0));
+      setTxt('sum-503-bayar',  blok503Rows.reduce((a, r) => a + r.bayar, 0));
+
+      setTxt('sum-504-tu', blok504Rows.reduce((a, r) => a + r.tu, 0));
+      setTxt('sum-504-tb', blok504Rows.reduce((a, r) => a + r.tb, 0));
+      setTxt('sum-504-bu', blok504Rows.reduce((a, r) => a + r.bu, 0));
+      setTxt('sum-504-bb', blok504Rows.reduce((a, r) => a + r.bb, 0));
+
+      setTxt('sum-6-aset', blok6Aset.reduce((a, r) => a + r.val, 0));
+      setTxt('sum-6-kewajiban', blok6Kewajiban.reduce((a, r) => a + r.val, 0));
+    }
+
+    // =========================================================================
+    // TOOLBAR ACTIONS
+    // =========================================================================
+    function filterPage(page, btn) {
+      document.querySelectorAll('.page-pill').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      document.querySelectorAll('.a4-sheet').forEach(s => {
+        s.classList.toggle('hidden-page', page !== 'all' && s.getAttribute('data-page') !== page);
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleBookMode() {
+      const on = document.body.classList.toggle('book-mode');
+      document.getElementById('btn-book').classList.toggle('active', on);
+      showToast(on ? 'Mode Buku aktif (2 halaman berdampingan pada layar lebar).' : 'Kembali ke tampilan 1 halaman vertikal.');
+    }
+
+    function toggleOcrHighlight() {
+      const on = document.body.classList.toggle('show-ocr');
+      document.getElementById('btn-ocr').classList.toggle('active', on);
+    }
+
+    let currentBookletId = 'booklet_01';
+    let availableBooklets = [];
+
+    function toggleEditMode() {
+      isEditMode = !isEditMode;
+      const btn = document.getElementById('btn-edit');
+      if (btn) {
+        btn.classList.toggle('active', isEditMode);
+        btn.textContent = isEditMode ? 'Kunci Dokumen' : 'Mode Edit';
+      }
+      const saveBtn = document.getElementById('btn-save');
+      if (saveBtn) saveBtn.style.display = isEditMode ? 'inline-block' : 'none';
+
+      document.querySelectorAll('.editable-field').forEach(el => { el.readOnly = !isEditMode; });
+      document.querySelectorAll('.editable-radio').forEach(r => { r.disabled = !isEditMode; });
+      showToast(isEditMode ? 'Mode Edit aktif — klik isian di kuesioner untuk mengoreksi.' : 'Dokumen dikunci (Read-Only).');
+    }
+
+    async function initBookletsList() {
+      try {
+        const res = await fetch('/api/booklets');
+        if (res.ok) {
+          const raw = await res.json();
+          const list = Array.isArray(raw) ? raw : (raw.booklets || []);
+          if (Array.isArray(list) && list.length > 0) {
+            availableBooklets = list;
+            const sel = document.getElementById('booklet-select');
+            if (sel) {
+              sel.innerHTML = list.map(b => `<option value="${b.id}" ${b.id === currentBookletId ? 'selected' : ''}>${b.id} (${b.nama_krt || 'KRT'})</option>`).join('');
+            }
+          }
+        }
+      } catch (e) {
+        console.warn('Gagal memuat daftar buklet:', e);
+      }
+    }
+
+    function onBookletChange(bid) {
+      if (!bid || bid === currentBookletId) return;
+      currentBookletId = bid;
+      const meta = document.getElementById('active-booklet-name');
+      if (meta) meta.textContent = bid;
+      const sel = document.getElementById('booklet-select');
+      if (sel && sel.value !== bid) sel.value = bid;
+
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.set('booklet', bid);
+      window.history.replaceState(null, '', newUrl.toString());
+
+      loadBookletData(bid);
+    }
+
+    async function loadBookletData(bid) {
+      currentBookletId = bid;
+      const meta = document.getElementById('active-booklet-name');
+      if (meta) meta.textContent = bid;
+
+      try {
+        const res = await fetch(`/api/booklets/${bid}/extracted`);
+        if (res.ok) {
+          const ext = await res.json();
+          const bMeta = availableBooklets.find(b => b.id === bid);
+          applyExtractedData(ext, bMeta);
+          showToast(`Data digital ${bid} berhasil dimuat.`);
+        }
+      } catch (err) {
+        console.warn('Gagal memuat data ekstraksi:', err);
+      }
+    }
+
+    function applyExtractedData(ext, bookletMeta) {
+      if (!ext || !ext.pages) return;
+
+      // Buat lookup cerdas: akses instan lewat var_name semantik, field_id fisik, dan text_fields
+      function createPageLookup(pageObj) {
+        const lookup = {};
+        if (!pageObj) return lookup;
+        if (pageObj.fields) {
+          for (const [k, fld] of Object.entries(pageObj.fields)) {
+            lookup[k] = fld;
+            if (fld && fld.field_id) lookup[fld.field_id] = fld;
+            if (fld && fld.var_name) lookup[fld.var_name] = fld;
+          }
+        }
+        if (pageObj.text_fields) {
+          for (const [k, fld] of Object.entries(pageObj.text_fields)) {
+            lookup[k] = fld;
+            if (fld && fld.field_id) lookup[fld.field_id] = fld;
+            if (fld && fld.var_name) lookup[fld.var_name] = fld;
+          }
+        }
+        return lookup;
+      }
+
+      const p1 = createPageLookup(ext.pages.hal_1);
+      const p2 = createPageLookup(ext.pages.hal_2);
+      const p3 = createPageLookup(ext.pages.hal_3);
+      const p4 = createPageLookup(ext.pages.hal_4);
+      const p5 = createPageLookup(ext.pages.hal_5);
+      const p6 = createPageLookup(ext.pages.hal_6);
+      const p7 = createPageLookup(ext.pages.hal_7);
+
+      // 1. Reset seluruh field input & radio
+      document.querySelectorAll('.editable-field').forEach(el => {
+        el.value = '';
+        el.classList.remove('ocr-ok');
+      });
+      document.querySelectorAll('.editable-radio').forEach(r => {
+        r.checked = false;
+      });
+
+      const setVal = (key, val) => {
+        const el = document.querySelector(`[data-key="${key}"]`);
+        if (el) {
+          el.value = val !== undefined && val !== null ? String(val) : '';
+          if (val) el.classList.add('ocr-ok');
+          else el.classList.remove('ocr-ok');
+        }
+      };
+
+      const getVal = (fld) => {
+        if (!fld) return '';
+        let s = '';
+        if (typeof fld === 'string') {
+          s = fld.trim();
+        } else if (fld.value !== undefined && fld.value !== null && String(fld.value).trim() !== '') {
+          s = String(fld.value).trim().replace(/[_∅]/g, '');
+        } else if (fld.raw_string !== undefined && fld.raw_string !== null && String(fld.raw_string).trim() !== '') {
+          s = String(fld.raw_string).trim().replace(/[_∅]/g, '');
+        }
+        if (s === 'ragu_ragu' || s === 'ragu' || s === '?') {
+          s = fld.alt_digit || fld.alt_char || '0';
+        }
+        if (s.toUpperCase() === 'KOSONG') return '';
+        return s;
+      };
+
+      const getNum = (fld) => {
+        const v = getVal(fld);
+        return parseNum(v);
+      };
+
+      // 2. KOP & Blok I
+      let triwulanVal = getVal(p1.kop_triwulan || p1.p1_F_triwulan);
+      const romanMap = {
+        '1': 'I', '01': 'I', 'I': 'I',
+        '2': 'II', '02': 'II', 'II': 'II',
+        '3': 'III', '03': 'III', 'III': 'III',
+        '4': 'IV', '04': 'IV', 'IV': 'IV'
+      };
+      if (triwulanVal && romanMap[triwulanVal]) {
+        triwulanVal = romanMap[triwulanVal];
+      } else if (!triwulanVal) {
+        triwulanVal = 'II';
+      }
+      setVal('kop.triwulan', triwulanVal);
+
+      const wm = getVal(p1.b1_waktu_mulai || p1.p1_F000);
+      setVal('kop.waktu_mulai', wm ? (wm.length === 4 ? wm.slice(0, 2) + ':' + wm.slice(2) : wm) : '');
+
+      const kesVal = getVal(p1.b0_kesediaan_responden || p1.p1_F_kesediaan) || '1';
+      const rad = document.querySelector(`input[name="kesediaan"][value="${kesVal}"]`);
+      if (rad) rad.checked = true;
+
+      setVal('b1.r101_kode', getVal(p1.b1_r101_provinsi || p1.p1_F001) || '64');
+      setVal('b1.r101_nama', 'KALIMANTAN TIMUR');
+      setVal('b1.r102_kode', getVal(p1.b1_r102_kabupaten || p1.p1_F002) || '09');
+      setVal('b1.r102_nama', 'PENAJAM PASER UTARA');
+      const kecKode = getVal(p1.b1_r103_kecamatan || p1.p1_F003) || '030';
+      setVal('b1.r103_kode', kecKode);
+      const kecMap = { '010': 'BABULU', '020': 'WARU', '030': 'PENAJAM', '040': 'SEPAKU' };
+      setVal('b1.r103_nama', kecMap[kecKode] || 'PENAJAM');
+      const desaKode = getVal(p1.b1_r104_desa || p1.p1_F004) || '023';
+      setVal('b1.r104_kode', desaKode);
+      setVal('b1.r104_nama', desaKode === '023' ? 'NIPAH-NIPAH' : (desaKode === '005' ? 'GIRI MUKTI' : 'NIPAH-NIPAH'));
+      setVal('b1.r105', getVal(p1.b1_r105_klasifikasi || p1.p1_F005) || '1');
+      setVal('b1.r106', getVal(p1.b1_r106_nobs || p1.p1_F006) || '50432');
+      setVal('b1.r107', getVal(p1.b1_r107_kdsampel || p1.p1_F007) || '000303');
+
+      const nusVal = getVal(p1.b1_r108_nus || p1.p1_F008) || currentBookletId.replace('booklet_', '');
+      setVal('b1.r108', '010');
+      setVal('b1.r109', nusVal);
+
+      // Inferred Text: Nama KRT & Alamat dari Gemini Vision API
+      const krtFld = p1.b1_r110_nama_krt || p1.p1_txt_nama_krt;
+      const krtInferred = getVal(krtFld);
+      const isKrtBlank = krtFld && (krtFld.is_blank === true || krtFld.is_blank === 'true' || krtInferred.toUpperCase() === 'KOSONG');
+      const krtLabel = isKrtBlank ? '' : (krtInferred || bookletMeta?.nama_krt || '');
+      setVal('b1.r110', krtLabel);
+
+      const alamatFld = p1.b1_r111_alamat || p1.p1_txt_alamat;
+      const alamatInferred = getVal(alamatFld);
+      const isAlamatBlank = alamatFld && (alamatFld.is_blank === true || alamatFld.is_blank === 'true' || alamatInferred.toUpperCase() === 'KOSONG');
+      setVal('b1.r111', isAlamatBlank ? '' : (alamatInferred || ''));
+
+      // Direktori Petugas Resmi BPS Penajam Paser Utara
+      const officerDir = {
+        '09175': 'ABDUL BASIR',
+        '9175': 'ABDUL BASIR',
+        '60666': 'ABDUL BASIR',
+        '66666': 'ABDUL BASIR',
+        '66552': 'YAHYA ABDURROHMAN',
+        '6655': 'YAHYA ABDURROHMAN'
+      };
+
+      // 3. Blok II Petugas
+      const pclFld = p1.b2_r201_nama_pencacah || p1.p1_txt_nama_pencacah;
+      const pclInferred = getVal(pclFld);
+      const pclId = getVal(p1.b2_r201_id_pcl || p1.p1_F011);
+      const isPclBlank = pclFld && (pclFld.is_blank === true || pclFld.is_blank === 'true' || pclInferred.toUpperCase() === 'KOSONG');
+      let pclResolved = '';
+      if (!isPclBlank) {
+        pclResolved = pclInferred || officerDir[pclId] || '';
+      }
+      setVal('b2.r201_nama', pclResolved);
+      setVal('b2.r201_jabatan', getVal(p1.b2_r201_jabatan_pcl || p1.p1_F010) || '3');
+      const pclTgl = getVal(p1.b2_r201_tgl_pcl || p1.p1_F009);
+      const pclBln = getVal(p1.b2_r201_jam_pcl || p1.p1_F012);
+      setVal('b2.r201_waktu', pclTgl ? (pclBln ? `${pclTgl} / ${pclBln}` : pclTgl) : '');
+
+      const pmlFld = p1.b2_r202_nama_pengawas || p1.p1_txt_nama_pengawas;
+      const pmlInferred = getVal(pmlFld);
+      const pmlId = getVal(p1.b2_r202_id_pml || p1.p1_F015);
+      const isPmlBlank = pmlFld && (pmlFld.is_blank === true || pmlFld.is_blank === 'true' || pmlInferred.toUpperCase() === 'KOSONG');
+      let pmlResolved = '';
+      if (!isPmlBlank) {
+        pmlResolved = pmlInferred || officerDir[pmlId] || '';
+      }
+      setVal('b2.r202_nama', pmlResolved);
+      setVal('b2.r202_jabatan', getVal(p1.b2_r202_jabatan_pml || p1.p1_F014) || '2');
+      const pmlTgl = getVal(p1.b2_r202_tgl_pml || p1.p1_F013);
+      const pmlBln = getVal(p1.b2_r202_jam_pml || p1.p1_F016);
+      setVal('b2.r202_waktu', pmlTgl ? (pmlBln ? `${pmlTgl} / ${pmlBln}` : pmlTgl) : '');
+      setVal('b2.r203', getVal(p1.b2_r203_hasil_pendataan || p1.p1_F017) || '1');
+
+      // 4. Blok III Roster ART (10 Baris Riil — Kolom: Hub, Kawin, JK, Umur, Ijazah, Nama Riil Inferred)
+      for (let i = 1; i <= 10; i++) {
+        const idx = i - 1;
+        const pad = String(i).padStart(2, '0');
+        const fidBase = (i - 1) * 5;
+        const f0 = p2[`b3_art_${pad}_hub_krt`] || p2[`p2_F${String(fidBase + 0).padStart(3, '0')}`];
+        const f1 = p2[`b3_art_${pad}_status_kawin`] || p2[`p2_F${String(fidBase + 1).padStart(3, '0')}`];
+        const f2 = p2[`b3_art_${pad}_jk`] || p2[`p2_F${String(fidBase + 2).padStart(3, '0')}`];
+        const f3 = p2[`b3_art_${pad}_umur`] || p2[`p2_F${String(fidBase + 3).padStart(3, '0')}`];
+        const f4 = p2[`b3_art_${pad}_pendidikan`] || p2[`p2_F${String(fidBase + 4).padStart(3, '0')}`];
+
+        const hub = getVal(f0);
+        const kawin = getVal(f1);
+        const jk = getVal(f2);
+        const umur = getVal(f3);
+        const ijazah = getVal(f4);
+
+        const tfArt = p2[`b3_art_${pad}_nama`] || p2[`p2_txt_art_${pad}`];
+        const artNameInferred = getVal(tfArt);
+        const isBlankArt = tfArt && (tfArt.is_blank === true || tfArt.is_blank === 'true' || artNameInferred.toUpperCase() === 'KOSONG');
+
+        // Check if row has any physical content
+        const hasContent = !isBlankArt && (artNameInferred || hub || kawin || jk || umur || ijazah);
+
+        if (hasContent) {
+          blok3Data[idx].no = pad;
+          blok3Data[idx].nama = isBlankArt ? '' : (artNameInferred || (idx === 0 ? (krtLabel || 'KRT') : ''));
+          blok3Data[idx].hub = hub;
+          blok3Data[idx].kawin = kawin;
+          blok3Data[idx].jk = jk;
+          blok3Data[idx].umur = umur;
+          blok3Data[idx].ijazah = ijazah;
+        } else {
+          blok3Data[idx] = { no: pad, nama: '', hub: '', kawin: '', jk: '', umur: '', ijazah: '' };
+        }
+      }
+
+      // 5. Blok IV.2.A (Pengeluaran Bukan Makanan)
+      blok42aItems.forEach(item => {
+        if (!item.group && !item.grandTotal && !item.isStatusRow) {
+          const pool = item.page === 2 ? p2 : p3;
+          const k1 = `b4_r${item.code}_sebulan`;
+          let k3 = `b4_r${item.code}_3bln`;
+          if (!(k3 in pool)) k3 = `b4_r${item.code}_tigabulan`;
+          let m1Val = getNum(pool[k1] || pool[item.f1]);
+          let m3Val = getNum(pool[k3] || pool[item.f3]);
+
+          // Handle komposit 444 (pajak 444a + tilang/denda 444b)
+          if (item.code === '444') {
+            const v444a = getNum(p3.b4_r444a_3bln || p3.p3_F032);
+            const v444b = getNum(p3.b4_r444b_3bln || p3.p3_F033);
+            m3Val = v444a + v444b;
+          }
+
+          item.m1 = m1Val;
+          item.m3 = m3Val;
+        } else if (item.isStatusRow) {
+          const val405 = getVal(p2.b4_r405_status_bangunan || p2.r405 || p2.b4_r405 || p2.p2_F055 || p2['405_status_bangunan']) || '1';
+          item.statusVal = val405;
+          setVal('b42a.r405', val405);
+        }
+      });
+
+      // 6. Blok IV.2.B (Kesehatan & Pendidikan)
+      blok42bItems.forEach(item => {
+        if (!item.group && !item.grandTotal) {
+          const kTot = `b4_r${item.code}_total`;
+          const kOop = `b4_r${item.code}_oop`;
+          item.total = getNum(p4[kTot] || p4[item.fTot]);
+          item.oop = getNum(p4[kOop] || p4[item.fOop]);
+        }
+      });
+
+      // 7. Blok IV.3 (Persepsi Ekonomi)
+      const p4FieldMap = {
+        '464': { kode: p4.b4_r464_kode || p4.p4_F024, persen: p4.b4_r464_persen || p4.p4_F025 },
+        '465': { kode: p4.b4_r465_kode || p4.p4_F026, persen: p4.b4_r465_persen || p4.p4_F027 },
+        '466': { kode: p4.b4_r466_kode || p4.p4_F028, persen: p4.b4_r466_persen || p4.p4_F029 },
+        '467': { kode: p4.b4_r467_kode || p4.p4_F030, persen: p4.b4_r467_persen || p4.p4_F031 },
+        '468': { kode: p4.b4_r468_kode || p4.p4_F032, persen: p4.b4_r468_persen || p4.p4_F033 },
+        '469': { kode: p4.b4_r469_kode || p4.p4_F034, persen: p4.b4_r469_persen || p4.p4_F035 }
+      };
+
+      blok43Items.forEach(r => {
+        if (p4FieldMap[r.code]) {
+          r.val = getVal(p4FieldMap[r.code].kode);
+          r.pct = getVal(p4FieldMap[r.code].persen);
+        }
+      });
+
+      setVal('b4.r470a', getVal(p4.b4_r470a_penerangan || p4.p4_F036));
+      setVal('b4.r470bi', getVal(p4.b4_r470bi_simpanan || p4.p4_F037));
+      setVal('b4.r470bii', getVal(p4.b4_r470bii_pinjaman || p4.p4_F038));
+      setVal('b4.r470biii', getVal(p4.b4_r470biii_jual_aset || p4.p4_F039));
+
+      // 8. Blok V (Pendapatan Upah & Usaha)
+      // R501 (Upah/Gaji) 5 Baris Lengkap
+      const r501Fields = [
+        { art: 'b5_r501_1_art', kbli: 'b5_r501_1_kbli', jp: 'b5_r501_1_jp', u: 'b5_r501_1_uang', b: 'b5_r501_1_barang', thr: 'b5_r501_1_thr', fid_art: 'p5_F000', fid_kbli: 'p5_F001', fid_jp: 'p5_F002', fid_u: 'p5_F003', fid_b: 'p5_F004', fid_thr: 'p5_F005', v_u: 'r501_art_01_uang', v_b: 'r501_art_01_barang', v_thr: 'r501_art_01_total' },
+        { art: 'b5_r501_2_art', kbli: 'b5_r501_2_kbli', jp: 'b5_r501_2_jp', u: 'b5_r501_2_uang', b: 'b5_r501_2_barang', thr: 'b5_r501_2_thr', fid_art: 'p5_F006', fid_kbli: 'p5_F007', fid_jp: 'p5_F008', fid_u: 'p5_F009', fid_b: 'p5_F012', fid_thr: 'p5_F015', v_u: 'r501_art_02_uang', v_b: 'r501_art_02_barang', v_thr: 'r501_art_02_total' },
+        { art: 'b5_r501_3_art', kbli: 'b5_r501_3_kbli', jp: 'b5_r501_3_jp', u: 'b5_r501_3_uang', b: 'b5_r501_3_barang', thr: 'b5_r501_3_thr', fid_art: 'p5_F018', fid_kbli: 'p5_F019', fid_jp: 'p5_F020', fid_u: 'p5_F023', fid_b: 'p5_F026', fid_thr: 'p5_F029', v_u: 'r501_art_03_uang', v_b: 'r501_art_03_barang', v_thr: 'r501_art_03_total' },
+        { art: 'b5_r501_4_art', kbli: 'b5_r501_4_kbli', jp: 'b5_r501_4_jp', u: 'b5_r501_4_uang', b: 'b5_r501_4_barang', thr: 'b5_r501_4_thr', fid_art: 'p5_F032', fid_kbli: 'p5_F033', fid_jp: 'p5_F034', fid_u: 'p5_F037', fid_b: 'p5_F040', fid_thr: 'p5_F043', v_u: 'r501_art_04_uang', v_b: 'r501_art_04_barang', v_thr: 'r501_art_04_total' },
+        { art: 'b5_r501_5_art', kbli: 'b5_r501_5_kbli', jp: 'b5_r501_5_jp', u: 'b5_r501_5_uang', b: 'b5_r501_5_barang', thr: 'b5_r501_5_thr', fid_art: 'p5_F045', fid_kbli: 'p5_F046', fid_jp: 'p5_F047', fid_u: 'p5_F048', fid_b: 'p5_F049', fid_thr: 'p5_F050', v_u: 'r501_art_05_uang', v_b: 'r501_art_05_barang', v_thr: 'r501_art_05_total' }
+      ];
+
+      for (let r = 1; r <= 5; r++) {
+        const cfg = r501Fields[r - 1];
+        const pad = String(r).padStart(2, '0');
+        const f_u = p5[cfg.u] || p5[cfg.v_u] || p5[cfg.fid_u];
+        const f_b = p5[cfg.b] || p5[cfg.v_b] || p5[cfg.fid_b];
+        const f_thr = p5[cfg.thr] || p5[cfg.v_thr] || p5[cfg.fid_thr];
+        const f_art = p5[cfg.art] || p5[cfg.fid_art];
+        const f_kbli = p5[cfg.kbli] || p5[`r501_art_${pad}_kbli`] || p5[cfg.fid_kbli];
+        const f_jp = p5[cfg.jp] || p5[`r501_art_${pad}_status`] || p5[cfg.fid_jp];
+
+        const art = getVal(f_art);
+        const u = getNum(f_u);
+        const b = getNum(f_b);
+        const thr = getNum(f_thr);
+        const kbli = getVal(f_kbli);
+        const jp = getVal(f_jp);
+
+        if (art || u > 0 || b > 0 || thr > 0 || kbli || jp) {
+          // Ambil hasil inferensi tulisan tangan Gemini Vision untuk Uraian Pekerjaan
+          const tfUraian = p5[`b5_r501_${r}_uraian`] || p5[`b5_r501_${pad}_uraian`] || p5[`p5_txt_501_${pad}`] || p5[`p5_txt_501_${r}`];
+          const uraianInferred = getVal(tfUraian);
+          const isBlankUraian = tfUraian && (tfUraian.is_blank === true || tfUraian.is_blank === 'true' || uraianInferred.toUpperCase() === 'KOSONG');
+          const finalUraian = (!isBlankUraian && uraianInferred) ? uraianInferred : (kbli ? ('KBLI ' + kbli) : `Pekerjaan ART ${pad}`);
+
+          blok501Rows[r - 1].art = art || pad;
+          blok501Rows[r - 1].uraian = finalUraian;
+          blok501Rows[r - 1].lu = kbli;
+          blok501Rows[r - 1].jp = jp;
+          blok501Rows[r - 1].uang = u;
+          blok501Rows[r - 1].brg = b;
+          blok501Rows[r - 1].thr = thr;
+        } else {
+          blok501Rows[r - 1] = { art: '', uraian: '', lu: '', jp: '', uang: 0, brg: 0, thr: 0 };
+        }
+      }
+
+      // R502 (Usaha Rumah Tangga) 5 Baris Lengkap
+      const r502Fields = [
+        { art: 'b5_r502_1_art', kbli: 'b5_r502_1_kbli', jp: 'b5_r502_1_jp', prod: 'b5_r502_1_prod', biaya: 'b5_r502_1_biaya', pctUpah: 'b5_r502_1_pct_upah', stok: 'b5_r502_1_stok', fid_art: 'p5_F055', fid_kbli: 'p5_F056', fid_jp: 'p5_F057', fid_prod: 'p5_F058', fid_biaya: 'p5_F059', fid_pctUpah: 'p5_F060', fid_stok: 'p5_F054' },
+        { art: 'b5_r502_2_art', kbli: 'b5_r502_2_kbli', jp: 'b5_r502_2_jp', prod: 'b5_r502_2_prod', biaya: 'b5_r502_2_biaya', pctUpah: 'b5_r502_2_pct_upah', stok: 'b5_r502_2_stok', fid_art: 'p5_F061', fid_kbli: 'p5_F062', fid_jp: 'p5_F063', fid_prod: 'p5_F064', fid_biaya: 'p5_F065', fid_pctUpah: 'p5_F067', fid_stok: 'p5_F066' },
+        { art: 'b5_r502_3_art', kbli: 'b5_r502_3_kbli', jp: 'b5_r502_3_jp', prod: 'b5_r502_3_prod', biaya: 'b5_r502_3_biaya', pctUpah: 'b5_r502_3_pct_upah', stok: 'b5_r502_3_stok', fid_art: 'p5_F071', fid_kbli: 'p5_F072', fid_jp: 'p5_F073', fid_prod: 'p5_F068', fid_biaya: 'p5_F069', fid_pctUpah: 'p5_F074', fid_stok: 'p5_F070' },
+        { art: 'b5_r502_4_art', kbli: 'b5_r502_4_kbli', jp: 'b5_r502_4_jp', prod: 'b5_r502_4_prod', biaya: 'b5_r502_4_biaya', pctUpah: 'b5_r502_4_pct_upah', stok: 'b5_r502_4_stok', fid_art: 'p5_F077', fid_kbli: 'p5_F078', fid_jp: 'p5_F079', fid_prod: 'p5_F075', fid_biaya: 'p5_F076', fid_pctUpah: 'p5_F080', fid_stok: 'p5_F081' },
+        { art: 'b5_r502_5_art', kbli: 'b5_r502_5_kbli', jp: 'b5_r502_5_jp', prod: 'b5_r502_5_prod', biaya: 'b5_r502_5_biaya', pctUpah: 'b5_r502_5_pct_upah', stok: 'b5_r502_5_stok', fid_art: 'p5_F085', fid_kbli: 'p5_F086', fid_jp: 'p5_F087', fid_prod: 'p5_F082', fid_biaya: 'p5_F083', fid_pctUpah: 'p5_F088', fid_stok: 'p5_F084' }
+      ];
+
+      for (let r = 1; r <= 5; r++) {
+        const cfg = r502Fields[r - 1];
+        const pad = String(r).padStart(2, '0');
+        const art = getVal(p5[cfg.art] || p5[cfg.fid_art]);
+        const kbli = getVal(p5[cfg.kbli] || p5[cfg.fid_kbli]);
+        const jp = getVal(p5[cfg.jp] || p5[cfg.fid_jp]);
+        const prod = getNum(p5[cfg.prod] || p5[cfg.fid_prod]);
+        const biaya = getNum(p5[cfg.biaya] || p5[cfg.fid_biaya]);
+        const pctUpah = getVal(p5[cfg.pctUpah] || p5[cfg.fid_pctUpah]);
+        const stok = getNum(p5[cfg.stok] || p5[cfg.fid_stok]);
+
+        // Ambil hasil inferensi tulisan tangan Gemini Vision untuk Uraian Kegiatan Usaha
+        const tfUraian502 = p5[`b5_r502_${r}_uraian`] || p5[`b5_r502_${pad}_uraian`] || p5[`p5_txt_502_${pad}`] || p5[`p5_txt_502_${r}`];
+        const uraian502Inferred = getVal(tfUraian502);
+        const isBlank502 = tfUraian502 && (tfUraian502.is_blank === true || tfUraian502.is_blank === 'true' || uraian502Inferred.toUpperCase() === 'KOSONG');
+        const finalUraian502 = (!isBlank502 && uraian502Inferred) ? uraian502Inferred : (kbli ? ('Usaha KBLI ' + kbli) : `Usaha RT ${r}`);
+
+        if (art || kbli || jp || prod > 0 || biaya > 0 || stok > 0 || (!isBlank502 && uraian502Inferred)) {
+          blok502Rows[r - 1] = {
+            art: art || String(r).padStart(2, '0'),
+            uraian: finalUraian502,
+            lu: kbli,
+            jp: jp,
+            prod: prod,
+            biaya: biaya,
+            pctUpah: pctUpah,
+            stok: stok
+          };
+        } else {
+          blok502Rows[r - 1] = { art: '', uraian: '', lu: '', jp: '', prod: 0, biaya: 0, pctUpah: '', stok: 0 };
+        }
+      }
+
+      // R503 (Kepemilikan Modal)
+      blok503Rows[0].terima = getNum(p5.b5_r503_1_terima || p5.r503_1_sewa_lahan_terima || p5.p5_F092);
+      blok503Rows[0].bayar  = getNum(p5.b5_r503_1_bayar || p5.r503_1_sewa_lahan_bayar || p5.p5_F093);
+      blok503Rows[1].terima = getNum(p5.b5_r503_2_terima || p5.r503_2_modal_cv_terima || p5.p5_F094);
+      blok503Rows[1].bayar  = getNum(p5.b5_r503_2_bayar || p5.r503_2_modal_cv_bayar || p5.p5_F095);
+      blok503Rows[2].terima = getNum(p5.b5_r503_3_terima || p5.r503_3_dividen_saham_terima || p5.p5_F096);
+      blok503Rows[2].bayar  = 0;
+      blok503Rows[3].terima = getNum(p5.b5_r503_4_terima || p5.r503_4_bunga_terima || p5.p5_F097);
+      blok503Rows[3].bayar  = getNum(p5.b5_r503_4_bayar || p5.r503_4_bunga_bayar || p5.p5_F098);
+
+      // R504 (Transfer - Hal 6)
+      blok504Rows[0].tu = getNum(p6.b6_r504_1a_terima_uang || p6.r504_1a_pensiun_terima_uang || p6.p6_F000);
+      blok504Rows[0].tb = 0;
+      blok504Rows[0].bu = 0;
+      blok504Rows[0].bb = 0;
+
+      blok504Rows[1].tu = getNum(p6.b6_r504_1b_terima_uang || p6.r504_1b_bansos_terima_uang || p6.p6_F001);
+      blok504Rows[1].tb = getNum(p6.b6_r504_1b_terima_barang || p6.r504_1b_bansos_terima_barang || p6.p6_F002);
+      blok504Rows[1].bu = getNum(p6.b6_r504_1b_bayar_uang || p6.r504_1b_zakat_bayar_uang || p6.p6_F003);
+      blok504Rows[1].bb = getNum(p6.b6_r504_1b_bayar_barang || p6.r504_1b_bansos_bayar_barang || p6.p6_F004);
+
+      blok504Rows[2].tu = getNum(p6.b6_r504_2_terima_uang || p6.r504_2_ruta_lain_terima_uang || p6.p6_F005);
+      blok504Rows[2].tb = getNum(p6.b6_r504_2_ruta_lain_terima_barang || p6.r504_2_ruta_lain_terima_barang || p6.p6_F006);
+      blok504Rows[2].bu = getNum(p6.b6_r504_2_bayar_uang || p6.r504_2_ruta_lain_bayar_uang || p6.p6_F007);
+      blok504Rows[2].bb = getNum(p6.b6_r504_2_bayar_barang || p6.r504_2_ruta_lain_bayar_barang || p6.p6_F008);
+
+      blok504Rows[3].tu = getNum(p6.b6_r504_3_terima_uang || p6.r504_3_lainnya_terima_uang || p6.p6_F009);
+      blok504Rows[3].tb = getNum(p6.b6_r504_3_terima_barang || p6.r504_3_lainnya_terima_barang || p6.p6_F010);
+      blok504Rows[3].bu = getNum(p6.b6_r504_3_bayar_uang || p6.r504_3_lainnya_bayar_uang || p6.p6_F011);
+      blok504Rows[3].bb = getNum(p6.b6_r504_3_bayar_barang || p6.r504_3_lainnya_bayar_barang || p6.p6_F012);
+
+      // R505 (Mutasi Aset - Hal 6)
+      blok505Rows.forEach(r => { if (!r.header) { r.c3 = 0; r.c4 = 0; r.c5 = 0; r.c6 = 0; } });
+      // Row 1: Pembelian/Pembuatan
+      blok505Rows[1].c3 = getNum(p6.b6_r505_1_btt || p6.p6_F018);
+      blok505Rows[1].c4 = getNum(p6.b6_r505_1_bnb || p6.p6_F019);
+      blok505Rows[1].c5 = getNum(p6.b6_r505_1_nonb || p6.p6_F020);
+      blok505Rows[1].c6 = getNum(p6.b6_r505_1_lahan || p6.p6_F021);
+      // Row 2: Pemberian dari Pihak Lain
+      blok505Rows[2].c3 = getNum(p6.b6_r505_2_btt || p6.p6_F023);
+      blok505Rows[2].c4 = getNum(p6.b6_r505_2_bnb || p6.p6_F024);
+      blok505Rows[2].c5 = getNum(p6.b6_r505_2_nonb || p6.p6_F025);
+      blok505Rows[2].c6 = getNum(p6.b6_r505_2_lahan || p6.p6_F026);
+      // Row 3: Perbaikan Lahan
+      blok505Rows[3].c6 = getNum(p6.b6_r505_3_lahan || p6.p6_F027);
+      // Row 4: Penjualan
+      blok505Rows[4].c3 = getNum(p6.b6_r505_4_btt || p6.p6_F030);
+      blok505Rows[4].c4 = getNum(p6.b6_r505_4_bnb || p6.p6_F031);
+      blok505Rows[4].c5 = getNum(p6.b6_r505_4_nonb || p6.p6_F032);
+      blok505Rows[4].c6 = getNum(p6.b6_r505_4_lahan || p6.p6_F033);
+      // Row 5: Memberikan kepada Pihak Lain
+      blok505Rows[5].c3 = getNum(p6.b6_r505_5_btt || p6.p6_F035);
+      blok505Rows[5].c4 = getNum(p6.b6_r505_5_bnb || p6.p6_F036);
+      blok505Rows[5].c5 = getNum(p6.b6_r505_5_nonb || p6.p6_F037);
+      blok505Rows[5].c6 = getNum(p6.b6_r505_5_lahan || p6.p6_F038);
+      // Row 6: Nilai Seluruh Aset yang Dimiliki
+      blok505Rows[6].c3 = getNum(p6.b6_r505_6_btt || p6.p6_F040);
+      blok505Rows[6].c4 = getNum(p6.b6_r505_6_bnb || p6.p6_F041);
+      blok505Rows[6].c5 = getNum(p6.b6_r505_6_nonb || p6.p6_F042);
+      blok505Rows[6].c6 = getNum(p6.b6_r505_6_lahan || p6.p6_F043);
+      // Row 7: Nilai Pembelian/Perolehan Awal
+      blok505Rows[7].c3 = getNum(p6.b6_r505_7_btt || p6.p6_F044);
+      blok505Rows[7].c4 = getNum(p6.b6_r505_7_bnb || p6.p6_F045);
+      blok505Rows[7].c5 = getNum(p6.b6_r505_7_nonb || p6.p6_F046);
+
+      // 9. Blok VI (Posisi Aset dan Kewajiban Finansial - Hal 7)
+      const p7FieldMap = {
+        '601': p7.b6_r601_uang_tunai || p7.p7_F000,
+        '602a': p7.b6_r602a_simpanan_bank || p7.p7_F002,
+        '602b': p7.b6_r602b_simpanan_koperasi || p7.p7_F004,
+        '602c': p7.b6_r602c_simpanan_lain || p7.p7_F006,
+        '603': p7.b6_r603_piutang || p7.p7_F008,
+        '604a': p7.b6_r604a_saham_bursa || p7.p7_F010,
+        '604b': p7.b6_r604b_saham_nonbursa || p7.p7_F012,
+        '604c': p7.b6_r604c_surat_berharga_lain || p7.p7_F014,
+        '605a': p7.b6_r605a_modal_nonbh || p7.p7_F016,
+        '605b': p7.b6_r605b_modal_usaha_rt || p7.p7_F017,
+        '606': p7.b6_r606_kredit_barang_diterima || p7.p7_F018,
+        '607': p7.b6_r607_iuran_arisan || p7.p7_F019,
+
+        '608a': p7.b6_r608a_pinjaman_bank || p7.p7_F001,
+        '608b': p7.b6_r608b_pinjaman_koperasi || p7.p7_F003,
+        '608c': p7.b6_r608c_pinjaman_lainnya || p7.p7_F005,
+        '609': p7.b6_r609_modal_pihak_lain || p7.p7_F007,
+        '610': p7.b6_r610_kredit_barang_dibayar || p7.p7_F009,
+        '611a': p7.b6_r611a_gadaian_pegadaian || p7.p7_F011,
+        '611b': p7.b6_r611b_gadaian_lain || p7.p7_F013,
+        '612': p7.b6_r612_uang_arisan_diterima || p7.p7_F015
+      };
+
+      blok6Aset.forEach(a => {
+        a.val = getNum(p7FieldMap[a.code]);
+      });
+      blok6Kewajiban.forEach(kw => {
+        kw.val = getNum(p7FieldMap[kw.code]);
+      });
+
+      // 10. Blok VII (Kunjungan & Catatan)
+      const k1Tgl = getVal(p7.b7_kunjungan_1_tgl || p7.p7_F022);
+      const k1Bln = getVal(p7.b7_kunjungan_1_bln || p7.p7_F023);
+      const k1Thn = getVal(p7.b7_kunjungan_1_thn || p7.p7_F024) || '2026';
+      if (k1Tgl || k1Bln) {
+        setVal('b7.kunjungan1', `${k1Tgl || '—'} / ${k1Bln || '—'} / ${k1Thn}`);
+      } else {
+        setVal('b7.kunjungan1', '');
+      }
+      setVal('b7.kunjungan2', '');
+
+      const wSelesai = getVal(p7.b7_waktu_selesai || p7.p7_F044 || p7.p7_F027);
+      setVal('b7.waktu_selesai', wSelesai ? (wSelesai.length === 4 ? wSelesai.slice(0, 2) + ':' + wSelesai.slice(2) : wSelesai) : '');
+
+      const rawCatatan = getVal(p7.b7_catatan_lapangan || p7.p7_txt_catatan || p7.b7_catatan || p7.p7_F043 || p7.catatan_lapangan);
+      setVal('b7.catatan', rawCatatan);
+
+      renderBlok3();
+      renderBlok42a();
+      renderBlok42b();
+      renderBlok43();
+      renderBlok5();
+      renderBlok6Combined();
+      recalcAll();
+      document.querySelectorAll('.editable-field').forEach(el => { el.readOnly = !isEditMode; });
+      document.querySelectorAll('.editable-radio').forEach(r => { r.disabled = !isEditMode; });
+    }
+
+    async function saveBookletCorrections() {
+      const fields = {};
+      document.querySelectorAll('[data-key]').forEach(el => {
+        if (el.type === 'radio' && !el.checked) return;
+        fields[el.getAttribute('data-key')] = el.value;
+      });
+
+      const payload = {
+        booklet_id: currentBookletId,
+        dokumen: 'VSERUTI26.INTI',
+        updated_at: new Date().toISOString(),
+        identitas_dan_kop: fields,
+        blok_iii_art: blok3Data,
+        blok_iv_2a: blok42aItems,
+        blok_iv_2b: blok42bItems,
+        blok_iv_3: blok43Items,
+        blok_v_501: blok501Rows,
+        blok_v_502: blok502Rows,
+        blok_v_503: blok503Rows,
+        blok_v_504: blok504Rows,
+        blok_v_505: blok505Rows,
+        blok_vi_aset: blok6Aset,
+        blok_vi_kewajiban: blok6Kewajiban
+      };
+
+      try {
+        const res = await fetch(`/api/booklets/${currentBookletId}/extracted`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          showToast(`Koreksi data buklet ${currentBookletId} berhasil disimpan ke server!`);
+        } else {
+          showToast('Gagal menyimpan ke server, status: ' + res.status);
+        }
+      } catch (err) {
+        showToast('Kesalahan jaringan saat menyimpan koreksi.');
+      }
+    }
+
+    async function runGeminiTextInference() {
+      if (!currentBookletId) return;
+      showToast(`Menjalankan inferensi teks Gemini Vision untuk ${currentBookletId}...`);
+      try {
+        const res = await fetch(`/api/booklets/${currentBookletId}/infer-text-fields`, {
+          method: 'POST'
+        });
+        if (res.ok) {
+          const data = await res.json();
+          showToast(`Inferensi teks Gemini selesai (${data.total_fields || 0} bidang). Menyinkronkan kuesioner...`);
+          await loadBookletData(currentBookletId);
+        } else {
+          const err = await res.json().catch(() => ({}));
+          showToast(`Gagal inferensi teks: ${err.detail || res.statusText}`);
+        }
+      } catch (e) {
+        showToast(`Kesalahan jaringan: ${e.message}`);
+      }
+    }
+
+    function openJsonModal() {
+      const fields = {};
+      document.querySelectorAll('[data-key]').forEach(el => {
+        if (el.type === 'radio' && !el.checked) return;
+        fields[el.getAttribute('data-key')] = el.value;
+      });
+      const data = {
+        dokumen: 'VSERUTI26.INTI',
+        booklet_id: currentBookletId,
+        identitas_dan_kop: fields,
+        blok_iii_art: blok3Data.filter(r => r.nama),
+        blok_iv_2a_total_451: {
+          sebulan_terakhir: document.getElementById('calc-42a-m1-451')?.textContent,
+          tiga_bulan_terakhir: document.getElementById('calc-42a-m3-451')?.textContent
+        },
+        blok_iv_2b_total_463: {
+          total: document.getElementById('calc-42b-t-463')?.textContent,
+          oop: document.getElementById('calc-42b-o-463')?.textContent
+        },
+        blok_vi_posisi_keuangan: {
+          total_aset: document.getElementById('sum-6-aset')?.textContent,
+          total_kewajiban: document.getElementById('sum-6-kewajiban')?.textContent
+        }
+      };
+      document.getElementById('json-output-pre').textContent = JSON.stringify(data, null, 2);
+      document.getElementById('json-modal').classList.add('open');
+    }
+
+    function closeJsonModal() {
+      document.getElementById('json-modal').classList.remove('open');
+    }
+
+    function copyJsonOutput() {
+      const ta = document.createElement('textarea');
+      ta.value = document.getElementById('json-output-pre').textContent;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      ta.remove();
+      showToast('JSON kuesioner digital berhasil disalin.');
+    }
+
+    window.addEventListener('message', (e) => {
+      if (e.data && e.data.type === 'SET_BOOKLET') {
+        onBookletChange(e.data.bookletId);
+      } else if (e.data && e.data.type === 'SET_PAGE') {
+        const pill = document.querySelector(`.page-pill[onclick*="'${e.data.page}'"]`);
+        filterPage(String(e.data.page), pill);
+      }
+    });
+
+    // =========================================================================
+    // ADVANCED CURSOR-CENTRIC PAN & ZOOM CAMERA (DIGITAL KUESIONER)
+    // =========================================================================
+    let digitalScale = 1.0;
+    let digitalTx = 0;
+    let digitalTy = 0;
+    let isDigitalDragging = false;
+    let digitalDragStartX = 0;
+    let digitalDragStartY = 0;
+    let isDigitalSpace = false;
+
+    function applyDigitalTransform(animate = false) {
+      const desk = document.getElementById('book-desk');
+      const badge = document.getElementById('digital-zoom-badge');
+      if (!desk) return;
+
+      if (animate) {
+        desk.style.transition = 'transform 0.24s cubic-bezier(0.16, 1, 0.3, 1)';
+        setTimeout(() => { if (desk) desk.style.transition = 'none'; }, 260);
+      } else {
+        desk.style.transition = 'none';
+      }
+
+      desk.style.transformOrigin = 'top center';
+      desk.style.transform = `scale(${digitalScale.toFixed(4)})`;
+
+      if (badge) {
+        badge.textContent = Math.round(digitalScale * 100) + '%';
+      }
+    }
+
+    function zoomDigitalAtPoint(clientX, clientY, factor, animate = false) {
+      const desk = document.getElementById('book-desk');
+      if (!desk) return;
+
+      const newScale = Math.max(0.4, Math.min(3.5, digitalScale * factor));
+      if (Math.abs(newScale - digitalScale) < 0.001) return;
+
+      digitalScale = newScale;
+      applyDigitalTransform(animate);
+    }
+
+    function zoomDigitalKuesionerStep(delta) {
+      const factor = delta > 0 ? 1.2 : (1 / 1.2);
+      const cx = window.innerWidth / 2;
+      const cy = window.innerHeight / 2;
+      zoomDigitalAtPoint(cx, cy, factor, true);
+    }
+
+    function resetDigitalKuesionerZoom() {
+      digitalScale = 1.0;
+      digitalTx = 0;
+      digitalTy = 0;
+      applyDigitalTransform(true);
+    }
+
+    function fitDigitalKuesionerWidth() {
+      const desk = document.getElementById('book-desk');
+      if (!desk) return;
+      const activeSheet = document.querySelector('.a4-sheet:not(.hidden-page)') || desk;
+      const sheetW = activeSheet.offsetWidth || 1120;
+      const winW = window.innerWidth - 60;
+      digitalScale = Math.max(0.4, Math.min(1.5, winW / sheetW));
+      applyDigitalTransform(true);
+    }
+
+    function initDigitalInteractiveCamera() {
+      window.addEventListener('wheel', (e) => {
+        if (e.ctrlKey || e.metaKey || isDigitalSpace) {
+          e.preventDefault();
+          const factor = Math.exp(-e.deltaY * 0.0022);
+          zoomDigitalAtPoint(e.clientX, e.clientY, factor, false);
+        }
+      }, { passive: false });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' && !e.target.matches('input, textarea, select')) {
+          isDigitalSpace = true;
+          document.body.style.cursor = 'grab';
+        }
+        if ((e.key === '+' || e.key === '=') && !e.target.matches('input, textarea, select')) {
+          e.preventDefault();
+          zoomDigitalKuesionerStep(0.2);
+        } else if ((e.key === '-' || e.key === '_') && !e.target.matches('input, textarea, select')) {
+          e.preventDefault();
+          zoomDigitalKuesionerStep(-0.2);
+        } else if (e.key === '0' && !e.target.matches('input, textarea, select')) {
+          e.preventDefault();
+          resetDigitalKuesionerZoom();
+        }
+      });
+
+      window.addEventListener('keyup', (e) => {
+        if (e.code === 'Space') {
+          isDigitalSpace = false;
+          document.body.style.cursor = 'default';
+        }
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      const params = new URLSearchParams(window.location.search);
+      const pathParts = window.location.pathname.split('/').filter(Boolean);
+      let bid = params.get('booklet');
+      if (!bid && pathParts.length >= 2 && pathParts[0] === 'kuesioner-digital') {
+        bid = pathParts[1];
+      }
+      if (!bid) bid = 'booklet_01';
+      currentBookletId = bid;
+
+      initDigitalInteractiveCamera();
+      await initBookletsList();
+      renderBlok3();
+      renderBlok42a();
+      renderBlok42b();
+      renderBlok43();
+      renderBlok5();
+      renderBlok6Combined();
+      recalcAll();
+      await loadBookletData(bid);
+      document.querySelectorAll('.editable-field').forEach(el => { el.readOnly = !isEditMode; });
+      document.querySelectorAll('.editable-radio').forEach(r => { r.disabled = !isEditMode; });
+    });
+  </script>
+</body>
+</html>

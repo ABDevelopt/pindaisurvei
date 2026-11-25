@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Si-Periksa Seruti — Verifikasi Tulisan Tangan Bebas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #090d16;
+      --bg-surface: #111827;
+      --bg-surface-elevated: #1f2937;
+      --bg-surface-hover: #283548;
+      --border-subtle: #1f2937;
+      --border-focus: #3b82f6;
+      --text-primary: #f9fafb;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --accent-primary: #3b82f6;
+      --accent-hover: #2563eb;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* SVG Icon Utility */
+    .icon {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .icon-lg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* App Header */
+    header {
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-title {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .header-subtitle {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Button Tokens */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-primary);
+      color: #ffffff;
+    }
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      border-color: var(--border-subtle);
+    }
+    .btn-secondary:hover {
+      background-color: var(--bg-surface-hover);
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      padding: 32px;
+      max-width: 1380px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Metric Summary Ribbon */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .metric-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+    }
+
+    .metric-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .metric-value {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      font-family: var(--font-mono);
+    }
+
+    /* Controls & Filter Bar */
+    .filter-bar {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .filter-select {
+      background-color: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      padding: 7px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      outline: none;
+      min-width: 140px;
+    }
+
+    .filter-select:focus {
+      border-color: var(--border-focus);
+    }
+
+    /* Card List */
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .text-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 340px 1fr 280px;
+      gap: 24px;
+      align-items: center;
+      transition: border-color 0.15s ease;
+    }
+
+    .text-card:hover {
+      border-color: var(--border-focus);
+    }
+
+    /* Crop Viewer Column */
+    .crop-viewer {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .crop-meta {
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .crop-image-box {
+      background-color: #ffffff;
+      border-radius: var(--radius-sm);
+      padding: 8px;
+      border: 1px solid #e5e7eb;
+      max-height: 110px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .crop-image-box img {
+      max-width: 100%;
+      max-height: 94px;
+      object-fit: contain;
+    }
+
+    /* Recognition Column */
+    .field-editor {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .field-input {
+      background-color: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      padding: 10px 14px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    .field-input:focus {
+      border-color: var(--border-focus);
+    }
+
+    /* Actions & Metadata Column */
+    .field-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      padding: 4px 8px;
+      border-radius: 9999px;
+      font-weight: 500;
+    }
+
+    .pill-high {
+      background-color: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .pill-warn {
+      background-color: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .pill-blank {
+      background-color: rgba(107, 114, 128, 0.15);
+      color: #9ca3af;
+      border: 1px solid rgba(107, 114, 128, 0.3);
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 64px 20px;
+      color: var(--text-secondary);
+    }
+
+    .empty-state svg {
+      width: 44px;
+      height: 44px;
+      stroke: var(--text-muted);
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- App Header -->
+  <header>
+    <div class="header-brand">
+      <svg class="icon icon-lg" viewBox="0 0 24 24">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+        <line x1="16" y1="13" x2="8" y2="13"></line>
+        <line x1="16" y1="17" x2="8" y2="17"></line>
+        <polyline points="10 9 9 9 8 9"></polyline>
+      </svg>
+      <div>
+        <div class="header-title">Si-Periksa Seruti — Verifikasi Tulisan Tangan Bebas</div>
+        <div class="header-subtitle">Google Gemini-3.8-Flash Vision & Local Handwriting Pipeline</div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <input type="file" id="file-picker" accept=".json" style="display:none" onchange="handleFileSelect(event)">
+      <button class="btn btn-secondary" onclick="document.getElementById('file-picker').click()">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+        Buka File JSON
+      </button>
+      <button class="btn btn-secondary" onclick="reloadDataset()">
+        <svg class="icon" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+        Muat Ulang
+      </button>
+      <button class="btn btn-primary" onclick="exportCorrectedCSV()">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Unduh CSV Terverifikasi
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Metric Ribbon (Max 4 Metrics) -->
+    <section class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">Total Bidang Teks</div>
+        <div class="metric-value" id="val-total">0</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Terisi Tulisan Tangan</div>
+        <div class="metric-value" id="val-filled" style="color: #60a5fa;">0</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Bidang Kosong</div>
+        <div class="metric-value" id="val-blank" style="color: #9ca3af;">0</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Rata-rata Keyakinan</div>
+        <div class="metric-value" id="val-conf" style="color: #34d399;">0.00%</div>
+      </div>
+    </section>
+
+    <!-- Filters & Controls -->
+    <section class="filter-bar">
+      <div class="filter-group">
+        <select id="filter-booklet" class="filter-select" onchange="applyFilters()">
+          <option value="all">Semua Buklet</option>
+        </select>
+        <select id="filter-type" class="filter-select" onchange="applyFilters()">
+          <option value="all">Semua Jenis Bidang</option>
+          <option value="single_line_name">Nama Responden / ART</option>
+          <option value="multi_line_address">Alamat</option>
+          <option value="freeform_paragraph">Catatan Petugas</option>
+        </select>
+        <select id="filter-status" class="filter-select" onchange="applyFilters()">
+          <option value="all">Semua Status</option>
+          <option value="filled">Hanya Terisi</option>
+          <option value="blank">Hanya Kosong</option>
+          <option value="low_conf">Perlu Review (&lt; 0.90)</option>
+        </select>
+      </div>
+      <div style="font-size: 13px; color: var(--text-secondary);" id="filter-count">
+        Menampilkan 0 bidang
+      </div>
+    </section>
+
+    <!-- Cards List -->
+    <section class="card-list" id="card-container">
+      <div class="empty-state">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        <p>Memuat data teks tulisan tangan...</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    let rawDataset = [];
+    let activeDataset = [];
+
+    async function loadDataset() {
+      try {
+        const res = await fetch('hasil_labeling_teks/hasil_teks.json');
+        if (res.ok) {
+          rawDataset = await res.json();
+          initDropdowns();
+          applyFilters();
+        } else {
+          showEmptyState("Belum ada berkas hasil_teks.json yang ditemukan. Silakan jalankan run_seruti_text_labeling.py terlebih dahulu.");
+        }
+      } catch (err) {
+        showEmptyState("Gagal memuat hasil_teks.json. Pastikan file tersedia di direktori hasil_labeling_teks/.");
+      }
+    }
+
+    function handleFileSelect(evt) {
+      const file = evt.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          rawDataset = JSON.parse(e.target.result);
+          initDropdowns();
+          applyFilters();
+        } catch (err) {
+          alert("Gagal mem-parsing file JSON: " + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+      const selectBooklet = document.getElementById('filter-booklet');
+      const uniqueBooklets = [...new Set(rawDataset.map(d => d.id_booklet))].sort();
+      selectBooklet.innerHTML = '<option value="all">Semua Buklet</option>';
+      uniqueBooklets.forEach(b => {
+        const opt = document.createElement('option');
+        opt.value = b;
+        opt.textContent = b;
+        selectBooklet.appendChild(opt);
+      });
+    }
+
+    function applyFilters() {
+      const bFilter = document.getElementById('filter-booklet').value;
+      const tFilter = document.getElementById('filter-type').value;
+      const sFilter = document.getElementById('filter-status').value;
+
+      activeDataset = rawDataset.filter(item => {
+        if (bFilter !== 'all' && item.id_booklet !== bFilter) return false;
+        if (tFilter !== 'all' && item.field_type !== tFilter) return false;
+        if (sFilter === 'filled' && item.is_blank) return false;
+        if (sFilter === 'blank' && !item.is_blank) return false;
+        if (sFilter === 'low_conf' && item.confidence >= 0.90) return false;
+        return true;
+      });
+
+      updateMetrics();
+      renderCards();
+    }
+
+    function updateMetrics() {
+      const total = rawDataset.length;
+      const filled = rawDataset.filter(d => !d.is_blank).length;
+      const blank = rawDataset.filter(d => d.is_blank).length;
+      const avgConf = total > 0 ? (rawDataset.reduce((acc, d) => acc + (d.confidence || 0), 0) / total * 100).toFixed(1) : "0.0";
+
+      document.getElementById('val-total').textContent = total.toLocaleString();
+      document.getElementById('val-filled').textContent = filled.toLocaleString();
+      document.getElementById('val-blank').textContent = blank.toLocaleString();
+      document.getElementById('val-conf').textContent = avgConf + "%";
+
+      document.getElementById('filter-count').textContent = `Menampilkan ${activeDataset.length} dari ${total} bidang`;
+    }
+
+    function renderCards() {
+      const container = document.getElementById('card-container');
+      container.innerHTML = '';
+
+      if (activeDataset.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <p>Tidak ada bidang teks yang cocok dengan kriteria filter.</p>
+          </div>
+        `;
+        return;
+      }
+
+      activeDataset.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'text-card';
+
+        const isBlank = item.is_blank || item.teks_hasil === 'KOSONG';
+        const pillClass = isBlank ? 'pill-blank' : (item.confidence >= 0.90 ? 'pill-high' : 'pill-warn');
+        const pillLabel = isBlank ? 'KOSONG' : `Conf: ${(item.confidence * 100).toFixed(0)}%`;
+
+        card.innerHTML = `
+          <div class="crop-viewer">
+            <div class="crop-meta">
+              <span>${item.id_booklet}</span> &bull; <span>${item.halaman}</span>
+            </div>
+            <div class="crop-image-box">
+              <img src="${item.crop_path}" alt="${item.field_id}" onerror="this.src=''; this.alt='Gambar tidak ditemukan';" />
+            </div>
+          </div>
+
+          <div class="field-editor">
+            <div class="field-label">
+              <span>${item.label_field || item.field_id}</span>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); font-weight: normal;">[${item.question_code || ''}]</span>
+            </div>
+            <input type="text" class="field-input" value="${escapeHtml(item.teks_hasil)}" 
+              data-booklet="${item.id_booklet}" data-field="${item.field_id}"
+              onchange="handleTextChange(this)" placeholder="Isi teks..." />
+          </div>
+
+          <div class="field-actions">
+            <span class="pill-badge ${pillClass}">${pillLabel}</span>
+            <span style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);">${item.model_used || 'ai'}</span>
+            <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 11px;" onclick="markAsBlank('${item.id_booklet}', '${item.field_id}')">
+              Set Kosong
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function handleTextChange(input) {
+      const bId = input.dataset.booklet;
+      const fId = input.dataset.field;
+      const newVal = input.value.trim().toUpperCase();
+
+      const item = rawDataset.find(d => d.id_booklet === bId && d.field_id === fId);
+      if (item) {
+        item.teks_hasil = newVal || 'KOSONG';
+        item.is_blank = (item.teks_hasil === 'KOSONG');
+        item.confidence = 1.0; // Manual verified
+        item.model_used = 'human_verified';
+        input.value = item.teks_hasil;
+        applyFilters();
+      }
+    }
+
+    function markAsBlank(bId, fId) {
+      const item = rawDataset.find(d => d.id_booklet === bId && d.field_id === fId);
+      if (item) {
+        item.teks_hasil = 'KOSONG';
+        item.is_blank = true;
+        item.confidence = 1.0;
+        item.model_used = 'human_verified';
+        applyFilters();
+      }
+    }
+
+    function exportCorrectedCSV() {
+      if (rawDataset.length === 0) return;
+      const headers = Object.keys(rawDataset[0]);
+      const csvRows = [];
+      csvRows.push(headers.join(','));
+
+      rawDataset.forEach(row => {
+        const values = headers.map(h => {
+          let val = row[h] === null || row[h] === undefined ? '' : String(row[h]);
+          val = val.replace(/"/g, '""');
+          if (val.includes(',') || val.includes('\n') || val.includes('"')) {
+            val = `"${val}"`;
+          }
+          return val;
+        });
+        csvRows.push(values.join(','));
+      });
+
+      const blob = new Blob([csvRows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `seruti_hasil_teks_verified_${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+    }
+
+    function showEmptyState(msg) {
+      const container = document.getElementById('card-container');
+      container.innerHTML = `
+        <div class="empty-state">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <p>${msg}</p>
+        </div>
+      `;
+    }
+
+    function reloadDataset() {
+      loadDataset();
+    }
+
+    window.onload = loadDataset;
+  </script>
+</body>
+</html>

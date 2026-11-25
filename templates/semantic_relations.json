@@ -1,0 +1,401 @@
+{
+  "instrument": "VSERUTI26.INTI",
+  "total_relations": 21,
+  "relations": [
+    {
+      "relation_id": "REL_01_JUMLAH_ART",
+      "rule_type": "cross_table_match",
+      "page_num": 0,
+      "target_field": "p1_F009_109",
+      "source_fields": [
+        "p2_roster_art_count"
+      ],
+      "operator": "=",
+      "description": "Jumlah ART pada Rincian 109 (Blok I Hal 1) harus tepat sama dengan jumlah baris ART terisi di Blok III (Hal 2).",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_02_KRT_NOMOR_URUT_01",
+      "rule_type": "cross_table_match",
+      "page_num": 2,
+      "target_field": "p2_F000_01_hubungan",
+      "source_fields": [
+        "const_1"
+      ],
+      "operator": "=",
+      "description": "ART nomor urut 01 pada Blok III wajib berstatus Kepala Rumah Tangga (Kode 1).",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_03_TOTAL_BUKAN_MAKANAN_SEBULAN",
+      "rule_type": "sum_vertical",
+      "page_num": 3,
+      "target_field": "b4_r451_total_bukan_makanan_sebulan",
+      "source_fields": [
+        "b4_r406_sebulan",
+        "b4_r407_sebulan",
+        "b4_r408_sebulan",
+        "b4_r409_sebulan",
+        "b4_r410_sebulan",
+        "b4_r411_sebulan",
+        "b4_r412_sebulan",
+        "b4_r413_sebulan",
+        "b4_r414_sebulan",
+        "b4_r415_sebulan",
+        "b4_r416_sebulan",
+        "b4_r417_sebulan",
+        "b4_r418_sebulan",
+        "b4_r419_sebulan",
+        "b4_r420_sebulan",
+        "b4_r421_sebulan",
+        "b4_r422_sebulan",
+        "b4_r423_sebulan",
+        "b4_r424_sebulan",
+        "b4_r425_sebulan",
+        "b4_r426_sebulan",
+        "b4_r427_sebulan",
+        "b4_r428_sebulan",
+        "b4_r429_sebulan",
+        "b4_r430_sebulan",
+        "b4_r431_sebulan",
+        "b4_r432_sebulan",
+        "b4_r433_sebulan",
+        "b4_r434_sebulan",
+        "b4_r435_sebulan",
+        "b4_r436_sebulan",
+        "b4_r437_sebulan",
+        "b4_r438_sebulan",
+        "b4_r439_sebulan",
+        "b4_r440_sebulan",
+        "b4_r441_sebulan",
+        "b4_r442_sebulan",
+        "b4_r443_sebulan",
+        "b4_r444_sebulan",
+        "b4_r445_sebulan",
+        "b4_r446_sebulan",
+        "b4_r447_sebulan",
+        "b4_r448_sebulan",
+        "b4_r449_sebulan",
+        "b4_r450_sebulan"
+      ],
+      "operator": "=",
+      "description": "Rincian 451 (Total Bukan Makanan Sebulan) adalah penjumlahan seluruh Rincian 406 s.d. 450 kolom Sebulan.",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_04_TOTAL_BUKAN_MAKANAN_3BLN",
+      "rule_type": "sum_vertical",
+      "page_num": 3,
+      "target_field": "b4_r451_total_bukan_makanan_3bln",
+      "source_fields": [
+        "b4_r406_3bln",
+        "b4_r407_3bln",
+        "b4_r408_3bln",
+        "b4_r409_3bln",
+        "b4_r410_3bln",
+        "b4_r411_3bln",
+        "b4_r412_3bln",
+        "b4_r413_3bln",
+        "b4_r414_3bln",
+        "b4_r415_3bln",
+        "b4_r416_3bln",
+        "b4_r417_3bln",
+        "b4_r418_3bln",
+        "b4_r419_3bln",
+        "b4_r420_3bln",
+        "b4_r421_3bln",
+        "b4_r422_3bln",
+        "b4_r423_3bln",
+        "b4_r424_3bln",
+        "b4_r425_3bln",
+        "b4_r426_3bln",
+        "b4_r427_3bln",
+        "b4_r428_3bln",
+        "b4_r429_3bln",
+        "b4_r430_3bln",
+        "b4_r431_3bln",
+        "b4_r432_3bln",
+        "b4_r433_3bln",
+        "b4_r434_3bln",
+        "b4_r435_3bln",
+        "b4_r436_3bln",
+        "b4_r437_3bln",
+        "b4_r438_3bln",
+        "b4_r439_3bln",
+        "b4_r440_3bln",
+        "b4_r441_3bln",
+        "b4_r442_3bln",
+        "b4_r443_3bln",
+        "b4_r444_3bln",
+        "b4_r445_3bln",
+        "b4_r446_3bln",
+        "b4_r447_3bln",
+        "b4_r448_3bln",
+        "b4_r449_3bln",
+        "b4_r450_3bln"
+      ],
+      "operator": "=",
+      "description": "Rincian 451 (Total Bukan Makanan Tiga Bulan) adalah penjumlahan seluruh Rincian 406 s.d. 450 kolom Tiga Bulan.",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_05_KESEHATAN_SUBTOTAL_TOTAL",
+      "rule_type": "sum_vertical",
+      "page_num": 4,
+      "target_field": "b4_r452_kesehatan_total",
+      "source_fields": [
+        "b4_r453_obat_total",
+        "b4_r454_rawat_jalan_total",
+        "b4_r455_rawat_inap_total"
+      ],
+      "operator": "=",
+      "description": "Rincian 452 (Kesehatan Total) adalah jumlah dari Rincian 453 (Obat) + 454 (Rawat Jalan) + 455 (Rawat Inap).",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_06_KESEHATAN_SUBTOTAL_OOP",
+      "rule_type": "sum_vertical",
+      "page_num": 4,
+      "target_field": "b4_r452_kesehatan_oop",
+      "source_fields": [
+        "b4_r453_obat_oop",
+        "b4_r454_rawat_jalan_oop",
+        "b4_r455_rawat_inap_oop"
+      ],
+      "operator": "=",
+      "description": "Rincian 452 (Kesehatan OOP) adalah jumlah dari Rincian 453 OOP + 454 OOP + 455 OOP.",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_07_PENDIDIKAN_SUBTOTAL_TOTAL",
+      "rule_type": "sum_vertical",
+      "page_num": 4,
+      "target_field": "b4_r456_pendidikan_total",
+      "source_fields": [
+        "b4_r457_total",
+        "b4_r458_total",
+        "b4_r459_total",
+        "b4_r460_total",
+        "b4_r461_total",
+        "b4_r462_total"
+      ],
+      "operator": "=",
+      "description": "Rincian 456 (Pendidikan Total) adalah jumlah dari Rincian 457 s.d. 462 (Pra-sekolah, SD, SMP, SMA, PT, Kursus).",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_08_PENDIDIKAN_SUBTOTAL_OOP",
+      "rule_type": "sum_vertical",
+      "page_num": 4,
+      "target_field": "b4_r456_pendidikan_oop",
+      "source_fields": [
+        "b4_r457_oop",
+        "b4_r458_oop",
+        "b4_r459_oop",
+        "b4_r460_oop",
+        "b4_r461_oop",
+        "b4_r462_oop"
+      ],
+      "operator": "=",
+      "description": "Rincian 456 (Pendidikan OOP) adalah jumlah dari Rincian 457 s.d. 462 kolom OOP.",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_09_TOTAL_KESEHATAN_PENDIDIKAN_TOTAL",
+      "rule_type": "sum_vertical",
+      "page_num": 4,
+      "target_field": "b4_r463_total_kes_pend_total",
+      "source_fields": [
+        "b4_r452_kesehatan_total",
+        "b4_r456_pendidikan_total"
+      ],
+      "operator": "=",
+      "description": "Rincian 463 (Total Kesehatan & Pendidikan) adalah penjumlahan Rincian 452 (Kesehatan) + Rincian 456 (Pendidikan).",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_10_TOTAL_KESEHATAN_PENDIDIKAN_OOP",
+      "rule_type": "sum_vertical",
+      "page_num": 4,
+      "target_field": "b4_r463_total_kes_pend_oop",
+      "source_fields": [
+        "b4_r452_kesehatan_oop",
+        "b4_r456_pendidikan_oop"
+      ],
+      "operator": "=",
+      "description": "Rincian 463 OOP adalah penjumlahan Rincian 452 OOP + Rincian 456 OOP.",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_11_OOP_LE_TOTAL_CHECK",
+      "rule_type": "inequality",
+      "page_num": 4,
+      "target_field": "b4_r463_total_kes_pend_oop",
+      "source_fields": [
+        "b4_r463_total_kes_pend_total"
+      ],
+      "operator": "<=",
+      "description": "Biaya Out of Pocket (OOP) tidak boleh melampaui Total Pengeluaran (OOP <= Total).",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_12_R501_TOTAL_UPAH_PER_ART",
+      "rule_type": "sum_horizontal",
+      "page_num": 5,
+      "target_field": "r501_art_{i}_total_upah",
+      "source_fields": [
+        "r501_art_{i}_uang",
+        "r501_art_{i}_barang"
+      ],
+      "operator": "=",
+      "description": "Total upah per ART (Kolom 6) adalah penjumlahan upah uang (Kolom 4) + upah barang (Kolom 5).",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_13_R501_JUMLAH_UPAH_SELURUH_ART",
+      "rule_type": "sum_vertical",
+      "page_num": 5,
+      "target_field": "r501_subtotal_upah",
+      "source_fields": [
+        "r501_art_01_total_upah",
+        "r501_art_02_total_upah",
+        "r501_art_03_total_upah",
+        "r501_art_04_total_upah",
+        "r501_art_05_total_upah",
+        "r501_art_06_total_upah",
+        "r501_art_07_total_upah",
+        "r501_art_08_total_upah",
+        "r501_art_09_total_upah",
+        "r501_art_10_total_upah"
+      ],
+      "operator": "=",
+      "description": "Baris JUMLAH R501 adalah penjumlahan total upah seluruh ART (baris 1 s.d. 10).",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_14_R503_TOTAL_PENDAPATAN_KEPEMILIKAN",
+      "rule_type": "sum_vertical",
+      "page_num": 5,
+      "target_field": "r503_4_total_diterima",
+      "source_fields": [
+        "r503_1_bunga_diterima",
+        "r503_2_dividen_diterima",
+        "r503_3_sewa_tanah_diterima"
+      ],
+      "operator": "=",
+      "description": "Total Pendapatan Kepemilikan (Diterima) adalah penjumlahan Rincian 503.1 + 503.2 + 503.3.",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_15_R503_TOTAL_BIAYA_KEPEMILIKAN",
+      "rule_type": "sum_vertical",
+      "page_num": 5,
+      "target_field": "r503_4_total_dibayar",
+      "source_fields": [
+        "r503_1_bunga_dibayar",
+        "r503_3_sewa_tanah_dibayar"
+      ],
+      "operator": "=",
+      "description": "Total Biaya Kepemilikan (Dibayar) adalah penjumlahan Rincian 503.1 + 503.3 kolom dibayar.",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_16_R504_TOTAL_TRANSFER_DITERIMA_UANG",
+      "rule_type": "sum_vertical",
+      "page_num": 6,
+      "target_field": "r504_5_total_transfer_terima_uang",
+      "source_fields": [
+        "r504_1_terima_uang",
+        "r504_2_terima_uang",
+        "r504_3_terima_uang",
+        "r504_4_terima_uang"
+      ],
+      "operator": "=",
+      "description": "Total Transfer Berjalan Diterima (Uang) adalah penjumlahan Rincian 504.1 s.d. 504.4.",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_17_R504_TOTAL_TRANSFER_DIBERIKAN_UANG",
+      "rule_type": "sum_vertical",
+      "page_num": 6,
+      "target_field": "r504_5_total_transfer_beri_uang",
+      "source_fields": [
+        "r504_1_beri_uang",
+        "r504_2_beri_uang",
+        "r504_3_beri_uang",
+        "r504_4_beri_uang"
+      ],
+      "operator": "=",
+      "description": "Total Transfer Berjalan Diberikan (Uang) adalah penjumlahan Rincian 504.1 s.d. 504.4 kolom diberikan.",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_18_R505_TOTAL_MUTASI_ASET_TAMBAH",
+      "rule_type": "sum_vertical",
+      "page_num": 6,
+      "target_field": "r505_7_total_mutasi_tambah",
+      "source_fields": [
+        "r505_1_mutasi_tambah",
+        "r505_2_mutasi_tambah",
+        "r505_3_mutasi_tambah",
+        "r505_4_mutasi_tambah",
+        "r505_5_mutasi_tambah",
+        "r505_6_mutasi_tambah"
+      ],
+      "operator": "=",
+      "description": "Total Mutasi Aset (Penambahan/Pembelian) adalah penjumlahan baris 1 s.d. 6 Rincian 505.",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_19_R505_TOTAL_MUTASI_ASET_KURANG",
+      "rule_type": "sum_vertical",
+      "page_num": 6,
+      "target_field": "r505_7_total_mutasi_kurang",
+      "source_fields": [
+        "r505_1_mutasi_kurang",
+        "r505_2_mutasi_kurang",
+        "r505_3_mutasi_kurang",
+        "r505_4_mutasi_kurang",
+        "r505_5_mutasi_kurang",
+        "r505_6_mutasi_kurang"
+      ],
+      "operator": "=",
+      "description": "Total Mutasi Aset (Pengurangan/Penjualan) adalah penjumlahan baris 1 s.d. 6 Rincian 505.",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_20_R607_TOTAL_ASET_KEUANGAN",
+      "rule_type": "sum_vertical",
+      "page_num": 7,
+      "target_field": "b6_r607_total_aset_keuangan",
+      "source_fields": [
+        "r601_tabungan",
+        "r602a_deposito",
+        "r602b_sertifikat_bi",
+        "r603_saham",
+        "r604_reksadana",
+        "r605_obligasi",
+        "r606_lainnya"
+      ],
+      "operator": "=",
+      "description": "Rincian 607 (Total Aset Keuangan) adalah penjumlahan saldo Rincian 601 s.d. 606.",
+      "tolerance": 0.0
+    },
+    {
+      "relation_id": "REL_21_R611_TOTAL_KEWAJIBAN_UTANG",
+      "rule_type": "sum_vertical",
+      "page_num": 7,
+      "target_field": "b6_r611_total_kewajiban",
+      "source_fields": [
+        "r608a_kpr",
+        "r608b_kredit_kendaraan",
+        "r609a_pinjaman_bank",
+        "r609b_pinjaman_nonbank",
+        "r610_utang_perorangan"
+      ],
+      "operator": "=",
+      "description": "Rincian 611 (Total Kewajiban/Pinjaman) adalah penjumlahan saldo Rincian 608a s.d. 610.",
+      "tolerance": 0.0
+    }
+  ]
+}

@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BPS Seruti — Inspektur Anomali Citra Crop | Seashell Garnet Afternoon</title>
+<style>
+/* ==========================================================================
+   PALET WARNA: "Seashell garnet afternoon"
+   Swatches:
+     --c-seashell : #F6C992
+     --c-garnet   : #F96E81
+     --c-mist     : #ACC0D3
+     --c-mauve    : #D396A6
+     --c-teal     : #09A1A1
+     --c-steel    : #5484A4
+     --c-pine     : #30525C
+   ========================================================================== */
+
+:root {
+  --c-seashell: #F6C992;
+  --c-garnet: #F96E81;
+  --c-mist: #ACC0D3;
+  --c-mauve: #D396A6;
+  --c-teal: #09A1A1;
+  --c-steel: #5484A4;
+  --c-pine: #30525C;
+}
+
+[data-theme="dark"] {
+  --bg-app: #152227;
+  --bg-surface: #1e3037;
+  --bg-surface-elevated: #263c45;
+  --bg-input: #131c20;
+  --border-color: rgba(172, 192, 211, 0.22);
+  --border-highlight: var(--c-teal);
+  
+  --text-primary: #FFFFFF;
+  --text-secondary: var(--c-mist);
+  --text-accent: var(--c-seashell);
+  
+  --card-shadow: 0 12px 30px -6px rgba(10, 18, 21, 0.6);
+  --frame-bg: #2a3e47;
+}
+
+[data-theme="light"] {
+  --bg-app: #f7f3ec;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f3ece0;
+  --bg-input: #fdfbf7;
+  --border-color: rgba(84, 132, 164, 0.25);
+  --border-highlight: var(--c-teal);
+  
+  --text-primary: #1f3137;
+  --text-secondary: #4a6673;
+  --text-accent: #098b8b;
+  
+  --card-shadow: 0 10px 24px -4px rgba(84, 132, 164, 0.18);
+  --frame-bg: #f9f5ee;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg-app);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  background: var(--bg-surface);
+  border-bottom: 2px solid var(--border-color);
+  padding: 14px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-palette-dots {
+  display: flex;
+  gap: 4px;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dot-1 { background: var(--c-seashell); }
+.dot-2 { background: var(--c-garnet); }
+.dot-3 { background: var(--c-mist); }
+.dot-4 { background: var(--c-mauve); }
+.dot-5 { background: var(--c-teal); }
+.dot-6 { background: var(--c-steel); }
+
+.brand-title {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+}
+.brand-tag {
+  font-size: 11px;
+  color: var(--c-teal);
+  font-weight: 700;
+  background: rgba(9, 161, 161, 0.12);
+  border: 1px solid var(--c-teal);
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: 6px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-nav-link {
+  background: var(--bg-surface-elevated);
+  border: 1.5px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+}
+.btn-nav-link:hover {
+  border-color: var(--c-teal);
+  color: var(--c-teal);
+}
+
+.theme-toggle-btn {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* KPI Banner */
+.kpi-bar {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  padding: 14px 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+.kpi-card {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: transform 0.1s, border-color 0.15s;
+}
+.kpi-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--c-teal);
+}
+.kpi-card.active {
+  border-color: var(--c-garnet);
+  box-shadow: 0 0 0 1px var(--c-garnet);
+}
+.kpi-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.kpi-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.kpi-sub {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Controls Bar */
+.controls-bar {
+  padding: 16px 28px;
+  background: var(--bg-app);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tab-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tab-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--c-mist);
+}
+.tab-btn.active {
+  background: var(--c-teal);
+  color: #FFFFFF;
+  border-color: var(--c-teal);
+}
+
+.search-select-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.search-input {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  min-width: 220px;
+}
+.select-input {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* Grid Gallery */
+main {
+  flex: 1;
+  padding: 0 28px 40px;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+.crop-card {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s, border-color 0.15s;
+  cursor: pointer;
+}
+.crop-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--c-teal);
+}
+.crop-card.c-pipih { border-left: 5px solid var(--c-garnet); }
+.crop-card.c-sempit { border-left: 5px solid var(--c-seashell); }
+.crop-card.c-gelap { border-left: 5px solid var(--c-mauve); }
+.crop-card.c-asimetri { border-left: 5px solid var(--c-teal); }
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.dim-pill {
+  font-size: 11px;
+  font-weight: 800;
+  font-family: monospace;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-accent);
+}
+.type-tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.tag-pipih { background: rgba(249, 110, 129, 0.2); color: var(--c-garnet); }
+.tag-sempit { background: rgba(246, 201, 146, 0.2); color: var(--c-seashell); }
+.tag-gelap { background: rgba(211, 150, 166, 0.2); color: var(--c-mauve); }
+.tag-asimetri { background: rgba(9, 161, 161, 0.22); color: var(--c-teal); border: 1px solid rgba(9, 161, 161, 0.4); font-weight: 800; }
+
+.img-stage {
+  width: 100%;
+  height: 120px;
+  background: #ffffff;
+  /* Checkerboard pattern for detecting transparent or 1-px crops */
+  background-image: 
+    linear-gradient(45deg, #eee 25%, transparent 25%), 
+    linear-gradient(-45deg, #eee 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #eee 75%), 
+    linear-gradient(-45deg, transparent 75%, #eee 75%);
+  background-size: 14px 14px;
+  background-position: 0 0, 0 7px, 7px -7px, -7px 0px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.img-stage img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+.warning-1px-badge {
+  position: absolute;
+  bottom: 4px;
+  right: 6px;
+  background: var(--c-garnet);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.card-meta {
+  margin-top: 10px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-secondary);
+}
+.meta-booklet {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.meta-label {
+  font-weight: 800;
+  color: var(--c-teal);
+}
+.meta-field {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-secondary);
+  font-family: monospace;
+  font-size: 10px;
+  margin-top: 2px;
+}
+
+/* Pagination Bar */
+.pagination-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  margin-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+.page-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Modal Zoom & Diagnostic */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 18, 21, 0.85);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal-card {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  max-width: 680px;
+  width: 100%;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+.modal-body {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 20px;
+}
+.modal-img-wrap {
+  background: #fff;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: 
+    linear-gradient(45deg, #eee 25%, transparent 25%), 
+    linear-gradient(-45deg, #eee 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #eee 75%), 
+    linear-gradient(-45deg, transparent 75%, #eee 75%);
+  background-size: 16px 16px;
+  overflow: hidden;
+}
+.modal-img-wrap img {
+  max-width: 90%;
+  max-height: 90%;
+  image-rendering: pixelated;
+  transform: scale(2.0);
+}
+.diag-row {
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.diag-label {
+  font-weight: 700;
+  color: var(--text-secondary);
+  display: block;
+  font-size: 11px;
+}
+.diag-val {
+  font-weight: 800;
+  color: var(--text-primary);
+}
+.diag-cause-box {
+  margin-top: 14px;
+  padding: 10px 12px;
+  background: rgba(249, 110, 129, 0.12);
+  border: 1px solid var(--c-garnet);
+  border-radius: 8px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+@media (max-width: 600px) {
+  header { padding: 10px 14px; }
+  .kpi-bar { padding: 10px 14px; }
+  .controls-bar { padding: 10px 14px; }
+  main { padding: 0 14px 20px; }
+  .modal-body { grid-template-columns: 1fr; }
+  .modal-img-wrap { height: 160px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand-section">
+    <div class="brand-palette-dots">
+      <div class="dot dot-1" title="#F6C992"></div>
+      <div class="dot dot-2" title="#F96E81"></div>
+      <div class="dot dot-3" title="#ACC0D3"></div>
+      <div class="dot dot-4" title="#D396A6"></div>
+      <div class="dot dot-5" title="#09A1A1"></div>
+      <div class="dot dot-6" title="#5484A4"></div>
+    </div>
+    <div class="brand-title">BPS SERUTI &mdash; INSPEKTUR ANOMALI CITRA CROP</div>
+    <div class="brand-tag">Seashell Garnet</div>
+  </div>
+
+  <div class="nav-actions">
+    <a href="/" class="btn-nav-link">&#128065; Mode Satuan</a>
+    <a href="/grid" class="btn-nav-link">&#9889; Mode Grid per Angka</a>
+    <a href="/anomali" class="btn-nav-link active">&#128269; Inspektur Anomali</a>
+    <button class="theme-toggle-btn" onclick="toggleTheme()">
+      <span id="themeIcon">&#9790;</span> <span id="themeLabel">Dark</span>
+    </button>
+  </div>
+</header>
+
+<div class="kpi-bar">
+  <div class="kpi-card" id="kpiAll" onclick="setCategoryFilter('all')">
+    <div class="kpi-title">Total Entitas Audit</div>
+    <div class="kpi-val"><span id="kpiTotalNum">1.532</span> <span class="kpi-sub">/ 160.284</span></div>
+  </div>
+  <div class="kpi-card active" id="kpiAsimetri" onclick="setCategoryFilter('asimetri')">
+    <div class="kpi-title" style="color:var(--c-teal);">🟢 Asimetri Resmi (Dipertahankan)</div>
+    <div class="kpi-val" style="color:var(--c-teal);"><span id="kpiAsimetriNum">1.292</span> <span class="kpi-sub">No Hal, Triwulan & Banner</span></div>
+  </div>
+  <div class="kpi-card" id="kpiDefek" onclick="setCategoryFilter('defek')">
+    <div class="kpi-title" style="color:var(--c-mauve);">⚠️ Defek Fisik (Noda / Gutter)</div>
+    <div class="kpi-val" style="color:var(--c-mauve);"><span id="kpiDefekNum">240</span> <span class="kpi-sub">Bayangan Jilid / Smudge</span></div>
+  </div>
+  <div class="kpi-card" id="kpiSempit" onclick="setCategoryFilter('sempit')">
+    <div class="kpi-title" style="color:var(--c-seashell);">🟡 Sub-Kolom Hal 5</div>
+    <div class="kpi-val" style="color:var(--c-seashell);"><span id="kpiSempitNum">380</span> <span class="kpi-sub">Sempit Vertikal</span></div>
+  </div>
+  <div class="kpi-card" id="kpiPipih" onclick="setCategoryFilter('pipih')">
+    <div class="kpi-title" style="color:var(--c-garnet);">🔴 Crop Pipih (1-px)</div>
+    <div class="kpi-val" style="color:var(--c-garnet);"><span id="kpiPipihNum">0</span> <span class="kpi-sub">Lengkap Diperbaiki</span></div>
+  </div>
+</div>
+
+<div class="controls-bar">
+  <div class="filter-tabs">
+    <button class="tab-btn" id="tab_all" onclick="setCategoryFilter('all')">Semua Entitas (<span id="btnCntAll">1.532</span>)</button>
+    <button class="tab-btn active" id="tab_asimetri" onclick="setCategoryFilter('asimetri')">🟢 Asimetri Resmi: No Hal & Triwulan (<span id="btnCntAsimetri">1.292</span>)</button>
+    <button class="tab-btn" id="tab_defek" onclick="setCategoryFilter('defek')">⚠️ Defek Fisik / Noda (<span id="btnCntDefek">240</span>)</button>
+    <button class="tab-btn" id="tab_sempit" onclick="setCategoryFilter('sempit')">🟡 Sub-Kolom Hal 5 (<span id="btnCntSempit">380</span>)</button>
+    <button class="tab-btn" id="tab_pipih" onclick="setCategoryFilter('pipih')">🔴 Pipih 1-px (<span id="btnCntPipih">0</span>)</button>
+  </div>
+
+  <div class="search-select-group">
+    <input type="text" id="searchInput" class="search-input" placeholder="Cari booklet, field, atau box..." oninput="applyFilters()">
+    <select id="bookletSelect" class="select-input" onchange="applyFilters()">
+      <option value="all">Semua Booklet</option>
+      <option value="booklet_21">booklet_21 (475 anomali)</option>
+      <option value="booklet_49">booklet_49 (475 anomali)</option>
+      <option value="booklet_38">booklet_38 (64 anomali)</option>
+      <option value="booklet_55">booklet_55 (51 anomali)</option>
+      <option value="booklet_35">booklet_35 (40 anomali)</option>
+      <option value="booklet_67">booklet_67 (19 anomali)</option>
+      <option value="booklet_01">booklet_01 (16 anomali)</option>
+    </select>
+    <select id="sortSelect" class="select-input" onchange="applyFilters()">
+      <option value="extreme_ar">Urut: Aspek Rasio Paling Ekstrem</option>
+      <option value="height_asc">Urut: Tinggi Terkecil (1-px duluan)</option>
+      <option value="width_asc">Urut: Lebar Terkecil</option>
+      <option value="mean_asc">Urut: Paling Gelap (Mean terendah)</option>
+    </select>
+  </div>
+</div>
+
+<main>
+  <div class="gallery-grid" id="galleryGrid"></div>
+
+  <div class="pagination-bar">
+    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">&#8592; Halaman Sebelumnya</button>
+    <span id="pageInfo" style="font-size:12px; font-weight:700; color:var(--text-secondary);">Halaman 1 / 1</span>
+    <button class="page-btn" id="nextBtn" onclick="changePage(1)">Halaman Selanjutnya &#8594;</button>
+  </div>
+</main>
+
+<!-- Modal Zoom & Diagnostik -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">&#10005;</button>
+    <div class="modal-title" id="modalTitle">Detail Diagnostik Citra</div>
+    <div class="modal-body">
+      <div class="modal-img-wrap">
+        <img id="modalImg" src="" alt="Zoom Image">
+      </div>
+      <div>
+        <div class="diag-row">
+          <span class="diag-label">DIMENSI (LEBAR x TINGGI):</span>
+          <span class="diag-val" id="modalDim">52 x 1 px</span>
+        </div>
+        <div class="diag-row">
+          <span class="diag-label">ASPEK RASIO (W/H):</span>
+          <span class="diag-val" id="modalAr">52.0</span>
+        </div>
+        <div class="diag-row">
+          <span class="diag-label">INTENSITAS PIKSEL:</span>
+          <span class="diag-val" id="modalPix">Mean: 240 | Dark Ratio: 0.05</span>
+        </div>
+        <div class="diag-row">
+          <span class="diag-label">IDENTITAS KUESIONER:</span>
+          <span class="diag-val" id="modalMeta">booklet_21 | hal_6 | p6_F000_1a</span>
+        </div>
+        <div class="diag-row">
+          <span class="diag-label">LABEL TERKINI:</span>
+          <span class="diag-val" id="modalLabel" style="color:var(--c-teal);">kosong (conf: 1.00)</span>
+        </div>
+
+        <div class="diag-cause-box" id="modalCauseBox">
+          <b>Akar Penyebab:</b> Terkena <i>False Blue Paper Whitening</i> pada Halaman 6 yang menghapus garis tabel fisik, memicu kegagalan alignment frame menjadi setinggi 21 px dan ter-clamp menjadi tinggi 1 piksel.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let allItems = [];
+let filteredItems = [];
+let currentCategory = 'asimetri'; // Default langsung ke Asimetri Resmi Dipertahankan
+let currentPage = 1;
+const PAGE_SIZE = 48;
+
+async function loadData() {
+  try {
+    const res = await fetch('/api/anomali');
+    allItems = await res.json();
+    
+    // Hitung metrik dinamis
+    let cntAsimetri = 0;
+    let cntDefek = 0;
+    let cntSempit = 0;
+    let cntPipih = 0;
+
+    allItems.forEach(it => {
+      const isAsym = it.is_official_asymmetry || 
+                     (it.kategori_desain && it.kategori_desain.includes('Asimetris')) ||
+                     it.field_id.includes('_hal_') || 
+                     it.field_id.toLowerCase().includes('triwulan') ||
+                     it.field_id.toLowerCase().includes('p7_f043');
+      
+      if (isAsym) {
+        cntAsimetri++;
+      } else if (it.h <= 3) {
+        cntPipih++;
+      } else if (it.w < 30) {
+        cntSempit++;
+      } else if (it.mean < 70 || it.dark_ratio >= 0.70 || it.is_defect) {
+        cntDefek++;
+      }
+    });
+
+    document.getElementById('kpiTotalNum').innerText = allItems.length.toLocaleString();
+    document.getElementById('kpiAsimetriNum').innerText = cntAsimetri.toLocaleString();
+    document.getElementById('kpiDefekNum').innerText = cntDefek.toLocaleString();
+    document.getElementById('kpiSempitNum').innerText = cntSempit.toLocaleString();
+    document.getElementById('kpiPipihNum').innerText = cntPipih.toLocaleString();
+
+    document.getElementById('btnCntAll').innerText = allItems.length.toLocaleString();
+    document.getElementById('btnCntAsimetri').innerText = cntAsimetri.toLocaleString();
+    document.getElementById('btnCntDefek').innerText = cntDefek.toLocaleString();
+    document.getElementById('btnCntSempit').innerText = cntSempit.toLocaleString();
+    document.getElementById('btnCntPipih').innerText = cntPipih.toLocaleString();
+
+    applyFilters();
+  } catch (e) {
+    console.error('Gagal memuat data anomali:', e);
+  }
+}
+
+function setCategoryFilter(cat) {
+  currentCategory = cat;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  const activeTab = document.getElementById('tab_' + cat);
+  if (activeTab) activeTab.classList.add('active');
+
+  document.querySelectorAll('.kpi-card').forEach(c => c.classList.remove('active'));
+  const activeKpi = document.getElementById('kpi' + cat.charAt(0).toUpperCase() + cat.slice(1));
+  if (activeKpi) activeKpi.classList.add('active');
+
+  currentPage = 1;
+  applyFilters();
+}
+
+function applyFilters() {
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  const booklet = document.getElementById('bookletSelect').value;
+  const sort = document.getElementById('sortSelect').value;
+
+  filteredItems = allItems.filter(it => {
+    const isAsym = it.is_official_asymmetry || 
+                   (it.kategori_desain && it.kategori_desain.includes('Asimetris')) ||
+                   it.field_id.includes('_hal_') || 
+                   it.field_id.toLowerCase().includes('triwulan') ||
+                   it.field_id.toLowerCase().includes('p7_f043');
+
+    // 1. Kategori
+    if (currentCategory === 'asimetri') {
+      if (!isAsym) return false;
+    } else if (currentCategory === 'defek') {
+      if (isAsym || it.h <= 3) return false;
+      if (it.mean >= 70 && it.dark_ratio < 0.70 && !it.is_defect) return false;
+    } else if (currentCategory === 'sempit') {
+      if (isAsym && !it.field_id.includes('p5_F')) return false;
+      if (it.w > 30 || it.h < 20 || it.ar > 0.45) return false;
+    } else if (currentCategory === 'pipih') {
+      if (it.h > 3) return false;
+    }
+
+    // 2. Booklet
+    if (booklet !== 'all' && it.id_booklet !== booklet) return false;
+
+    // 3. Search
+    if (search) {
+      const targetStr = `${it.nama_file_unik} ${it.id_booklet} ${it.halaman} ${it.field_id} ${it.box_id} ${it.kategori_desain || ''}`.toLowerCase();
+      if (!targetStr.includes(search)) return false;
+    }
+
+    return true;
+  });
+
+  // Sorting
+  if (sort === 'extreme_ar') {
+    filteredItems.sort((a, b) => Math.abs(b.ar - 1.0) - Math.abs(a.ar - 1.0));
+  } else if (sort === 'height_asc') {
+    filteredItems.sort((a, b) => a.h - b.h);
+  } else if (sort === 'width_asc') {
+    filteredItems.sort((a, b) => a.w - b.w);
+  } else if (sort === 'mean_asc') {
+    filteredItems.sort((a, b) => a.mean - b.mean);
+  }
+
+  renderPage();
+}
+
+function renderPage() {
+  const totalPages = Math.max(1, Math.ceil(filteredItems.length / PAGE_SIZE));
+  if (currentPage > totalPages) currentPage = totalPages;
+  if (currentPage < 1) currentPage = 1;
+
+  document.getElementById('pageInfo').innerText = `Halaman ${currentPage} / ${totalPages} (${filteredItems.length} citra)`;
+  document.getElementById('prevBtn').disabled = currentPage <= 1;
+  document.getElementById('nextBtn').disabled = currentPage >= totalPages;
+
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const pageItems = filteredItems.slice(start, start + PAGE_SIZE);
+
+  const grid = document.getElementById('galleryGrid');
+  grid.innerHTML = '';
+
+  pageItems.forEach(it => {
+    const card = document.createElement('div');
+    let borderCls = '';
+    let tagHtml = '';
+
+    const isAsym = it.is_official_asymmetry || 
+                   (it.kategori_desain && it.kategori_desain.includes('Asimetris')) ||
+                   it.field_id.includes('_hal_') || 
+                   it.field_id.toLowerCase().includes('triwulan') ||
+                   it.field_id.toLowerCase().includes('p7_f043');
+
+    if (isAsym) {
+      borderCls = 'c-asimetri';
+      tagHtml = '<span class="type-tag tag-asimetri">🟢 Desain Resmi Dipertahankan</span>';
+    } else if (it.h <= 3) {
+      borderCls = 'c-pipih';
+      tagHtml = '<span class="type-tag tag-pipih">Pipih 1-px</span>';
+    } else if (it.mean < 70 || it.dark_ratio >= 0.70) {
+      borderCls = 'c-gelap';
+      tagHtml = '<span class="type-tag tag-gelap">Noda Gelap / Gutter</span>';
+    } else if (it.w < 30) {
+      borderCls = 'c-sempit';
+      tagHtml = '<span class="type-tag tag-sempit">Sempit Vertikal</span>';
+    } else {
+      borderCls = 'c-asimetri';
+      tagHtml = '<span class="type-tag tag-asimetri">Asimetri BPS</span>';
+    }
+
+    card.className = `crop-card ${borderCls}`;
+    card.onclick = () => openModal(it);
+
+    const is1px = it.h <= 2;
+    const imgSrc = `/api/image?fn=${encodeURIComponent(it.nama_file_unik)}&lbl=${encodeURIComponent(it.label)}`;
+
+    card.innerHTML = `
+      <div class="card-top">
+        <span class="dim-pill">${it.w} &times; ${it.h} px</span>
+        ${tagHtml}
+      </div>
+      <div class="img-stage">
+        <img src="${imgSrc}" loading="lazy" alt="Crop">
+        ${is1px ? '<span class="warning-1px-badge">H:1px</span>' : ''}
+      </div>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-booklet">${it.id_booklet} (${it.halaman})</span>
+          <span class="meta-label">${it.label}</span>
+        </div>
+        <div class="meta-field" title="${it.field_id}">${it.field_id}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function changePage(delta) {
+  currentPage += delta;
+  renderPage();
+  window.scrollTo({ top: 160, behavior: 'smooth' });
+}
+
+function openModal(it) {
+  document.getElementById('modalTitle').innerText = `${it.nama_file_unik}`;
+  document.getElementById('modalImg').src = `/api/image?fn=${encodeURIComponent(it.nama_file_unik)}&lbl=${encodeURIComponent(it.label)}`;
+  document.getElementById('modalDim').innerText = `${it.w} × ${it.h} piksel`;
+  document.getElementById('modalAr').innerText = `${it.ar} (Standar comb-box: ~0.82 | Asimetris: ~2.2)`;
+  document.getElementById('modalPix').innerText = `Mean: ${it.mean} | Dark Ratio: ${(it.dark_ratio*100).toFixed(1)}%`;
+  document.getElementById('modalMeta').innerText = `${it.id_booklet} | ${it.halaman} | ${it.field_id} | ${it.box_id}`;
+  document.getElementById('modalLabel').innerText = `${it.label} (Confidence: ${it.confidence})`;
+
+  const causeBox = document.getElementById('modalCauseBox');
+  const isAsym = it.is_official_asymmetry || 
+                 (it.kategori_desain && it.kategori_desain.includes('Asimetris')) ||
+                 it.field_id.includes('_hal_') || 
+                 it.field_id.toLowerCase().includes('triwulan') ||
+                 it.field_id.toLowerCase().includes('p7_f043');
+
+  if (isAsym) {
+    causeBox.style.borderColor = 'var(--c-teal)';
+    causeBox.style.background = 'rgba(9, 161, 161, 0.12)';
+    causeBox.innerHTML = `<b>🟢 Asimetri Desain Resmi BPS (Dipertahankan Mutlak):</b><br>Bidang <b>${it.kategori_desain || it.field_id}</b> dicetak persegi panjang horizontal (${it.w} &times; ${it.h} px, Aspek Rasio: ${it.ar}) untuk menampung teks Romawi atau nomor halaman.<br><b>Status Kebijakan:</b> Sesuai arahan pengguna, kasus asimetri nomor halaman & triwulan ini <u>dipertahankan 100%</u> dan bukan merupakan cacat pemotongan.`;
+  } else if (it.h <= 3) {
+    causeBox.style.borderColor = 'var(--c-garnet)';
+    causeBox.style.background = 'rgba(249, 110, 129, 0.12)';
+    causeBox.innerHTML = `<b>🔴 Akar Penyebab Kritis:</b> Terkena <i>False Blue Paper Whitening</i> pada Halaman 6 yang menghapus tinta garis kisi tabel fisik, memicu kegagalan alignment frame menjadi setinggi 21 px dan ter-clamp menjadi tinggi 1 piksel.<br><b>Status:</b> Telah direparasi secara massal dari citra raw.`;
+  } else if (it.mean < 70 || it.dark_ratio >= 0.70) {
+    causeBox.style.borderColor = 'var(--c-mauve)';
+    causeBox.style.background = 'rgba(211, 150, 166, 0.12)';
+    causeBox.innerHTML = `<b>🟠 Cacat Optik Scanner:</b> Bayangan lipatan penjilidan tengah kuesioner (<i>saddle-stitch gutter shadow</i>) atau punch hole pemindai.<br><b>Status:</b> Noda optik fisik scanner bawaan ADF.`;
+  } else {
+    causeBox.style.borderColor = 'var(--c-seashell)';
+    causeBox.style.background = 'rgba(246, 201, 146, 0.12)';
+    causeBox.innerHTML = `<b>🟡 Sub-Kolom Format Rincian:</b> Kotak kode sempit satu digit pada tabel pengeluaran Halaman 5.<br><b>Status:</b> Sesuai template koordinat fisik sub-kolom.`;
+  }
+
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal(e) {
+  if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close')) return;
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const cur = html.getAttribute('data-theme');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  document.getElementById('themeIcon').innerHTML = next === 'dark' ? '&#9790;' : '&#9788;';
+  document.getElementById('themeLabel').innerText = next === 'dark' ? 'Dark' : 'Light';
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+loadData();
+</script>
+</body>
+</html>

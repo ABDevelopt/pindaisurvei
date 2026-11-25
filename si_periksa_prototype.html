@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Si-Periksa: Seruti Scanner v2.0</title>
+  <style>
+    /* =========================================================================
+       TAKA UI — CLEAN & BREATHING MINIMALIST DESIGN SYSTEM
+       Fokus: Ketenangan visual, penyederhanaan radikal, ruang kosong bernapas.
+       ========================================================================= */
+    :root {
+      --bg-primary: #0d0e12;
+      --bg-secondary: #13141a;
+      --bg-surface: #181922;
+      --bg-surface-hover: #1f202c;
+      --border: rgba(255, 255, 255, 0.07);
+      --border-focus: rgba(6, 182, 212, 0.4);
+
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+
+      --accent: #06b6d4;
+      --accent-muted: rgba(6, 182, 212, 0.12);
+      --accent-glow: 0 0 30px rgba(6, 182, 212, 0.15);
+
+      --green: #34d399;
+      --amber: #fbbf24;
+      --red: #f87171;
+
+      --radius: 12px;
+      --radius-sm: 8px;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body.light-mode {
+      --bg-primary: #f8f6f2;
+      --bg-secondary: #f0ebe1;
+      --bg-surface: #ffffff;
+      --bg-surface-hover: #faf8f5;
+      --border: rgba(0, 0, 0, 0.08);
+      --border-focus: rgba(6, 182, 212, 0.5);
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-dim: #94a3b8;
+      --accent-muted: rgba(6, 182, 212, 0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-mono { font-family: var(--font-mono); }
+
+    /* Header Bersih & Minimalis */
+    header {
+      height: 64px;
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+
+    .survey-badge {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-muted);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-quiet {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-quiet:hover {
+      background: var(--bg-surface);
+      color: var(--text-main);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Layout Kontainer */
+    #layout {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - 64px);
+    }
+
+    /* Sidebar Lega & Tenang */
+    aside {
+      width: 240px;
+      background-color: var(--bg-secondary);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px 16px;
+    }
+
+    .nav-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 0 12px 10px;
+    }
+
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-bottom: 4px;
+      transition: all 0.15s ease;
+      text-align: left;
+    }
+    .nav-btn:hover {
+      background: var(--bg-surface);
+      color: var(--text-main);
+    }
+    .nav-btn.active {
+      background: var(--accent-muted);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .nav-counter {
+      font-size: 11px;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+    }
+    .nav-btn.active .nav-counter {
+      color: var(--accent);
+    }
+
+    .sidebar-footer {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      padding: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Viewport Utama dengan Ruang Bernapas */
+    main {
+      flex: 1;
+      background-color: var(--bg-primary);
+      overflow-y: auto;
+      padding: 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* Judul View Bersih */
+    .view-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    .view-title h2 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+    }
+    .view-title p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* 3 Metrik Inti (Maksimal 3, Bebas Clutter) */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .metric-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+    }
+    .metric-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .metric-value {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 8px 0 4px;
+      font-family: var(--font-mono);
+      letter-spacing: -0.5px;
+    }
+    .metric-hint {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    /* Container Kartu Bersih */
+    .panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .panel-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* Tabel Minimalis & Ringkas */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th {
+      color: var(--text-dim);
+      font-weight: 500;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td {
+      background: var(--bg-surface-hover);
+      color: var(--text-main);
+    }
+
+    /* Tombol Utama Bersih */
+    .btn-main {
+      background: var(--accent);
+      color: #000;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 8px 18px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .btn-main:hover { opacity: 0.9; }
+
+    /* Dropzone Sederhana */
+    .dropzone {
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius);
+      padding: 48px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background-color 0.15s;
+    }
+    .dropzone:hover {
+      border-color: var(--accent);
+      background: var(--accent-muted);
+    }
+
+    /* Canvas Wrapper */
+    .canvas-wrap {
+      background: #000000;
+      border-radius: var(--radius);
+      height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    /* HITL Focus View: Sederhana & Tenang */
+    .hitl-container {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 32px;
+      height: calc(100vh - 190px);
+    }
+    .hitl-queue {
+      border-right: 1px solid var(--border);
+      padding-right: 20px;
+      overflow-y: auto;
+    }
+    .hitl-queue-item {
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.15s;
+    }
+    .hitl-queue-item:hover { background: var(--bg-surface); }
+    .hitl-queue-item.active {
+      background: var(--accent-muted);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hitl-focus-stage {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      max-width: 680px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .digit-box-display {
+      background: #000;
+      border: 1px solid var(--border-focus);
+      border-radius: var(--radius);
+      padding: 32px 48px;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      box-shadow: var(--accent-glow);
+    }
+
+    .context-row {
+      width: 100%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    .comb-digit {
+      display: inline-block;
+      width: 24px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.15);
+      margin: 0 2px;
+      background: #000;
+      font-family: var(--font-mono);
+    }
+    .comb-digit.focus {
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 700;
+      transform: scale(1.1);
+    }
+
+    .hotkey-bar {
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .key {
+      padding: 2px 6px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-brand">
+      <span class="brand-title">Si-Periksa</span>
+      <span class="survey-badge">Seruti Inti 2026</span>
+    </div>
+    <div class="header-actions">
+      <span style="font-size:12px; color:var(--text-dim);">● 76 Buklet Terdaftar</span>
+      <button class="btn-quiet" onclick="toggleTheme()" id="theme-btn">☀️ Mode Terang</button>
+    </div>
+  </header>
+
+  <!-- BODY LAYOUT -->
+  <div id="layout">
+    <aside>
+      <div>
+        <div class="nav-label">Navigasi Alur</div>
+        <button class="nav-btn active" onclick="goView(1)" id="nav-1">
+          <span>1. Input Pindaian</span>
+          <span class="nav-counter">76</span>
+        </button>
+        <button class="nav-btn" onclick="goView(2)" id="nav-2">
+          <span>2. Pra-pemrosesan</span>
+          <span class="nav-counter">0.0°</span>
+        </button>
+        <button class="nav-btn" onclick="goView(3)" id="nav-3">
+          <span>3. Penyelarasan Grid</span>
+          <span class="nav-counter">0 px</span>
+        </button>
+        <button class="nav-btn" onclick="goView(4)" id="nav-4">
+          <span>4. Potongan Citra</span>
+          <span class="nav-counter">7-Tier</span>
+        </button>
+        <button class="nav-btn" onclick="goView(5)" id="nav-5">
+          <span>5. Verifikasi HITL</span>
+          <span class="nav-counter" style="color:var(--amber);">18</span>
+        </button>
+        <button class="nav-btn" onclick="goView(6)" id="nav-6">
+          <span>6. Validasi & Ekspor</span>
+          <span class="nav-counter">21</span>
+        </button>
+      </div>
+
+      <div class="sidebar-footer">
+        Kab. Penajam Paser Utara<br>
+        Inference Lokal CPU AVX2<br>
+        <span style="color:var(--green);">Zero-PII Cloud Egress</span>
+      </div>
+    </aside>
+
+    <main id="content">
+      <!-- Dynamic Views injected here -->
+    </main>
+  </div>
+
+  <script>
+    const State = {
+      view: 1,
+      theme: 'dark',
+      hitlIdx: 0,
+      hitlItems: [
+        { id: '1', var: 'b4_r401_beras', label: 'Beras Lokal (Nominal Rp)', pred: '3', conf: '74%', sugg: '8' },
+        { id: '2', var: 'b0_kesediaan', label: 'Kesediaan Responden (OMR)', pred: '1', conf: '81%', sugg: '1' },
+        { id: '3', var: 'b4_r408_minyak', label: 'Minyak Goreng (Nominal Rp)', pred: '0', conf: '72%', sugg: '0' }
+      ],
+      ruleR05Pass: false
+    };
+
+    function goView(idx) {
+      State.view = idx;
+      for (let i = 1; i <= 6; i++) {
+        const btn = document.getElementById(`nav-${i}`);
+        if (btn) btn.classList.toggle('active', i === idx);
+      }
+      const c = document.getElementById('content');
+      if (idx === 1) render1(c);
+      else if (idx === 2) render2(c);
+      else if (idx === 3) render3(c);
+      else if (idx === 4) render4(c);
+      else if (idx === 5) render5(c);
+      else if (idx === 6) render6(c);
+    }
+
+    function toggleTheme() {
+      const isLight = document.body.classList.toggle('light-mode');
+      State.theme = isLight ? 'light' : 'dark';
+      document.getElementById('theme-btn').innerText = isLight ? '🌙 Mode Gelap' : '☀️ Mode Terang';
+    }
+
+    // VIEW 1: INPUT PINDAIAN
+    function render1(c) {
+      c.innerHTML = `
+        <div class="view-title">
+          <div>
+            <h2>Input Pindaian Dokumen</h2>
+            <p>Penerimaan berkas pindaian A3/A4 dan penautan master sampel DSRT.</p>
+          </div>
+          <button class="btn-main" onclick="goView(2)">Mulai Pra-pemrosesan</button>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-box">
+            <div class="metric-label">Total Buklet</div>
+            <div class="metric-value">76</div>
+            <div class="metric-hint">532 halaman kanonikal A4</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">Penautan Sampel DSRT</div>
+            <div class="metric-value" style="color:var(--green);">100%</div>
+            <div class="metric-hint">76 dari 76 nomor sampel tertaut</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">Status Kelayakan (Gate 0)</div>
+            <div class="metric-value" style="color:var(--green);">75 Lolos</div>
+            <div class="metric-hint">1 buklet sobek di karantina</div>
+          </div>
+        </div>
+
+        <div class="dropzone" onclick="alert('Pilih berkas pindaian...')">
+          <div style="font-size:24px; margin-bottom:8px;">📥</div>
+          <div style="font-weight:600; font-size:14px;">Tarik berkas pindaian ke area ini</div>
+          <div style="font-size:12px; color:var(--text-dim); margin-top:4px;">Format didukung: PDF, TIFF, ZIP, JPG (300 DPI)</div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title">Daftar Sampel Buklet Terdaftar</span>
+            <span style="font-size:12px; color:var(--text-dim);">Menampilkan 3 sampel aktif</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Buklet ID</th>
+                <th>Nama Kepala Rumah Tangga</th>
+                <th>NKS / NUS</th>
+                <th>Format Pindaian</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="font-mono" style="font-weight:600;">booklet_01</td>
+                <td>ABDUL BASIR</td>
+                <td class="font-mono">0042 / 01</td>
+                <td>4 Spread A3</td>
+                <td><button class="btn-quiet" onclick="goView(2)">Buka</button></td>
+              </tr>
+              <tr>
+                <td class="font-mono" style="font-weight:600;">booklet_02</td>
+                <td>DESTRIYANI</td>
+                <td class="font-mono">0042 / 02</td>
+                <td>4 Spread A3</td>
+                <td><button class="btn-quiet" onclick="goView(2)">Buka</button></td>
+              </tr>
+              <tr>
+                <td class="font-mono" style="font-weight:600;">booklet_09</td>
+                <td>NURUL HASANAH</td>
+                <td class="font-mono">0042 / 03</td>
+                <td>4 Spread A3</td>
+                <td><button class="btn-quiet" onclick="goView(5)">Review HITL</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    // VIEW 2: PRA-PEMROSESAN
+    function render2(c) {
+      c.innerHTML = `
+        <div class="view-title">
+          <div>
+            <h2>Pra-pemrosesan & Belah Lipatan A3</h2>
+            <p>Pemisahan spread A3 menjadi A4 kanonikal (invarian saddle-stitch L + R = 9).</p>
+          </div>
+          <button class="btn-main" onclick="goView(3)">Lanjut ke Penyelarasan Grid</button>
+        </div>
+
+        <div class="canvas-wrap">
+          <svg width="720" height="340" viewBox="0 0 720 340">
+            <!-- Hal 8 (Kiri) -->
+            <rect x="20" y="20" width="330" height="300" fill="#14151c" stroke="rgba(255,255,255,0.08)"/>
+            <text x="40" y="55" fill="#64748b" font-size="12" font-weight="600">HALAMAN 8 (CATATAN LAPANGAN)</text>
+            <line x1="40" y1="75" x2="310" y2="75" stroke="#262734"/>
+            <line x1="40" y1="105" x2="310" y2="105" stroke="#262734" stroke-dasharray="4,4"/>
+
+            <!-- Garis Potong Gutter Lipatan Tengah -->
+            <line x1="360" y1="10" x2="360" y2="330" stroke="#06b6d4" stroke-width="2" stroke-dasharray="6,4"/>
+            <text x="350" y="175" fill="#06b6d4" font-size="11" font-weight="600" transform="rotate(-90 360 170)">GUTTER FOLD SEAM</text>
+
+            <!-- Hal 1 (Kanan) -->
+            <rect x="370" y="20" width="330" height="300" fill="#181924" stroke="rgba(6,182,212,0.3)"/>
+            <text x="390" y="55" fill="#06b6d4" font-size="12" font-weight="600">HALAMAN 1 (COVER & BLOK I)</text>
+            <line x1="390" y1="75" x2="660" y2="75" stroke="rgba(6,182,212,0.3)"/>
+            <text x="390" y="105" fill="#94a3b8" font-size="11">SURVEI EKONOMI RUMAH TANGGA 2026</text>
+            <text x="390" y="125" fill="#64748b" font-size="11">101. Provinsi: [6][4] KALIMANTAN TIMUR</text>
+          </svg>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-box">
+            <div class="metric-label">Kemiringan (Deskew)</div>
+            <div class="metric-value font-mono">0.00°</div>
+            <div class="metric-hint">Terkoreksi otomatis sempurna</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">Invarian Saddle-Stitch</div>
+            <div class="metric-value font-mono" style="color:var(--green);">L + R = 9</div>
+            <div class="metric-hint">4 pasang halaman terverifikasi</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">Supresi Kertas Biru</div>
+            <div class="metric-value" style="color:var(--green);">Aktif</div>
+            <div class="metric-hint">Goresan pensil grafit terisolasi</div>
+          </div>
+        </div>
+      `;
+    }
+
+    // VIEW 3: OVERLAYING
+    function render3(c) {
+      c.innerHTML = `
+        <div class="view-title">
+          <div>
+            <h2>Penyelarasan Grid & Snapping Fisik</h2>
+            <p>Memastikan seluruh 2.073 comb-box terkunci presisi pada garis pindaian fisik (0 px drift).</p>
+          </div>
+          <button class="btn-main" onclick="goView(4)">Lanjut ke Potongan Citra</button>
+        </div>
+
+        <div class="canvas-wrap">
+          <svg width="720" height="340" viewBox="0 0 720 340">
+            <!-- Simulasi Tabel Roster Hal 2 -->
+            <rect x="30" y="30" width="660" height="35" fill="#181924" stroke="rgba(255,255,255,0.1)"/>
+            <text x="50" y="52" fill="#94a3b8" font-size="12" font-weight="600">BLOK III: KETERANGAN ANGGOTA RUMAH TANGGA</text>
+
+            <!-- Baris ART 1 -->
+            <rect x="30" y="75" width="660" height="40" fill="#13141a" stroke="rgba(255,255,255,0.06)"/>
+            <text x="50" y="100" fill="#06b6d4" font-family="monospace">01  ABDUL BASIR</text>
+            <rect x="380" y="82" width="26" height="26" fill="none" stroke="#06b6d4" stroke-width="2"/>
+            <text x="389" y="100" fill="#34d399" font-family="monospace">1</text>
+            <rect x="420" y="82" width="26" height="26" fill="none" stroke="#06b6d4" stroke-width="2"/>
+            <text x="429" y="100" fill="#34d399" font-family="monospace">1</text>
+            <rect x="460" y="82" width="24" height="26" fill="none" stroke="#06b6d4" stroke-width="2"/>
+            <text x="468" y="100" fill="#34d399" font-family="monospace">4</text>
+            <rect x="488" y="82" width="24" height="26" fill="none" stroke="#06b6d4" stroke-width="2"/>
+            <text x="496" y="100" fill="#34d399" font-family="monospace">8</text>
+
+            <!-- Baris ART 2 -->
+            <rect x="30" y="125" width="660" height="40" fill="#13141a" stroke="rgba(255,255,255,0.06)"/>
+            <text x="50" y="150" fill="#06b6d4" font-family="monospace">02  SITI AMINAH</text>
+            <rect x="380" y="132" width="26" height="26" fill="none" stroke="#06b6d4" stroke-width="2"/>
+            <text x="389" y="150" fill="#34d399" font-family="monospace">2</text>
+            <rect x="420" y="132" width="26" height="26" fill="none" stroke="#06b6d4" stroke-width="2"/>
+            <text x="429" y="150" fill="#34d399" font-family="monospace">2</text>
+            <rect x="460" y="132" width="24" height="26" fill="none" stroke="#06b6d4" stroke-width="2"/>
+            <text x="468" y="150" fill="#34d399" font-family="monospace">4</text>
+            <rect x="488" y="132" width="24" height="26" fill="none" stroke="#06b6d4" stroke-width="2"/>
+            <text x="496" y="150" fill="#34d399" font-family="monospace">4</text>
+          </svg>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-box">
+            <div class="metric-label">Residual Drift</div>
+            <div class="metric-value font-mono" style="color:var(--green);">0.00 px</div>
+            <div class="metric-hint">Snapping kontur 100% presisi</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">Gate 2 Digit Invariant</div>
+            <div class="metric-value font-mono">2.073 / 2.073</div>
+            <div class="metric-hint">Zero-Loss: tidak ada kotak terlewat</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">Sel NA / Arsir</div>
+            <div class="metric-value font-mono">132</div>
+            <div class="metric-hint">Dieliminasi otomatis dari OCR</div>
+          </div>
+        </div>
+      `;
+    }
+
+    // VIEW 4: CROPPING HIERARKI
+    function render4(c) {
+      c.innerHTML = `
+        <div class="view-title">
+          <div>
+            <h2>Hierarki Pemotongan Citra (7 Tingkat)</h2>
+            <p>Arsitektur On-Demand Cropping berbasis memori (menghemat penyimpanan 80%).</p>
+          </div>
+          <button class="btn-main" onclick="goView(5)">Mulai Verifikasi HITL</button>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title">Sampel Potongan Sel Biner 28x28 (Tier 7 Digits)</span>
+            <span style="font-size:12px; color:var(--text-dim);">booklet_09 Hal 2</span>
+          </div>
+          <div style="display:flex; gap:24px; justify-content:center; padding:24px 0;">
+            <div style="text-align:center;">
+              <svg width="80" height="80" viewBox="0 0 28 28" style="background:#000; border-radius:8px; border:1px solid rgba(255,255,255,0.1);">
+                <path d="M 7,6 H 20 L 14,13 C 18,13 21,15 21,20 C 21,24 16,25 8,24" fill="none" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+              <div class="font-mono" style="font-size:13px; font-weight:700; color:var(--amber); margin-top:8px;">'3' (74%)</div>
+              <div style="font-size:11px; color:var(--text-dim);">b4_r401_beras</div>
+            </div>
+
+            <div style="text-align:center;">
+              <svg width="80" height="80" viewBox="0 0 28 28" style="background:#000; border-radius:8px; border:1px solid rgba(255,255,255,0.1);">
+                <path d="M 11,8 L 14,5 L 14,23 M 9,23 H 19" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+              <div class="font-mono" style="font-size:13px; font-weight:700; color:var(--green); margin-top:8px;">'1' (98%)</div>
+              <div style="font-size:11px; color:var(--text-dim);">b3_art1_jk</div>
+            </div>
+
+            <div style="text-align:center;">
+              <svg width="80" height="80" viewBox="0 0 28 28" style="background:#000; border-radius:8px; border:1px solid rgba(255,255,255,0.1);">
+                <path d="M 18,6 L 7,16 H 21 V 23" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+              <div class="font-mono" style="font-size:13px; font-weight:700; color:var(--green); margin-top:8px;">'4' (96%)</div>
+              <div style="font-size:11px; color:var(--text-dim);">b3_art1_u1</div>
+            </div>
+
+            <div style="text-align:center;">
+              <svg width="80" height="80" viewBox="0 0 28 28" style="background:#000; border-radius:8px; border:1px solid rgba(255,255,255,0.1);">
+                <circle cx="14" cy="10" r="4.5" fill="none" stroke="#fff" stroke-width="2"/>
+                <circle cx="14" cy="18" r="5" fill="none" stroke="#fff" stroke-width="2"/>
+              </svg>
+              <div class="font-mono" style="font-size:13px; font-weight:700; color:var(--green); margin-top:8px;">'8' (94%)</div>
+              <div style="font-size:11px; color:var(--text-dim);">b3_art1_u2</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="context-row">
+          <span style="color:var(--text-muted);">Konteks Baris Utuh (Rows Tier):</span>
+          <span class="font-mono">401. Beras Lokal / Kualitas (Kg) | Rp | [ ][ ][1][3][5][0][0][0]</span>
+        </div>
+      `;
+    }
+
+    // VIEW 5: VERIFIKASI HITL
+    function render5(c) {
+      const cur = State.hitlItems[State.hitlIdx];
+      c.innerHTML = `
+        <div class="view-title">
+          <div>
+            <h2>Verifikasi Tertarget (Human-in-the-Loop)</h2>
+            <p>Hanya meninjau sel ambigu dengan input keyboard murni (Zero-Mouse).</p>
+          </div>
+          <button class="btn-main" onclick="goView(6)">Ke Output & Validasi</button>
+        </div>
+
+        <div class="hitl-container">
+          <!-- Antrean Ringkas -->
+          <div class="hitl-queue">
+            <div style="font-size:11px; color:var(--text-dim); text-transform:uppercase; margin-bottom:12px; font-weight:600;">
+              Antrean Ambigu (${State.hitlItems.length})
+            </div>
+            ${State.hitlItems.map((item, i) => `
+              <div class="hitl-queue-item ${i === State.hitlIdx ? 'active' : ''}" onclick="State.hitlIdx = ${i}; render5(document.getElementById('content'));">
+                <div>
+                  <div style="font-size:12px;">${item.var}</div>
+                  <div style="font-size:11px; color:var(--text-dim);">${item.label.substring(0, 18)}</div>
+                </div>
+                <div class="font-mono" style="font-weight:700;">${item.pred}</div>
+              </div>
+            `).join('')}
+          </div>
+
+          <!-- Panggung Fokus Tengah -->
+          <div class="hitl-focus-stage">
+            <div style="text-align:center;">
+              <div style="font-size:16px; font-weight:600;">${cur.label}</div>
+              <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">Variabel: ${cur.var}</div>
+            </div>
+
+            <!-- Kartu Kotak Digit Utama -->
+            <div class="digit-box-display">
+              <svg width="100" height="100" viewBox="0 0 28 28">
+                <rect width="28" height="28" fill="#000"/>
+                <path d="M 7,6 H 20 L 14,13 C 18,13 21,15 21,20 C 21,24 16,25 8,24" fill="none" stroke="#06b6d4" stroke-width="2.6" stroke-linecap="round"/>
+              </svg>
+              <div style="text-align:left;">
+                <div style="font-size:12px; color:var(--text-dim);">Prediksi Model Saat Ini</div>
+                <div class="font-mono" style="font-size:48px; font-weight:800; color:var(--accent); line-height:1;" id="active-digit">${cur.pred}</div>
+                <div style="font-size:12px; color:var(--text-dim); margin-top:4px;">Keyakinan: ${cur.conf}</div>
+              </div>
+            </div>
+
+            <!-- Konteks Baris Sederhana -->
+            <div class="context-row">
+              <span style="font-size:13px; color:var(--text-muted);">Konteks Baris Kuesioner:</span>
+              <div>
+                <span class="comb-digit"> </span>
+                <span class="comb-digit"> </span>
+                <span class="comb-digit">1</span>
+                <span class="comb-digit focus" id="strip-digit">${cur.pred}</span>
+                <span class="comb-digit">5</span>
+                <span class="comb-digit">0</span>
+                <span class="comb-digit">0</span>
+                <span class="comb-digit">0</span>
+              </div>
+            </div>
+
+            <!-- Rekomendasi Aritmetika Singkat -->
+            <div style="background:rgba(251, 191, 36, 0.08); border-radius:var(--radius-sm); padding:12px 20px; font-size:13px; text-align:center; color:var(--amber);">
+              💡 Selisih Subtotal Rp 5.000 cocok jika digit ini diganti menjadi <strong>'${cur.sugg}'</strong>.
+            </div>
+
+            <!-- Hotkey Bar -->
+            <div class="hotkey-bar">
+              <div><span class="key">0-9</span> Ubah Angka</div>
+              <div><span class="key">Space</span> Blank</div>
+              <div><span class="key">Enter</span> Lanjut</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // VIEW 6: OUTPUT & VALIDASI
+    function render6(c) {
+      c.innerHTML = `
+        <div class="view-title">
+          <div>
+            <h2>Output Akhir & Validasi Kuesioner</h2>
+            <p>Pemeriksaan 21 relasi semantik, auto-rekonsiliasi, dan gerbang ekspor resmi.</p>
+          </div>
+          <div style="display:flex; gap:12px;">
+            <button class="btn-quiet" onclick="alert('Mengunduh CSV Tabular BPS...')">Unduh CSV</button>
+            <button class="btn-quiet" onclick="alert('Mengunduh JSON Microdata...')">Unduh JSON</button>
+            <button class="btn-main" onclick="alert('Mengemas berkas FormGear data.json + comment.json (#0-#4)...')">Kirim ke FASIH</button>
+          </div>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-box">
+            <div class="metric-label">Aturan Semantik</div>
+            <div class="metric-value font-mono">21</div>
+            <div class="metric-hint">Kamus resmi VSERUTI26.INTI</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">Status Kelolosan</div>
+            <div class="metric-value font-mono" id="rule-status-val" style="color:${State.ruleR05Pass ? 'var(--green)' : 'var(--amber)'};">
+              ${State.ruleR05Pass ? '21 / 21 Lolos' : '20 / 21 (1 Selisih)'}
+            </div>
+            <div class="metric-hint">${State.ruleR05Pass ? 'Semua relasi valid 100%' : 'Butuh konfirmasi auto-reconcile'}</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">Integritas Digit</div>
+            <div class="metric-value font-mono" style="color:var(--green);">100%</div>
+            <div class="metric-hint">2.073 / 2.073 Zero-Loss Invariant</div>
+          </div>
+        </div>
+
+        ${!State.ruleR05Pass ? `
+          <div class="panel" style="border-left: 3px solid var(--amber); display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-weight:600; font-size:14px; color:var(--amber);">Selisih Rp 5.000 pada Subtotal Makanan (Blok IV.1)</div>
+              <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">
+                Dapat diselaraskan otomatis dengan mengubah <code>b4_r401_beras</code> digit ke-3 dari '3' menjadi '8'.
+              </div>
+            </div>
+            <button class="btn-main" onclick="reconcileR05()">Terapkan Auto-Rekonsiliasi</button>
+          </div>
+        ` : `
+          <div class="panel" style="border-left: 3px solid var(--green);">
+            <div style="color:var(--green); font-weight:600; font-size:14px;">✔ Dokumen Sempurna & Siap Disetujui (Approved)</div>
+            <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">Seluruh 21 relasi aritmetika telah cocok 100%.</div>
+          </div>
+        `}
+
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title">Ringkasan Evaluasi Relasi Aritmetika Utama</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>ID Aturan</th>
+                <th>Nama Relasi</th>
+                <th>Status</th>
+                <th>Selisih</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="font-mono">R01</td>
+                <td>KOP: Triwulan vs Tanggal Pencacahan</td>
+                <td style="color:var(--green);">Lolos</td>
+                <td class="font-mono">0</td>
+              </tr>
+              <tr>
+                <td class="font-mono">R02</td>
+                <td>Roster ART vs Keterangan Tempat Blok I</td>
+                <td style="color:var(--green);">Lolos</td>
+                <td class="font-mono">0</td>
+              </tr>
+              <tr>
+                <td class="font-mono">R05</td>
+                <td>Subtotal Bahan Makanan Hal 2 (Blok IV.1)</td>
+                <td style="color:${State.ruleR05Pass ? 'var(--green)' : 'var(--amber)'};">
+                  ${State.ruleR05Pass ? 'Lolos (Auto-Reconciled)' : 'Selisih'}
+                </td>
+                <td class="font-mono">${State.ruleR05Pass ? '0' : '+5.000'}</td>
+              </tr>
+              <tr>
+                <td class="font-mono">R08</td>
+                <td>Rekapitulasi Pengeluaran Total Blok VI</td>
+                <td style="color:var(--green);">Lolos</td>
+                <td class="font-mono">0</td>
+              </tr>
+              <tr>
+                <td class="font-mono">R10</td>
+                <td>Format NIK 16-Digit Kemendagri</td>
+                <td style="color:var(--green);">Lolos</td>
+                <td class="font-mono">0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function reconcileR05() {
+      State.ruleR05Pass = true;
+      State.hitlItems[0].pred = '8';
+      render6(document.getElementById('content'));
+    }
+
+    // Keyboard Listener
+    document.addEventListener('keydown', (e) => {
+      if (State.view !== 5) return;
+      if (e.key >= '0' && e.key <= '9') {
+        State.hitlItems[State.hitlIdx].pred = e.key;
+        if (e.key === '8') State.ruleR05Pass = true;
+        render5(document.getElementById('content'));
+      } else if (e.code === 'Space') {
+        State.hitlItems[State.hitlIdx].pred = ' ';
+        render5(document.getElementById('content'));
+      } else if (e.code === 'Enter') {
+        if (State.hitlIdx < State.hitlItems.length - 1) {
+          State.hitlIdx++;
+          render5(document.getElementById('content'));
+        } else {
+          goView(6);
+        }
+      }
+    });
+
+    // Start
+    window.onload = () => goView(1);
+  </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" fill="none">
+  <defs>
+    <linearGradient id="gradLeafA" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="50%" stop-color="#00AEEF"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="scanGlowA" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00AEEF" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <filter id="softShadowA" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0284C7" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Clean Minimalist Monogram Leaf 'P' -->
+  <g filter="url(#softShadowA)">
+    <!-- Main Sweeping Organic Ribbon forming Stem and Loop of 'P' -->
+    <path d="M 180 420 
+             C 176 330, 180 230, 184 170
+             C 188 110, 240 82, 305 88
+             C 365 94, 396 142, 388 200
+             C 380 256, 332 292, 260 292
+             C 216 292, 196 280, 184 270
+             L 184 316
+             C 200 326, 228 334, 264 334
+             C 360 334, 432 276, 442 196
+             C 452 112, 400 48, 300 42
+             C 204 36, 136 86, 132 176
+             C 128 244, 126 340, 128 420
+             C 128 436, 180 436, 180 420 Z" 
+          fill="url(#gradLeafA)"/>
+
+    <!-- Inner Organic Scanner Eye / Sprout Leaf Core (Negative Space Accent) -->
+    <path d="M 230 180 
+             C 230 148, 258 132, 292 136
+             C 324 140, 340 166, 336 196
+             C 332 224, 308 244, 274 244
+             C 246 244, 230 228, 230 180 Z" 
+          fill="#00AEEF" opacity="0.18"/>
+
+    <!-- Subtle Single Optical Scan Dot (Sensor Node) -->
+    <circle cx="340" cy="196" r="9" fill="#10B981"/>
+    <circle cx="340" cy="196" r="3.5" fill="#FFFFFF"/>
+  </g>
+</svg>

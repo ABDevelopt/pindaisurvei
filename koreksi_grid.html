@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BPS Seruti — Koreksi Massal Grid per Angka | Rapid HITL</title>
+<style>
+/* ==========================================================================
+   PALET WARNA: "Seashell garnet afternoon"
+   Swatches:
+     --c-seashell : #F6C992
+     --c-garnet   : #F96E81
+     --c-mist     : #ACC0D3
+     --c-mauve    : #D396A6
+     --c-teal     : #09A1A1
+     --c-steel    : #5484A4
+     --c-pine     : #30525C
+   ========================================================================== */
+
+:root {
+  --c-seashell: #F6C992;
+  --c-garnet: #F96E81;
+  --c-mist: #ACC0D3;
+  --c-mauve: #D396A6;
+  --c-teal: #09A1A1;
+  --c-steel: #5484A4;
+  --c-pine: #30525C;
+}
+
+[data-theme="dark"] {
+  --bg-app: #152227;
+  --bg-surface: #1e3037;
+  --bg-surface-elevated: #263c45;
+  --bg-input: #131c20;
+  --border-color: rgba(172, 192, 211, 0.22);
+  --border-highlight: var(--c-teal);
+  
+  --text-primary: #FFFFFF;
+  --text-secondary: var(--c-mist);
+  --text-accent: var(--c-seashell);
+  
+  --card-shadow: 0 10px 24px -4px rgba(10, 18, 21, 0.6);
+  --frame-bg: #2a3e47;
+  --selected-border: var(--c-garnet);
+  --selected-bg: rgba(249, 110, 129, 0.14);
+}
+
+[data-theme="light"] {
+  --bg-app: #f7f3ec;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f3ece0;
+  --bg-input: #fdfbf7;
+  --border-color: rgba(84, 132, 164, 0.25);
+  --border-highlight: var(--c-teal);
+  
+  --text-primary: #1f3137;
+  --text-secondary: #4a6673;
+  --text-accent: #098b8b;
+  
+  --card-shadow: 0 8px 20px -4px rgba(84, 132, 164, 0.16);
+  --frame-bg: #f9f5ee;
+  --selected-border: #e0455a;
+  --selected-bg: rgba(249, 110, 129, 0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg-app);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  background: var(--bg-surface);
+  border-bottom: 2px solid var(--border-color);
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-palette-dots { display: flex; gap: 4px; }
+.dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dot-1 { background: var(--c-seashell); }
+.dot-2 { background: var(--c-garnet); }
+.dot-3 { background: var(--c-mist); }
+.dot-4 { background: var(--c-mauve); }
+.dot-5 { background: var(--c-teal); }
+.dot-6 { background: var(--c-steel); }
+
+.brand-title {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+.brand-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: rgba(9, 161, 161, 0.2);
+  color: var(--c-teal);
+  border: 1px solid rgba(9, 161, 161, 0.4);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-nav-link {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+.btn-nav-link:hover {
+  border-color: var(--c-teal);
+  color: var(--c-teal);
+}
+.btn-nav-link.active {
+  background: var(--c-teal);
+  color: #fff;
+  border-color: var(--c-teal);
+}
+.theme-toggle-btn {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Number Selector Bar (Group Tabs per Angka) */
+.number-selector-bar {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 24px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  align-items: center;
+  scrollbar-width: thin;
+}
+.num-tab-btn {
+  background: var(--bg-surface-elevated);
+  border: 1.5px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.num-tab-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--c-teal);
+  transform: translateY(-1px);
+}
+.num-tab-btn.active {
+  background: var(--c-teal);
+  color: #FFFFFF;
+  border-color: var(--c-teal);
+  box-shadow: 0 4px 12px rgba(9, 161, 161, 0.4);
+}
+.tab-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.25);
+}
+.num-tab-btn.active .tab-badge {
+  background: rgba(255, 255, 255, 0.28);
+  color: #fff;
+}
+
+/* Controls Bar */
+.controls-bar {
+  padding: 12px 24px;
+  background: var(--bg-app);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+}
+.filter-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.select-input, .search-input {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.search-input { min-width: 180px; }
+
+/* Tip Banner */
+.tip-banner {
+  margin: 10px 24px 0;
+  padding: 10px 16px;
+  background: rgba(9, 161, 161, 0.12);
+  border: 1px solid rgba(9, 161, 161, 0.35);
+  border-radius: 10px;
+  font-size: 12px;
+  color: var(--text-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.tip-banner b { color: var(--c-seashell); }
+.shortcut-pill {
+  display: inline-block;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-family: monospace;
+  font-weight: 800;
+  font-size: 11px;
+  color: var(--c-seashell);
+}
+
+/* Grid Matrix */
+main {
+  flex: 1;
+  padding: 14px 24px 100px; /* bottom padding for floating dock */
+}
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+/* Card */
+.grid-card {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-color);
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.12s, border-color 0.12s, box-shadow 0.12s;
+  cursor: pointer;
+  user-select: none;
+}
+.grid-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--c-teal);
+  box-shadow: 0 8px 20px rgba(9, 161, 161, 0.25);
+}
+.grid-card.selected {
+  border-color: var(--selected-border) !important;
+  background: var(--selected-bg) !important;
+  box-shadow: 0 0 0 2px var(--c-garnet);
+}
+.grid-card.just-updated {
+  animation: flashGreen 0.7s ease-out;
+}
+@keyframes flashGreen {
+  0% { background: rgba(9, 161, 161, 0.6); }
+  100% { background: var(--bg-surface); }
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.check-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: transparent;
+  transition: all 0.15s;
+}
+.grid-card.selected .check-indicator {
+  background: var(--c-garnet);
+  border-color: var(--c-garnet);
+  color: #fff;
+}
+.conf-pill {
+  font-size: 10px;
+  font-weight: 800;
+  font-family: monospace;
+  padding: 1px 5px;
+  border-radius: 5px;
+}
+.conf-low { background: rgba(249, 110, 129, 0.2); color: var(--c-garnet); border: 1px solid rgba(249, 110, 129, 0.4); }
+.conf-med { background: rgba(246, 201, 146, 0.2); color: var(--c-seashell); border: 1px solid rgba(246, 201, 146, 0.4); }
+.conf-high { background: rgba(9, 161, 161, 0.2); color: var(--c-teal); border: 1px solid rgba(9, 161, 161, 0.4); }
+
+.crop-wrap {
+  width: 100%;
+  height: 90px;
+  background: #ffffff;
+  background-image: 
+    linear-gradient(45deg, #eee 25%, transparent 25%), 
+    linear-gradient(-45deg, #eee 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #eee 75%), 
+    linear-gradient(-45deg, transparent 75%, #eee 75%);
+  background-size: 12px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.crop-wrap img {
+  max-width: 90%;
+  max-height: 90%;
+  image-rendering: pixelated;
+  transform: scale(1.3);
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.lbl-tag {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--c-seashell);
+}
+.meta-dim {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Floating Bottom Action Dock */
+.action-dock {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-surface);
+  border-top: 2px solid var(--border-color);
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+.dock-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.selected-counter {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--c-seashell);
+}
+.dock-btn-secondary {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.dock-btn-secondary:hover {
+  color: var(--text-primary);
+  border-color: var(--c-mist);
+}
+
+.dock-palette {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.palette-btn {
+  background: var(--bg-surface-elevated);
+  border: 1.5px solid var(--border-color);
+  color: var(--text-primary);
+  min-width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.12s;
+  padding: 0 8px;
+}
+.palette-btn:hover {
+  background: var(--c-teal);
+  color: #fff;
+  border-color: var(--c-teal);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(9, 161, 161, 0.4);
+}
+.palette-btn.btn-action-garnet {
+  border-color: var(--c-garnet);
+  color: var(--c-garnet);
+}
+.palette-btn.btn-action-garnet:hover {
+  background: var(--c-garnet);
+  color: #fff;
+}
+
+/* Toast */
+.toast-msg {
+  position: fixed;
+  top: 70px;
+  right: 24px;
+  background: var(--bg-surface-elevated);
+  border: 1.5px solid var(--c-teal);
+  color: #FFFFFF;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  gap: 8px;
+  z-index: 2000;
+  animation: slideIn 0.2s ease-out;
+}
+@keyframes slideIn {
+  from { transform: translateX(50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Pagination Bar */
+.pagination-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-color);
+}
+.page-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+@media (max-width: 768px) {
+  header { padding: 10px 14px; }
+  .number-selector-bar { padding: 8px 14px; }
+  .controls-bar { padding: 10px 14px; }
+  main { padding: 10px 14px 120px; }
+  .matrix-grid { grid-template-columns: repeat(auto-fill, minmax(105px, 1fr)); gap: 8px; }
+  .action-dock { flex-direction: column; gap: 10px; padding: 10px 14px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand-section">
+    <div class="brand-palette-dots">
+      <div class="dot dot-1" title="#F6C992"></div>
+      <div class="dot dot-2" title="#F96E81"></div>
+      <div class="dot dot-3" title="#ACC0D3"></div>
+      <div class="dot dot-4" title="#D396A6"></div>
+      <div class="dot dot-5" title="#09A1A1"></div>
+      <div class="dot dot-6" title="#5484A4"></div>
+    </div>
+    <div class="brand-title">BPS SERUTI &mdash; KOREKSI MASSAL GRID (RAPID HITL)</div>
+    <div class="brand-tag">Seashell Garnet</div>
+  </div>
+
+  <div class="nav-actions">
+    <a href="/" class="btn-nav-link">&#128065; Mode Satuan (Fokus)</a>
+    <a href="/grid" class="btn-nav-link active">&#9889; Mode Grid per Angka</a>
+    <a href="/anomali" class="btn-nav-link">&#128269; Inspektur Anomali</a>
+    <button class="theme-toggle-btn" onclick="toggleTheme()">
+      <span id="themeIcon">&#9790;</span> <span id="themeLabel">Dark</span>
+    </button>
+  </div>
+</header>
+
+<!-- Number Selector Tabs (Grouped by Digit/Symbol) -->
+<div class="number-selector-bar" id="numSelectorBar">
+  <button class="num-tab-btn active" data-label="1" onclick="selectLabelTab('1')">
+    <span>Angka 1</span> <span class="tab-badge" id="badge_1">3.101</span>
+  </button>
+  <button class="num-tab-btn" data-label="0" onclick="selectLabelTab('0')">
+    <span>Angka 0</span> <span class="tab-badge" id="badge_0">19.387</span>
+  </button>
+  <button class="num-tab-btn" data-label="2" onclick="selectLabelTab('2')">
+    <span>Angka 2</span> <span class="tab-badge" id="badge_2">2.954</span>
+  </button>
+  <button class="num-tab-btn" data-label="3" onclick="selectLabelTab('3')">
+    <span>Angka 3</span> <span class="tab-badge" id="badge_3">1.436</span>
+  </button>
+  <button class="num-tab-btn" data-label="4" onclick="selectLabelTab('4')">
+    <span>Angka 4</span> <span class="tab-badge" id="badge_4">1.154</span>
+  </button>
+  <button class="num-tab-btn" data-label="5" onclick="selectLabelTab('5')">
+    <span>Angka 5</span> <span class="tab-badge" id="badge_5">2.399</span>
+  </button>
+  <button class="num-tab-btn" data-label="6" onclick="selectLabelTab('6')">
+    <span>Angka 6</span> <span class="tab-badge" id="badge_6">1.523</span>
+  </button>
+  <button class="num-tab-btn" data-label="7" onclick="selectLabelTab('7')">
+    <span>Angka 7</span> <span class="tab-badge" id="badge_7">720</span>
+  </button>
+  <button class="num-tab-btn" data-label="8" onclick="selectLabelTab('8')">
+    <span>Angka 8</span> <span class="tab-badge" id="badge_8">562</span>
+  </button>
+  <button class="num-tab-btn" data-label="9" onclick="selectLabelTab('9')">
+    <span>Angka 9</span> <span class="tab-badge" id="badge_9">618</span>
+  </button>
+  <button class="num-tab-btn" data-label="centang" onclick="selectLabelTab('centang')">
+    <span>Centang (&#10003;)</span> <span class="tab-badge" id="badge_centang">43</span>
+  </button>
+  <button class="num-tab-btn" data-label="romawi" onclick="selectLabelTab('romawi')">
+    <span>Romawi (I, II, III)</span> <span class="tab-badge" id="badge_romawi">46</span>
+  </button>
+  <button class="num-tab-btn" data-label="kosong" onclick="selectLabelTab('kosong')">
+    <span>Kosong</span> <span class="tab-badge" id="badge_kosong">126.341</span>
+  </button>
+  <button class="num-tab-btn" data-label="all_digits" onclick="selectLabelTab('all_digits')">
+    <span>Semua Digit (0-9)</span> <span class="tab-badge" id="badge_all_digits">32.854</span>
+  </button>
+</div>
+
+<!-- Controls Bar -->
+<div class="controls-bar">
+  <div class="filter-group">
+    <select id="confSelect" class="select-input" onchange="fetchGridData(1)">
+      <option value="all">Semua Konfidensi</option>
+      <option value="low">⚠️ Prioritas Curiga (Conf &le; 0.85)</option>
+      <option value="med">Konfidensi &le; 0.90</option>
+      <option value="high">Konfidensi Tinggi (&gt; 0.85)</option>
+    </select>
+
+    <select id="bookletSelect" class="select-input" onchange="fetchGridData(1)">
+      <option value="all">Semua Booklet (76)</option>
+    </select>
+
+    <select id="sortSelect" class="select-input" onchange="fetchGridData(1)">
+      <option value="conf_asc">Urut: Konfidensi Terendah Duluan (Paling Curiga)</option>
+      <option value="conf_desc">Urut: Konfidensi Tertinggi</option>
+      <option value="booklet">Urut: Booklet &amp; Posisi Field</option>
+    </select>
+
+    <select id="limitSelect" class="select-input" onchange="fetchGridData(1)">
+      <option value="50">50 Citra per Halaman</option>
+      <option value="100" selected>100 Citra per Halaman</option>
+      <option value="200">200 Citra per Halaman</option>
+      <option value="500">500 Citra per Halaman</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <input type="text" id="searchInput" class="search-input" placeholder="Cari booklet, field, box..." oninput="debounceSearch()">
+  </div>
+</div>
+
+<!-- Tip Banner -->
+<div class="tip-banner">
+  <div>
+    ⚡ <b>Koreksi Secepat Kilat:</b> Arahkan mouse ke gambar lalu tekan angka <span class="shortcut-pill">0</span> s.d. <span class="shortcut-pill">9</span> untuk ubah instan! Atau klik beberapa gambar lalu tekan angka untuk ubah massal.
+    (<span class="shortcut-pill">k</span>: kosong, <span class="shortcut-pill">c</span>: centang, <span class="shortcut-pill">r</span>: romawi, <span class="shortcut-pill">Ctrl+A</span>: pilih semua, <span class="shortcut-pill">Ctrl+Z</span>: batalkan).
+  </div>
+</div>
+
+<main>
+  <div class="matrix-grid" id="matrixGrid"></div>
+
+  <div class="pagination-wrap">
+    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">&#8592; Sebelumnya</button>
+    <span id="pageInfo" style="font-size:12px; font-weight:700; color:var(--text-secondary);">Halaman 1 / 1</span>
+    <button class="page-btn" id="nextBtn" onclick="changePage(1)">Selanjutnya &#8594;</button>
+  </div>
+</main>
+
+<!-- Floating Bottom Action Dock -->
+<div class="action-dock">
+  <div class="dock-left">
+    <span class="selected-counter" id="selectedCounter">0 citra terpilih</span>
+    <button class="dock-btn-secondary" onclick="selectAllCurrentPage()">Pilih Semua (Ctrl+A)</button>
+    <button class="dock-btn-secondary" onclick="clearSelection()">Batal Pilih (Esc)</button>
+    <button class="dock-btn-secondary" onclick="triggerUndo()">↶ Undo (Ctrl+Z)</button>
+  </div>
+
+  <div class="dock-palette">
+    <span style="font-size:12px; font-weight:700; color:var(--text-secondary); margin-right:4px;">Pindah Terpilih ke:</span>
+    <button class="palette-btn" onclick="applyBulkLabel('0')">0</button>
+    <button class="palette-btn" onclick="applyBulkLabel('1')">1</button>
+    <button class="palette-btn" onclick="applyBulkLabel('2')">2</button>
+    <button class="palette-btn" onclick="applyBulkLabel('3')">3</button>
+    <button class="palette-btn" onclick="applyBulkLabel('4')">4</button>
+    <button class="palette-btn" onclick="applyBulkLabel('5')">5</button>
+    <button class="palette-btn" onclick="applyBulkLabel('6')">6</button>
+    <button class="palette-btn" onclick="applyBulkLabel('7')">7</button>
+    <button class="palette-btn" onclick="applyBulkLabel('8')">8</button>
+    <button class="palette-btn" onclick="applyBulkLabel('9')">9</button>
+    <button class="palette-btn btn-action-garnet" onclick="applyBulkLabel('kosong')">kosong</button>
+    <button class="palette-btn" onclick="applyBulkLabel('centang')">&#10003;</button>
+    <button class="palette-btn" onclick="applyBulkLabel('II')">II</button>
+  </div>
+</div>
+
+<div class="toast-msg" id="toastMsg"></div>
+
+<script>
+let currentLabel = '1';
+let currentPage = 1;
+let totalPages = 1;
+let currentItems = [];
+let selectedFiles = new Set();
+let hoveredFile = null;
+let searchTimeout = null;
+
+async function init() {
+  populateBooklets();
+  await fetchGridData(1);
+  setupKeyboardShortcuts();
+}
+
+function populateBooklets() {
+  const sel = document.getElementById('bookletSelect');
+  for (let i = 1; i <= 76; i++) {
+    const id = 'booklet_' + String(i).padStart(2, '0');
+    const opt = document.createElement('option');
+    opt.value = id;
+    opt.innerText = id;
+    sel.appendChild(opt);
+  }
+}
+
+function selectLabelTab(lbl) {
+  currentLabel = lbl;
+  document.querySelectorAll('.num-tab-btn').forEach(b => b.classList.remove('active'));
+  const activeTab = document.querySelector(`.num-tab-btn[data-label="${lbl}"]`);
+  if (activeTab) activeTab.classList.add('active');
+  
+  clearSelection();
+  fetchGridData(1);
+}
+
+async function fetchGridData(page = 1) {
+  currentPage = page;
+  const limit = document.getElementById('limitSelect').value;
+  const conf = document.getElementById('confSelect').value;
+  const booklet = document.getElementById('bookletSelect').value;
+  const sort = document.getElementById('sortSelect').value;
+  const search = document.getElementById('searchInput').value.trim();
+
+  const url = `/api/grid_items?label=${encodeURIComponent(currentLabel)}&page=${page}&limit=${limit}&conf_filter=${conf}&booklet=${booklet}&sort=${sort}&search=${encodeURIComponent(search)}`;
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    currentItems = data.items || [];
+    totalPages = data.total_pages || 1;
+
+    updateTabBadges(data.counts_by_label);
+    renderGrid();
+    updatePagination(data.total_items);
+  } catch (e) {
+    console.error('Error fetching grid data:', e);
+    showToast('[-] Gagal memuat data grid', true);
+  }
+}
+
+function updateTabBadges(counts) {
+  if (!counts) return;
+  for (let i = 0; i <= 9; i++) {
+    const el = document.getElementById(`badge_${i}`);
+    if (el) el.innerText = (counts[String(i)] || 0).toLocaleString();
+  }
+  if (document.getElementById('badge_kosong')) {
+    document.getElementById('badge_kosong').innerText = (counts['kosong'] || 0).toLocaleString();
+  }
+  if (document.getElementById('badge_centang')) {
+    document.getElementById('badge_centang').innerText = (counts['centang'] || 0).toLocaleString();
+  }
+  if (document.getElementById('badge_romawi')) {
+    const romTotal = (counts['I'] || 0) + (counts['II'] || 0) + (counts['III'] || 0) + (counts['IV'] || 0);
+    document.getElementById('badge_romawi').innerText = romTotal.toLocaleString();
+  }
+}
+
+function renderGrid() {
+  const grid = document.getElementById('matrixGrid');
+  grid.innerHTML = '';
+
+  if (currentItems.length === 0) {
+    grid.innerHTML = `<div style="grid-column: 1/-1; padding: 40px; text-align: center; color: var(--text-secondary);">
+      <h3>Tidak ada citra yang cocok dengan filter.</h3>
+      <p style="margin-top: 8px;">Coba ubah filter konfidensi atau pilih booklet lain.</p>
+    </div>`;
+    return;
+  }
+
+  currentItems.forEach(it => {
+    const fn = it.nama_file_unik;
+    const isSelected = selectedFiles.has(fn);
+    const conf = it.confidence;
+    let confCls = 'conf-high';
+    if (conf <= 0.85) confCls = 'conf-low';
+    else if (conf <= 0.90) confCls = 'conf-med';
+
+    const card = document.createElement('div');
+    card.className = `grid-card ${isSelected ? 'selected' : ''}`;
+    card.id = `card_${fn.replace(/[^a-zA-Z0-9]/g, '_')}`;
+    
+    // Interactions
+    card.onclick = (e) => {
+      toggleSelectCard(fn);
+    };
+    card.onmouseenter = () => { hoveredFile = fn; };
+    card.onmouseleave = () => { if (hoveredFile === fn) hoveredFile = null; };
+
+    const imgSrc = `/api/image?fn=${encodeURIComponent(fn)}&lbl=${encodeURIComponent(it.current_label)}`;
+
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="check-indicator">&#10003;</div>
+        <span class="conf-pill ${confCls}">${conf.toFixed(2)}</span>
+      </div>
+      <div class="crop-wrap">
+        <img src="${imgSrc}" loading="lazy" alt="Crop">
+      </div>
+      <div class="card-footer">
+        <span class="lbl-tag">${it.current_label}</span>
+        <span class="meta-dim" title="${it.field_id}">${it.id_booklet} · ${it.halaman}</span>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+
+  updateSelectedCounter();
+}
+
+function toggleSelectCard(fn) {
+  if (selectedFiles.has(fn)) {
+    selectedFiles.delete(fn);
+  } else {
+    selectedFiles.add(fn);
+  }
+  updateCardVisual(fn);
+  updateSelectedCounter();
+}
+
+function updateCardVisual(fn) {
+  const cardId = `card_${fn.replace(/[^a-zA-Z0-9]/g, '_')}`;
+  const card = document.getElementById(cardId);
+  if (card) {
+    if (selectedFiles.has(fn)) card.classList.add('selected');
+    else card.classList.remove('selected');
+  }
+}
+
+function updateSelectedCounter() {
+  const cnt = selectedFiles.size;
+  document.getElementById('selectedCounter').innerText = `${cnt} citra terpilih`;
+}
+
+function selectAllCurrentPage() {
+  currentItems.forEach(it => selectedFiles.add(it.nama_file_unik));
+  currentItems.forEach(it => updateCardVisual(it.nama_file_unik));
+  updateSelectedCounter();
+}
+
+function clearSelection() {
+  selectedFiles.clear();
+  currentItems.forEach(it => updateCardVisual(it.nama_file_unik));
+  updateSelectedCounter();
+}
+
+// Bulk & Lightning Relabeling
+async function applyBulkLabel(targetLabel) {
+  let targetFiles = [];
+  if (selectedFiles.size > 0) {
+    targetFiles = Array.from(selectedFiles);
+  } else if (hoveredFile) {
+    targetFiles = [hoveredFile];
+  } else {
+    showToast('Pilih minimal satu citra atau arahkan mouse ke citra untuk mengubah label!');
+    return;
+  }
+
+  const updates = targetFiles.map(fn => ({
+    nama_file_unik: fn,
+    new_label: targetLabel
+  }));
+
+  try {
+    const res = await fetch('/api/bulk_correct', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: jsonStringify({ items: updates })
+    });
+    const result = await res.json();
+
+    if (result.success) {
+      showToast(`✅ Berhasil memindahkan ${result.updated} citra ke '${targetLabel}' (Tersimpan otomatis)`);
+      
+      // Animate and refresh
+      targetFiles.forEach(fn => {
+        const cardId = `card_${fn.replace(/[^a-zA-Z0-9]/g, '_')}`;
+        const card = document.getElementById(cardId);
+        if (card) {
+          card.classList.add('just-updated');
+          const lbl = card.querySelector('.lbl-tag');
+          if (lbl) lbl.innerText = targetLabel;
+        }
+      });
+
+      selectedFiles.clear();
+      updateSelectedCounter();
+
+      // Refresh data after small delay if we're viewing a single label tab
+      if (currentLabel !== 'all' && currentLabel !== targetLabel) {
+        setTimeout(() => fetchGridData(currentPage), 400);
+      }
+    } else {
+      showToast('[-] Gagal menyimpan koreksi: ' + (result.error || 'Unknown error'), true);
+    }
+  } catch (e) {
+    console.error('Error in bulk correct:', e);
+    showToast('[-] Gagal mengirim pembaruan ke server', true);
+  }
+}
+
+async function triggerUndo() {
+  try {
+    const res = await fetch('/api/undo', { method: 'POST' });
+    const result = await res.json();
+    if (result.success) {
+      showToast(`↶ ${result.message || 'Berhasil membatalkan koreksi terakhir'}`);
+      fetchGridData(currentPage);
+    } else {
+      showToast('[-] ' + (result.error || result.message || 'Gagal undo'), true);
+    }
+  } catch (e) {
+    console.error('Error undo:', e);
+  }
+}
+
+function setupKeyboardShortcuts() {
+  document.addEventListener('keydown', e => {
+    // Abaikan jika user sedang mengetik di search bar
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') {
+      if (e.key === 'Escape') e.target.blur();
+      return;
+    }
+
+    if (e.ctrlKey && e.key.toLowerCase() === 'z') {
+      e.preventDefault();
+      triggerUndo();
+      return;
+    }
+    if (e.ctrlKey && e.key.toLowerCase() === 'a') {
+      e.preventDefault();
+      selectAllCurrentPage();
+      return;
+    }
+    if (e.key === 'Escape') {
+      clearSelection();
+      return;
+    }
+
+    // Number keys 0-9
+    if (e.key >= '0' && e.key <= '9') {
+      e.preventDefault();
+      applyBulkLabel(e.key);
+      return;
+    }
+
+    // k for kosong
+    if (e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      applyBulkLabel('kosong');
+      return;
+    }
+    // c for centang
+    if (e.key.toLowerCase() === 'c') {
+      e.preventDefault();
+      applyBulkLabel('centang');
+      return;
+    }
+    // r for romawi (default II)
+    if (e.key.toLowerCase() === 'r') {
+      e.preventDefault();
+      applyBulkLabel('II');
+      return;
+    }
+
+    // Arrow keys for pagination
+    if (e.key === 'ArrowLeft' && currentPage > 1) {
+      changePage(-1);
+    } else if (e.key === 'ArrowRight' && currentPage < totalPages) {
+      changePage(1);
+    }
+  });
+}
+
+function changePage(delta) {
+  const target = currentPage + delta;
+  if (target >= 1 && target <= totalPages) {
+    fetchGridData(target);
+    window.scrollTo({ top: 120, behavior: 'smooth' });
+  }
+}
+
+function updatePagination(totalItems) {
+  document.getElementById('pageInfo').innerText = `Halaman ${currentPage} / ${totalPages} (${totalItems.toLocaleString()} citra)`;
+  document.getElementById('prevBtn').disabled = currentPage <= 1;
+  document.getElementById('nextBtn').disabled = currentPage >= totalPages;
+}
+
+function debounceSearch() {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => fetchGridData(1), 300);
+}
+
+function showToast(msg, isError = false) {
+  const toast = document.getElementById('toastMsg');
+  toast.innerText = msg;
+  toast.style.display = 'flex';
+  toast.style.borderColor = isError ? 'var(--c-garnet)' : 'var(--c-teal)';
+  setTimeout(() => { toast.style.display = 'none'; }, 3200);
+}
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const cur = html.getAttribute('data-theme');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  document.getElementById('themeIcon').innerHTML = next === 'dark' ? '&#9790;' : '&#9788;';
+  document.getElementById('themeLabel').innerText = next === 'dark' ? 'Dark' : 'Light';
+}
+
+function jsonStringify(obj) { return JSON.stringify(obj); }
+
+init();
+</script>
+</body>
+</html>

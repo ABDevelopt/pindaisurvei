@@ -1,0 +1,112 @@
+# ==============================================================================
+# PINDAISURVEI / SI-PERIKSA — .gitignore
+# Aturan Mutlak Perlindungan Data Pribadi (UU 16/1997 & UU 27/2022 PDP)
+# Zero-Cloud-Egress: Dilarang keras mengunggah data sensus/survei riil ke remote.
+# ==============================================================================
+
+# 1. Kredensial, Rahasia & Environment
+.env
+.env.*
+*.env
+!.env.example
+*.key
+*.pem
+*.token
+credentials.json
+token.json
+session.json
+sessions/
+output/sessions/
+
+# 2. Basis Data Lokal & Cache Inferensi
+*.db
+*.sqlite
+*.sqlite3
+db/*.db
+db/*.sqlite
+db/*.sqlite3
+db/*.json
+!db/schema.sql
+
+# 3. Data Survei, Scan Kuesioner, & Dokumen Fisik Responden
+dokumen_petugas/
+inti/
+MAK/
+KP/
+seruti_inti/
+scans/
+output/
+dataset/
+data/
+grids_to_read/
+hasil_labeling/
+hasil_labeling*/
+archive/
+scratch/
+state/
+
+# 4. Berkas Gambar & Dokumen Hasil Ekstraksi Lapangan di Root
+test_crop_krt.png
+*.jpg
+*.jpeg
+*.png
+*.tif
+*.tiff
+*.pdf
+# Pengecualian: Aset UI, Logo & Template Preview resmi yang aman
+!static/img/*.png
+!static/img/*.jpg
+!static/img/*.svg
+!templates/*.png
+!templates/*.json
+
+# 5. Berkas Tabular Data Mikro & Spreadsheet
+*.xlsx
+*.xls
+*.csv
+*.parquet
+*.csv.gz
+*.jsonl
+
+# 6. Arsip & Kompresi Cadangan Besar
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# 7. Model Weights & Binaries
+models/
+*.joblib
+*.onnx
+*.pt
+*.pth
+*.bin
+*.h5
+*.weights
+
+# 8. Python, Lingkungan Virtual & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+.pytest_cache/
+.system_generated/
+*.log
+
+# 9. Backup, Editor & Sistem Operasi
+*.bak
+*.bak_*
+*~
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+.vscode/
+.idea/
+.agents/
