@@ -14,7 +14,18 @@
     /* =========================================================================
        SI-PERIKSA VIEWER SHELL (DARK SLATE DESK) + AUTHENTIC WHITE A4 BOOKLET
        ========================================================================= */
-    :root {
+        :root {
+      /* Systematic Semantic Border Radius Tokens (Best Practices) */
+      --radius-xs: 3px;         /* Physical sheets, print comb-boxes, tiny marks */
+      --radius-sm: 6px;         /* Micro-badges, code chips, small comb inputs */
+      --radius-md: 8px;         /* Standard buttons, selects, dropdown items */
+      --radius-inner: 10px;      /* Inner containers, pre code blocks */
+      --radius-lg: 12px;        /* Popover dropdowns, section bars, toast alerts */
+      --radius-xl: 16px;        /* Modal dialogs, large cards, viewports */
+      --radius-card: 16px;      /* Standard card radius (synced with radius-xl) */
+      --radius-pill: 9999px;    /* Segmented pill switchers, stepper capsules, pill buttons */
+      --radius-circle: 50%;     /* Strict 1:1 circular icon-buttons, status dots */
+
       --desk-bg: radial-gradient(circle at 15% 0%, #24364a 0%, #111924 70%);
       --toolbar-bg: rgba(18, 27, 39, 0.92);
       --toolbar-border: rgba(255, 255, 255, 0.09);
@@ -101,7 +112,7 @@
       background: var(--accent-soft);
       border: 1px solid rgba(138, 180, 248, 0.25);
       padding: 3px 8px;
-      border-radius: 6px;
+      border-radius: var(--radius-sm);
     }
 
     .tb-brand-title {
@@ -135,7 +146,7 @@
       background: rgba(22, 32, 46, 0.85);
       color: #f1f5f9;
       border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 8px;
+      border-radius: var(--radius-md);
       padding: 5px 10px;
       font-size: 12px;
       font-family: var(--font-mono);
@@ -162,7 +173,7 @@
       align-items: center;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 9999px;
+      border-radius: var(--radius-pill);
       padding: 3px 4px;
       gap: 2px;
     }
@@ -174,7 +185,7 @@
       min-width: 28px;
       height: 26px;
       padding: 0 10px;
-      border-radius: 9999px;
+      border-radius: var(--radius-pill);
       border: none;
       background: transparent;
       color: #94a3b8;
@@ -209,7 +220,7 @@
       align-items: center;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 9999px;
+      border-radius: var(--radius-pill);
       padding: 2px 4px;
       gap: 2px;
     }
@@ -217,7 +228,7 @@
     .zoom-btn {
       width: 24px;
       height: 24px;
-      border-radius: 50%;
+      border-radius: var(--radius-circle);
       border: none;
       background: transparent;
       color: #cbd5e1;
@@ -233,7 +244,7 @@
     }
     .zoom-btn.zoom-fit-btn {
       width: auto;
-      border-radius: 9999px;
+      border-radius: var(--radius-pill);
       padding: 0 7px;
       font-size: 11px;
       font-weight: 600;
@@ -260,7 +271,7 @@
       gap: 6px;
       height: 30px;
       padding: 0 14px;
-      border-radius: 9999px;
+      border-radius: var(--radius-pill);
       border: 1px solid transparent;
       font-size: 12px;
       font-weight: 600;
@@ -303,7 +314,7 @@
       min-width: 220px;
       background: #16202e;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 12px;
+      border-radius: var(--radius-lg);
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
       padding: 6px;
       display: none;
@@ -319,7 +330,7 @@
       align-items: center;
       gap: 10px;
       padding: 8px 12px;
-      border-radius: 8px;
+      border-radius: var(--radius-md);
       border: none;
       background: transparent;
       color: #cbd5e1;
@@ -391,7 +402,7 @@
       font-size: 11px;
       line-height: 1.35;
       padding: 26px 30px 34px;
-      border-radius: 3px;
+      border-radius: var(--radius-xs);
       box-shadow: 0 18px 48px rgba(0, 0, 0, 0.48), 0 1px 4px rgba(0, 0, 0, 0.25);
       position: relative;
       display: flex;
@@ -725,7 +736,7 @@
       max-height: 84vh;
       background: #16202e;
       border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 18px;
+      border-radius: var(--radius-xl);
       padding: 20px 22px;
       display: flex;
       flex-direction: column;
@@ -735,7 +746,7 @@
     pre.json-pre {
       background: #0d1520;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
+      border-radius: var(--radius-inner);
       padding: 14px;
       font-family: var(--font-mono);
       font-size: 11.5px;
@@ -758,7 +769,7 @@
       border: 1px solid rgba(255, 255, 255, 0.15);
       color: #f1f5f9;
       padding: 10px 15px;
-      border-radius: 12px;
+      border-radius: var(--radius-lg);
       font-size: 12px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
     }
@@ -952,7 +963,7 @@
       <div class="intro-box">
         <p>SELAMAT PAGI/SIANG/SORE/MALAM. KAMI/SAYA DARI BPS SEDANG MENGUMPULKAN DATA/INFORMASI KEADAAN EKONOMI RUMAH TANGGA SEPERTI PENGELUARAN, PENDAPATAN, DAN INVESTASI RUMAH TANGGA. UNTUK ITU, KAMI/SAYA AKAN MEWAWANCARAI BAPAK/IBU BESERTA ANGGOTA RUMAH TANGGA LAINNYA. SELURUH DATA YANG BAPAK/IBU BERIKAN KEPADA KAMI AKAN DIRAHASIAKAN DAN HANYA AKAN DIGUNAKAN UNTUK KEPERLUAN PERENCANAAN PEMBANGUNAN. BOLEH SAYA MULAI WAWANCARA SEKARANG?</p>
         <div class="omr-list">
-          <label class="omr-row" style="padding:2px 4px; border-radius:2px;">
+          <label class="omr-row" style="padding:2px 4px; border-radius:var(--radius-xs);">
             <input type="radio" name="kesediaan" value="1" disabled class="editable-radio" data-key="kop.kesediaan" />
             <span><strong>Ya bersedia</strong> ➡ Mulai wawancara</span>
           </label>

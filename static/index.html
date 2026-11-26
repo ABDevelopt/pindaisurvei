@@ -137,7 +137,7 @@
     .book-binder {
       display: flex;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.08);
-      border-radius: 8px;
+      border-radius: var(--radius-md);
       overflow: hidden;
       max-width: 980px;
       width: 100%;
@@ -167,14 +167,14 @@
       max-width: 680px;
       margin: 0 auto;
       box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.1);
-      border-radius: 6px;
+      border-radius: var(--radius-sm);
     }
     .book-page img {
       width: 100%;
       height: auto;
       max-height: 580px;
       object-fit: contain;
-      border-radius: 4px;
+      border-radius: var(--radius-sm);
       display: block;
       pointer-events: none;
     }
@@ -185,7 +185,7 @@
       background: rgba(15, 23, 42, 0.75);
       backdrop-filter: blur(4px);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 4px;
+      border-radius: var(--radius-sm);
       font-size: 11px;
       font-weight: 600;
       color: var(--accent);
@@ -208,7 +208,7 @@
       width: 4px;
       height: 28px;
       background: linear-gradient(to bottom, #94a3b8, #cbd5e1, #64748b);
-      border-radius: 2px;
+      border-radius: var(--radius-xs);
       box-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
     }
     .book-filmstrip {
@@ -227,7 +227,7 @@
       gap: 6px;
       cursor: pointer;
       padding: 6px;
-      border-radius: 8px;
+      border-radius: var(--radius-md);
       background: var(--surface-1);
       border: 1px solid var(--border);
       transition: all 0.18s ease;
@@ -245,7 +245,7 @@
     .book-thumb-img {
       width: 72px;
       height: 98px;
-      border-radius: 4px;
+      border-radius: var(--radius-sm);
       object-fit: cover;
       background: #000;
       display: block;
@@ -256,7 +256,7 @@
       transform: translateY(-50%);
       width: 44px;
       height: 44px;
-      border-radius: 50%;
+      border-radius: var(--radius-circle);
       background: rgba(15, 23, 42, 0.78);
       border: 1px solid rgba(255, 255, 255, 0.16);
       color: #fff;
@@ -327,9 +327,16 @@
       --yellow: #fbbf24;
       --red: #f87171;
 
-      --radius-card: 20px;
-      --radius-inner: 14px;
-      --radius-pill: 9999px;
+      /* Systematic Semantic Border Radius Tokens (Best Practices) */
+      --radius-xs: 3px;         /* Physical sheets, print comb-boxes, tiny marks */
+      --radius-sm: 6px;         /* Badges, tags, code chips, small inputs, micro-buttons */
+      --radius-md: 8px;         /* Standard buttons, selects, dropdowns, thumb cards */
+      --radius-inner: 10px;      /* Table scroll containers, nested panels, crops */
+      --radius-lg: 12px;        /* Section bars, popovers, toast alerts, metric cards */
+      --radius-xl: 16px;        /* Main cards, modal dialogs, stage viewports */
+      --radius-card: 16px;      /* Standard card radius (synced with radius-xl) */
+      --radius-pill: 9999px;    /* Segmented switchers, pill tabs, search inputs, pills */
+      --radius-circle: 50%;     /* Strict 1:1 circular icon-buttons, status dots */
 
       --rail-width: 80px;
       --topbar-height: 64px;
@@ -389,7 +396,7 @@
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb {
       background: rgba(142, 159, 179, 0.22);
-      border-radius: 9999px;
+      border-radius: var(--radius-pill);
     }
 
     /* Minimalist 1.5px Outlined SVG Icons */
@@ -433,7 +440,7 @@
     .bps-logo {
       width: 38px;
       height: 38px;
-      border-radius: 12px;
+      border-radius: var(--radius-lg);
       background: var(--accent-soft);
       border: 1px solid rgba(138, 180, 248, 0.22);
       color: var(--accent);
@@ -504,7 +511,7 @@
       right: 11px;
       width: 6px;
       height: 6px;
-      border-radius: 50%;
+      border-radius: var(--radius-circle);
       background: var(--red);
       display: none;
     }
@@ -518,7 +525,7 @@
     .rail-circle-btn {
       width: 36px;
       height: 36px;
-      border-radius: 50%;
+      border-radius: var(--radius-circle);
       background: var(--surface-2);
       border: 1px solid var(--border-subtle);
       color: var(--text-secondary);
@@ -542,7 +549,7 @@
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--border-strong);
-      border-radius: 16px;
+      border-radius: var(--radius-xl);
       padding: 18px;
       display: none;
       flex-direction: column;
@@ -657,7 +664,7 @@
       left: 2px;
       width: 16px;
       height: 16px;
-      border-radius: 50%;
+      border-radius: var(--radius-circle);
       background: var(--text-secondary);
       transition: transform 0.18s ease, background 0.18s ease;
     }
@@ -703,7 +710,7 @@
     .status-dot {
       width: 6px;
       height: 6px;
-      border-radius: 50%;
+      border-radius: var(--radius-circle);
       display: inline-block;
       flex-shrink: 0;
     }
@@ -934,7 +941,7 @@
     }
     .table-scroll-container::-webkit-scrollbar-thumb {
       background: var(--border-strong);
-      border-radius: 4px;
+      border-radius: var(--radius-sm);
     }
     .table-scroll-container::-webkit-scrollbar-thumb:hover {
       background: var(--text-muted);
@@ -1085,7 +1092,7 @@
       appearance: none;
       width: 140px;
       height: 4px;
-      border-radius: 9999px;
+      border-radius: var(--radius-pill);
       background: var(--surface-2);
       outline: none;
     }
@@ -1094,7 +1101,7 @@
       appearance: none;
       width: 14px;
       height: 14px;
-      border-radius: 50%;
+      border-radius: var(--radius-circle);
       background: var(--accent);
       cursor: pointer;
     }
@@ -1158,7 +1165,7 @@
     .coord-strip input {
       width: 50px;
       padding: 3px 6px;
-      border-radius: 7px;
+      border-radius: var(--radius-sm);
       background: var(--surface-2);
       border: 1px solid var(--border-subtle);
       color: var(--text-primary);
@@ -1200,7 +1207,7 @@
     .digit-cell {
       width: 30px;
       height: 34px;
-      border-radius: 9px;
+      border-radius: var(--radius-md);
       background: var(--surface-2);
       border: 1px solid var(--border-subtle);
       display: inline-flex;
@@ -1243,7 +1250,7 @@
     }
     .hitl-queue::-webkit-scrollbar-thumb {
       background: var(--border-strong);
-      border-radius: 4px;
+      border-radius: var(--radius-sm);
     }
     .hitl-queue::-webkit-scrollbar-thumb:hover {
       background: var(--text-muted);
@@ -1281,7 +1288,7 @@
 
     .preview-frame {
       padding: 14px;
-      border-radius: 16px;
+      border-radius: var(--radius-xl);
       background: var(--surface-canvas);
       border: 1px solid var(--border-subtle);
     }
@@ -1305,14 +1312,14 @@
     .prob-track {
       width: 100%;
       height: 5px;
-      border-radius: 9999px;
+      border-radius: var(--radius-pill);
       background: var(--surface-2);
       overflow: hidden;
       margin-top: 6px;
     }
     .prob-bar-fill {
       height: 100%;
-      border-radius: 9999px;
+      border-radius: var(--radius-pill);
       background: var(--accent);
     }
 
@@ -1397,7 +1404,7 @@
     .lookup-zoom-btn {
       width: 28px;
       height: 28px;
-      border-radius: 50%;
+      border-radius: var(--radius-circle);
       background: var(--surface-2);
       border: 1px solid var(--border-subtle);
       color: var(--text-primary);
@@ -1418,7 +1425,7 @@
       height: 360px;
       background: var(--surface-canvas);
       border: 1px solid var(--border-subtle);
-      border-radius: 16px;
+      border-radius: var(--radius-xl);
       overflow: hidden;
       cursor: zoom-in;
       touch-action: none;
@@ -1477,7 +1484,7 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.10);
-      border-radius: 13px;
+      border-radius: var(--radius-lg);
       padding: 7px 10px;
       display: flex;
       align-items: center;
@@ -1488,7 +1495,7 @@
     .scan-pip-box {
       width: 34px;
       height: 34px;
-      border-radius: 8px;
+      border-radius: var(--radius-md);
       background: #0b111a;
       border: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
@@ -1570,7 +1577,7 @@
       color: var(--text-primary);
       background: var(--surface-2);
       border: 1px solid var(--border-subtle);
-      border-radius: 7px;
+      border-radius: var(--radius-sm);
       padding: 3px 9px;
     }
 
@@ -1588,7 +1595,7 @@
       background: var(--surface-popover);
       backdrop-filter: blur(16px);
       border: 1px solid var(--border-strong);
-      border-radius: 14px;
+      border-radius: var(--radius-lg);
       padding: 12px 16px;
       font-size: 12.5px;
       color: var(--text-primary);
@@ -1647,7 +1654,7 @@
        ======================================================================= -->
   <aside class="nav-rail" aria-label="Navigasi Utama">
     <div class="rail-top">
-      <a href="/input" class="bps-logo" onclick="event.preventDefault(); switchWorkspace('operasional', 'input');" title="PindaiSurvei — BPS" style="text-decoration:none; display:flex; align-items:center; justify-content:center; padding:4px; background:#ffffff; border-radius:10px; box-shadow:0 1px 4px rgba(0,0,0,0.14); border:1px solid rgba(255,255,255,0.25);">
+      <a href="/input" class="bps-logo" onclick="event.preventDefault(); switchWorkspace('operasional', 'input');" title="PindaiSurvei — BPS" style="text-decoration:none; display:flex; align-items:center; justify-content:center; padding:4px; background:#ffffff; border-radius:var(--radius-inner); box-shadow:0 1px 4px rgba(0,0,0,0.14); border:1px solid rgba(255,255,255,0.25);">
         <img src="/static/img/favicon.svg" alt="PindaiSurvei Logo" width="28" height="28" style="display:block;" />
       </a>
 
@@ -1824,7 +1831,7 @@
       <!-- Modal Header -->
       <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border); padding-bottom:12px;">
         <div style="display:flex; align-items:center; gap:10px;">
-          <div style="width:34px; height:34px; border-radius:8px; background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.25); display:flex; align-items:center; justify-content:center; color:#38bdf8;">
+          <div style="width:34px; height:34px; border-radius:var(--radius-md); background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.25); display:flex; align-items:center; justify-content:center; color:#38bdf8;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <div>
@@ -2904,7 +2911,7 @@
         if (!res.ok) {
           if (bodyEl) {
             bodyEl.innerHTML = `
-              <div style="padding:24px; text-align:center; color:var(--text-muted); background:var(--surface-2); border-radius:6px; border:1px solid var(--border);">
+              <div style="padding:24px; text-align:center; color:var(--text-muted); background:var(--surface-2); border-radius:var(--radius-sm); border:1px solid var(--border);">
                 <div style="color:var(--text-primary); font-weight:600; margin-bottom:6px;">Belum Ada Data Audit Stage-Gate</div>
                 <div style="font-size:12px; margin-bottom:14px; color:var(--text-secondary);">Buklet ${bookletId} belum melalui evaluasi gerbang mutu presisi 2.073 kotak.</div>
                 <button class="btn btn-primary btn-sm" onclick="runSingleStageGate('${bookletId}')">Jalankan Audit Gerbang Mutu Sekarang</button>
@@ -2985,7 +2992,7 @@
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:12px;">
           
           <!-- Gate 0: IQG -->
-          <div style="background:var(--surface-2); border:1px solid var(--border); border-radius:6px; padding:12px 14px;">
+          <div style="background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 14px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
               <span style="font-size:11px; font-weight:600; text-transform:uppercase; color:var(--text-muted);">Gate 0 · Input Quality Gate</span>
               <span class="badge" style="font-size:10px; background:${g0.status==='PASS'?'rgba(16,185,129,0.1)':'rgba(239,68,68,0.1)'}; color:${g0.status==='PASS'?'#10b981':'#ef4444'};">
@@ -2998,7 +3005,7 @@
           </div>
 
           <!-- Gate 1: Alignment & Affine -->
-          <div style="background:var(--surface-2); border:1px solid var(--border); border-radius:6px; padding:12px 14px;">
+          <div style="background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 14px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
               <span style="font-size:11px; font-weight:600; text-transform:uppercase; color:var(--text-muted);">Gate 1 · Penjajaran &amp; Affine</span>
               <span class="badge" style="font-size:10px; background:${g1.status==='PASS'?'rgba(16,185,129,0.1)':'rgba(245,158,11,0.1)'}; color:${g1.status==='PASS'?'#10b981':'#f59e0b'};">
@@ -3011,7 +3018,7 @@
           </div>
 
           <!-- Gate 2: Completeness 2.073 Kotak -->
-          <div style="background:var(--surface-2); border:1px solid var(--border); border-radius:6px; padding:12px 14px;">
+          <div style="background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 14px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
               <span style="font-size:11px; font-weight:600; text-transform:uppercase; color:var(--text-muted);">Gate 2 · Invariant 2.073 Kotak</span>
               <span class="badge" style="font-size:10px; background:${g2.status==='PASS'?'rgba(16,185,129,0.1)':'rgba(245,158,11,0.1)'}; color:${g2.status==='PASS'?'#10b981':'#f59e0b'};">
@@ -3024,7 +3031,7 @@
           </div>
 
           <!-- Gate 3: Substantive Snapping -->
-          <div style="background:var(--surface-2); border:1px solid var(--border); border-radius:6px; padding:12px 14px;">
+          <div style="background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 14px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
               <span style="font-size:11px; font-weight:600; text-transform:uppercase; color:var(--text-muted);">Gate 3 · Snapping Geometris</span>
               <span class="badge" style="font-size:10px; background:${g3.status==='PASS'?'rgba(16,185,129,0.1)':'rgba(245,158,11,0.1)'}; color:${g3.status==='PASS'?'#10b981':'#f59e0b'};">
@@ -3236,7 +3243,7 @@
             <span style="font-weight:600; font-size:13px;">Konsol Log Subprocess Real-time (SSE Stream)</span>
             <button class="btn-ghost" onclick="connectPipelineSSE()" style="font-size:11.5px;">Hubungkan Ulang Stream</button>
           </div>
-          <div id="pipeline-live-log-box" style="height:150px; background:#080c14; border:1px solid var(--border); border-radius:6px; padding:12px 14px; overflow-y:auto; font-family:var(--font-mono); font-size:11.5px; color:#cbd5e1;">
+          <div id="pipeline-live-log-box" style="height:150px; background:#080c14; border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 14px; overflow-y:auto; font-family:var(--font-mono); font-size:11.5px; color:#cbd5e1;">
             <div style="color:var(--text-muted); font-size:11px;">[Sistem] Menunggu output eksekusi pipeline...</div>
           </div>
         </div>
@@ -4081,37 +4088,37 @@
               <label class="layer-check" style="display:flex; align-items:center; gap:8px; cursor:pointer;" title="Kotak digit comb-boxes yang diekstraksi pipeline">
                 <input type="checkbox" ${L.digits?'checked':''} onchange="toggleLayer('digits', this.checked)">
                 <span style="font-weight:500; font-size:12px; color:#10b981;">Kotak Digit</span>
-                <span id="badge-digits-cnt" style="font-size:10.5px; font-weight:700; color:#10b981; background:rgba(16,185,129,0.12); padding:2px 6px; border-radius:4px; font-family:monospace;">--</span>
+                <span id="badge-digits-cnt" style="font-size:10.5px; font-weight:700; color:#10b981; background:rgba(16,185,129,0.12); padding:2px 6px; border-radius:var(--radius-sm); font-family:monospace;">--</span>
               </label>
 
               <label class="layer-check" style="display:flex; align-items:center; gap:8px; cursor:pointer;" title="Batas kolom variabel isian">
                 <input type="checkbox" ${L.fields?'checked':''} onchange="toggleLayer('fields', this.checked)">
                 <span style="font-weight:500; font-size:12px; color:#f59e0b;">Field Isian</span>
-                <span id="badge-fields-cnt" style="font-size:10.5px; font-weight:700; color:#f59e0b; background:rgba(245,158,11,0.12); padding:2px 6px; border-radius:4px; font-family:monospace;">--</span>
+                <span id="badge-fields-cnt" style="font-size:10.5px; font-weight:700; color:#f59e0b; background:rgba(245,158,11,0.12); padding:2px 6px; border-radius:var(--radius-sm); font-family:monospace;">--</span>
               </label>
 
               <label class="layer-check" style="display:flex; align-items:center; gap:8px; cursor:pointer;" title="Bidang teks bebas / tulisan tangan (Nama KRT, Alamat, Roster ART, Catatan)">
                 <input type="checkbox" ${L.text_fields !== false ? 'checked' : ''} onchange="toggleLayer('text_fields', this.checked)">
                 <span style="font-weight:500; font-size:12px; color:#06b6d4;">Bidang Teks</span>
-                <span id="badge-text-fields-cnt" style="font-size:10.5px; font-weight:700; color:#06b6d4; background:rgba(6,182,212,0.12); padding:2px 6px; border-radius:4px; font-family:monospace;">--</span>
+                <span id="badge-text-fields-cnt" style="font-size:10.5px; font-weight:700; color:#06b6d4; background:rgba(6,182,212,0.12); padding:2px 6px; border-radius:var(--radius-sm); font-family:monospace;">--</span>
               </label>
 
               <label class="layer-check" style="display:flex; align-items:center; gap:8px; cursor:pointer;" title="Blok utama kuesioner">
                 <input type="checkbox" ${L.makro?'checked':''} onchange="toggleLayer('makro', this.checked)">
                 <span style="font-weight:500; font-size:12px; color:#818cf8;">Blok Makro</span>
-                <span id="badge-makro-cnt" style="font-size:10.5px; font-weight:700; color:#818cf8; background:rgba(99,102,241,0.12); padding:2px 6px; border-radius:4px; font-family:monospace;">--</span>
+                <span id="badge-makro-cnt" style="font-size:10.5px; font-weight:700; color:#818cf8; background:rgba(99,102,241,0.12); padding:2px 6px; border-radius:var(--radius-sm); font-family:monospace;">--</span>
               </label>
 
               <label class="layer-check" style="display:flex; align-items:center; gap:8px; cursor:pointer;" title="Sub-blok tabel kuesioner">
                 <input type="checkbox" ${L.meso?'checked':''} onchange="toggleLayer('meso', this.checked)">
                 <span style="font-weight:500; font-size:12px; color:#0ea5e9;">Sub-Blok Meso</span>
-                <span id="badge-meso-cnt" style="font-size:10.5px; font-weight:700; color:#0ea5e9; background:rgba(14,165,233,0.12); padding:2px 6px; border-radius:4px; font-family:monospace;">--</span>
+                <span id="badge-meso-cnt" style="font-size:10.5px; font-weight:700; color:#0ea5e9; background:rgba(14,165,233,0.12); padding:2px 6px; border-radius:var(--radius-sm); font-family:monospace;">--</span>
               </label>
 
               <label class="layer-check" style="display:flex; align-items:center; gap:8px; cursor:pointer;" title="Amplop jaring kisi fisik yang diselaraskan lattice aligner">
                 <input type="checkbox" ${L.grid?'checked':''} onchange="toggleLayer('grid', this.checked)">
                 <span style="font-weight:500; font-size:12px; color:#22c55e;">Kisi (Lattice)</span>
-                <span id="badge-grid-cnt" style="font-size:10.5px; font-weight:700; color:#22c55e; background:rgba(34,197,94,0.12); padding:2px 6px; border-radius:4px; font-family:monospace;">--</span>
+                <span id="badge-grid-cnt" style="font-size:10.5px; font-weight:700; color:#22c55e; background:rgba(34,197,94,0.12); padding:2px 6px; border-radius:var(--radius-sm); font-family:monospace;">--</span>
               </label>
 
               <!-- Filled Only Filter Toggle -->
@@ -4146,7 +4153,7 @@
 
                 <div style="transform:scale(${AppState.gridZoom}); transform-origin:top center; transition:transform 0.15s ease; max-width:${stageMaxW}; width:100%;">
                   <svg id="grid-canvas-svg" width="${stageW}" height="${stageH}" viewBox="0 0 ${stageW} ${stageH}"
-                       style="width:100%; height:auto; box-shadow:0 20px 50px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.08); border-radius:6px; background:#111827; display:block;">
+                       style="width:100%; height:auto; box-shadow:0 20px 50px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.08); border-radius:var(--radius-sm); background:#111827; display:block;">
                     
                     <!-- Layer 1: Citra Scan Asli Halaman -->
                     <g id="scan-image-layer" style="opacity:${L.scan ? 0.96 : 0.05}; transition:opacity 0.2s;">
@@ -4175,7 +4182,7 @@
                 </button>
 
                 <!-- Floating Reticle Tooltip -->
-                <div id="pipeline-floating-tooltip" style="display:none; position:absolute; pointer-events:none; z-index:50; background:rgba(15,23,42,0.96); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.18); border-radius:8px; padding:8px 12px; box-shadow:0 12px 28px rgba(0,0,0,0.6); max-width:280px; transition:opacity 0.1s ease;"></div>
+                <div id="pipeline-floating-tooltip" style="display:none; position:absolute; pointer-events:none; z-index:50; background:rgba(15,23,42,0.96); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.18); border-radius:var(--radius-md); padding:8px 12px; box-shadow:0 12px 28px rgba(0,0,0,0.6); max-width:280px; transition:opacity 0.1s ease;"></div>
               </div>
 
               <!-- 2. Book Controls Toolbar: Prev/Next Buttons + Landmark Quick Jumps -->
@@ -4227,7 +4234,7 @@
                     const pLand = getPageOrientation(bookletId, p) === 'landscape';
                     return `
                       <div class="book-thumb-card ${isCur ? 'active' : ''}" onclick="onGridPageChange(${p})" title="Halaman ${p} (${pLand ? 'Landscape' : 'Portrait'})" style="flex:0 0 78px; padding:5px; position:relative;">
-                        <img src="/api/booklets/${bookletId}/pages/${p}" alt="Hal ${p}" class="book-thumb-img" style="width:68px; height:${pLand ? '48px' : '92px'}; object-fit:cover; border-radius:4px; margin-bottom:4px;" onerror="this.style.display='none'; this.nextElementSibling && (this.nextElementSibling.style.display='flex');" /><div style="display:none; width:68px; height:${pLand ? '48px' : '92px'}; border-radius:4px; margin-bottom:4px; background:var(--surface-2); border:1px dashed var(--border); align-items:center; justify-content:center; flex-direction:column; gap:3px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity:0.4;"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span style="font-size:8px; opacity:0.5; text-align:center; line-height:1.2;">Belum<br>Di-scan</span></div>
+                        <img src="/api/booklets/${bookletId}/pages/${p}" alt="Hal ${p}" class="book-thumb-img" style="width:68px; height:${pLand ? '48px' : '92px'}; object-fit:cover; border-radius:var(--radius-sm); margin-bottom:4px;" onerror="this.style.display='none'; this.nextElementSibling && (this.nextElementSibling.style.display='flex');" /><div style="display:none; width:68px; height:${pLand ? '48px' : '92px'}; border-radius:var(--radius-sm); margin-bottom:4px; background:var(--surface-2); border:1px dashed var(--border); align-items:center; justify-content:center; flex-direction:column; gap:3px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity:0.4;"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span style="font-size:8px; opacity:0.5; text-align:center; line-height:1.2;">Belum<br>Di-scan</span></div>
                         <div style="display:flex; align-items:center; justify-content:space-between; width:100%; padding:0 2px;">
                           <span class="font-mono" style="font-size:11px; font-weight:${isCur ? '700' : '500'}; color:${isCur ? 'var(--accent)' : 'inherit'};">Hal ${p}</span>
                           <span style="font-size:9.5px; font-family:monospace; opacity:0.75; color:${pLand ? 'var(--accent)' : 'inherit'};">${pLand ? '[L]' : '[P]'}</span>
@@ -4498,7 +4505,7 @@
 
       tip.innerHTML = `
         <div style="display:flex; align-items:center; gap:6px; margin-bottom:4px;">
-          <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${color};"></span>
+          <span style="display:inline-block; width:8px; height:8px; border-radius:var(--radius-circle); background:${color};"></span>
           <span style="font-size:10px; font-weight:700; color:${color}; letter-spacing:0.5px;">${tierName}</span>
         </div>
         <div style="font-size:12.5px; font-weight:600; color:#fff; word-break:break-all;">${item.label || item.id}</div>
@@ -4555,27 +4562,27 @@
             <div style="display:flex; flex-direction:column; gap:8px; background:var(--surface-2); padding:12px; border-radius:var(--radius-sm); border:1px solid var(--border);">
               <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-secondary); margin-bottom:4px;">Elemen Terdeteksi Halaman Ini</div>
               <div style="display:flex; justify-content:space-between; font-size:12px;">
-                <span style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#10b981;"></span>Kotak Digit:</span>
+                <span style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:var(--radius-circle); background:#10b981;"></span>Kotak Digit:</span>
                 <span class="font-mono font-bold" style="color:#10b981;">${c.digits || 0}</span>
               </div>
               <div style="display:flex; justify-content:space-between; font-size:12px;">
-                <span style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#f59e0b;"></span>Field Isian:</span>
+                <span style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:var(--radius-circle); background:#f59e0b;"></span>Field Isian:</span>
                 <span class="font-mono font-bold" style="color:#f59e0b;">${c.fields || 0}</span>
               </div>
               <div style="display:flex; justify-content:space-between; font-size:12px;">
-                <span style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#06b6d4;"></span>Bidang Teks:</span>
+                <span style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:var(--radius-circle); background:#06b6d4;"></span>Bidang Teks:</span>
                 <span class="font-mono font-bold" style="color:#06b6d4;">${c.text_fields || 0}</span>
               </div>
               <div style="display:flex; justify-content:space-between; font-size:12px;">
-                <span style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#818cf8;"></span>Blok Makro:</span>
+                <span style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:var(--radius-circle); background:#818cf8;"></span>Blok Makro:</span>
                 <span class="font-mono font-bold" style="color:#818cf8;">${c.makro || 0}</span>
               </div>
               <div style="display:flex; justify-content:space-between; font-size:12px;">
-                <span style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#0ea5e9;"></span>Sub-Blok Meso:</span>
+                <span style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:var(--radius-circle); background:#0ea5e9;"></span>Sub-Blok Meso:</span>
                 <span class="font-mono font-bold" style="color:#0ea5e9;">${c.meso || 0}</span>
               </div>
               <div style="display:flex; justify-content:space-between; font-size:12px;">
-                <span style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#22c55e;"></span>Kisi Tabel:</span>
+                <span style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:var(--radius-circle); background:#22c55e;"></span>Kisi Tabel:</span>
                 <span class="font-mono font-bold" style="color:#22c55e;">${c.precise_grid || 0}</span>
               </div>
             </div>
@@ -4607,7 +4614,7 @@
           <!-- Top Row: Badge + Title + Close -->
           <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border); padding-bottom:10px;">
             <div style="display:flex; align-items:center; gap:8px;">
-              <span style="font-size:10px; font-weight:700; padding:2px 8px; border-radius:4px; background:${color}22; color:${color}; border:1px solid ${color}66; letter-spacing:0.5px;">
+              <span style="font-size:10px; font-weight:700; padding:2px 8px; border-radius:var(--radius-sm); background:${color}22; color:${color}; border:1px solid ${color}66; letter-spacing:0.5px;">
                 ${tierName.toUpperCase()}
               </span>
               <span class="font-mono" style="font-size:13px; font-weight:600; color:var(--text-primary); max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${sel.label || sel.id}">
@@ -4623,7 +4630,7 @@
           ${sel.crop_url ? `
             <div style="display:flex; flex-direction:column; gap:6px; align-items:center; background:#060a10; padding:12px; border-radius:var(--radius-md); border:1px solid var(--border);">
               <div style="font-size:10px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px; font-weight:600;">Citra Crop Raw Asli</div>
-              <img src="${sel.crop_url}" alt="${sel.label}" style="max-height:85px; max-width:100%; border-radius:4px; object-fit:contain; border:1px solid rgba(255,255,255,0.08);" onerror="this.style.display='none'" />
+              <img src="${sel.crop_url}" alt="${sel.label}" style="max-height:85px; max-width:100%; border-radius:var(--radius-sm); object-fit:contain; border:1px solid rgba(255,255,255,0.08);" onerror="this.style.display='none'" />
             </div>
           ` : ''}
 
@@ -4890,11 +4897,11 @@
             ${crops.map(c => {
               const isSel = c.id === selectedCrop.id;
               return `
-                <div class="crop-tile clickable" style="${isSel ? 'border-color: var(--accent); background: var(--surface-2); box-shadow:0 0 0 2px rgba(56,189,248,0.35);' : ''}; width:${frameW}; padding:8px; display:flex; flex-direction:column; align-items:center; gap:6px; border-radius:10px; border:1px solid var(--border); transition:all 0.15s ease;"
+                <div class="crop-tile clickable" style="${isSel ? 'border-color: var(--accent); background: var(--surface-2); box-shadow:0 0 0 2px rgba(56,189,248,0.35);' : ''}; width:${frameW}; padding:8px; display:flex; flex-direction:column; align-items:center; gap:6px; border-radius:var(--radius-inner); border:1px solid var(--border); transition:all 0.15s ease;"
                      onclick="selectCropForLookup('${c.id}')">
                   <span class="font-mono" style="font-size:10.5px; font-weight:600; color:${isSel ? 'var(--accent)' : 'var(--text-primary)'}; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; text-align:center;" title="${c.label || c.filename}">${c.label || c.filename}</span>
                   
-                  <div class="preview-frame ${isSel ? 'clean' : ''}" style="width:100%; height:${frameH}; display:flex; align-items:center; justify-content:center; background:#0b111a; border-radius:8px; overflow:hidden;">
+                  <div class="preview-frame ${isSel ? 'clean' : ''}" style="width:100%; height:${frameH}; display:flex; align-items:center; justify-content:center; background:#0b111a; border-radius:var(--radius-md); overflow:hidden;">
                     ${c.url ? `
                       <img src="${c.url}" alt="${c.filename}" style="max-width:96%; max-height:96%; object-fit:contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
                       <span class="font-mono" style="display:none; font-size:16px; font-weight:700; color:${isSel ? 'var(--accent)' : 'var(--text-primary)'};">${c.val || '·'}</span>
@@ -5456,7 +5463,7 @@
       if (!AppState.hitlQueue || AppState.hitlQueue.length === 0) {
         el.innerHTML = `
           <div style="max-width:840px; margin:40px auto; padding:40px; background:var(--surface-1); border:1px solid var(--border); border-radius:var(--radius-lg); text-align:center; display:flex; flex-direction:column; align-items:center; gap:24px;">
-            <div style="width:64px; height:64px; border-radius:50%; background:rgba(16,185,129,0.12); display:flex; align-items:center; justify-content:center; color:#10b981;">
+            <div style="width:64px; height:64px; border-radius:var(--radius-circle); background:rgba(16,185,129,0.12); display:flex; align-items:center; justify-content:center; color:#10b981;">
               <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             </div>
             <div>
@@ -5501,17 +5508,17 @@
           <!-- 6-Stage Lifecycle Breadcrumb -->
           <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; color:var(--text-secondary); flex-wrap:wrap;">
             <span style="color:var(--text-primary); font-weight:600;">Alur:</span>
-            <span class="status-badge" style="background:rgba(59,130,246,0.12); color:#60a5fa; border:1px solid rgba(59,130,246,0.3); padding:2px 8px; border-radius:4px;">1. Crop</span>
+            <span class="status-badge" style="background:rgba(59,130,246,0.12); color:#60a5fa; border:1px solid rgba(59,130,246,0.3); padding:2px 8px; border-radius:var(--radius-sm);">1. Crop</span>
             <span style="color:var(--border);">➔</span>
-            <span class="status-badge" style="background:rgba(56,189,248,0.12); color:#38bdf8; border:1px solid rgba(56,189,248,0.3); padding:2px 8px; border-radius:4px;">2. Labeling OpenCV</span>
+            <span class="status-badge" style="background:rgba(56,189,248,0.12); color:#38bdf8; border:1px solid rgba(56,189,248,0.3); padding:2px 8px; border-radius:var(--radius-sm);">2. Labeling OpenCV</span>
             <span style="color:var(--border);">➔</span>
-            <span class="status-badge" style="background:rgba(167,139,250,0.12); color:#a78bfa; border:1px solid rgba(167,139,250,0.3); padding:2px 8px; border-radius:4px;">3. Inferensi AI</span>
+            <span class="status-badge" style="background:rgba(167,139,250,0.12); color:#a78bfa; border:1px solid rgba(167,139,250,0.3); padding:2px 8px; border-radius:var(--radius-sm);">3. Inferensi AI</span>
             <span style="color:var(--border);">➔</span>
-            <span class="status-badge" style="background:${pendingCount > 0 ? 'rgba(245,158,11,0.15)' : 'rgba(16,185,129,0.15)'}; color:${pendingCount > 0 ? '#fbbf24' : '#34d399'}; border:1px solid ${pendingCount > 0 ? 'rgba(245,158,11,0.4)' : 'rgba(16,185,129,0.4)'}; padding:2px 8px; border-radius:4px; font-weight:600;">
+            <span class="status-badge" style="background:${pendingCount > 0 ? 'rgba(245,158,11,0.15)' : 'rgba(16,185,129,0.15)'}; color:${pendingCount > 0 ? '#fbbf24' : '#34d399'}; border:1px solid ${pendingCount > 0 ? 'rgba(245,158,11,0.4)' : 'rgba(16,185,129,0.4)'}; padding:2px 8px; border-radius:var(--radius-sm); font-weight:600;">
               4. Verifikasi HITL (${pendingCount > 0 ? pendingCount + ' tersisa' : '100% Selesai'})
             </span>
             <span style="color:var(--border);">➔</span>
-            <span class="status-badge" style="background:${isAllVerified ? 'rgba(16,185,129,0.2)' : 'rgba(100,116,139,0.15)'}; color:${isAllVerified ? '#10b981' : '#94a3b8'}; border:1px solid ${isAllVerified ? '#10b981' : 'var(--border)'}; padding:2px 8px; border-radius:4px; font-weight:600;">
+            <span class="status-badge" style="background:${isAllVerified ? 'rgba(16,185,129,0.2)' : 'rgba(100,116,139,0.15)'}; color:${isAllVerified ? '#10b981' : '#94a3b8'}; border:1px solid ${isAllVerified ? '#10b981' : 'var(--border)'}; padding:2px 8px; border-radius:var(--radius-sm); font-weight:600;">
               5. ${isAllVerified ? 'Terverifikasi' : 'Menunggu'}
             </span>
           </div>
@@ -5589,7 +5596,7 @@
                           style="display:flex; align-items:center; gap:8px; padding:8px 18px; font-size:13px; font-weight:600; background:linear-gradient(135deg, #10b981, #059669); border:none; box-shadow:0 2px 10px rgba(16,185,129,0.35); cursor:pointer;">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                     <span>Sudah Sesuai</span>
-                    <span class="font-mono" style="background:rgba(0,0,0,0.25); padding:1px 7px; border-radius:4px; font-size:12.5px; font-weight:700;">
+                    <span class="font-mono" style="background:rgba(0,0,0,0.25); padding:1px 7px; border-radius:var(--radius-sm); font-size:12.5px; font-weight:700;">
                       ${cur.pred === ' ' ? '∅ Kosong' : cur.pred}
                     </span>
                     <span style="font-size:10.5px; opacity:0.85; margin-left:2px;">[Enter]</span>
@@ -5683,7 +5690,7 @@
                 ${cur.top3.map(c => `
                   <div onclick="applyDigit('${c.d}')" class="prob-row-clickable" 
                        title="Klik untuk memilih '${c.d}' sebagai nilai yang benar"
-                       style="cursor:pointer; padding:6px 8px; border-radius:4px; transition:all 0.15s ease; border:1px solid ${String(cur.pred)===String(c.d) ? 'rgba(56,189,248,0.4)' : 'transparent'}; background:${String(cur.pred)===String(c.d) ? 'rgba(56,189,248,0.08)' : 'transparent'};">
+                       style="cursor:pointer; padding:6px 8px; border-radius:var(--radius-sm); transition:all 0.15s ease; border:1px solid ${String(cur.pred)===String(c.d) ? 'rgba(56,189,248,0.4)' : 'transparent'}; background:${String(cur.pred)===String(c.d) ? 'rgba(56,189,248,0.08)' : 'transparent'};">
                     <div style="display:flex; justify-content:space-between; font-size:12.5px;">
                       <span class="font-mono font-bold" style="color:${String(cur.pred)===String(c.d) ? '#38bdf8' : 'var(--text-primary)'};">${c.d}</span>
                       <span class="font-mono" style="color:var(--text-secondary);">${c.p}%</span>
@@ -6833,7 +6840,7 @@
             <!-- Active AI Mode Indicator -->
             <div style="display:flex; align-items:center; gap:8px;">
               <span style="font-size:11.5px; color:var(--text-secondary);">Arsitektur Aktif:</span>
-              <span class="font-mono" style="font-size:11.5px; font-weight:600; color:#38bdf8; background:rgba(56,189,248,0.12); padding:3px 9px; border-radius:4px; border:1px solid rgba(56,189,248,0.3);">
+              <span class="font-mono" style="font-size:11.5px; font-weight:600; color:#38bdf8; background:rgba(56,189,248,0.12); padding:3px 9px; border-radius:var(--radius-sm); border:1px solid rgba(56,189,248,0.3);">
                 Gemini 3.8 Flash Vision · Kisi 50 Crop
               </span>
             </div>
@@ -6843,12 +6850,12 @@
           <div id="grid-progress-container" style="display:none; flex-direction:column; gap:10px; background:#070b10; padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border);">
             <div style="display:flex; justify-content:space-between; align-items:center;">
               <div style="display:flex; align-items:center; gap:8px;">
-                <span id="grid-progress-spinner" class="spinner" style="width:14px; height:14px; border:2px solid #38bdf8; border-top-color:transparent; border-radius:50%; display:inline-block; animation:spin 0.6s linear infinite;"></span>
+                <span id="grid-progress-spinner" class="spinner" style="width:14px; height:14px; border:2px solid #38bdf8; border-top-color:transparent; border-radius:var(--radius-circle); display:inline-block; animation:spin 0.6s linear infinite;"></span>
                 <span id="grid-progress-text" class="font-mono" style="font-size:12.5px; color:#38bdf8; font-weight:600;">Memproses inferensi kisi komposit...</span>
               </div>
               <span id="grid-progress-pct" class="font-mono font-bold" style="font-size:13px; color:#10b981;">0%</span>
             </div>
-            <div style="height:8px; background:#1e293b; border-radius:4px; overflow:hidden;">
+            <div style="height:8px; background:#1e293b; border-radius:var(--radius-sm); overflow:hidden;">
               <div id="grid-progress-bar" style="height:100%; width:0%; background:linear-gradient(90deg, #38bdf8, #10b981); transition:width 0.4s ease;"></div>
             </div>
             <div id="grid-progress-stats" style="font-size:11.5px; color:var(--text-secondary); line-height:1.5;">
@@ -6962,7 +6969,7 @@
       if (spinner) spinner.style.display = 'inline-block';
       if (btn) {
         btn.disabled = true;
-        btn.innerHTML = `<span class="spinner" style="width:13px; height:13px; border:2px solid #fff; border-top-color:transparent; border-radius:50%; display:inline-block; animation:spin 0.6s linear infinite; margin-right:6px;"></span> Menginferensi Kisi Komposit...`;
+        btn.innerHTML = `<span class="spinner" style="width:13px; height:13px; border:2px solid #fff; border-top-color:transparent; border-radius:var(--radius-circle); display:inline-block; animation:spin 0.6s linear infinite; margin-right:6px;"></span> Menginferensi Kisi Komposit...`;
       }
 
       AppState.mosaicBatches = AppState.mosaicBatches || [];
@@ -7080,7 +7087,7 @@
       if (allDigits.length === 0) {
         container.innerHTML = `
           <div style="padding:48px 24px; text-align:center; background:var(--surface-2); border-radius:var(--radius-sm); border:1px solid var(--border); display:flex; flex-direction:column; align-items:center; gap:14px;">
-            <div style="width:48px; height:48px; border-radius:50%; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.25); display:flex; align-items:center; justify-content:center; color:#38bdf8;">
+            <div style="width:48px; height:48px; border-radius:var(--radius-circle); background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.25); display:flex; align-items:center; justify-content:center; color:#38bdf8;">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
             </div>
             <div style="font-size:15px; font-weight:700; color:var(--text-primary);">Siap Menjalankan Inferensi Otomatis (Grid 50 Crop)</div>
@@ -7199,7 +7206,7 @@
 
                 return `
                   <div class="card crop-ai-card" onclick="onSelectCropCard('${d.id}')"
-                       style="padding:10px 8px; background:${isSelected ? 'var(--surface-2)' : '#0c1320'}; border:1px solid ${isSelected ? 'var(--accent)' : 'rgba(255,255,255,0.08)'}; border-radius:6px; display:flex; flex-direction:column; align-items:center; gap:6px; cursor:pointer; transition:all 0.15s ease; ${isSelected ? 'box-shadow:0 0 14px rgba(56,189,248,0.4);' : ''}">
+                       style="padding:10px 8px; background:${isSelected ? 'var(--surface-2)' : '#0c1320'}; border:1px solid ${isSelected ? 'var(--accent)' : 'rgba(255,255,255,0.08)'}; border-radius:var(--radius-sm); display:flex; flex-direction:column; align-items:center; gap:6px; cursor:pointer; transition:all 0.15s ease; ${isSelected ? 'box-shadow:0 0 14px rgba(56,189,248,0.4);' : ''}">
                     
                     <!-- Card Top: Tag + Hal & Field Label -->
                     <div style="width:100%; display:flex; justify-content:space-between; align-items:center; font-size:10px; padding:0 2px;">
@@ -7210,22 +7217,22 @@
                     </div>
 
                     <!-- Crop Image Container -->
-                    <div style="width:100%; height:50px; background:#000; border-radius:4px; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.06); overflow:hidden; position:relative;">
+                    <div style="width:100%; height:50px; background:#000; border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.06); overflow:hidden; position:relative;">
                       <img src="${d.raw_crop_url}" alt="${d.label}" style="max-height:44px; max-width:88%; object-fit:contain;" onerror="this.style.display='none'" />
-                      ${isBlank ? `<span style="position:absolute; top:2px; left:2px; font-size:7px; padding:1px 3px; border-radius:2px; background:rgba(56,189,248,0.3); color:#38bdf8; font-weight:700;">CV-BLANK</span>` : ''}
-                      ${gemini ? `<span style="position:absolute; top:2px; right:2px; font-size:7.5px; padding:1px 3px; border-radius:2px; background:rgba(56,189,248,0.3); color:#38bdf8; font-weight:700;">GEMINI</span>` : ''}
+                      ${isBlank ? `<span style="position:absolute; top:2px; left:2px; font-size:7px; padding:1px 3px; border-radius:var(--radius-xs); background:rgba(56,189,248,0.3); color:#38bdf8; font-weight:700;">CV-BLANK</span>` : ''}
+                      ${gemini ? `<span style="position:absolute; top:2px; right:2px; font-size:7.5px; padding:1px 3px; border-radius:var(--radius-xs); background:rgba(56,189,248,0.3); color:#38bdf8; font-weight:700;">GEMINI</span>` : ''}
                     </div>
 
                     <!-- AI Inferred Result: 'misal crop angka 1 maka label 1' -->
-                    <div style="width:100%; display:flex; align-items:center; justify-content:space-between; padding:3px 6px; background:#05080f; border-radius:4px; border:1px solid ${labelBorder};">
+                    <div style="width:100%; display:flex; align-items:center; justify-content:space-between; padding:3px 6px; background:#05080f; border-radius:var(--radius-sm); border:1px solid ${labelBorder};">
                       <div style="display:flex; align-items:center; gap:5px;">
                         <span style="font-size:9.5px; color:var(--text-secondary); font-weight:600;">Label:</span>
                         <span class="font-mono font-bold" style="font-size:17px; color:${labelColor}; min-width:22px; text-align:center;" title="${isDoubtful ? 'Prediksi Terkuat (Ragu-ragu / Perlu Review)' : 'Terverifikasi'}">
                           ${displayLabel}
                         </span>
-                        ${isDoubtful ? `<span style="font-size:7px; padding:1px 3px; border-radius:2px; background:rgba(245,158,11,0.25); color:#fbbf24; font-weight:700;">RAGU</span>` : ''}
+                        ${isDoubtful ? `<span style="font-size:7px; padding:1px 3px; border-radius:var(--radius-xs); background:rgba(245,158,11,0.25); color:#fbbf24; font-weight:700;">RAGU</span>` : ''}
                       </div>
-                      <span class="font-mono" style="font-size:9.5px; font-weight:700; color:${confColor}; background:${badgeBg}; padding:1px 5px; border-radius:3px;">
+                      <span class="font-mono" style="font-size:9.5px; font-weight:700; color:${confColor}; background:${badgeBg}; padding:1px 5px; border-radius:var(--radius-xs);">
                         ${conf}%
                       </span>
                     </div>
@@ -7316,7 +7323,7 @@
               <div style="background:#030712; border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px; display:flex; justify-content:center; align-items:center; overflow:hidden;">
                 ${curMosaic && curMosaic.mosaic_url ? `
                   <img src="${curMosaic.mosaic_url}" alt="Mosaic Grid Batch ${activeBatchIdx+1}" 
-                       style="max-width:100%; height:auto; border-radius:4px; box-shadow:0 4px 20px rgba(0,0,0,0.5); object-fit:contain;" />
+                       style="max-width:100%; height:auto; border-radius:var(--radius-sm); box-shadow:0 4px 20px rgba(0,0,0,0.5); object-fit:contain;" />
                 ` : `
                   <div style="padding:40px; color:var(--text-muted); font-size:12px; text-align:center;">
                     Citra komposit sedang dibangun. Jalankan "Inferensi Otomatis" untuk menghasilkan kisi PNG.
@@ -7374,7 +7381,7 @@
                             </div>
                           </td>
                           <td style="padding:6px 8px; text-align:center;">
-                            <span class="font-mono font-bold" style="font-size:15px; color:#fff; background:#080d14; padding:2px 8px; border-radius:3px; border:1px solid rgba(255,255,255,0.08);">
+                            <span class="font-mono font-bold" style="font-size:15px; color:#fff; background:#080d14; padding:2px 8px; border-radius:var(--radius-xs); border:1px solid rgba(255,255,255,0.08);">
                               ${displayLabel}
                             </span>
                           </td>
@@ -7540,7 +7547,7 @@
       const btn = document.getElementById('btn-test-gemini');
       const resEl = document.getElementById('gemini-test-result');
 
-      if (btn) btn.innerHTML = `<span class="spinner" style="width:12px; height:12px; border:2px solid #fff; border-top-color:transparent; border-radius:50%; display:inline-block; animation:spin 0.6s linear infinite; margin-right:4px;"></span> Menguji...`;
+      if (btn) btn.innerHTML = `<span class="spinner" style="width:12px; height:12px; border:2px solid #fff; border-top-color:transparent; border-radius:var(--radius-circle); display:inline-block; animation:spin 0.6s linear infinite; margin-right:4px;"></span> Menguji...`;
 
       try {
         const res = await fetch('/api/inference/gemini/test', {
@@ -7586,7 +7593,7 @@
         return;
       }
 
-      if (btn) btn.innerHTML = `<span class="spinner" style="width:12px; height:12px; border:2px solid #fff; border-top-color:transparent; border-radius:50%; display:inline-block; animation:spin 0.6s linear infinite; margin-right:4px;"></span> Menyimpan...`;
+      if (btn) btn.innerHTML = `<span class="spinner" style="width:12px; height:12px; border:2px solid #fff; border-top-color:transparent; border-radius:var(--radius-circle); display:inline-block; animation:spin 0.6s linear infinite; margin-right:4px;"></span> Menyimpan...`;
 
       try {
         const res = await fetch('/api/inference/gemini/key', {
@@ -7976,17 +7983,17 @@
           <!-- Skeleton Top Bar -->
           <div style="background:var(--surface-1); padding:16px 20px; border-radius:var(--radius-md); border:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
             <div style="display:flex; flex-direction:column; gap:6px;">
-              <div style="width:220px; height:18px; background:var(--surface-2); border-radius:4px; animation:skeleton-pulse 1.5s infinite;"></div>
-              <div style="width:340px; height:12px; background:var(--surface-2); border-radius:4px; animation:skeleton-pulse 1.5s infinite 0.2s;"></div>
+              <div style="width:220px; height:18px; background:var(--surface-2); border-radius:var(--radius-sm); animation:skeleton-pulse 1.5s infinite;"></div>
+              <div style="width:340px; height:12px; background:var(--surface-2); border-radius:var(--radius-sm); animation:skeleton-pulse 1.5s infinite 0.2s;"></div>
             </div>
-            <div style="width:160px; height:32px; background:var(--surface-2); border-radius:6px; animation:skeleton-pulse 1.5s infinite 0.4s;"></div>
+            <div style="width:160px; height:32px; background:var(--surface-2); border-radius:var(--radius-sm); animation:skeleton-pulse 1.5s infinite 0.4s;"></div>
           </div>
 
           <!-- Skeleton Document Sheet & Central Animated Card -->
           <div style="background:#090d16; border-radius:var(--radius-lg); border:1px solid var(--border); padding:32px; min-height:750px; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden;">
             
             <!-- Floating User-Friendly Progress Modal Card -->
-            <div style="background:rgba(15, 23, 42, 0.92); backdrop-filter:blur(12px); border:1px solid rgba(249,115,22,0.3); border-radius:12px; padding:24px 32px; max-width:460px; width:100%; box-shadow:0 20px 50px rgba(0,0,0,0.6); z-index:10; display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px;">
+            <div style="background:rgba(15, 23, 42, 0.92); backdrop-filter:blur(12px); border:1px solid rgba(249,115,22,0.3); border-radius:var(--radius-lg); padding:24px 32px; max-width:460px; width:100%; box-shadow:0 20px 50px rgba(0,0,0,0.6); z-index:10; display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px;">
               
               <!-- Subtle Animated Dual Spinner -->
               <div style="position:relative; width:44px; height:44px;">
@@ -8010,8 +8017,8 @@
               </div>
 
               <!-- Animated Gradient Progress Bar -->
-              <div style="width:100%; height:5px; background:rgba(255,255,255,0.08); border-radius:3px; overflow:hidden; position:relative;">
-                <div style="position:absolute; top:0; left:0; height:100%; width:45%; background:linear-gradient(90deg, #f97316, #10b981, #06b6d4); border-radius:3px; animation:loading-slide 1.6s ease-in-out infinite;"></div>
+              <div style="width:100%; height:5px; background:rgba(255,255,255,0.08); border-radius:var(--radius-xs); overflow:hidden; position:relative;">
+                <div style="position:absolute; top:0; left:0; height:100%; width:45%; background:linear-gradient(90deg, #f97316, #10b981, #06b6d4); border-radius:var(--radius-xs); animation:loading-slide 1.6s ease-in-out infinite;"></div>
               </div>
 
               <div style="font-size:11px; color:#64748b; display:flex; align-items:center; gap:6px;">
@@ -8021,9 +8028,9 @@
             </div>
 
             <!-- Background Skeleton Paper (Faint Preview) -->
-            <div style="position:absolute; opacity:0.18; width:${sheetW}; height:${sheetH}; background:#ffffff; border-radius:4px; pointer-events:none; display:flex; flex-direction:column; padding:24px; gap:16px;">
-              <div style="width:100%; height:60px; border:2px dashed #94a3b8; border-radius:4px;"></div>
-              <div style="width:100%; flex:1; border:1px dashed #94a3b8; border-radius:4px;"></div>
+            <div style="position:absolute; opacity:0.18; width:${sheetW}; height:${sheetH}; background:#ffffff; border-radius:var(--radius-sm); pointer-events:none; display:flex; flex-direction:column; padding:24px; gap:16px;">
+              <div style="width:100%; height:60px; border:2px dashed #94a3b8; border-radius:var(--radius-sm);"></div>
+              <div style="width:100%; flex:1; border:1px dashed #94a3b8; border-radius:var(--radius-sm);"></div>
             </div>
 
           </div>
@@ -8060,11 +8067,11 @@
       }
 
       el.innerHTML = `
-        <div style="padding:12px 18px; background:var(--surface-2); border-radius:6px; border:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;">
+        <div style="padding:12px 18px; background:var(--surface-2); border-radius:var(--radius-sm); border:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;">
           
           <!-- Left: Crop of Pencil Scan & Metadata -->
           <div style="display:flex; align-items:center; gap:14px;">
-            <div style="width:52px; height:52px; background:#ffffff; border:1px solid var(--border); border-radius:4px; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.25);">
+            <div style="width:52px; height:52px; background:#ffffff; border:1px solid var(--border); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.25);">
               <img src="${d.crop_url}" alt="${d.label}" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
               <span style="display:none; font-size:9px; color:#64748b;">Crop Scan</span>
             </div>
@@ -8072,7 +8079,7 @@
               <div style="font-size:13px; font-weight:700; color:var(--text-primary); display:flex; align-items:center; gap:8px;">
                 <span>${d.label}</span>
                 ${typeBadge}
-                <span class="font-mono" style="font-size:13px; font-weight:800; color:var(--accent); background:rgba(249,115,22,0.12); padding:1px 8px; border-radius:4px; border:1px solid rgba(249,115,22,0.25);">
+                <span class="font-mono" style="font-size:13px; font-weight:800; color:var(--accent); background:rgba(249,115,22,0.12); padding:1px 8px; border-radius:var(--radius-sm); border:1px solid rgba(249,115,22,0.25);">
                   Nilai: ${d.is_blank ? '∅' : (d.char || '-')}
                 </span>
               </div>
@@ -8163,20 +8170,20 @@
 
             <!-- View Mode Switcher: Minimalist Segmented Tabs -->
             <div style="display:flex; align-items:center; gap:6px;">
-              <div style="display:flex; gap:3px; background:var(--surface-2); padding:3px; border-radius:9999px; border:1px solid var(--border);">
-                <button class="btn btn-sm ${mode === 'digital_doc' ? 'btn-primary' : 'btn-ghost'}" onclick="setKuesionerMode('digital_doc')" style="display:flex; align-items:center; gap:5px; padding:4px 12px; border-radius:9999px; font-weight:600; font-size:11.5px;">
+              <div style="display:flex; gap:3px; background:var(--surface-2); padding:3px; border-radius:var(--radius-pill); border:1px solid var(--border);">
+                <button class="btn btn-sm ${mode === 'digital_doc' ? 'btn-primary' : 'btn-ghost'}" onclick="setKuesionerMode('digital_doc')" style="display:flex; align-items:center; gap:5px; padding:4px 12px; border-radius:var(--radius-pill); font-weight:600; font-size:11.5px;">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                   Dokumen Digital
                 </button>
-                <button class="btn btn-sm ${mode === 'validation' ? 'btn-primary' : 'btn-ghost'}" onclick="setKuesionerMode('validation')" style="display:flex; align-items:center; gap:5px; padding:4px 12px; border-radius:9999px; font-weight:600; font-size:11.5px;">
+                <button class="btn btn-sm ${mode === 'validation' ? 'btn-primary' : 'btn-ghost'}" onclick="setKuesionerMode('validation')" style="display:flex; align-items:center; gap:5px; padding:4px 12px; border-radius:var(--radius-pill); font-weight:600; font-size:11.5px;">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                   Validasi Konsistensi
                 </button>
-                <button class="btn btn-sm ${mode === 'split' ? 'btn-primary' : 'btn-ghost'}" onclick="setKuesionerMode('split')" style="display:flex; align-items:center; gap:5px; padding:4px 12px; border-radius:9999px; font-size:11.5px;">
+                <button class="btn btn-sm ${mode === 'split' ? 'btn-primary' : 'btn-ghost'}" onclick="setKuesionerMode('split')" style="display:flex; align-items:center; gap:5px; padding:4px 12px; border-radius:var(--radius-pill); font-size:11.5px;">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
                   Bandingkan Scan
                 </button>
-                <button class="btn btn-sm ${mode === 'overlay' ? 'btn-primary' : 'btn-ghost'}" onclick="setKuesionerMode('overlay')" style="display:flex; align-items:center; gap:5px; padding:4px 12px; border-radius:9999px; font-size:11.5px;">
+                <button class="btn btn-sm ${mode === 'overlay' ? 'btn-primary' : 'btn-ghost'}" onclick="setKuesionerMode('overlay')" style="display:flex; align-items:center; gap:5px; padding:4px 12px; border-radius:var(--radius-pill); font-size:11.5px;">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
                   Overlay Scan
                 </button>
@@ -8199,19 +8206,19 @@
           <!-- Secondary Metric Strip: Shown only in Validation/Split Modes (Anti-Clutter Invariant) -->
           ${mode !== 'digital_doc' ? `
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px;">
-              <div class="metric-card" style="padding:8px 12px; background:var(--surface-1); border-radius:6px; border:1px solid var(--border);">
+              <div class="metric-card" style="padding:8px 12px; background:var(--surface-1); border-radius:var(--radius-sm); border:1px solid var(--border);">
                 <div style="font-size:10.5px; color:var(--text-muted); text-transform:uppercase; font-weight:600;">Total Kotak Formulir</div>
                 <div style="font-size:16px; font-weight:700; font-family:monospace; margin-top:2px;">${sum.total_boxes}</div>
               </div>
-              <div class="metric-card" style="padding:8px 12px; background:var(--surface-1); border-radius:6px; border:1px solid var(--border);">
+              <div class="metric-card" style="padding:8px 12px; background:var(--surface-1); border-radius:var(--radius-sm); border:1px solid var(--border);">
                 <div style="font-size:10.5px; color:var(--text-muted); text-transform:uppercase; font-weight:600;">Terisi oleh Model AI</div>
                 <div style="font-size:16px; font-weight:700; font-family:monospace; color:var(--accent); margin-top:2px;">${sum.filled_boxes}</div>
               </div>
-              <div class="metric-card" style="padding:8px 12px; background:var(--surface-1); border-radius:6px; border:1px solid var(--border);">
+              <div class="metric-card" style="padding:8px 12px; background:var(--surface-1); border-radius:var(--radius-sm); border:1px solid var(--border);">
                 <div style="font-size:10.5px; color:var(--text-muted); text-transform:uppercase; font-weight:600;">Kotak Kosong OpenCV (∅)</div>
                 <div style="font-size:16px; font-weight:700; font-family:monospace; color:#3b82f6; margin-top:2px;">${sum.blank_boxes}</div>
               </div>
-              <div class="metric-card" style="padding:8px 12px; background:var(--surface-1); border-radius:6px; border:1px solid var(--border);">
+              <div class="metric-card" style="padding:8px 12px; background:var(--surface-1); border-radius:var(--radius-sm); border:1px solid var(--border);">
                 <div style="font-size:10.5px; color:var(--text-muted); text-transform:uppercase; font-weight:600;">Rata-rata Akurasi AI</div>
                 <div style="font-size:16px; font-weight:700; font-family:monospace; color:${sum.avg_confidence>=95?'#10b981':'var(--yellow)'}; margin-top:2px;">${sum.avg_confidence}%</div>
               </div>
@@ -8227,7 +8234,7 @@
                   <div style="font-size:12px; color:var(--text-secondary); margin-top:2px;">Kaidah Logika &amp; Aritmetika Antar-Blok (R01 s.d. R05)</div>
                 </div>
                 <div style="display:flex; align-items:center; gap:8px;">
-                  <span class="font-mono" style="font-size:11.5px; color:var(--text-muted); background:var(--surface-2); padding:3px 8px; border-radius:4px;">VSERUTI26.INTI · ${bookletId}</span>
+                  <span class="font-mono" style="font-size:11.5px; color:var(--text-muted); background:var(--surface-2); padding:3px 8px; border-radius:var(--radius-sm);">VSERUTI26.INTI · ${bookletId}</span>
                   <button class="btn btn-secondary btn-sm" onclick="setKuesionerMode('digital_doc')" style="font-size:11.5px; padding:4px 10px;">
                     Kembali ke Dokumen Digital
                   </button>
@@ -8289,7 +8296,7 @@
             </div>
           ` : `
             <!-- Page Navigation Strip for Split/Overlay -->
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; background:var(--surface-1); padding:10px 16px; border-radius:6px; border:1px solid var(--border);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; background:var(--surface-1); padding:10px 16px; border-radius:var(--radius-sm); border:1px solid var(--border);">
               <div style="display:flex; gap:6px; flex-wrap:wrap;">
                 ${[1, 2, 3, 4, 5, 6, 7].map(p => {
                   const isActive = p === pageNum;
@@ -8308,10 +8315,10 @@
                  style="position:relative; width:100%; height:calc(100vh - 270px); min-height:800px; background:radial-gradient(circle at 50% 25%, #152234 0%, #080d16 85%); border-radius:var(--radius-lg); border:1px solid var(--border); overflow:hidden; user-select:none;">
 
               <!-- Minimalist Floating Camera HUD Bar (Clean & Breathing UI, No Emoji) -->
-              <div class="kuesioner-cam-hud" style="position:absolute; top:16px; right:16px; z-index:40; display:flex; align-items:center; gap:5px; background:rgba(15, 23, 42, 0.88); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border:1px solid rgba(255, 255, 255, 0.12); padding:5px 10px; border-radius:9999px; box-shadow:0 10px 30px rgba(0,0,0,0.5);">
+              <div class="kuesioner-cam-hud" style="position:absolute; top:16px; right:16px; z-index:40; display:flex; align-items:center; gap:5px; background:rgba(15, 23, 42, 0.88); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border:1px solid rgba(255, 255, 255, 0.12); padding:5px 10px; border-radius:var(--radius-pill); box-shadow:0 10px 30px rgba(0,0,0,0.5);">
                 
                 <!-- Zoom Out -->
-                <button class="btn btn-ghost btn-sm" onclick="zoomKuesionerStep(-0.2)" title="Perkecil / Zoom Out (Scroll ke bawah)" style="padding:4px 7px; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; color:#e2e8f0;">
+                <button class="btn btn-ghost btn-sm" onclick="zoomKuesionerStep(-0.2)" title="Perkecil / Zoom Out (Scroll ke bawah)" style="padding:4px 7px; border-radius:var(--radius-circle); width:28px; height:28px; display:flex; align-items:center; justify-content:center; color:#e2e8f0;">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </button>
 
@@ -8321,7 +8328,7 @@
                 </button>
 
                 <!-- Zoom In -->
-                <button class="btn btn-ghost btn-sm" onclick="zoomKuesionerStep(0.2)" title="Perbesar / Zoom In (Scroll ke atas menuju kursor)" style="padding:4px 7px; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; color:#e2e8f0;">
+                <button class="btn btn-ghost btn-sm" onclick="zoomKuesionerStep(0.2)" title="Perbesar / Zoom In (Scroll ke atas menuju kursor)" style="padding:4px 7px; border-radius:var(--radius-circle); width:28px; height:28px; display:flex; align-items:center; justify-content:center; color:#e2e8f0;">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </button>
 
@@ -8341,18 +8348,18 @@
                 <div style="width:1px; height:18px; background:rgba(255,255,255,0.12); margin:0 3px;"></div>
 
                 <!-- Tool Switcher: Pointer vs Hand Pan -->
-                <div style="display:flex; gap:2px; background:rgba(0,0,0,0.3); padding:2px; border-radius:9999px;">
-                  <button id="kuesioner-tool-select" class="btn btn-sm ${AppState.kuesionerTransform.tool === 'select' ? 'btn-primary' : 'btn-ghost'}" onclick="setKuesionerTool('select')" title="Mode Panah / Pilih Kotak Digit" style="padding:4px 7px; border-radius:9999px; width:26px; height:26px; display:flex; align-items:center; justify-content:center;">
+                <div style="display:flex; gap:2px; background:rgba(0,0,0,0.3); padding:2px; border-radius:var(--radius-pill);">
+                  <button id="kuesioner-tool-select" class="btn btn-sm ${AppState.kuesionerTransform.tool === 'select' ? 'btn-primary' : 'btn-ghost'}" onclick="setKuesionerTool('select')" title="Mode Panah / Pilih Kotak Digit" style="padding:4px 7px; border-radius:var(--radius-pill); width:26px; height:26px; display:flex; align-items:center; justify-content:center;">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg>
                   </button>
-                  <button id="kuesioner-tool-pan" class="btn btn-sm ${AppState.kuesionerTransform.tool === 'pan' ? 'btn-primary' : 'btn-ghost'}" onclick="setKuesionerTool('pan')" title="Mode Tangan / Geser Dokumen (Pan)" style="padding:4px 7px; border-radius:9999px; width:26px; height:26px; display:flex; align-items:center; justify-content:center;">
+                  <button id="kuesioner-tool-pan" class="btn btn-sm ${AppState.kuesionerTransform.tool === 'pan' ? 'btn-primary' : 'btn-ghost'}" onclick="setKuesionerTool('pan')" title="Mode Tangan / Geser Dokumen (Pan)" style="padding:4px 7px; border-radius:var(--radius-pill); width:26px; height:26px; display:flex; align-items:center; justify-content:center;">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
                   </button>
                 </div>
               </div>
 
               <!-- Top-Left Subtle Interactive Hint Pill -->
-              <div style="position:absolute; top:16px; left:16px; z-index:30; pointer-events:none; display:flex; align-items:center; gap:6px; background:rgba(15,23,42,0.72); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.08); padding:5px 12px; border-radius:9999px; font-size:11px; color:#94a3b8;">
+              <div style="position:absolute; top:16px; left:16px; z-index:30; pointer-events:none; display:flex; align-items:center; gap:6px; background:rgba(15,23,42,0.72); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.08); padding:5px 12px; border-radius:var(--radius-pill); font-size:11px; color:#94a3b8;">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                 <span>Scroll untuk zoom ke arah kursor · Tahan Spasi / Drag untuk menggeser · Dobel-klik untuk perbesar</span>
               </div>
@@ -8388,7 +8395,7 @@
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                 Dokumen Digital (Layout Fisik Terisi AI)
               </div>
-              <div style="background:#ffffff; border-radius:4px; box-shadow:0 8px 30px rgba(0,0,0,0.5); width:100%; max-width:${docW}pt; overflow:hidden;">
+              <div style="background:#ffffff; border-radius:var(--radius-sm); box-shadow:0 8px 30px rgba(0,0,0,0.5); width:100%; max-width:${docW}pt; overflow:hidden;">
                 ${svgCode}
               </div>
             </div>
@@ -8399,7 +8406,7 @@
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
                 Foto Pindaian Scan Fisik Asli
               </div>
-              <div style="background:#ffffff; border-radius:4px; box-shadow:0 8px 30px rgba(0,0,0,0.5); width:100%; max-width:${docW}pt; overflow:hidden;">
+              <div style="background:#ffffff; border-radius:var(--radius-sm); box-shadow:0 8px 30px rgba(0,0,0,0.5); width:100%; max-width:${docW}pt; overflow:hidden;">
                 <img src="${scanUrl}" alt="Scan Asli" style="width:100%; height:auto; display:block;" />
               </div>
             </div>
@@ -8427,7 +8434,7 @@
               </div>
             </div>
 
-            <div style="position:relative; width:${stageW}px; max-width:100%; box-shadow:0 10px 40px rgba(0,0,0,0.7); border-radius:4px; overflow:hidden;">
+            <div style="position:relative; width:${stageW}px; max-width:100%; box-shadow:0 10px 40px rgba(0,0,0,0.7); border-radius:var(--radius-sm); overflow:hidden;">
               <svg width="${stageW}" height="${stageH}" viewBox="0 0 ${stageW} ${stageH}" xmlns="http://www.w3.org/2000/svg" style="display:block; width:100%; height:auto;">
                 <!-- 1. Citra Pindaian Asli Dokumen BPS -->
                 <image href="${scanUrl}" x="0" y="0" width="${stageW}" height="${stageH}" preserveAspectRatio="none" />
@@ -8475,7 +8482,7 @@
 
       // Default: Mode 'digital_doc' (Lembar Dokumen Fisik Vektor Murni)
       return `
-        <div id="digital-doc-sheet-wrapper" style="width:100%; max-width:${docW}pt; box-shadow:0 15px 50px rgba(0,0,0,0.6); border-radius:4px; overflow:hidden; transition:transform 0.15s ease;">
+        <div id="digital-doc-sheet-wrapper" style="width:100%; max-width:${docW}pt; box-shadow:0 15px 50px rgba(0,0,0,0.6); border-radius:var(--radius-sm); overflow:hidden; transition:transform 0.15s ease;">
           ${svgCode}
         </div>
       `;
