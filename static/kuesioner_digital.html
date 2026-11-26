@@ -56,107 +56,124 @@
     .font-mono { font-family: var(--font-mono); }
 
     /* =========================================================================
-       1. STICKY TOP VIEWER TOOLBAR (SI-PERIKSA MINIMALIST GLASS)
+       1. STICKY MINIMALIST TOP TOOLBAR (CLEAN & BREATHING UI)
        ========================================================================= */
     .viewer-toolbar {
       position: sticky;
       top: 0;
       z-index: 50;
       background: var(--toolbar-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--toolbar-border);
-      padding: 12px 24px;
+      padding: 10px 24px;
+      transition: all 0.2s ease;
     }
 
     .toolbar-inner {
-      max-width: 1320px;
+      max-width: 1440px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .toolbar-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+      gap: 20px;
     }
 
-    .brand-left {
+    /* Left: Brand & Booklet Switcher */
+    .tb-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
+      flex-shrink: 0;
     }
 
-    .bps-chip {
-      padding: 4px 10px;
-      border-radius: 9px;
+    .tb-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tb-brand-chip {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      color: var(--accent);
       background: var(--accent-soft);
       border: 1px solid rgba(138, 180, 248, 0.25);
-      color: var(--accent);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.6px;
+      padding: 3px 8px;
+      border-radius: 6px;
     }
 
-    .brand-meta h1 {
-      font-size: 14.5px;
+    .tb-brand-title {
+      font-size: 13.5px;
       font-weight: 600;
       color: #f8fafc;
+      letter-spacing: 0.2px;
     }
-    .brand-meta p {
-      font-size: 11.5px;
+
+    .tb-divider {
+      width: 1px;
+      height: 18px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .tb-booklet-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tb-label {
+      font-size: 11px;
       color: #94a3b8;
-      font-family: var(--font-mono);
-      margin-top: 1px;
-    }
-
-    .toolbar-actions {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-
-    .tb-btn {
-      padding: 6px 13px;
-      border-radius: 9999px;
-      border: 1px solid rgba(255, 255, 255, 0.10);
-      background: rgba(255, 255, 255, 0.06);
-      color: #e2e8f0;
-      font-size: 12px;
       font-weight: 500;
-      font-family: var(--font-ui);
-      cursor: pointer;
-      transition: all 0.15s ease;
-      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
-    .tb-btn:hover { background: rgba(255, 255, 255, 0.13); }
-    .tb-btn.active {
-      background: var(--accent-soft);
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-    .tb-btn.primary {
-      background: var(--accent);
-      border-color: transparent;
-      color: #0e151f;
-      font-weight: 600;
-    }
-    .tb-btn.primary:hover { background: #a8c7fa; }
 
-    .page-nav {
+    .tb-select {
+      background: rgba(22, 32, 46, 0.85);
+      color: #f1f5f9;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .tb-select:hover, .tb-select:focus {
+      border-color: var(--accent);
+      background: rgba(28, 41, 58, 0.95);
+    }
+
+    /* Center: Segmented Page Switcher (Minimalist & Compact) */
+    .tb-center {
       display: flex;
       align-items: center;
-      gap: 5px;
-      overflow-x: auto;
-      padding-bottom: 2px;
+      justify-content: center;
+      flex: 1 1 auto;
+      min-width: 0;
     }
+
+    .page-nav-segmented {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      padding: 3px 4px;
+      gap: 2px;
+    }
+
     .page-pill {
-      padding: 5px 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 26px;
+      padding: 0 10px;
       border-radius: 9999px;
       border: none;
       background: transparent;
@@ -168,20 +185,186 @@
       white-space: nowrap;
       transition: all 0.14s ease;
     }
-    .page-pill:hover { color: #f1f5f9; background: rgba(255, 255, 255, 0.07); }
-    .page-pill.active { background: var(--accent-soft); color: var(--accent); }
+    .page-pill:hover {
+      color: #f8fafc;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .page-pill.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 600;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Right: Actions, Zoom Stepper, Save & Dropdown */
+    .tb-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .zoom-stepper {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      padding: 2px 4px;
+      gap: 2px;
+    }
+
+    .zoom-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .zoom-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+    .zoom-btn.zoom-fit-btn {
+      width: auto;
+      border-radius: 9999px;
+      padding: 0 7px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #94a3b8;
+    }
+    .zoom-btn.zoom-fit-btn:hover {
+      color: #ffffff;
+    }
+
+    .zoom-readout {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 42px;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Action Buttons */
+    .tb-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 30px;
+      padding: 0 14px;
+      border-radius: 9999px;
+      border: 1px solid transparent;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--font-ui);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .tb-action-primary {
+      background: #10b981;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+    }
+    .tb-action-primary:hover {
+      background: #059669;
+    }
+
+    .tb-action-ghost {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.10);
+      color: #cbd5e1;
+      padding: 0 10px;
+    }
+    .tb-action-ghost:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    /* Dropdown Menu (Opsi) */
+    .dropdown-container {
+      position: relative;
+    }
+
+    .dropdown-popover {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      z-index: 60;
+      min-width: 220px;
+      background: #16202e;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      padding: 6px;
+      display: none;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .dropdown-popover.open {
+      display: flex;
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      color: #cbd5e1;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: var(--font-ui);
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.12s ease;
+      width: 100%;
+    }
+    .dropdown-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+    }
+    .dropdown-item.active {
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+    .dropdown-item svg {
+      flex-shrink: 0;
+      color: currentColor;
+    }
+
+    .dropdown-separator {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+      margin: 4px 6px;
+    }
+
+    .tb-btn {
+      display: none;
+    }
 
     /* =========================================================================
-       2. PAPER BOOK DESK & A4 SHEET STYLING
+       2. PAPER BOOK DESK & A4 SHEET STYLING (BREATHING ROOM)
        ========================================================================= */
     .book-desk {
-      max-width: 1220px;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 28px 20px 64px;
+      padding: 44px 24px 96px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 28px;
+      gap: 40px;
     }
 
     /* Book Spread Mode (2 portrait pages side-by-side; landscape pages stay full width) */
@@ -634,62 +817,93 @@
 <body class="show-ocr">
 
   <!-- =======================================================================
-       STICKY TOP VIEWER TOOLBAR (AUTHENTIC SI-PERIKSA GLASS)
+       STICKY MINIMALIST TOP TOOLBAR (CLEAN & BREATHING UI)
        ======================================================================= -->
   <header class="viewer-toolbar">
     <div class="toolbar-inner">
-      <div class="toolbar-row">
-        <div class="brand-left">
-          <span class="bps-chip">BPS REPUBLIK INDONESIA</span>
-          <div class="brand-meta">
-            <h1>VSERUTI26.INTI — Kuesioner Digital Resmi</h1>
-            <p id="booklet-info-meta">Format Fisik Kertas Putih A4 (7 Halaman) · <span id="active-booklet-name" style="font-weight:700; color:var(--accent);">booklet_01</span></p>
-          </div>
+      <!-- Left: Minimal Brand & Booklet Switcher -->
+      <div class="tb-left">
+        <div class="tb-brand">
+          <span class="tb-brand-chip">VSERUTI26.INTI</span>
+          <span class="tb-brand-title">Kuesioner Digital</span>
+          <span id="active-booklet-name" style="display:none;">booklet_01</span>
         </div>
-        <div class="toolbar-actions">
-          <!-- Booklet Selector -->
-          <div style="display:flex; align-items:center; gap:6px; margin-right:4px;">
-            <label for="booklet-select" style="font-size:11px; color:#94a3b8; font-weight:600;">Buklet:</label>
-            <select id="booklet-select" class="paper-select" style="background:#16202e; color:#f1f5f9; border:1px solid rgba(255,255,255,0.18); border-radius:6px; padding:4px 8px; font-size:11.5px; font-family:var(--font-mono); cursor:pointer;" onchange="onBookletChange(this.value)">
-              <option value="booklet_01">booklet_01</option>
-            </select>
-          </div>
-
-          <!-- Zoom Controls Pill -->
-          <div class="zoom-controls-pill" style="display:inline-flex; align-items:center; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:9999px; padding:2px 8px; gap:4px;">
-            <button class="tb-icon-btn" onclick="zoomDigitalKuesionerStep(-0.15)" title="Perkecil / Zoom Out (Scroll ke bawah)" style="background:none; border:none; color:#cbd5e1; cursor:pointer; padding:3px; display:flex; align-items:center;">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </button>
-            <span id="digital-zoom-badge" class="font-mono" onclick="resetDigitalKuesionerZoom()" title="Klik untuk reset 100%" style="font-size:11.5px; font-weight:700; min-width:44px; text-align:center; color:var(--accent); cursor:pointer;">100%</span>
-            <button class="tb-icon-btn" onclick="zoomDigitalKuesionerStep(0.15)" title="Perbesar / Zoom In (Scroll ke atas menuju kursor)" style="background:none; border:none; color:#cbd5e1; cursor:pointer; padding:3px; display:flex; align-items:center;">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </button>
-            <button class="tb-btn-subtle" onclick="fitDigitalKuesionerWidth()" title="Sesuaikan Lebar" style="background:none; border:none; color:#94a3b8; font-size:11px; cursor:pointer; padding:2px 4px; font-weight:600;">Fit</button>
-          </div>
-
-          <button class="tb-btn" onclick="runGeminiTextInference()" title="Jalankan inferensi pembacaan tulisan tangan bebas via Gemini API" style="display:flex; align-items:center; gap:5px; border-color:rgba(138,180,248,0.4); color:var(--accent);">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
-            <span>Inferensi Teks Gemini</span>
-          </button>
-          <button class="tb-btn" id="btn-book" onclick="toggleBookMode()" title="Tampilkan 2 halaman berdampingan pada layar lebar">Mode Buku</button>
-          <button class="tb-btn active" id="btn-ocr" onclick="toggleOcrHighlight()" title="Sorot isian pembacaan OCR / verifikasi HITL">Sorotan Isian</button>
-          <button class="tb-btn active" id="btn-edit" onclick="toggleEditMode()" title="Buka/kunci mode edit nilai kuesioner">Kunci Dokumen</button>
-          <button class="tb-btn" id="btn-save" onclick="saveBookletCorrections()" style="display:inline-block; background:#059669; color:#fff; border-color:#059669; font-weight:600;">Simpan Koreksi</button>
-          <button class="tb-btn" onclick="openJsonModal()" title="Lihat dan salin data terstruktur JSON">Ekspor JSON</button>
-          <button class="tb-btn primary" onclick="window.print()" title="Cetak formulir fisik A4 resmi">Cetak A4</button>
+        <div class="tb-divider"></div>
+        <div class="tb-booklet-wrap">
+          <label for="booklet-select" class="tb-label">Buklet</label>
+          <select id="booklet-select" class="tb-select" onchange="onBookletChange(this.value)">
+            <option value="booklet_01">booklet_01</option>
+          </select>
         </div>
       </div>
-      <div class="toolbar-row" style="margin-top: 2px;">
-        <nav class="page-nav">
-          <button class="page-pill active" onclick="filterPage('all', this)">Semua Halaman (1–7)</button>
-          <button class="page-pill" onclick="filterPage('1', this)">Hal 1 · KOP &amp; Tempat</button>
-          <button class="page-pill" onclick="filterPage('2', this)">Hal 2 · Roster ART &amp; Konsumsi</button>
-          <button class="page-pill" onclick="filterPage('3', this)">Hal 3 · Non Makanan Lanjutan</button>
-          <button class="page-pill" onclick="filterPage('4', this)">Hal 4 · Kesehatan &amp; Persepsi</button>
-          <button class="page-pill" onclick="filterPage('5', this)">Hal 5 · Pendapatan [L]</button>
-          <button class="page-pill" onclick="filterPage('6', this)">Hal 6 · Transfer &amp; Aset [L]</button>
-          <button class="page-pill" onclick="filterPage('7', this)">Hal 7 · Keuangan &amp; Catatan [L]</button>
-        </nav>
+
+      <!-- Center: Segmented Page Switcher (Minimalist & Compact) -->
+      <nav class="tb-center page-nav">
+        <div class="page-nav-segmented">
+          <button class="page-pill active" onclick="filterPage('all', this)" title="Tampilkan Semua Halaman (1–7)">Semua</button>
+          <button class="page-pill" onclick="filterPage('1', this)" title="Hal 1 · KOP &amp; Tempat Tinggal">1</button>
+          <button class="page-pill" onclick="filterPage('2', this)" title="Hal 2 · Roster ART &amp; Konsumsi">2</button>
+          <button class="page-pill" onclick="filterPage('3', this)" title="Hal 3 · Non-Makanan Lanjutan">3</button>
+          <button class="page-pill" onclick="filterPage('4', this)" title="Hal 4 · Kesehatan &amp; Persepsi">4</button>
+          <button class="page-pill" onclick="filterPage('5', this)" title="Hal 5 · Pendapatan [L]">5</button>
+          <button class="page-pill" onclick="filterPage('6', this)" title="Hal 6 · Transfer &amp; Aset [L]">6</button>
+          <button class="page-pill" onclick="filterPage('7', this)" title="Hal 7 · Keuangan &amp; Catatan [L]">7</button>
+        </div>
+      </nav>
+
+      <!-- Right: Zoom, Primary Save, & Minimal Options Dropdown -->
+      <div class="tb-right">
+        <!-- Compact Zoom Stepper -->
+        <div class="zoom-stepper">
+          <button class="zoom-btn" onclick="zoomDigitalKuesionerStep(-0.15)" title="Perkecil (Zoom Out)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <span id="digital-zoom-badge" class="zoom-readout font-mono" onclick="resetDigitalKuesionerZoom()" title="Klik untuk Reset 100%">100%</span>
+          <button class="zoom-btn" onclick="zoomDigitalKuesionerStep(0.15)" title="Perbesar (Zoom In)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <button class="zoom-btn zoom-fit-btn" onclick="fitDigitalKuesionerWidth()" title="Sesuaikan Lebar Layar">Fit</button>
+        </div>
+
+        <!-- Primary Action: Simpan Koreksi -->
+        <button class="tb-action-btn tb-action-primary" id="btn-save" onclick="saveBookletCorrections()" title="Simpan perubahan koreksi">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          <span>Simpan</span>
+        </button>
+
+        <!-- Secondary Actions Popover Menu -->
+        <div class="dropdown-container" id="options-dropdown-wrap">
+          <button class="tb-action-btn tb-action-ghost" id="btn-options-toggle" onclick="toggleOptionsMenu(event)" title="Opsi &amp; Tindakan Tambahan">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/><circle cx="5" cy="12" r="1.5"/></svg>
+          </button>
+          <div class="dropdown-popover" id="options-menu">
+            <button class="dropdown-item" id="btn-book" onclick="toggleBookMode(); closeOptionsMenu();">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              <span class="btn-label">Mode Buku (2 Hal)</span>
+            </button>
+            <button class="dropdown-item active" id="btn-ocr" onclick="toggleOcrHighlight(); closeOptionsMenu();">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <span class="btn-label">Sorotan Isian OCR</span>
+            </button>
+            <button class="dropdown-item active" id="btn-edit" onclick="toggleEditMode(); closeOptionsMenu();">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span class="btn-label">Kunci Dokumen</span>
+            </button>
+            <div class="dropdown-separator"></div>
+            <button class="dropdown-item" onclick="runGeminiTextInference(); closeOptionsMenu();">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+              <span>Inferensi Teks Gemini</span>
+            </button>
+            <button class="dropdown-item" onclick="openJsonModal(); closeOptionsMenu();">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              <span>Ekspor Data JSON</span>
+            </button>
+            <button class="dropdown-item" onclick="window.print(); closeOptionsMenu();">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+              <span>Cetak Formulir A4</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -1784,8 +1998,26 @@
     }
 
     // =========================================================================
-    // TOOLBAR ACTIONS
+    // TOOLBAR ACTIONS & MINIMALIST OPTIONS POPOVER
     // =========================================================================
+    function toggleOptionsMenu(e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      const menu = document.getElementById('options-menu');
+      if (menu) menu.classList.toggle('open');
+    }
+
+    function closeOptionsMenu() {
+      const menu = document.getElementById('options-menu');
+      if (menu) menu.classList.remove('open');
+    }
+
+    window.addEventListener('click', (e) => {
+      const wrap = document.getElementById('options-dropdown-wrap');
+      if (wrap && !wrap.contains(e.target)) {
+        closeOptionsMenu();
+      }
+    });
+
     function filterPage(page, btn) {
       document.querySelectorAll('.page-pill').forEach(p => p.classList.remove('active'));
       if (btn) btn.classList.add('active');
@@ -1797,13 +2029,16 @@
 
     function toggleBookMode() {
       const on = document.body.classList.toggle('book-mode');
-      document.getElementById('btn-book').classList.toggle('active', on);
-      showToast(on ? 'Mode Buku aktif (2 halaman berdampingan pada layar lebar).' : 'Kembali ke tampilan 1 halaman vertikal.');
+      const btn = document.getElementById('btn-book');
+      if (btn) btn.classList.toggle('active', on);
+      showToast(on ? 'Mode Buku aktif (2 halaman berdampingan).' : 'Kembali ke tampilan vertikal.');
     }
 
     function toggleOcrHighlight() {
       const on = document.body.classList.toggle('show-ocr');
-      document.getElementById('btn-ocr').classList.toggle('active', on);
+      const btn = document.getElementById('btn-ocr');
+      if (btn) btn.classList.toggle('active', on);
+      showToast(on ? 'Sorotan isian OCR aktif.' : 'Sorotan isian OCR dimatikan.');
     }
 
     let currentBookletId = 'booklet_01';
@@ -1814,10 +2049,11 @@
       const btn = document.getElementById('btn-edit');
       if (btn) {
         btn.classList.toggle('active', isEditMode);
-        btn.textContent = isEditMode ? 'Kunci Dokumen' : 'Mode Edit';
+        const label = btn.querySelector('.btn-label') || btn;
+        label.textContent = isEditMode ? 'Kunci Dokumen' : 'Buka Mode Edit';
       }
       const saveBtn = document.getElementById('btn-save');
-      if (saveBtn) saveBtn.style.display = isEditMode ? 'inline-block' : 'none';
+      if (saveBtn) saveBtn.style.display = isEditMode ? 'inline-flex' : 'none';
 
       document.querySelectorAll('.editable-field').forEach(el => { el.readOnly = !isEditMode; });
       document.querySelectorAll('.editable-radio').forEach(r => { r.disabled = !isEditMode; });
