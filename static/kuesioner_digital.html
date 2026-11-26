@@ -32,19 +32,19 @@
       --accent: #8AB4F8;
       --accent-soft: rgba(138, 180, 248, 0.16);
 
-      /* Paper & Form Colors (Official BPS White Questionnaire) */
-      --paper-bg: #ffffff;
-      --paper-ink: #111827;
-      --paper-muted: #4b5563;
-      --paper-border: #1f2937;
-      --paper-grid: #6b7280;
-      --paper-header-bg: #e5e7eb;
-      --paper-block-bg: #d1d5db;
-      --paper-sub-bg: #f3f4f6;
-      --ocr-ink: #1d4ed8;       /* Tinta biru pembacaan sistem */
-      --hitl-bg: #fef3c7;       /* Sorotan kuning lembut koreksi HITL */
-      --hitl-border: #d97706;
-      --ok-bg: #ecfdf5;         /* Sorotan hijau sangat lembut OCR valid */
+      /* Paper & Form Colors (Eye-Friendly Calibrated Authentic BPS Questionnaire) */
+      --paper-bg: #FAFBFD;      /* Comfort soft off-white (mengurangi silau pupil mata) */
+      --paper-ink: #1E293B;     /* Charcoal slate ink (tajam nyaman tanpa kontras ekstrem) */
+      --paper-muted: #64748B;
+      --paper-border: #334155;
+      --paper-grid: #94A3B8;
+      --paper-header-bg: #E2E8F0;
+      --paper-block-bg: #CBD5E1;
+      --paper-sub-bg: #F1F5F9;
+      --ocr-ink: #2563EB;       /* Biru pembacaan sistem terkalibrasi */
+      --hitl-bg: #FEF3C7;       /* Kuning lembut koreksi HITL */
+      --hitl-border: #D97706;
+      --ok-bg: #ECFDF5;         /* Hijau lembut validasi */
       --ok-border: #059669;
 
       --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
@@ -201,10 +201,10 @@
       background: rgba(255, 255, 255, 0.08);
     }
     .page-pill.active {
-      background: var(--accent-soft);
-      color: var(--accent);
+      background: var(--accent);
+      color: #0e151f;
       font-weight: 600;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 6px rgba(138, 180, 248, 0.3);
     }
 
     /* Right: Actions, Zoom Stepper, Save & Dropdown */
@@ -403,11 +403,12 @@
       line-height: 1.35;
       padding: 26px 30px 34px;
       border-radius: var(--radius-xs);
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.48), 0 1px 4px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 16px 36px -4px rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(255, 255, 255, 0.08);
       position: relative;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      transition: box-shadow 0.2s ease;
     }
     .a4-sheet.a4-portrait {
       max-width: 794px;
@@ -422,16 +423,24 @@
     }
     .a4-sheet.hidden-page { display: none !important; }
 
-    /* Subtle orientation tag above sheet on desk (hidden when printing) */
+    /* Anchored orientation capsule badge above sheet (hidden when printing) */
     .sheet-orient-tag {
       position: absolute;
-      top: -20px;
-      right: 2px;
+      top: -26px;
+      right: 0;
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 10.5px;
+      font-weight: 500;
       color: #94a3b8;
+      background: rgba(18, 27, 39, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-pill);
+      padding: 2px 10px;
       letter-spacing: 0.3px;
       user-select: none;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
 
     /* Page Number Footer (exact bottom center like PDF) */
@@ -875,6 +884,8 @@
           </button>
           <button class="zoom-btn zoom-fit-btn" onclick="fitDigitalKuesionerWidth()" title="Sesuaikan Lebar Layar">Fit</button>
         </div>
+
+        <div class="tb-divider" style="height:18px; margin:0 2px;"></div>
 
         <!-- Primary Action: Simpan Koreksi -->
         <button class="tb-action-btn tb-action-primary" id="btn-save" onclick="saveBookletCorrections()" title="Simpan perubahan koreksi">
