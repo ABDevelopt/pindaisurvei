@@ -801,6 +801,20 @@
     }
     .code-box-input.w-md { width: 52px; }
     .code-box-input.w-lg { width: 76px; }
+    .code-box-input.comb-5 {
+      width: 86px;
+      height: 22px;
+      letter-spacing: 5px;
+      padding-left: 5px;
+      text-align: center;
+    }
+    .code-box-input.comb-2 {
+      width: 36px;
+      height: 20px;
+      letter-spacing: 2px;
+      padding-left: 2px;
+      text-align: center;
+    }
     .code-box-input:focus {
       border-color: #2563eb;
       background: #eff6ff;
@@ -1269,7 +1283,7 @@
             <th colspan="2">Uraian</th>
             <th>Nama dan Kode</th>
             <th style="width:170px;">Jabatan</th>
-            <th style="width:92px;">Waktu</th>
+            <th style="width:105px;">Waktu</th>
             <th style="width:82px;">Tanda Tangan</th>
           </tr>
           <tr class="col-num-row">
@@ -1282,49 +1296,101 @@
         </thead>
         <tbody>
           <tr>
-            <td style="width:32px; text-align:center;">201</td>
-            <td style="width:74px;">Pendata</td>
-            <td><input type="text" class="paper-input text-mode editable-field" data-key="b2.r201_nama" value="" readonly /></td>
+            <td style="width:32px; text-align:center; font-weight:700;">201</td>
+            <td style="width:74px; font-weight:600;">Pendata</td>
             <td>
-              <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; font-size:9px;">
-                <div>Staf BPS Provinsi - 1<br/>Staf BPS Kab/Kota - 2<br/>Mitra - 3</div>
-                <input type="text" class="code-box-input editable-field" data-key="b2.r201_jabatan" value="" readonly />
+              <div style="display:flex; flex-direction:column; gap:5px; padding:2px 0;">
+                <div>
+                  <input type="text" class="paper-input text-mode editable-field" data-key="b2.r201_nama" placeholder="Nama Pendata" value="" readonly style="border-bottom:1px dotted #9ca3af; padding-bottom:2px;" />
+                </div>
+                <div style="display:flex; justify-content:flex-end; align-items:center; gap:6px;">
+                  <span style="font-size:9.5px; color:#4b5563; font-weight:600;">Kode:</span>
+                  <input type="text" class="code-box-input comb-5 editable-field" data-key="b2.r201_kode" placeholder="_____" maxlength="5" value="" readonly title="Kode Petugas Pendata (5 digit)" />
+                </div>
               </div>
             </td>
-            <td style="text-align:center;">
-              <div style="font-size:8.5px; color:#4b5563;">Tgl / Bln</div>
-              <input type="text" class="paper-input center editable-field" data-key="b2.r201_waktu" value="" readonly />
-            </td>
-            <td style="text-align:center; font-size:9.5px; color:#059669; font-weight:700;">—</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;">202</td>
-            <td>Pemeriksa</td>
-            <td><input type="text" class="paper-input text-mode editable-field" data-key="b2.r202_nama" value="" readonly /></td>
             <td>
               <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; font-size:9px;">
-                <div>Staf BPS Provinsi - 1<br/>Staf BPS Kab/Kota - 2<br/>Mitra - 3</div>
-                <input type="text" class="code-box-input editable-field" data-key="b2.r202_jabatan" value="" readonly />
+                <div style="line-height:1.35;">Staf BPS Provinsi - 1<br/>Staf BPS Kab/Kota - 2<br/>Mitra - 3</div>
+                <input type="text" class="code-box-input editable-field" data-key="b2.r201_jabatan" value="" readonly style="width:24px; text-align:center; font-weight:700;" />
               </div>
             </td>
-            <td style="text-align:center;">
-              <div style="font-size:8.5px; color:#4b5563;">Tgl / Bln</div>
-              <input type="text" class="paper-input center editable-field" data-key="b2.r202_waktu" value="" readonly />
+            <td>
+              <div style="display:flex; flex-direction:column; gap:3px; align-items:center;">
+                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-size:9px; font-weight:600; color:#4b5563;">
+                  <span>Tgl</span>
+                  <input type="text" class="code-box-input comb-2 editable-field" data-key="b2.r201_tgl" placeholder="__" maxlength="2" value="" readonly />
+                </div>
+                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-size:9px; font-weight:600; color:#4b5563;">
+                  <span>Bln</span>
+                  <input type="text" class="code-box-input comb-2 editable-field" data-key="b2.r201_bln" placeholder="__" maxlength="2" value="" readonly />
+                </div>
+                <input type="hidden" data-key="b2.r201_waktu" value="" />
+              </div>
             </td>
-            <td style="text-align:center; font-size:9.5px; color:#059669; font-weight:700;">—</td>
+            <td style="text-align:center; vertical-align:middle;">
+              <span style="font-size:10px; color:#059669; font-weight:600; display:inline-flex; align-items:center; gap:2px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                TTD
+              </span>
+            </td>
           </tr>
           <tr>
-            <td style="text-align:center;">203</td>
-            <td>Hasil pendataan rumah tangga</td>
-            <td colspan="3" style="font-size:9.5px; line-height:1.45;">
-              1. Terisi lengkap<br/>
-              2. Terisi tidak lengkap ➡ Blok VII. Catatan<br/>
-              3. Tidak ada ART/responden yang dapat memberi jawaban sampai akhir masa pendataan<br/>
-              4. Responden menolak<br/>
-              5. Rumah tangga pindah/bangunan tempat tinggal sudah tidak ada
+            <td style="text-align:center; font-weight:700;">202</td>
+            <td style="font-weight:600;">Pemeriksa</td>
+            <td>
+              <div style="display:flex; flex-direction:column; gap:5px; padding:2px 0;">
+                <div>
+                  <input type="text" class="paper-input text-mode editable-field" data-key="b2.r202_nama" placeholder="Nama Pemeriksa" value="" readonly style="border-bottom:1px dotted #9ca3af; padding-bottom:2px;" />
+                </div>
+                <div style="display:flex; justify-content:flex-end; align-items:center; gap:6px;">
+                  <span style="font-size:9.5px; color:#4b5563; font-weight:600;">Kode:</span>
+                  <input type="text" class="code-box-input comb-5 editable-field" data-key="b2.r202_kode" placeholder="_____" maxlength="5" value="" readonly title="Kode Petugas Pemeriksa (5 digit)" />
+                </div>
+              </div>
             </td>
-            <td style="text-align:center;">
-              <input type="text" class="code-box-input editable-field" data-key="b2.r203" value="" readonly />
+            <td>
+              <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; font-size:9px;">
+                <div style="line-height:1.35;">Staf BPS Provinsi - 1<br/>Staf BPS Kab/Kota - 2<br/>Mitra - 3</div>
+                <input type="text" class="code-box-input editable-field" data-key="b2.r202_jabatan" value="" readonly style="width:24px; text-align:center; font-weight:700;" />
+              </div>
+            </td>
+            <td>
+              <div style="display:flex; flex-direction:column; gap:3px; align-items:center;">
+                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-size:9px; font-weight:600; color:#4b5563;">
+                  <span>Tgl</span>
+                  <input type="text" class="code-box-input comb-2 editable-field" data-key="b2.r202_tgl" placeholder="__" maxlength="2" value="" readonly />
+                </div>
+                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-size:9px; font-weight:600; color:#4b5563;">
+                  <span>Bln</span>
+                  <input type="text" class="code-box-input comb-2 editable-field" data-key="b2.r202_bln" placeholder="__" maxlength="2" value="" readonly />
+                </div>
+                <input type="hidden" data-key="b2.r202_waktu" value="" />
+              </div>
+            </td>
+            <td style="text-align:center; vertical-align:middle;">
+              <span style="font-size:10px; color:#059669; font-weight:600; display:inline-flex; align-items:center; gap:2px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                TTD
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align:center; font-weight:700;">203</td>
+            <td colspan="4" style="font-size:9.5px; line-height:1.45;">
+              <div style="font-weight:700; margin-bottom:2px;">Hasil pendataan rumah tangga:</div>
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2px 14px;">
+                <div>1. Terisi lengkap</div>
+                <div>2. Terisi tidak lengkap ➡ Blok VII. Catatan</div>
+                <div>3. Tidak ada ART/responden s.d. akhir masa pendataan</div>
+                <div>4. Responden menolak</div>
+                <div>5. Rumah tangga pindah</div>
+                <div>6. Rumah tangga tidak ditemukan</div>
+                <div style="grid-column: span 2;">7. Lainnya (tuliskan)</div>
+              </div>
+            </td>
+            <td style="text-align:center; vertical-align:middle;">
+              <input type="text" class="code-box-input editable-field" data-key="b2.r203" value="" readonly style="width:28px; height:24px; font-size:12px; font-weight:700; text-align:center;" />
             </td>
           </tr>
         </tbody>
@@ -2685,31 +2751,47 @@
       // 3. Blok II Petugas
       const pclFld = p1.b2_r201_nama_pencacah || p1.p1_txt_nama_pencacah;
       const pclInferred = getVal(pclFld);
-      const pclId = getVal(p1.b2_r201_id_pcl || p1.p1_F011);
+      const rawPclId = getVal(p1.b2_r201_id_pcl || p1.p1_F011);
       const isPclBlank = pclFld && (pclFld.is_blank === true || pclFld.is_blank === 'true' || pclInferred.toUpperCase() === 'KOSONG');
       let pclResolved = '';
-      if (!isPclBlank) {
-        pclResolved = pclInferred || officerDir[pclId] || '';
+      if (!isPclBlank && pclInferred) {
+        pclResolved = pclInferred;
+      } else if (rawPclId) {
+        pclResolved = officerDir[rawPclId] || officerDir[String(rawPclId).padStart(5, '0')] || '';
       }
+      const pclCode = rawPclId ? String(rawPclId).padStart(5, '0') : '';
       setVal('b2.r201_nama', pclResolved);
+      setVal('b2.r201_kode', pclCode);
       setVal('b2.r201_jabatan', getVal(p1.b2_r201_jabatan_pcl || p1.p1_F010) || '3');
       const pclTgl = getVal(p1.b2_r201_tgl_pcl || p1.p1_F009);
       const pclBln = getVal(p1.b2_r201_jam_pcl || p1.p1_F012);
-      setVal('b2.r201_waktu', pclTgl ? (pclBln ? `${pclTgl} / ${pclBln}` : pclTgl) : '');
+      const pclTglPad = pclTgl ? String(pclTgl).padStart(2, '0') : '';
+      const pclBlnPad = pclBln ? String(pclBln).padStart(2, '0') : '';
+      setVal('b2.r201_tgl', pclTglPad);
+      setVal('b2.r201_bln', pclBlnPad);
+      setVal('b2.r201_waktu', pclTglPad ? (pclBlnPad ? `${pclTglPad} / ${pclBlnPad}` : pclTglPad) : '');
 
       const pmlFld = p1.b2_r202_nama_pengawas || p1.p1_txt_nama_pengawas;
       const pmlInferred = getVal(pmlFld);
-      const pmlId = getVal(p1.b2_r202_id_pml || p1.p1_F015);
+      const rawPmlId = getVal(p1.b2_r202_id_pml || p1.p1_F015);
       const isPmlBlank = pmlFld && (pmlFld.is_blank === true || pmlFld.is_blank === 'true' || pmlInferred.toUpperCase() === 'KOSONG');
       let pmlResolved = '';
-      if (!isPmlBlank) {
-        pmlResolved = pmlInferred || officerDir[pmlId] || '';
+      if (!isPmlBlank && pmlInferred) {
+        pmlResolved = pmlInferred;
+      } else if (rawPmlId) {
+        pmlResolved = officerDir[rawPmlId] || officerDir[String(rawPmlId).padStart(5, '0')] || '';
       }
+      const pmlCode = rawPmlId ? String(rawPmlId).padStart(5, '0') : '';
       setVal('b2.r202_nama', pmlResolved);
+      setVal('b2.r202_kode', pmlCode);
       setVal('b2.r202_jabatan', getVal(p1.b2_r202_jabatan_pml || p1.p1_F014) || '2');
       const pmlTgl = getVal(p1.b2_r202_tgl_pml || p1.p1_F013);
       const pmlBln = getVal(p1.b2_r202_jam_pml || p1.p1_F016);
-      setVal('b2.r202_waktu', pmlTgl ? (pmlBln ? `${pmlTgl} / ${pmlBln}` : pmlTgl) : '');
+      const pmlTglPad = pmlTgl ? String(pmlTgl).padStart(2, '0') : '';
+      const pmlBlnPad = pmlBln ? String(pmlBln).padStart(2, '0') : '';
+      setVal('b2.r202_tgl', pmlTglPad);
+      setVal('b2.r202_bln', pmlBlnPad);
+      setVal('b2.r202_waktu', pmlTglPad ? (pmlBlnPad ? `${pmlTglPad} / ${pmlBlnPad}` : pmlTglPad) : '');
       setVal('b2.r203', getVal(p1.b2_r203_hasil_pendataan || p1.p1_F017) || '1');
 
       // 4. Blok III Roster ART (10 Baris Riil — Kolom: Hub, Kawin, JK, Umur, Ijazah, Nama Riil Inferred)
