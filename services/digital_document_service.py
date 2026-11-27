@@ -108,31 +108,29 @@ def get_digital_document_svg(booklet_id: str, page_num: int) -> str:
 
     # 2. Render KOP for page 1 (Official BPS Header)
     if page_num == 1:
-        # BPS Logo (Official SVG Tri-Square Logo)
-        svg.append('''<g transform="translate(18, 16) scale(0.65)">
-          <rect x="0" y="0" width="16" height="16" fill="#0284c7" rx="2"/>
-          <rect x="18" y="0" width="16" height="16" fill="#f97316" rx="2"/>
-          <rect x="9" y="18" width="16" height="16" fill="#0284c7" rx="2"/>
-        </g>''')
-        svg.append('<text x="46" y="27" font-size="9pt" font-weight="800" fill="#0284c7" letter-spacing="0.5">BADAN PUSAT STATISTIK</text>')
-        svg.append('<text x="46" y="37" font-size="7pt" font-weight="600" fill="#64748b">REPUBLIK INDONESIA</text>')
+        # Form Code (Top Left)
+        svg.append('<rect x="18" y="14" width="88" height="24" fill="#ffffff" stroke="#0f172a" stroke-width="1.2"/>')
+        svg.append('<text x="62" y="30" text-anchor="middle" font-size="8.5pt" font-weight="800" fill="#0f172a" letter-spacing="0.5">VSERUTI26.INTI</text>')
 
-        # Security Box & Form Code (Top Right)
-        svg.append(f'<rect x="{w - 132}" y="14" width="114" height="34" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="2"/>')
-        svg.append(f'<text x="{w - 75}" y="26" text-anchor="middle" font-size="8pt" font-weight="800" fill="#0f172a" letter-spacing="1">RAHASIA</text>')
-        svg.append(f'<line x1="{w - 132}" y1="30" x2="{w - 18}" y2="30" stroke="#0f172a" stroke-width="0.8"/>')
-        svg.append(f'<text x="{w - 75}" y="42" text-anchor="middle" font-size="8pt" font-weight="800" fill="#0f172a">VSERUTI26.INTI</text>')
+        # Official Garuda Pancasila Asset & REPUBLIK INDONESIA (Center)
+        garuda_w, garuda_h = 36, 34
+        svg.append(f'<image href="/static/img/garuda_pancasila.png" x="{(w - garuda_w) / 2:.1f}" y="10" width="{garuda_w}" height="{garuda_h}" preserveAspectRatio="xMidYMid meet" />')
+        svg.append(f'<text x="{w / 2:.1f}" y="52" text-anchor="middle" font-size="7.5pt" font-weight="800" fill="#0f172a" letter-spacing="0.8">REPUBLIK INDONESIA</text>')
+
+        # Security Box & Set Note (Top Right)
+        svg.append(f'<text x="{w - 20:.1f}" y="22" text-anchor="end" font-size="6.5pt" fill="#475569">Dibuat 1 set untuk</text>')
+        svg.append(f'<text x="{w - 20:.1f}" y="31" text-anchor="end" font-size="7pt" font-weight="700" fill="#0f172a">BPS Kab/Kota</text>')
+        svg.append(f'<rect x="{w - 76:.1f}" y="35" width="56" height="18" fill="#ffffff" stroke="#0f172a" stroke-width="1.2"/>')
+        svg.append(f'<text x="{w - 48:.1f}" y="47.5" text-anchor="middle" font-size="7.5pt" font-weight="800" fill="#0f172a" letter-spacing="1">RAHASIA</text>')
 
         # Central Survey Titles
-        svg.append(f'<text x="{w / 2}" y="62" text-anchor="middle" font-size="10.5pt" font-weight="800" fill="#0f172a" letter-spacing="0.8">SURVEI EKONOMI RUMAH TANGGA TRIWULANAN (SERUTI) 2026</text>')
-
-        # Kuesioner Inti Badge
-        badge_w = 140
-        svg.append(f'<rect x="{(w - badge_w) / 2}" y="70" width="{badge_w}" height="18" fill="#f1f5f9" stroke="#334155" stroke-width="1" rx="2"/>')
-        svg.append(f'<text x="{w / 2}" y="83" text-anchor="middle" font-size="9pt" font-weight="800" fill="#0f172a" letter-spacing="1">KUESIONER INTI</text>')
+        svg.append(f'<text x="{w / 2:.1f}" y="70" text-anchor="middle" font-size="9pt" font-weight="800" fill="#0f172a" letter-spacing="0.5">SURVEI EKONOMI RUMAH TANGGA TRIWULANAN 2026</text>')
+        svg.append(f'<text x="{w / 2:.1f}" y="82" text-anchor="middle" font-size="7pt" font-weight="600" fill="#334155" letter-spacing="0.2">KETERANGAN PENGELUARAN, PENDAPATAN, DAN INVESTASI RUMAH TANGGA</text>')
 
         # Triwulan Header Box
-        svg.append(f'<text x="{w / 2 - 20}" y="145" text-anchor="end" font-size="8pt" font-weight="700" fill="#0f172a">TRIWULAN PENDATAAN :</text>')
+        svg.append(f'<text x="{w / 2 - 16:.1f}" y="98" text-anchor="end" font-size="7.5pt" font-weight="700" fill="#0f172a">TRIWULAN:</text>')
+        svg.append(f'<rect x="{w / 2 - 10:.1f}" y="87" width="28" height="16" fill="#ffffff" stroke="#0f172a" stroke-width="1"/>')
+        svg.append(f'<text x="{w / 2 + 4:.1f}" y="99" text-anchor="middle" font-size="8pt" font-weight="700" fill="#0284c7">II</text>')
 
         # Kesediaan Responden Box
         svg.append('<rect x="15.5" y="185.0" width="375" height="64" fill="#ffffff" stroke="#1e293b" stroke-width="1"/>')

@@ -496,6 +496,23 @@
       max-width: 140px;
     }
 
+    /* Split comparison mode (clean borderless single-sheet presentation) */
+    body.is-split .viewer-toolbar {
+      display: none !important;
+    }
+    body.is-split {
+      padding-top: 0 !important;
+      background: #0c121c !important;
+    }
+    body.is-split .book-desk {
+      padding: 16px 10px 36px !important;
+      margin: 0 !important;
+    }
+    body.is-split .a4-sheet {
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45) !important;
+      margin: 0 auto !important;
+    }
+
     /* Progressive Disclosure Breakpoints (Ensures Zero Overlap on All Screens) */
     @media (max-width: 1180px) {
       .tb-brand-title { display: none !important; }
@@ -3312,6 +3329,11 @@
         document.body.classList.add('is-embedded');
       }
       const params = new URLSearchParams(window.location.search);
+      const isSplit = params.get('split') === '1' || params.get('split') === 'true';
+      if (isSplit) {
+        document.body.classList.add('is-split');
+      }
+
       const pathParts = window.location.pathname.split('/').filter(Boolean);
       let bid = params.get('booklet');
       if (!bid && pathParts.length >= 2 && pathParts[0] === 'kuesioner-digital') {
@@ -3322,6 +3344,24 @@
 
       initDigitalInteractiveCamera();
       initPageNavigation();
+      window.goToDigitalPage = goToDigitalPage;
+
+      // Handle page query parameter
+      const pageParam = parseInt(params.get('page'), 10);
+      if (pageParam && pageParam >= 1 && pageParam <= 7) {
+        goToDigitalPage(pageParam, false);
+      }
+
+      // Listen for parent postMessage (e.g. from Bandingkan Scan page stepper)
+      window.addEventListener('message', (e) => {
+        if (e.data && e.data.type === 'GOTO_PAGE') {
+          const p = parseInt(e.data.page, 10);
+          if (p >= 1 && p <= totalDigitalPages) {
+            goToDigitalPage(p, false);
+          }
+        }
+      });
+
       await initBookletsList();
       renderBlok3();
       renderBlok42a();
@@ -3331,6 +3371,12 @@
       renderBlok6Combined();
       recalcAll();
       await loadBookletData(bid);
+
+      // Re-apply target page if specified
+      if (pageParam && pageParam >= 1 && pageParam <= 7) {
+        goToDigitalPage(pageParam, false);
+      }
+
       document.querySelectorAll('.editable-field').forEach(el => { el.readOnly = !isEditMode; });
       document.querySelectorAll('.editable-radio').forEach(r => { r.disabled = !isEditMode; });
     });
