@@ -89,7 +89,7 @@ def get_digital_document_svg(booklet_id: str, page_num: int) -> str:
     w, h = tpl.get("size_pt", [595.32, 841.92])
 
     svg = []
-    svg.append(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="100%" height="100%" style="background:#ffffff; font-family:\'Segoe UI\', Arial, Helvetica, sans-serif; display:block;">')
+    svg.append(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="100%" height="100%" style="background:#ffffff; font-family:\'Arial Narrow\', Arial, sans-serif; display:block;">')
     svg.append("""<style>
       .doc-sheet { fill: #ffffff; }
       .tbl-border { stroke: #0f172a; stroke-width: 1.1px; fill: none; }
@@ -100,7 +100,7 @@ def get_digital_document_svg(booklet_id: str, page_num: int) -> str:
       .digit-box:hover { stroke: #2563eb !important; stroke-width: 2px !important; fill: #eff6ff !important; }
       .digit-box.selected { stroke: #2563eb !important; stroke-width: 2.2px !important; fill: #dbeafe !important; }
       .digit-text { font-family: 'JetBrains Mono', Consolas, monospace; font-weight: 700; user-select: none; pointer-events: none; }
-      .doc-text { color: #0f172a; font-family: 'Segoe UI', Arial, sans-serif; }
+      .doc-text { color: #0f172a; font-family: 'Arial Narrow', Arial, sans-serif; }
     </style>""")
 
     # 1. Base Sheet
@@ -112,25 +112,25 @@ def get_digital_document_svg(booklet_id: str, page_num: int) -> str:
         bps_w, bps_h = 42, 33
         svg.append(f'<image href="/static/img/bps_logo_classic.png" x="18" y="14" width="{bps_w}" height="{bps_h}" preserveAspectRatio="xMidYMid meet" />')
 
-        # Official Garuda Pancasila Asset & REPUBLIK INDONESIA (Center)
+        # Official Garuda Pancasila Asset & REPUBLIK INDONESIA (Center: Arial Bold 11pt)
         garuda_w, garuda_h = 36, 34
         svg.append(f'<image href="/static/img/garuda_pancasila.png" x="{(w - garuda_w) / 2:.1f}" y="10" width="{garuda_w}" height="{garuda_h}" preserveAspectRatio="xMidYMid meet" />')
-        svg.append(f'<text x="{w / 2:.1f}" y="52" text-anchor="middle" font-size="7.5pt" font-weight="800" fill="#0f172a" letter-spacing="0.8">REPUBLIK INDONESIA</text>')
+        svg.append(f'<text x="{w / 2:.1f}" y="54" text-anchor="middle" font-family="Arial, sans-serif" font-size="11pt" font-weight="700" fill="#0f172a" letter-spacing="0.8">REPUBLIK INDONESIA</text>')
 
-        # Form Code & Set Note (Top Right)
-        svg.append(f'<text x="{w - 20:.1f}" y="24" text-anchor="end" font-family="\'Times New Roman\', serif" font-size="9pt" font-weight="900" fill="#0f172a">VSERUTI26.INTI</text>')
-        svg.append(f'<line x1="{w - 95:.1f}" y1="27" x2="{w - 20:.1f}" y2="27" stroke="#0f172a" stroke-width="1.5"/>')
-        svg.append(f'<text x="{w - 20:.1f}" y="36" text-anchor="end" font-size="6pt" fill="#475569">Dibuat 1 set untuk</text>')
-        svg.append(f'<text x="{w - 20:.1f}" y="44" text-anchor="end" font-size="6.5pt" font-weight="700" fill="#0f172a">BPS Kab/Kota</text>')
+        # Form Code & Set Note (Top Right: Times New Roman 14pt / 10pt)
+        svg.append(f'<text x="{w - 20:.1f}" y="25" text-anchor="end" font-family="\'Times New Roman\', serif" font-size="14pt" font-weight="700" fill="#0f172a">VSERUTI26.INTI</text>')
+        svg.append(f'<line x1="{w - 140:.1f}" y1="28" x2="{w - 20:.1f}" y2="28" stroke="#0f172a" stroke-width="1.8"/>')
+        svg.append(f'<text x="{w - 20:.1f}" y="40" text-anchor="end" font-family="\'Times New Roman\', serif" font-size="10pt" fill="#1e293b">Dibuat 1 set untuk</text>')
+        svg.append(f'<text x="{w - 20:.1f}" y="52" text-anchor="end" font-family="\'Times New Roman\', serif" font-size="10pt" fill="#1e293b">BPS Kab/Kota</text>')
 
-        # Central Survey Titles
-        svg.append(f'<text x="{w / 2:.1f}" y="70" text-anchor="middle" font-size="9pt" font-weight="800" fill="#0f172a" letter-spacing="0.5">SURVEI EKONOMI RUMAH TANGGA TRIWULANAN 2026</text>')
-        svg.append(f'<text x="{w / 2:.1f}" y="82" text-anchor="middle" font-size="7pt" font-weight="600" fill="#334155" letter-spacing="0.2">KETERANGAN PENGELUARAN, PENDAPATAN, DAN INVESTASI RUMAH TANGGA</text>')
+        # Central Survey Titles (Trebuchet MS 17pt Regular & 11pt Bold)
+        svg.append(f'<text x="{w / 2:.1f}" y="76" text-anchor="middle" font-family="\'Trebuchet MS\', sans-serif" font-size="17pt" font-weight="400" fill="#0f172a" letter-spacing="0.4">SURVEI EKONOMI RUMAH TANGGA TRIWULANAN 2026</text>')
+        svg.append(f'<text x="{w / 2:.1f}" y="92" text-anchor="middle" font-family="\'Trebuchet MS\', sans-serif" font-size="11pt" font-weight="700" fill="#0f172a" letter-spacing="0.2">KETERANGAN PENGELUARAN, PENDAPATAN, DAN INVESTASI RUMAH TANGGA</text>')
 
-        # Triwulan Header Box
-        svg.append(f'<text x="{w / 2 - 16:.1f}" y="98" text-anchor="end" font-size="7.5pt" font-weight="700" fill="#0f172a">TRIWULAN:</text>')
-        svg.append(f'<rect x="{w / 2 - 10:.1f}" y="87" width="28" height="16" fill="#ffffff" stroke="#0f172a" stroke-width="1"/>')
-        svg.append(f'<text x="{w / 2 + 4:.1f}" y="99" text-anchor="middle" font-size="8pt" font-weight="700" fill="#0284c7">II</text>')
+        # Triwulan Header Box (Trebuchet MS 11pt Bold)
+        svg.append(f'<text x="{w / 2 - 16:.1f}" y="112" text-anchor="end" font-family="\'Trebuchet MS\', sans-serif" font-size="11pt" font-weight="700" fill="#0f172a">TRIWULAN:</text>')
+        svg.append(f'<rect x="{w / 2 - 10:.1f}" y="99" width="32" height="18" fill="#ffffff" stroke="#0f172a" stroke-width="1.2"/>')
+        svg.append(f'<text x="{w / 2 + 6:.1f}" y="113" text-anchor="middle" font-family="\'Trebuchet MS\', sans-serif" font-size="11pt" font-weight="700" fill="#0284c7">II</text>')
 
         # Kesediaan Responden Box
         svg.append('<rect x="15.5" y="185.0" width="375" height="64" fill="#ffffff" stroke="#1e293b" stroke-width="1"/>')

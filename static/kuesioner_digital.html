@@ -51,7 +51,9 @@
       --ok-border: #059669;
 
       --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
-      --font-paper: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+      --font-paper: 'Arial Narrow', Arial, 'Helvetica Neue Condensed', sans-serif;
+      --font-title: 'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
+      --font-code: 'Times New Roman', Times, serif;
       --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
     }
 
@@ -580,7 +582,7 @@
       background: var(--paper-bg);
       color: var(--paper-ink);
       font-family: var(--font-paper);
-      font-size: 11px;
+      font-size: 10pt;
       line-height: 1.35;
       padding: 26px 30px 34px;
       border-radius: var(--radius-xs);
@@ -624,12 +626,13 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
 
-    /* Page Number Footer (exact bottom center like PDF) */
+    /* Page Number Footer (exact bottom center like PDF: ArialNarrow-Bold 8.0pt) */
     .sheet-footer-num {
       margin-top: auto;
-      padding-top: 12px;
+      padding-top: 10px;
       text-align: center;
-      font-size: 11px;
+      font-family: var(--font-paper);
+      font-size: 8pt;
       font-weight: 700;
       color: #111827;
     }
@@ -642,79 +645,89 @@
       gap: 12px;
     }
     .form-code-box {
-      font-size: 11.5px;
+      font-family: var(--font-code);
+      font-size: 14pt;
       font-weight: 700;
       letter-spacing: 0.4px;
-      border: 1.5px solid #111827;
-      padding: 3px 8px;
+      border-bottom: 2px solid #111827;
       display: inline-block;
     }
     .set-note {
-      font-size: 9.5px;
+      font-family: var(--font-code);
+      font-size: 10pt;
       text-align: right;
-      line-height: 1.3;
+      line-height: 1.25;
+      color: #111827;
     }
     .rahasia-box {
-      border: 1.5px solid #111827;
-      padding: 3px 12px;
-      font-size: 11px;
+      font-family: var(--font-code);
+      font-size: 10pt;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       display: inline-block;
-      margin-top: 4px;
     }
 
     .pdf-title-block {
       text-align: center;
       margin: 2px 0 4px;
     }
-    .pdf-title-block .ri-text {
-      font-size: 11px;
+    .pdf-title-block .ri-text,
+    .ri-text {
+      font-family: Arial, sans-serif;
+      font-size: 11pt;
       font-weight: 700;
-      letter-spacing: 1.2px;
+      letter-spacing: 0.8px;
       margin-top: 2px;
     }
     .pdf-title-block h2 {
-      font-size: 14px;
-      font-weight: 700;
+      font-family: var(--font-title);
+      font-size: 17pt;
+      font-weight: 400; /* As per PDF: TrebuchetMS 17.0pt Regular */
       margin-top: 4px;
-      letter-spacing: 0.2px;
+      letter-spacing: 0.4px;
+      line-height: 1.2;
     }
     .pdf-title-block .sub-title {
-      font-size: 11.5px;
-      font-weight: 700;
+      font-family: var(--font-title);
+      font-size: 11pt;
+      font-weight: 700; /* As per PDF: TrebuchetMS-Bold 11.0pt */
       margin-top: 2px;
+      letter-spacing: 0.2px;
     }
 
     .triwulan-row {
+      font-family: var(--font-title);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      margin-top: 6px;
+      margin-top: 4px;
       font-weight: 700;
-      font-size: 11px;
+      font-size: 11pt;
     }
 
-    /* Official Intro Box */
+    /* Official Intro Box (As per PDF: ArialNarrow 8.0pt / 10.0pt Italic) */
     .intro-box {
       border: 1px solid #111827;
-      padding: 8px 10px;
+      padding: 6px 10px;
       background: #fafafa;
-      font-size: 10px;
-      line-height: 1.4;
+      font-family: var(--font-paper);
+      font-size: 8pt;
+      line-height: 1.35;
     }
     .intro-box p {
-      font-weight: 700;
+      font-weight: 400;
       text-align: justify;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
+      font-size: 8pt;
     }
 
     .omr-list {
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      font-size: 10.5px;
+      gap: 3px;
+      font-size: 10pt;
+      font-style: italic;
     }
     .omr-row {
       display: flex;
@@ -727,45 +740,48 @@
       accent-color: #1d4ed8;
     }
 
-    /* Official Block Banner Bar */
+    /* Official Block Banner Bar (As per PDF: ArialNarrow-Bold 11.0pt) */
     .blok-banner {
+      font-family: var(--font-paper);
       background: var(--paper-block-bg);
       border: 1.2px solid var(--paper-border);
-      padding: 5px 8px;
+      padding: 3.5px 8px;
       text-align: center;
-      font-size: 11px;
+      font-size: 11pt;
       font-weight: 700;
       letter-spacing: 0.2px;
       text-transform: uppercase;
     }
     .blok-banner.left { text-align: left; }
 
-    /* Official Paper Tables */
+    /* Official Paper Tables (As per PDF: ArialNarrow 10.0pt, Headers: 10.0pt Bold, Col num: 8.0pt Bold) */
     table.bps-table {
       width: 100%;
       border-collapse: collapse;
       border: 1.2px solid var(--paper-border);
-      font-size: 10.5px;
+      font-family: var(--font-paper);
+      font-size: 10pt;
     }
     table.bps-table th,
     table.bps-table td {
       border: 1px solid var(--paper-grid);
-      padding: 3.5px 6px;
+      padding: 2.5px 5px;
       vertical-align: middle;
     }
     table.bps-table th {
       background: var(--paper-header-bg);
       font-weight: 700;
       text-align: center;
-      font-size: 10px;
-      line-height: 1.25;
+      font-size: 10pt;
+      line-height: 1.2;
     }
-    table.bps-table tr.col-num-row td {
+    table.bps-table tr.col-num-row td,
+    table.bps-table tr.col-num-row th {
       background: #f3f4f6;
       text-align: center;
-      font-size: 9.5px;
+      font-size: 8pt;
       font-weight: 700;
-      padding: 2px 4px;
+      padding: 1.5px 4px;
     }
     table.bps-table tr.group-row td {
       background: #eef2f7;
@@ -1176,14 +1192,12 @@
         <div style="text-align:center; flex:1;">
           <!-- Lambang Resmi Garuda Pancasila (Aset Asli) -->
           <img src="/static/img/garuda_pancasila.png" alt="Lambang Garuda Pancasila" style="display:block; margin:0 auto 2px; width:58px; height:auto; object-fit:contain;" />
-          <div style="font-size:10px; font-weight:700; letter-spacing:1px;">REPUBLIK INDONESIA</div>
+          <div class="ri-text">REPUBLIK INDONESIA</div>
         </div>
         <div class="set-note" style="width:140px; text-align:right;">
-          <div style="font-family:'Times New Roman', Times, serif; font-size:13px; font-weight:900; letter-spacing:0.5px; border-bottom:2px solid #111827; display:inline-block; padding-bottom:1px; margin-bottom:2px;">
-            VSERUTI26.INTI
-          </div>
-          <div style="font-size:9px; line-height:1.25; color:#374151;">
-            Dibuat 1 set untuk<br/><strong>BPS Kab/Kota</strong>
+          <div class="form-code-box">VSERUTI26.INTI</div>
+          <div style="font-family:var(--font-code); font-size:10pt; line-height:1.25; color:#111827; margin-top:2px;">
+            Dibuat 1 set untuk<br/>BPS Kab/Kota
           </div>
         </div>
       </div>
@@ -1213,10 +1227,15 @@
             <span>Tidak bersedia ➡ Lengkapi isian Blok I, Blok II, dan Blok Catatan. Lampirkan Berita Acara Nonrespon. Selesai dan segera laporkan ke pengawas</span>
           </label>
         </div>
-        <div style="display:flex; justify-content:flex-end; align-items:center; gap:6px; margin-top:6px; font-weight:700;">
-          <span>Waktu mulai wawancara:</span>
+        <div style="display:flex; justify-content:flex-end; align-items:center; gap:6px; margin-top:6px; font-size:9pt; font-family:var(--font-paper);">
+          <span style="font-weight:400;">Waktu mulai wawancara:</span>
           <input type="text" class="code-box-input w-lg editable-field" data-key="kop.waktu_mulai" value="" readonly />
         </div>
+      </div>
+
+      <!-- RAHASIA (as per PDF: TimesNewRomanPS-BoldMT 10.0pt) -->
+      <div style="display:flex; justify-content:flex-start; margin-bottom:-4px;">
+        <span class="rahasia-box">RAHASIA</span>
       </div>
 
       <!-- BLOK I -->
@@ -1250,7 +1269,7 @@
           <tr>
             <td style="text-align:center;">105</td>
             <td>Klasifikasi Desa/Kelurahan</td>
-            <td style="font-size:10px;">Perkotaan - 1 &nbsp;&nbsp;&nbsp;&nbsp; Perdesaan - 2</td>
+            <td style="font-family:var(--font-paper); font-size:10pt; font-style:italic;">Perkotaan - 1 &nbsp;&nbsp;&nbsp;&nbsp; Perdesaan - 2</td>
             <td style="text-align:right;"><input type="text" class="code-box-input editable-field" data-key="b1.r105" value="" readonly /></td>
           </tr>
           <tr>
@@ -1288,7 +1307,7 @@
           </tr>
         </tbody>
       </table>
-      <div style="font-size:9px; color:#374151; margin-top:-6px;">*) Coret yang tidak perlu</div>
+      <div style="font-family:var(--font-paper); font-size:9pt; font-style:italic; color:#374151; margin-top:-6px;">*) Coret yang tidak perlu</div>
 
       <!-- BLOK II -->
       <div class="blok-banner">BLOK II. KETERANGAN PENDATAAN</div>
@@ -1319,24 +1338,24 @@
                   <input type="text" class="paper-input text-mode editable-field" data-key="b2.r201_nama" placeholder="Nama Pendata" value="" readonly style="border-bottom:1px dotted #9ca3af; padding-bottom:2px;" />
                 </div>
                 <div style="display:flex; justify-content:flex-end; align-items:center; gap:6px;">
-                  <span style="font-size:9.5px; color:#4b5563; font-weight:600;">Kode:</span>
+                  <span style="font-family:var(--font-paper); font-size:10pt; color:#4b5563;">Kode:</span>
                   <input type="text" class="code-box-input comb-5 editable-field" data-key="b2.r201_kode" placeholder="_____" maxlength="5" value="" readonly title="Kode Petugas Pendata (5 digit)" />
                 </div>
               </div>
             </td>
             <td>
-              <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; font-size:9px;">
-                <div style="line-height:1.35;">Staf BPS Provinsi - 1<br/>Staf BPS Kab/Kota - 2<br/>Mitra - 3</div>
+              <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; font-size:10pt; font-family:var(--font-paper);">
+                <div style="line-height:1.35; font-style:italic;">Staf BPS Provinsi - 1<br/>Staf BPS Kab/Kota - 2<br/>Mitra - 3</div>
                 <input type="text" class="code-box-input editable-field" data-key="b2.r201_jabatan" value="" readonly style="width:24px; text-align:center; font-weight:700;" />
               </div>
             </td>
             <td>
               <div style="display:flex; flex-direction:column; gap:3px; align-items:center;">
-                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-size:9px; font-weight:600; color:#4b5563;">
+                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-family:var(--font-paper); font-size:10pt; color:#4b5563;">
                   <span>Tgl</span>
                   <input type="text" class="code-box-input comb-2 editable-field" data-key="b2.r201_tgl" placeholder="__" maxlength="2" value="" readonly />
                 </div>
-                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-size:9px; font-weight:600; color:#4b5563;">
+                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-family:var(--font-paper); font-size:10pt; color:#4b5563;">
                   <span>Bln</span>
                   <input type="text" class="code-box-input comb-2 editable-field" data-key="b2.r201_bln" placeholder="__" maxlength="2" value="" readonly />
                 </div>
@@ -1359,24 +1378,24 @@
                   <input type="text" class="paper-input text-mode editable-field" data-key="b2.r202_nama" placeholder="Nama Pemeriksa" value="" readonly style="border-bottom:1px dotted #9ca3af; padding-bottom:2px;" />
                 </div>
                 <div style="display:flex; justify-content:flex-end; align-items:center; gap:6px;">
-                  <span style="font-size:9.5px; color:#4b5563; font-weight:600;">Kode:</span>
+                  <span style="font-family:var(--font-paper); font-size:10pt; color:#4b5563;">Kode:</span>
                   <input type="text" class="code-box-input comb-5 editable-field" data-key="b2.r202_kode" placeholder="_____" maxlength="5" value="" readonly title="Kode Petugas Pemeriksa (5 digit)" />
                 </div>
               </div>
             </td>
             <td>
-              <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; font-size:9px;">
-                <div style="line-height:1.35;">Staf BPS Provinsi - 1<br/>Staf BPS Kab/Kota - 2<br/>Mitra - 3</div>
+              <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; font-size:10pt; font-family:var(--font-paper);">
+                <div style="line-height:1.35; font-style:italic;">Staf BPS Provinsi - 1<br/>Staf BPS Kab/Kota - 2<br/>Mitra - 3</div>
                 <input type="text" class="code-box-input editable-field" data-key="b2.r202_jabatan" value="" readonly style="width:24px; text-align:center; font-weight:700;" />
               </div>
             </td>
             <td>
               <div style="display:flex; flex-direction:column; gap:3px; align-items:center;">
-                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-size:9px; font-weight:600; color:#4b5563;">
+                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-family:var(--font-paper); font-size:10pt; color:#4b5563;">
                   <span>Tgl</span>
                   <input type="text" class="code-box-input comb-2 editable-field" data-key="b2.r202_tgl" placeholder="__" maxlength="2" value="" readonly />
                 </div>
-                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-size:9px; font-weight:600; color:#4b5563;">
+                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-family:var(--font-paper); font-size:10pt; color:#4b5563;">
                   <span>Bln</span>
                   <input type="text" class="code-box-input comb-2 editable-field" data-key="b2.r202_bln" placeholder="__" maxlength="2" value="" readonly />
                 </div>
@@ -1392,9 +1411,9 @@
           </tr>
           <tr>
             <td style="text-align:center; font-weight:700;">203</td>
-            <td colspan="4" style="font-size:9.5px; line-height:1.45;">
+            <td colspan="4" style="font-family:var(--font-paper); font-size:10pt; line-height:1.45;">
               <div style="font-weight:700; margin-bottom:2px;">Hasil pendataan rumah tangga:</div>
-              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2px 14px;">
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2px 14px; font-style:italic;">
                 <div>1. Terisi lengkap</div>
                 <div>2. Terisi tidak lengkap ➡ Blok VII. Catatan</div>
                 <div>3. Tidak ada ART/responden s.d. akhir masa pendataan</div>
@@ -1404,6 +1423,10 @@
                 <div style="grid-column: span 2;">7. Lainnya (tuliskan)</div>
               </div>
             </td>
+            <td style="text-align:center; vertical-align:middle;">
+              <input type="text" class="code-box-input editable-field" data-key="b2.r203" value="" readonly style="width:28px; height:24px; font-size:12px; font-weight:700; text-align:center;" />
+            </td>
+          </tr>
             <td style="text-align:center; vertical-align:middle;">
               <input type="text" class="code-box-input editable-field" data-key="b2.r203" value="" readonly style="width:28px; height:24px; font-size:12px; font-weight:700; text-align:center;" />
             </td>
@@ -1426,9 +1449,9 @@
             <th style="width:36px;">No. Urut ART</th>
             <th>Nama Anggota Rumah Tangga (ART)</th>
             <th style="width:70px;">Hubungan dengan KRT (kode)</th>
-            <th style="width:92px;">Status Perkawinan<br/><span style="font-weight:400; font-size:8.5px;">Belum-1, Kawin-2, CH-3, CM-4</span></th>
+            <th style="width:92px;">Status Perkawinan<br/><span style="font-weight:400; font-size:8pt; font-style:italic;">Belum-1, Kawin-2, CH-3, CM-4</span></th>
             <th style="width:74px;">Laki-laki -1<br/>Perempuan -2</th>
-            <th style="width:66px;">Umur (tahun)<br/><span style="font-weight:400; font-size:8.5px;">≥97 tulis 97</span></th>
+            <th style="width:66px;">Umur (tahun)<br/><span style="font-weight:400; font-size:8pt;">≥97 tulis 97</span></th>
             <th style="width:72px;">ART ≥ 5 th:<br/>Ijazah Tertinggi (kode)</th>
           </tr>
           <tr class="col-num-row">
@@ -1441,8 +1464,8 @@
       <div class="blok-banner" style="margin-top:4px;">
         BLOK IV.1. KONSUMSI DAN PENGELUARAN BAHAN MAKANAN, BAHAN MINUMAN DAN ROKOK SEMINGGU TERAKHIR (DALAM RUPIAH)
       </div>
-      <div style="border:1px solid #1f2937; padding:7px 10px; font-size:10px; text-align:center; background:#f9fafb;">
-        Pada triwulan II dan IV, isian blok ini menggunakan kuesioner Seruti Makanan (<strong>VSERUTI.MAK</strong>) yang disisipkan pada halaman ini.<br/>
+      <div style="border:1px solid #1f2937; padding:7px 10px; font-size:9pt; text-align:center; background:#f9fafb;">
+        Pada <span style="font-weight:700; font-style:italic;">triwulan II dan IV</span>, isian blok ini menggunakan kuesioner Seruti Makanan (<strong>VSERUTI.MAK</strong>) yang disisipkan pada halaman ini.<br/>
         Sedangkan pada triwulan I dan III, blok ini terintegrasi dengan kuesioner <strong>Susenas KP Maret</strong>.
       </div>
 
@@ -1515,7 +1538,7 @@
       <div class="blok-banner" style="margin-top:4px;">
         BLOK IV.3 PERSEPSI TERHADAP KONDISI EKONOMI RUMAH TANGGA TRIWULAN INI
       </div>
-      <div style="font-size:9px; text-align:center; color:#374151; margin-top:-6px;">
+      <div style="font-size:10pt; text-align:center; color:#374151; margin-top:-6px;">
         (Mengacu pada Triwulan Kalender — TW I: Jan–Mar; TW II: Apr–Jun; TW III: Jul–Sep; TW IV: Okt–Des)
       </div>
 
@@ -1524,7 +1547,7 @@
           <tr>
             <th style="width:38px;">No.</th>
             <th>Pertanyaan (dibanding triwulan sebelumnya)</th>
-            <th style="width:128px;">Perubahan (kode)<br/><span style="font-weight:400; font-size:8.5px;">Meningkat-1, Tetap-2, Menurun-3, Tdk relevan-5</span></th>
+            <th style="width:128px;">Perubahan (kode)<br/><span style="font-weight:400; font-size:8pt; font-style:italic;">Meningkat-1, Tetap-2, Menurun-3, Tdk relevan-5</span></th>
             <th style="width:94px;">Jika kode 1 atau 3,<br/>Persentase (%)</th>
           </tr>
           <tr class="col-num-row">
@@ -1544,7 +1567,7 @@
           <tr>
             <td style="text-align:center; font-weight:700;">470.b</td>
             <td colspan="2" style="padding:0;">
-              <table style="width:100%; border-collapse:collapse; font-size:10px;">
+              <table style="width:100%; border-collapse:collapse; font-size:10pt;">
                 <tr>
                   <td style="border:none; border-bottom:1px solid #9ca3af; padding:3px 6px;">i. Mengambil sisa simpanan triwulan sebelumnya? (Ya - 1, Tidak - 5)</td>
                   <td style="width:52px; border:none; border-left:1px solid #6b7280; border-bottom:1px solid #9ca3af; text-align:center;"><input type="text" class="code-box-input editable-field" data-key="b43.r470bi" value="" readonly /></td>
@@ -1591,7 +1614,7 @@
       <span class="sheet-orient-tag">Hal 5 · A4 Landscape (297 × 210 mm)</span>
       <div class="blok-banner">BLOK V. PENDAPATAN, PENERIMAAN, DAN PENGELUARAN SELAIN KONSUMSI SELAMA TIGA BULAN TERAKHIR (DALAM RUPIAH)</div>
 
-      <div style="font-size:10px; font-weight:700;">
+      <div style="font-family:var(--font-paper); font-size:10pt; font-weight:700;">
         501. Jika terdapat ART (10 tahun ke atas) yang bekerja dengan menerima upah/gaji selama tiga bulan terakhir, isikan pada tabel berikut:
       </div>
       <table class="bps-table">
@@ -1612,7 +1635,7 @@
         <tbody id="blok501-body"></tbody>
       </table>
 
-      <div style="font-size:10px; font-weight:700; margin-top:6px;">
+      <div style="font-family:var(--font-paper); font-size:10pt; font-weight:700; margin-top:6px;">
         502. Jika terdapat ART (10 tahun ke atas) yang memiliki usaha rumah tangga selama tiga bulan terakhir, isikan pada tabel berikut:
       </div>
       <table class="bps-table">
@@ -1634,7 +1657,7 @@
         <tbody id="blok502-body"></tbody>
       </table>
 
-      <div style="font-size:10px; font-weight:700; margin-top:6px;">
+      <div style="font-family:var(--font-paper); font-size:10pt; font-weight:700; margin-top:6px;">
         503. Pendapatan kepemilikan yang diterima dan dibayarkan oleh rumah tangga selama tiga bulan terakhir
       </div>
       <table class="bps-table">
@@ -1662,7 +1685,7 @@
       <span class="sheet-orient-tag">Hal 6 · A4 Landscape (297 × 210 mm)</span>
       <div class="blok-banner">BLOK V. PENDAPATAN, PENERIMAAN, DAN PENGELUARAN SELAIN KONSUMSI (LANJUTAN)</div>
 
-      <div style="font-size:10px; font-weight:700;">504. Transfer berjalan selama tiga bulan terakhir</div>
+      <div style="font-family:var(--font-paper); font-size:10pt; font-weight:700;">504. Transfer berjalan selama tiga bulan terakhir</div>
       <table class="bps-table">
         <thead>
           <tr>
@@ -1684,7 +1707,7 @@
         <tbody id="blok504-body"></tbody>
       </table>
 
-      <div style="font-size:10px; font-weight:700; margin-top:6px;">505. Aset Rumah Tangga/Usaha Rumah Tangga</div>
+      <div style="font-family:var(--font-paper); font-size:10pt; font-weight:700; margin-top:6px;">505. Aset Rumah Tangga/Usaha Rumah Tangga</div>
       <table class="bps-table">
         <thead>
           <tr>
@@ -1772,8 +1795,8 @@
           </tbody>
         </table>
 
-        <div style="display:flex; align-items:center; gap:8px; font-weight:700;">
-          <span>Waktu selesai wawancara:</span>
+        <div style="display:flex; align-items:center; gap:8px; font-family:var(--font-paper); font-size:9pt;">
+          <span style="font-weight:400;">Waktu selesai wawancara:</span>
           <input type="text" class="code-box-input w-lg editable-field" data-key="b7.waktu_selesai" value="" readonly />
         </div>
       </div>
