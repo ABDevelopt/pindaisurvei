@@ -108,20 +108,20 @@ def get_digital_document_svg(booklet_id: str, page_num: int) -> str:
 
     # 2. Render KOP for page 1 (Official BPS Header)
     if page_num == 1:
-        # Form Code (Top Left)
-        svg.append('<rect x="18" y="14" width="88" height="24" fill="#ffffff" stroke="#0f172a" stroke-width="1.2"/>')
-        svg.append('<text x="62" y="30" text-anchor="middle" font-size="8.5pt" font-weight="800" fill="#0f172a" letter-spacing="0.5">VSERUTI26.INTI</text>')
+        # BPS Classic Logo (Top Left)
+        bps_w, bps_h = 42, 33
+        svg.append(f'<image href="/static/img/bps_logo_classic.png" x="18" y="14" width="{bps_w}" height="{bps_h}" preserveAspectRatio="xMidYMid meet" />')
 
         # Official Garuda Pancasila Asset & REPUBLIK INDONESIA (Center)
         garuda_w, garuda_h = 36, 34
         svg.append(f'<image href="/static/img/garuda_pancasila.png" x="{(w - garuda_w) / 2:.1f}" y="10" width="{garuda_w}" height="{garuda_h}" preserveAspectRatio="xMidYMid meet" />')
         svg.append(f'<text x="{w / 2:.1f}" y="52" text-anchor="middle" font-size="7.5pt" font-weight="800" fill="#0f172a" letter-spacing="0.8">REPUBLIK INDONESIA</text>')
 
-        # Security Box & Set Note (Top Right)
-        svg.append(f'<text x="{w - 20:.1f}" y="22" text-anchor="end" font-size="6.5pt" fill="#475569">Dibuat 1 set untuk</text>')
-        svg.append(f'<text x="{w - 20:.1f}" y="31" text-anchor="end" font-size="7pt" font-weight="700" fill="#0f172a">BPS Kab/Kota</text>')
-        svg.append(f'<rect x="{w - 76:.1f}" y="35" width="56" height="18" fill="#ffffff" stroke="#0f172a" stroke-width="1.2"/>')
-        svg.append(f'<text x="{w - 48:.1f}" y="47.5" text-anchor="middle" font-size="7.5pt" font-weight="800" fill="#0f172a" letter-spacing="1">RAHASIA</text>')
+        # Form Code & Set Note (Top Right)
+        svg.append(f'<text x="{w - 20:.1f}" y="24" text-anchor="end" font-family="\'Times New Roman\', serif" font-size="9pt" font-weight="900" fill="#0f172a">VSERUTI26.INTI</text>')
+        svg.append(f'<line x1="{w - 95:.1f}" y1="27" x2="{w - 20:.1f}" y2="27" stroke="#0f172a" stroke-width="1.5"/>')
+        svg.append(f'<text x="{w - 20:.1f}" y="36" text-anchor="end" font-size="6pt" fill="#475569">Dibuat 1 set untuk</text>')
+        svg.append(f'<text x="{w - 20:.1f}" y="44" text-anchor="end" font-size="6.5pt" font-weight="700" fill="#0f172a">BPS Kab/Kota</text>')
 
         # Central Survey Titles
         svg.append(f'<text x="{w / 2:.1f}" y="70" text-anchor="middle" font-size="9pt" font-weight="800" fill="#0f172a" letter-spacing="0.5">SURVEI EKONOMI RUMAH TANGGA TRIWULANAN 2026</text>')
