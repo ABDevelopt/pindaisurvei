@@ -8222,7 +8222,7 @@
         <div style="display:flex; flex-direction:column; gap:16px;">
           
           <!-- Top Control Header: Streamlined Minimalist UI (Clean & Breathing) -->
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; background:var(--surface-1); padding:10px 18px; border-radius:var(--radius-md); border:1px solid var(--border);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px 14px; background:var(--surface-1); padding:10px 18px; border-radius:var(--radius-lg); border:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.08);">
             <div style="display:flex; align-items:center; gap:12px;">
               <div style="display:flex; align-items:center; gap:8px;">
                 <span class="section-heading" style="font-size:15px; font-weight:700;">Dokumen Digital</span>
@@ -8439,10 +8439,10 @@
                 </div>
               </div>
 
-              <!-- Top-Left Subtle Interactive Hint Pill -->
-              <div style="position:absolute; top:16px; left:16px; z-index:30; pointer-events:none; display:flex; align-items:center; gap:6px; background:rgba(15,23,42,0.72); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.08); padding:5px 12px; border-radius:var(--radius-pill); font-size:11px; color:#94a3b8;">
+              <!-- Bottom-Left Subtle Interactive Hint Pill (Zero Collision with Top-Right Camera HUD) -->
+              <div style="position:absolute; bottom:16px; left:16px; z-index:30; pointer-events:none; display:flex; align-items:center; gap:6px; background:rgba(15,23,42,0.82); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.1); padding:5px 12px; border-radius:var(--radius-pill); font-size:11px; color:#94a3b8; box-shadow:0 4px 16px rgba(0,0,0,0.3);">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                <span>Scroll untuk zoom ke arah kursor · Tahan Spasi / Drag untuk menggeser · Dobel-klik untuk perbesar</span>
+                <span>Scroll untuk zoom · Tahan Spasi / Drag untuk geser</span>
               </div>
 
               <!-- Canvas Transform Container with Hardware Acceleration -->
