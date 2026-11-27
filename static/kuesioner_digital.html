@@ -1314,11 +1314,11 @@
       <table class="bps-table">
         <thead>
           <tr>
-            <th colspan="2">Uraian</th>
-            <th>Nama dan Kode</th>
-            <th style="width:170px;">Jabatan</th>
-            <th style="width:105px;">Waktu</th>
-            <th style="width:82px;">Tanda Tangan</th>
+            <th colspan="2" style="width:16%;">Uraian</th>
+            <th style="width:26%;">Nama dan Kode</th>
+            <th style="width:22%;">Jabatan</th>
+            <th style="width:12%;">Waktu</th>
+            <th style="width:24%;">Tanda Tangan</th>
           </tr>
           <tr class="col-num-row">
             <td colspan="2">(1)</td>
@@ -1330,45 +1330,42 @@
         </thead>
         <tbody>
           <tr>
-            <td style="width:32px; text-align:center; font-weight:700;">201</td>
-            <td style="width:74px; font-weight:600;">Pendata</td>
+            <td style="width:36px; text-align:center; font-weight:700;">201</td>
+            <td style="font-weight:600; width:80px;">Pendata</td>
             <td>
-              <div style="display:flex; flex-direction:column; gap:5px; padding:2px 0;">
+              <div style="display:flex; flex-direction:column; gap:4px; padding:2px 0;">
                 <div>
                   <input type="text" class="paper-input text-mode editable-field" data-key="b2.r201_nama" placeholder="Nama Pendata" value="" readonly style="border-bottom:1px dotted #9ca3af; padding-bottom:2px;" />
                 </div>
                 <div style="display:flex; justify-content:flex-end; align-items:center; gap:6px;">
-                  <span style="font-family:var(--font-paper); font-size:10pt; color:#4b5563;">Kode:</span>
-                  <input type="text" class="code-box-input comb-5 editable-field" data-key="b2.r201_kode" placeholder="_____" maxlength="5" value="" readonly title="Kode Petugas Pendata (5 digit)" />
+                  <span style="font-family:var(--font-paper); font-size:9.5pt; color:#4b5563;">Kode:</span>
+                  <input type="text" class="code-box-input comb-5 editable-field" data-key="b2.r201_kode" placeholder="_____" maxlength="5" value="" readonly title="Kode Petugas Pendata (5 digit)" style="letter-spacing:3px; font-weight:700;" />
                 </div>
               </div>
             </td>
             <td>
-              <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; font-size:10pt; font-family:var(--font-paper);">
+              <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; font-size:9pt; font-family:var(--font-paper);">
                 <div style="line-height:1.35; font-style:italic;">Staf BPS Provinsi - 1<br/>Staf BPS Kab/Kota - 2<br/>Mitra - 3</div>
-                <input type="text" class="code-box-input editable-field" data-key="b2.r201_jabatan" value="" readonly style="width:24px; text-align:center; font-weight:700;" />
+                <input type="text" class="code-box-input editable-field" data-key="b2.r201_jabatan" value="" readonly style="width:26px; height:26px; text-align:center; font-weight:700;" />
               </div>
             </td>
             <td>
               <div style="display:flex; flex-direction:column; gap:3px; align-items:center;">
-                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-family:var(--font-paper); font-size:10pt; color:#4b5563;">
+                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-family:var(--font-paper); font-size:9.5pt; color:#4b5563;">
                   <span>Tgl</span>
-                  <input type="text" class="code-box-input comb-2 editable-field" data-key="b2.r201_tgl" placeholder="__" maxlength="2" value="" readonly />
+                  <input type="text" class="code-box-input comb-2 editable-field" data-key="b2.r201_tgl" placeholder="__" maxlength="2" value="" readonly style="letter-spacing:2px; font-weight:700;" />
                 </div>
-                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-family:var(--font-paper); font-size:10pt; color:#4b5563;">
+                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-family:var(--font-paper); font-size:9.5pt; color:#4b5563;">
                   <span>Bln</span>
-                  <input type="text" class="code-box-input comb-2 editable-field" data-key="b2.r201_bln" placeholder="__" maxlength="2" value="" readonly />
+                  <input type="text" class="code-box-input comb-2 editable-field" data-key="b2.r201_bln" placeholder="__" maxlength="2" value="" readonly style="letter-spacing:2px; font-weight:700;" />
                 </div>
                 <input type="hidden" data-key="b2.r201_waktu" value="" />
               </div>
             </td>
-            <td style="text-align:center; vertical-align:middle; padding:2px; height:46px;">
-              <div id="b2-r201-ttd-container" style="display:flex; justify-content:center; align-items:center; min-height:42px;">
-                <img id="b2-r201-ttd-img" src="" alt="TTD Pendata" style="max-height:40px; max-width:76px; object-fit:contain; display:none; cursor:pointer;" title="Tanda tangan asli pindaian Pendata (PCL) — Klik untuk memperbesar" onclick="window.open(this.src, '_blank')" />
-                <span id="b2-r201-ttd-placeholder" style="font-size:10px; color:#059669; font-weight:600; display:inline-flex; align-items:center; gap:2px;">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                  TTD
-                </span>
+            <td style="text-align:center; vertical-align:middle; padding:4px;">
+              <div id="b2-r201-ttd-container" style="display:flex; justify-content:center; align-items:center; min-height:48px;">
+                <img id="b2-r201-ttd-img" src="" alt="TTD Pendata" style="max-height:46px; max-width:140px; object-fit:contain; display:none; cursor:pointer;" title="Tanda tangan asli pindaian Pendata (PCL) — Klik untuk memperbesar" onclick="window.open(this.src, '_blank')" />
+                <span id="b2-r201-ttd-placeholder" style="font-size:10px; color:#9ca3af; font-style:italic;">(Tanda Tangan)</span>
               </div>
             </td>
           </tr>
@@ -1376,62 +1373,63 @@
             <td style="text-align:center; font-weight:700;">202</td>
             <td style="font-weight:600;">Pemeriksa</td>
             <td>
-              <div style="display:flex; flex-direction:column; gap:5px; padding:2px 0;">
+              <div style="display:flex; flex-direction:column; gap:4px; padding:2px 0;">
                 <div>
                   <input type="text" class="paper-input text-mode editable-field" data-key="b2.r202_nama" placeholder="Nama Pemeriksa" value="" readonly style="border-bottom:1px dotted #9ca3af; padding-bottom:2px;" />
                 </div>
                 <div style="display:flex; justify-content:flex-end; align-items:center; gap:6px;">
-                  <span style="font-family:var(--font-paper); font-size:10pt; color:#4b5563;">Kode:</span>
-                  <input type="text" class="code-box-input comb-5 editable-field" data-key="b2.r202_kode" placeholder="_____" maxlength="5" value="" readonly title="Kode Petugas Pemeriksa (5 digit)" />
+                  <span style="font-family:var(--font-paper); font-size:9.5pt; color:#4b5563;">Kode:</span>
+                  <input type="text" class="code-box-input comb-5 editable-field" data-key="b2.r202_kode" placeholder="_____" maxlength="5" value="" readonly title="Kode Petugas Pemeriksa (5 digit)" style="letter-spacing:3px; font-weight:700;" />
                 </div>
               </div>
             </td>
             <td>
-              <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; font-size:10pt; font-family:var(--font-paper);">
+              <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; font-size:9pt; font-family:var(--font-paper);">
                 <div style="line-height:1.35; font-style:italic;">Staf BPS Provinsi - 1<br/>Staf BPS Kab/Kota - 2<br/>Mitra - 3</div>
-                <input type="text" class="code-box-input editable-field" data-key="b2.r202_jabatan" value="" readonly style="width:24px; text-align:center; font-weight:700;" />
+                <input type="text" class="code-box-input editable-field" data-key="b2.r202_jabatan" value="" readonly style="width:26px; height:26px; text-align:center; font-weight:700;" />
               </div>
             </td>
             <td>
               <div style="display:flex; flex-direction:column; gap:3px; align-items:center;">
-                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-family:var(--font-paper); font-size:10pt; color:#4b5563;">
+                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-family:var(--font-paper); font-size:9.5pt; color:#4b5563;">
                   <span>Tgl</span>
-                  <input type="text" class="code-box-input comb-2 editable-field" data-key="b2.r202_tgl" placeholder="__" maxlength="2" value="" readonly />
+                  <input type="text" class="code-box-input comb-2 editable-field" data-key="b2.r202_tgl" placeholder="__" maxlength="2" value="" readonly style="letter-spacing:2px; font-weight:700;" />
                 </div>
-                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-family:var(--font-paper); font-size:10pt; color:#4b5563;">
+                <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:82px; font-family:var(--font-paper); font-size:9.5pt; color:#4b5563;">
                   <span>Bln</span>
-                  <input type="text" class="code-box-input comb-2 editable-field" data-key="b2.r202_bln" placeholder="__" maxlength="2" value="" readonly />
+                  <input type="text" class="code-box-input comb-2 editable-field" data-key="b2.r202_bln" placeholder="__" maxlength="2" value="" readonly style="letter-spacing:2px; font-weight:700;" />
                 </div>
                 <input type="hidden" data-key="b2.r202_waktu" value="" />
               </div>
             </td>
-            <td style="text-align:center; vertical-align:middle; padding:2px; height:46px;">
-              <div id="b2-r202-ttd-container" style="display:flex; justify-content:center; align-items:center; min-height:42px;">
-                <img id="b2-r202-ttd-img" src="" alt="TTD Pemeriksa" style="max-height:40px; max-width:76px; object-fit:contain; display:none; cursor:pointer;" title="Tanda tangan asli pindaian Pemeriksa (PML) — Klik untuk memperbesar" onclick="window.open(this.src, '_blank')" />
-                <span id="b2-r202-ttd-placeholder" style="font-size:10px; color:#059669; font-weight:600; display:inline-flex; align-items:center; gap:2px;">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                  TTD
-                </span>
+            <td style="text-align:center; vertical-align:middle; padding:4px;">
+              <div id="b2-r202-ttd-container" style="display:flex; justify-content:center; align-items:center; min-height:48px;">
+                <img id="b2-r202-ttd-img" src="" alt="TTD Pemeriksa" style="max-height:46px; max-width:140px; object-fit:contain; display:none; cursor:pointer;" title="Tanda tangan asli pindaian Pemeriksa (PML) — Klik untuk memperbesar" onclick="window.open(this.src, '_blank')" />
+                <span id="b2-r202-ttd-placeholder" style="font-size:10px; color:#9ca3af; font-style:italic;">(Tanda Tangan)</span>
               </div>
-            </td>
-            <td colspan="4" style="font-family:var(--font-paper); font-size:10pt; line-height:1.45;">
-              <div style="font-weight:700; margin-bottom:2px;">Hasil pendataan rumah tangga:</div>
-              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2px 14px; font-style:italic;">
-                <div>1. Terisi lengkap</div>
-                <div>2. Terisi tidak lengkap ➡ Blok VII. Catatan</div>
-                <div>3. Tidak ada ART/responden s.d. akhir masa pendataan</div>
-                <div>4. Responden menolak</div>
-                <div>5. Rumah tangga pindah</div>
-                <div>6. Rumah tangga tidak ditemukan</div>
-                <div style="grid-column: span 2;">7. Lainnya (tuliskan)</div>
-              </div>
-            </td>
-            <td style="text-align:center; vertical-align:middle;">
-              <input type="text" class="code-box-input editable-field" data-key="b2.r203" value="" readonly style="width:28px; height:24px; font-size:12px; font-weight:700; text-align:center;" />
             </td>
           </tr>
-            <td style="text-align:center; vertical-align:middle;">
-              <input type="text" class="code-box-input editable-field" data-key="b2.r203" value="" readonly style="width:28px; height:24px; font-size:12px; font-weight:700; text-align:center;" />
+          <tr>
+            <td style="text-align:center; font-weight:700; vertical-align:top; padding-top:6px;">203</td>
+            <td style="font-weight:600; vertical-align:top; padding-top:6px;">Hasil pendataan rumah tangga</td>
+            <td colspan="3" style="font-family:var(--font-paper); font-size:8.5pt; line-height:1.45; padding:6px 10px;">
+              <div style="display:flex; justify-content:space-between; align-items:stretch; gap:8px;">
+                <div style="flex:1; font-style:italic;">
+                  <div style="display:flex; justify-content:space-between; padding:0.5px 0;"><span>Terisi lengkap</span> <span style="font-family:var(--font-mono); font-style:normal; margin-left:8px;">1</span></div>
+                  <div style="display:flex; justify-content:space-between; padding:0.5px 0;"><span>Terisi tidak lengkap</span> <span style="font-family:var(--font-mono); font-style:normal; margin-left:8px;">2</span></div>
+                  <div style="display:flex; justify-content:space-between; padding:0.5px 0;"><span>Tidak ada ART/responden yang dapat memberi jawaban sampai akhir masa pendataan</span> <span style="font-family:var(--font-mono); font-style:normal; margin-left:8px;">3</span></div>
+                  <div style="display:flex; justify-content:space-between; padding:0.5px 0;"><span>Responden menolak</span> <span style="font-family:var(--font-mono); font-style:normal; margin-left:8px;">4</span></div>
+                  <div style="display:flex; justify-content:space-between; padding:0.5px 0;"><span>Rumah tangga pindah/bangunan tempat tinggal sudah tidak ada</span> <span style="font-family:var(--font-mono); font-style:normal; margin-left:8px;">5</span></div>
+                  <div style="display:flex; justify-content:space-between; padding:0.5px 0;"><span>Rumah tangga tidak ditemukan</span> <span style="font-family:var(--font-mono); font-style:normal; margin-left:8px;">6</span></div>
+                  <div style="display:flex; justify-content:space-between; padding:0.5px 0;"><span>Lainnya (tuliskan)</span> <span style="font-family:var(--font-mono); font-style:normal; margin-left:8px;">7</span></div>
+                </div>
+                <div style="display:flex; align-items:center; padding-left:8px; border-left:1.5px solid #1f2937; margin:16px 0 32px 0; font-size:8.5pt; font-style:italic; color:#1f2937; white-space:nowrap;">
+                  Blok VII. Catatan
+                </div>
+              </div>
+            </td>
+            <td style="text-align:right; vertical-align:middle; padding-right:16px;">
+              <input type="text" class="code-box-input editable-field" data-key="b2.r203" value="" readonly style="width:28px; height:28px; font-size:13px; font-weight:700; text-align:center;" />
             </td>
           </tr>
         </tbody>
