@@ -3212,66 +3212,13 @@
       const autoPassPct = '98.2%';
 
       el.innerHTML = `
-        <!-- Top Section Bar: Booklet, Model Engine, Quick Actions -->
-        <div class="section-bar" style="margin-bottom:20px; gap:12px; flex-wrap:wrap; display:flex; align-items:center; justify-content:space-between;">
-          <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
-            <div class="status-inline">
-              <span id="pipeline-status-dot" class="status-dot ${isRunning ? 'dot-accent' : 'dot-green'}"></span>
-              <span id="pipeline-status-text" style="font-weight:600; font-size:13px;">
-                ${isRunning ? `Pipeline aktif · ${currentStage}` : 'Pipeline Produksi Siap · 51 Buklet Terakreditasi BPS'}
-              </span>
-            </div>
-
-            <!-- Target Booklet Selector -->
-            <select class="select-pill" onchange="onBookletChange(this.value).then(() => { if (AppState.pipelineSubMode === 'inference') loadInferenceData(); if (AppState.pipelineSubMode === 'crop') loadRealCropsForBooklet(AppState.activeBooklet, AppState.activeCropTier || 4); if (AppState.pipelineSubMode === 'overlay') loadSvgLayersForPage(AppState.activeBooklet, AppState.activeGridPage || 2); })" title="Pilih Buklet Target" style="font-weight:600; padding:6px 14px; font-size:12.5px;">
-              ${(AppState.booklets || []).map(b => `
-                <option value="${b.id}" ${AppState.activeBooklet===b.id?'selected':''}>${b.id} · ${b.nama_krt || b.id}</option>
-              `).join('')}
-            </select>
-
-            <!-- Model Engine Selector -->
-            <select class="select-pill" onchange="onInferenceModelChange(this.value)" title="Pilih Model AI" 
-                    style="font-weight:600; padding:6px 14px; font-size:12.5px; border:1px solid #38bdf8; background:rgba(56,189,248,0.08); color:#38bdf8;">
-              <option value="gemini_38_flash" ${(!AppState.inferenceModel || AppState.inferenceModel==='gemini_38_flash')?'selected':''}>Gemini 3.8 Flash (Paling Akurat · Default)</option>
-              <option value="seruti_cnn_v3" ${AppState.inferenceModel==='seruti_cnn_v3'?'selected':''}>Seruti CNN v3 (Lokal Offline)</option>
-              <option value="seruti_mlp" ${AppState.inferenceModel==='seruti_mlp'?'selected':''}>Seruti MLP (Lokal Ringan)</option>
-            </select>
-          </div>
-
-          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-            ${isRunning ? `
-              <button class="btn btn-secondary btn-sm" onclick="stopRealPipeline()" style="border-color:#ef4444; color:#ef4444; display:flex; align-items:center; gap:6px;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="6" width="12" height="12"/></svg>
-                Hentikan Proses
-              </button>
-            ` : `
-              <button class="btn btn-primary btn-sm" onclick="startRealPipeline(null)" style="display:flex; align-items:center; gap:6px; font-weight:600;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                Jalankan Seluruh 51 Buklet
-              </button>
-              <button class="btn btn-secondary btn-sm" onclick="startRealPipeline(AppState.activeBooklet || 'booklet_01')" style="display:flex; align-items:center; gap:6px;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-                Jalankan 1 Buklet (${AppState.activeBooklet || 'booklet_01'})
-              </button>
-            `}
-            <button class="btn btn-ghost btn-sm" onclick="togglePipelineLog()" style="display:flex; align-items:center; gap:6px;" title="Buka/tutup konsol log SSE">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-              <span id="log-toggle-label">${AppState.showPipelineLog ? 'Sembunyikan Log' : 'Log Eksekusi'}</span>
-            </button>
-            <button class="btn btn-secondary btn-sm" onclick="switchView('kuesioner')" style="display:flex; align-items:center; gap:6px;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-              Kuesioner Digital →
-            </button>
-          </div>
-        </div>
-
-        <!-- 4-Stage Workflow Stepper: Mental Model Alur Pipeline -->
-        <div class="pipeline-stepper-wrap">
+        <!-- 4-Stage Workflow Stepper: Mental Model Alur Pipeline (Paling Atas) -->
+        <div class="pipeline-stepper-wrap" style="margin-bottom:24px;">
           <div class="pipeline-step-card ${AppState.pipelineSubMode === 'jobs' ? 'active' : ''}" onclick="setPipelineSubMode('jobs')" role="button" tabindex="0">
             <div class="pipeline-step-num">01</div>
             <div class="pipeline-step-info">
               <div class="pipeline-step-title">Antrean &amp; Status</div>
-              <div class="pipeline-step-desc">51 Buklet · 3 Metrik Mutu</div>
+              <div class="pipeline-step-desc">51 Buklet · Status Batch</div>
             </div>
           </div>
 
@@ -3300,18 +3247,49 @@
           </div>
         </div>
 
-        <!-- Collapsible Real-time Subprocess Log Card -->
-        <div id="pipeline-log-card" class="card" style="margin-bottom:20px; padding:16px; display:${(AppState.showPipelineLog || isRunning) ? 'block' : 'none'};">
-          <div class="section-bar" style="margin-bottom:10px;">
-            <span style="font-weight:600; font-size:13px;">Konsol Log Subprocess Real-time (SSE Stream)</span>
-            <button class="btn-ghost" onclick="connectPipelineSSE()" style="font-size:11.5px;">Hubungkan Ulang Stream</button>
-          </div>
-          <div id="pipeline-live-log-box" style="height:150px; background:#080c14; border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 14px; overflow-y:auto; font-family:var(--font-mono); font-size:11.5px; color:#cbd5e1;">
-            <div style="color:var(--text-muted); font-size:11px;">[Sistem] Menunggu output eksekusi pipeline...</div>
-          </div>
-        </div>
-
         ${AppState.pipelineSubMode === 'jobs' ? `
+          <!-- Toolbar Khusus Tahap 01 Antrean & Status: Bersih & Bebas Clutter -->
+          <div class="section-bar" style="margin-bottom:20px; gap:12px; flex-wrap:wrap; display:flex; align-items:center; justify-content:space-between;">
+            <div class="status-inline">
+              <span id="pipeline-status-dot" class="status-dot ${isRunning ? 'dot-accent' : 'dot-green'}"></span>
+              <span id="pipeline-status-text" style="font-weight:600; font-size:13px;">
+                ${isRunning ? `Pipeline aktif · ${currentStage}` : 'Pipeline Produksi Siap · 51 Buklet Terakreditasi BPS'}
+              </span>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+              ${isRunning ? `
+                <button class="btn btn-secondary btn-sm" onclick="stopRealPipeline()" style="border-color:#ef4444; color:#ef4444; display:flex; align-items:center; gap:6px;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="6" width="12" height="12"/></svg>
+                  Hentikan Proses
+                </button>
+              ` : `
+                <button class="btn btn-primary btn-sm" onclick="startRealPipeline(null)" style="display:flex; align-items:center; gap:6px; font-weight:600;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  Jalankan Seluruh 51 Buklet
+                </button>
+              `}
+              <button class="btn btn-ghost btn-sm" onclick="togglePipelineLog()" style="display:flex; align-items:center; gap:6px;" title="Buka/tutup konsol log SSE">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                <span id="log-toggle-label">${AppState.showPipelineLog ? 'Sembunyikan Log' : 'Log Eksekusi'}</span>
+              </button>
+              <button class="btn btn-secondary btn-sm" onclick="switchView('kuesioner')" style="display:flex; align-items:center; gap:6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                Kuesioner Digital →
+              </button>
+            </div>
+          </div>
+
+          <!-- Collapsible Real-time Subprocess Log Card -->
+          <div id="pipeline-log-card" class="card" style="margin-bottom:20px; padding:16px; display:${(AppState.showPipelineLog || isRunning) ? 'block' : 'none'};">
+            <div class="section-bar" style="margin-bottom:10px;">
+              <span style="font-weight:600; font-size:13px;">Konsol Log Subprocess Real-time (SSE Stream)</span>
+              <button class="btn-ghost" onclick="connectPipelineSSE()" style="font-size:11.5px;">Hubungkan Ulang Stream</button>
+            </div>
+            <div id="pipeline-live-log-box" style="height:150px; background:#080c14; border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 14px; overflow-y:auto; font-family:var(--font-mono); font-size:11.5px; color:#cbd5e1;">
+              <div style="color:var(--text-muted); font-size:11px;">[Sistem] Menunggu output eksekusi pipeline...</div>
+            </div>
+          </div>
           <!-- 3 Metrik Utama Sesuai Aturan Mutlak Anti-Clutter -->
           <div class="metrics-strip" style="margin-bottom:24px;">
             <div class="metric-item">
@@ -6880,58 +6858,49 @@
       AppState.geminiDigitResults = AppState.geminiDigitResults || {};
 
       target.innerHTML = `
-        <!-- Top Section Bar: Booklet, Model Engine, Gemini Pill, Actions -->
-        <div class="section-bar" style="margin-bottom:20px; gap:16px; flex-wrap:wrap; display:flex; align-items:center; justify-content:space-between;">
-          <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+        <!-- Top Section Bar: Booklet, Model Engine, Gemini Pill, Actions (Single Clean Row) -->
+        <div class="section-bar" style="margin-bottom:24px; gap:12px; flex-wrap:wrap; display:flex; align-items:center; justify-content:space-between;">
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
             <!-- Booklet Selector -->
-            <select class="select-pill" onchange="onBookletChange(this.value)" title="Pilih Buklet" style="font-weight:600; padding:7px 14px; font-size:12.5px;">
+            <select class="select-pill" onchange="onBookletChange(this.value).then(() => loadInferenceData())" title="Pilih Buklet Target" style="font-weight:600; padding:6px 14px; font-size:12.5px;">
               ${(AppState.booklets || []).map(b => `
                 <option value="${b.id}" ${AppState.activeBooklet===b.id?'selected':''}>${b.id} · ${b.nama_krt || b.id}</option>
               `).join('')}
             </select>
 
-            <!-- Model Engine Selector (Default: Gemini 3.8 Flash) -->
+            <!-- Model Engine Selector (Clean 3 Options) -->
             <select class="select-pill" onchange="onInferenceModelChange(this.value)" title="Pilih Model AI" 
-                    style="font-weight:600; padding:7px 14px; font-size:12.5px; border:1px solid #38bdf8; background:rgba(56,189,248,0.08); color:#38bdf8;">
-              <optgroup label="Model Default Unggulan (API Google Gemini)">
-                <option value="gemini_38_flash" ${(!AppState.inferenceModel || AppState.inferenceModel==='gemini_38_flash')?'selected':''}>Google Gemini 3.8 Flash (Paling Mutakhir · Default)</option>
-                <option value="gemini_38_high" ${AppState.inferenceModel==='gemini_38_high'?'selected':''}>Google Gemini 3.8 Flash (High Reasoning)</option>
-                <option value="gemini_38_med" ${AppState.inferenceModel==='gemini_38_med'?'selected':''}>Google Gemini 3.8 Flash (Medium Reasoning)</option>
-                <option value="gemini_37_flash" ${AppState.inferenceModel==='gemini_37_flash'?'selected':''}>Google Gemini 3.7 Flash</option>
-                <option value="gemini_35_flash" ${AppState.inferenceModel==='gemini_35_flash'?'selected':''}>Google Gemini 3.5 Flash</option>
-              </optgroup>
-              <optgroup label="Model Lokal Offline (0 Biaya API)">
-                <option value="seruti_cnn_v3" ${AppState.inferenceModel==='seruti_cnn_v3'?'selected':''}>Seruti CNN v3 (PyTorch ResNet / Conv2D)</option>
-                <option value="seruti_mlp" ${AppState.inferenceModel==='seruti_mlp'?'selected':''}>Seruti MLP (Scikit-Learn Joblib)</option>
-              </optgroup>
+                    style="font-weight:600; padding:6px 14px; font-size:12.5px; border:1px solid #38bdf8; background:rgba(56,189,248,0.08); color:#38bdf8;">
+              <option value="gemini_38_flash" ${(!AppState.inferenceModel || AppState.inferenceModel==='gemini_38_flash')?'selected':''}>Gemini 3.8 Flash (Paling Akurat · Default)</option>
+              <option value="seruti_cnn_v3" ${AppState.inferenceModel==='seruti_cnn_v3'?'selected':''}>Seruti CNN v3 (Lokal Offline)</option>
+              <option value="seruti_mlp" ${AppState.inferenceModel==='seruti_mlp'?'selected':''}>Seruti MLP (Lokal Ringan)</option>
             </select>
 
             <!-- Gemini API Config Pill -->
-            <button id="btn-gemini-config" class="pill-tab" onclick="openGeminiConfigModal()" title="Konfigurasi Google Gemini API Key"
-                    style="display:flex; align-items:center; gap:6px; padding:6px 12px; font-size:12px; border:1px solid var(--border); background:var(--surface-2); cursor:pointer;">
+            <button id="btn-gemini-config" class="btn btn-ghost btn-sm" onclick="openGeminiConfigModal()" title="Konfigurasi Google Gemini API Key"
+                    style="display:flex; align-items:center; gap:6px; padding:6px 10px; font-size:12px;">
               <span id="gemini-status-dot" class="status-dot dot-gray"></span>
-              <span id="gemini-status-label" class="font-mono">Gemini API</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+              <span id="gemini-status-label" class="font-mono">API Key</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
             </button>
           </div>
 
           <div style="display:flex; align-items:center; gap:10px;">
-            <button class="btn btn-secondary btn-sm" onclick="switchView('hitl')" style="display:flex; align-items:center; gap:6px; padding:7px 14px;">
-              Buka Verifikasi HITL
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            <button class="btn btn-secondary btn-sm" onclick="switchView('hitl')" style="display:flex; align-items:center; gap:6px;">
+              Verifikasi HITL →
             </button>
 
-            <!-- Primary Action: Jalankan Inferensi Otomatis (Grid 50 Crop) -->
+            <!-- Primary Action: Jalankan Inferensi -->
             <button id="btn-run-auto-grid" class="btn btn-primary btn-sm" onclick="runAutomaticGridInference()" 
-                    style="display:flex; align-items:center; gap:8px; font-weight:700; padding:7px 16px; background:linear-gradient(135deg, #1d4ed8, #6366f1); border:none; box-shadow:0 4px 14px rgba(37,99,235,0.35);">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-              Jalankan Inferensi Otomatis (Grid 50 Crop)
+                    style="display:flex; align-items:center; gap:6px; font-weight:600;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Jalankan Inferensi
             </button>
           </div>
         </div>
 
         <!-- 4 Key Metrics Cards (Maksimal 4 Sesuai Aturan Desain Anti-Clutter) -->
-        <div id="inference-metrics-strip" class="metrics-strip" style="margin-bottom:20px;">
+        <div id="inference-metrics-strip" class="metrics-strip" style="margin-bottom:24px;">
           <div class="metric-item">
             <div class="metric-value font-mono" id="inf-metric-total">--</div>
             <div class="metric-label">Total Kotak Formulir</div>
@@ -6952,26 +6921,6 @@
 
         <!-- Main Clean & Breathing Workspace -->
         <div class="card" style="padding:24px; display:flex; flex-direction:column; gap:20px; background:var(--surface-1); border:1px solid var(--border); border-radius:var(--radius-md);">
-          
-          <!-- Automation Filter & Control Bar -->
-          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; padding:12px 16px; background:var(--surface-2); border-radius:var(--radius-sm); border:1px solid var(--border);">
-            <!-- Page Filters -->
-            <div style="display:flex; align-items:center; gap:8px; overflow-x:auto;">
-              <span style="font-size:12px; font-weight:600; color:var(--text-secondary); margin-right:4px;">Cakupan Halaman:</span>
-              <button class="pill-tab ${AppState.inferencePageFilter===null?'active':''}" style="padding:4px 12px; font-size:12px;" onclick="onInferencePageFilter(null)">Semua Halaman (1 s.d. 7)</button>
-              ${[1, 2, 3, 4, 5, 6, 7].map(p => `
-                <button class="pill-tab ${AppState.inferencePageFilter===p?'active':''}" style="padding:4px 10px; font-size:12px;" onclick="onInferencePageFilter(${p})">Hal ${p}</button>
-              `).join('')}
-            </div>
-
-            <!-- Active AI Mode Indicator -->
-            <div style="display:flex; align-items:center; gap:8px;">
-              <span style="font-size:11.5px; color:var(--text-secondary);">Arsitektur Aktif:</span>
-              <span class="font-mono" style="font-size:11.5px; font-weight:600; color:#38bdf8; background:rgba(56,189,248,0.12); padding:3px 9px; border-radius:var(--radius-sm); border:1px solid rgba(56,189,248,0.3);">
-                Gemini 3.8 Flash Vision · Kisi 50 Crop
-              </span>
-            </div>
-          </div>
 
           <!-- Live Progress Box (Shown during / after execution) -->
           <div id="grid-progress-container" style="display:none; flex-direction:column; gap:10px; background:#070b10; padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border);">
@@ -7252,43 +7201,55 @@
       const curMosaic = mosaicBatches[activeBatchIdx] || (mosaicBatches.length > 0 ? mosaicBatches[0] : null);
 
       container.innerHTML = `
-        <!-- Top Toolbar: Grid Batch Selector (50 Crops per Grid) + Status Filter & View Mode -->
-        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; border-bottom:1px solid var(--border); padding-bottom:12px;">
+        <!-- Unified Sleek Control Bar: Halaman, Kisi Stepper, Status Filter, View Toggle (Single Clean Row) -->
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; padding:10px 14px; background:var(--surface-2); border-radius:var(--radius-sm); border:1px solid var(--border); margin-bottom:16px;">
           
-          <!-- 50-Crop Grid Batch Navigation Pills -->
-          <div style="display:flex; align-items:center; gap:6px; overflow-x:auto; padding:2px;">
-            <span style="font-size:12px; font-weight:600; color:var(--text-secondary); margin-right:4px;">Pilih Kisi:</span>
-            ${Array.from({ length: totalBatches }).map((_, bIdx) => {
-              const startN = bIdx * BATCH_SIZE + 1;
-              const endN = Math.min((bIdx + 1) * BATCH_SIZE, filtered.length);
-              const isAct = activeBatchIdx === bIdx;
-              return `
-                <button class="pill-tab ${isAct ? 'active' : ''}" onclick="onSelectMosaicBatch(${bIdx})" 
-                        style="padding:5px 12px; font-size:12px; font-weight:600; white-space:nowrap;">
-                  Kisi #${bIdx + 1} (${startN}–${endN})
-                </button>
-              `;
-            }).join('')}
+          <!-- Left: Page Filter Pills -->
+          <div style="display:flex; align-items:center; gap:6px; overflow-x:auto;">
+            <span style="font-size:12px; font-weight:600; color:var(--text-secondary); margin-right:2px;">Halaman:</span>
+            <button class="pill-tab ${AppState.inferencePageFilter===null?'active':''}" style="padding:3px 10px; font-size:11.5px;" onclick="onInferencePageFilter(null)">Semua (1–7)</button>
+            ${[1, 2, 3, 4, 5, 6, 7].map(p => `
+              <button class="pill-tab ${AppState.inferencePageFilter===p?'active':''}" style="padding:3px 8px; font-size:11.5px;" onclick="onInferencePageFilter(${p})">Hal ${p}</button>
+            `).join('')}
           </div>
 
-          <!-- Secondary Filters & View Mode Switcher -->
+          <!-- Right: Compact Kisi Stepper, Status Filter, View Toggle -->
           <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-            <!-- Status Filter -->
-            <div style="display:flex; align-items:center; gap:4px; background:var(--surface-2); padding:3px 6px; border-radius:var(--radius-sm); border:1px solid var(--border);">
-              <button class="pill-tab ${statusFilter==='filled'?'active':''}" onclick="onInferenceStatusFilter('filled')" style="padding:3px 8px; font-size:11px;">Terisi Saja (${data.summary?.filled_digits || 515})</button>
-              <button class="pill-tab ${statusFilter==='all'?'active':''}" onclick="onInferenceStatusFilter('all')" style="padding:3px 8px; font-size:11px;">Semua (${data.summary?.total_digits || 2073})</button>
-              <button class="pill-tab ${statusFilter==='blank'?'active':''}" onclick="onInferenceStatusFilter('blank')" style="padding:3px 8px; font-size:11px; color:#38bdf8;">OpenCV Kosong (${data.summary?.blank_digits_opencv || 1558})</button>
+            <!-- Kisi Stepper (Prev, Select, Next) -->
+            <div style="display:flex; align-items:center; gap:2px; background:var(--surface-1); padding:2px 4px; border-radius:var(--radius-sm); border:1px solid var(--border);">
+              <button class="btn-ghost" onclick="prevMosaicBatch()" ${activeBatchIdx === 0 ? 'disabled style="opacity:0.35; pointer-events:none; padding:2px 6px;"' : 'style="padding:2px 6px;"'} title="Kisi Sebelumnya">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <select class="select-pill font-mono" onchange="onSelectMosaicBatch(parseInt(this.value, 10))" style="border:none; background:transparent; font-size:11.5px; padding:2px 6px; font-weight:600;">
+                ${Array.from({ length: totalBatches }).map((_, bIdx) => {
+                  const startN = bIdx * BATCH_SIZE + 1;
+                  const endN = Math.min((bIdx + 1) * BATCH_SIZE, filtered.length);
+                  return `
+                    <option value="${bIdx}" ${activeBatchIdx === bIdx ? 'selected' : ''}>
+                      Kisi #${bIdx + 1} (${startN}–${endN})
+                    </option>
+                  `;
+                }).join('')}
+              </select>
+              <button class="btn-ghost" onclick="nextMosaicBatch()" ${activeBatchIdx >= totalBatches - 1 ? 'disabled style="opacity:0.35; pointer-events:none; padding:2px 6px;"' : 'style="padding:2px 6px;"'} title="Kisi Berikutnya">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
             </div>
 
-            <!-- View Toggle: Cards with AI Labels vs Composite Mosaic Image -->
-            <div style="display:flex; align-items:center; gap:4px; background:var(--surface-2); padding:3px 6px; border-radius:var(--radius-sm); border:1px solid var(--border);">
-              <button class="pill-tab ${viewMode==='cards'?'active':''}" onclick="onToggleInferenceViewMode('cards')" title="Tampilan Kartu 50 Crop dengan Label AI" style="padding:3px 8px; font-size:11px; display:flex; align-items:center; gap:4px;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                Kartu 50 Crop (Label AI)
+            <!-- Status Filter Dropdown -->
+            <select class="select-pill font-mono" onchange="onInferenceStatusFilter(this.value)" style="font-size:11.5px; padding:4px 8px;">
+              <option value="filled" ${statusFilter==='filled'?'selected':''}>Terisi Saja (${data.summary?.filled_digits || 515})</option>
+              <option value="all" ${statusFilter==='all'?'selected':''}>Semua Kotak (${data.summary?.total_digits || 2073})</option>
+              <option value="blank" ${statusFilter==='blank'?'selected':''}>OpenCV Kosong (${data.summary?.blank_digits_opencv || 1558})</option>
+            </select>
+
+            <!-- View Toggle: Cards vs Mosaic -->
+            <div style="display:flex; align-items:center; gap:2px; background:var(--surface-1); padding:2px; border-radius:var(--radius-sm); border:1px solid var(--border);">
+              <button class="pill-tab ${viewMode==='cards'?'active':''}" onclick="onToggleInferenceViewMode('cards')" title="Kartu 50 Crop" style="padding:3px 8px; font-size:11px;">
+                Kartu
               </button>
-              <button class="pill-tab ${viewMode==='mosaic'?'active':''}" onclick="onToggleInferenceViewMode('mosaic')" title="Tampilan Citra Kisi Komposit PNG" style="padding:3px 8px; font-size:11px; display:flex; align-items:center; gap:4px;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-                Citra Komposit Mosaic
+              <button class="pill-tab ${viewMode==='mosaic'?'active':''}" onclick="onToggleInferenceViewMode('mosaic')" title="Citra Komposit Mosaic" style="padding:3px 8px; font-size:11px;">
+                Mosaic
               </button>
             </div>
           </div>
@@ -7561,6 +7522,25 @@
       renderMosaicGridShowcase();
     };
 
+    window.prevMosaicBatch = function() {
+      if ((AppState.activeMosaicIndex || 0) > 0) {
+        window.onSelectMosaicBatch((AppState.activeMosaicIndex || 0) - 1);
+      }
+    };
+
+    window.nextMosaicBatch = function() {
+      const allDigits = (AppState.currentInferenceData && AppState.currentInferenceData.digits) || [];
+      const statusFilter = AppState.inferenceStatusFilter || 'filled';
+      let filtered = allDigits;
+      if (statusFilter === 'filled') filtered = allDigits.filter(d => !d.is_blank);
+      else if (statusFilter === 'blank') filtered = allDigits.filter(d => d.is_blank);
+      else if (statusFilter === 'review') filtered = allDigits.filter(d => d.needs_review && !d.is_blank);
+      const totalBatches = Math.max(1, Math.ceil(filtered.length / 50));
+      if ((AppState.activeMosaicIndex || 0) < totalBatches - 1) {
+        window.onSelectMosaicBatch((AppState.activeMosaicIndex || 0) + 1);
+      }
+    };
+
 
         window.onInferencePageFilter = function(p) {
       AppState.inferencePageFilter = p;
@@ -7630,14 +7610,17 @@
     window.updateGeminiStatusPill = function(st) {
       const dot = document.getElementById('gemini-status-dot');
       const lbl = document.getElementById('gemini-status-label');
+      const btn = document.getElementById('btn-gemini-config');
       if (!dot || !lbl) return;
 
       if (st && st.configured) {
         dot.className = 'status-dot dot-green';
-        lbl.textContent = `Gemini API Aktif (${st.masked_key || 'Terkonfigurasi'})`;
+        lbl.textContent = 'API Aktif';
+        if (btn) btn.title = `Google Gemini API Aktif (${st.masked_key || 'Terkonfigurasi'}) · Klik untuk ubah`;
       } else {
         dot.className = 'status-dot dot-gray';
-        lbl.textContent = 'Setel Kunci Gemini API';
+        lbl.textContent = 'Setel API';
+        if (btn) btn.title = 'Kunci Google Gemini API Belum Dikonfigurasi · Klik untuk mengisi';
       }
     };
 
