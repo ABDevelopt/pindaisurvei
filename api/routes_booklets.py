@@ -114,6 +114,10 @@ async def get_booklet(booklet_id: str):
     b["pages"] = _list_scan_pages(booklet_id, b.get("survey_type", "seruti_inti"))
     b["overlays"] = _list_overlays(booklet_id)
     b["extraction_summary"] = _load_extraction_summary(booklet_id)
+    b["signatures"] = {
+        "pencacah": f"/api/booklets/{booklet_id}/signatures/pencacah",
+        "pengawas": f"/api/booklets/{booklet_id}/signatures/pengawas"
+    }
 
     return b
 
@@ -1963,6 +1967,28 @@ async def get_crop_image(booklet_id: str, tier: int, filename: str):
     if matches:
         return FileResponse(str(matches[0]), media_type=_media_type(matches[0]))
     raise HTTPException(status_code=404, detail=f"File crop '{filename}' tidak ditemukan")
+
+
+# ─── GET /api/booklets/{id}/signatures/{officer_type} ───────────────────────
+@router.get("/{booklet_id}/signatures/{officer_type}")
+async def get_booklet_signature(booklet_id: str, officer_type: str):
+    """
+    Mengambil atau menghasilkan on-demand potongan (crop) tanda tangan petugas:
+    - officer_type: 'pencacah' | 'pengawas' | 'pcl' | 'pml' | 'pendata' | 'pemeriksa'
+    """
+    _verify_booklet_exists(booklet_id)
+    try:
+        from seruti_pipeline.signature_extractor import get_or_create_signature_crop
+        sig_path = get_or_create_signature_crop(booklet_id, officer_type)
+        if sig_path and sig_path.exists():
+            return FileResponse(str(sig_path), media_type="image/png")
+    except Exception as e:
+        print(f"[SignatureAPI] Error fetching signature for {booklet_id}: {e}")
+
+    raise HTTPException(
+        status_code=404,
+        detail=f"Tanda tangan '{officer_type}' untuk buklet '{booklet_id}' tidak ditemukan"
+    )
 
 
 # ─── Helpers ──────────────────────────────────────────────────────────────────
