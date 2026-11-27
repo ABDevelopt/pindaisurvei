@@ -1,5 +1,5 @@
 """
-api/routes_export.py — Ekspor data hasil pembacaan survei (CSV, JSON, FormGear ZIP)
+api/routes_export.py — Ekspor data hasil pembacaan survei (CSV, JSON, Paket ZIP)
 """
 import io
 import json
@@ -130,11 +130,11 @@ async def export_json(booklet_id: str):
 
 # ─── GET /api/export/{booklet_id}/zip ────────────────────────────────────────
 @router.get("/{booklet_id}/zip")
-async def export_formgear_zip(booklet_id: str):
+async def export_microdata_zip(booklet_id: str):
     """
-    Ekspor paket FormGear-compatible ZIP:
-    - data.json: nilai variabel untuk CAPI/CAWI FASIH-SM
-    - comment.json: field notes / audit trail
+    Ekspor paket arsip data kuesioner ZIP:
+    - data.json: nilai variabel hasil pembacaan kuesioner
+    - comment.json: catatan verifikasi / audit trail perbaikan HITL
     """
     ext_dir = EXTRACTION_DIR / booklet_id
     json_path = ext_dir / f"{booklet_id}_extracted.json"
@@ -173,5 +173,5 @@ async def export_formgear_zip(booklet_id: str):
     return StreamingResponse(
         zip_buffer,
         media_type="application/zip",
-        headers={"Content-Disposition": f"attachment; filename={booklet_id}_formgear_package.zip"}
+        headers={"Content-Disposition": f"attachment; filename={booklet_id}_paket_data_mikro.zip"}
     )

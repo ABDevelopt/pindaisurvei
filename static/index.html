@@ -2052,7 +2052,7 @@
         { key: 'input',     label: 'Input',      title: 'Penerimaan Berkas & Sampel',          route: '/input',     icon: '<path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>' },
         { key: 'pipeline',  label: 'Pipeline',   title: 'Pipeline Ekstraksi & Inferensi AI',   route: '/pipeline',  icon: '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>' },
         { key: 'hitl',      label: 'Verifikasi', title: 'Verifikasi HITL Petugas',             route: '/hitl',      icon: '<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>', hasDot: true },
-        { key: 'kuesioner', label: 'Kuesioner',  title: 'Kuesioner Digital & Ekspor FASIH-SM', route: '/kuesioner', icon: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>' }
+        { key: 'kuesioner', label: 'Kuesioner',  title: 'Kuesioner Digital & Ekspor Data Mikro', route: '/kuesioner', icon: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>' }
       ],
       admin: [
         { key: 'grid',      label: 'Grid',       title: 'Editor Template & Grid Vektor',       route: '/grid',      icon: '<rect x="3" y="3" width="18" height="18" rx="3"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/>' },
@@ -2211,11 +2211,11 @@
         { pattern: /^\/inferensi\/?$/, key: 'pipeline', ws: 'operasional', title: 'Pipeline & Inferensi AI', handler: () => { AppState.pipelineSubMode = 'inference'; } },
         { pattern: /^\/hitl\/?$/, key: 'hitl', ws: 'operasional', title: 'Verifikasi HITL Petugas' },
         { pattern: /^\/verifikasi\/?$/, key: 'hitl', ws: 'operasional', title: 'Verifikasi HITL Petugas' },
-        { pattern: /^\/kuesioner\/?$/, key: 'kuesioner', ws: 'operasional', title: 'Kuesioner Digital & Ekspor FASIH-SM' },
+        { pattern: /^\/kuesioner\/?$/, key: 'kuesioner', ws: 'operasional', title: 'Kuesioner Digital & Ekspor Data Mikro' },
         { pattern: /^\/kuesioner\/([^\/]+)\/?$/, key: 'kuesioner', ws: 'operasional', title: 'Kuesioner Digital', handler: (m) => { AppState.activeBooklet = m[1]; } },
-        { pattern: /^\/output\/?$/, key: 'kuesioner', ws: 'operasional', title: 'Kuesioner Digital & Ekspor FASIH-SM', handler: () => { AppState.kuesionerMode = 'validation'; } },
-        { pattern: /^\/digital\/?$/, key: 'kuesioner', ws: 'operasional', title: 'Kuesioner Digital & Ekspor FASIH-SM', handler: () => { AppState.kuesionerMode = 'validation'; } },
-        { pattern: /^\/ekspor\/?$/, key: 'kuesioner', ws: 'operasional', title: 'Kuesioner Digital & Ekspor FASIH-SM' },
+        { pattern: /^\/output\/?$/, key: 'kuesioner', ws: 'operasional', title: 'Kuesioner Digital & Ekspor Data Mikro', handler: () => { AppState.kuesionerMode = 'validation'; } },
+        { pattern: /^\/digital\/?$/, key: 'kuesioner', ws: 'operasional', title: 'Kuesioner Digital & Ekspor Data Mikro', handler: () => { AppState.kuesionerMode = 'validation'; } },
+        { pattern: /^\/ekspor\/?$/, key: 'kuesioner', ws: 'operasional', title: 'Kuesioner Digital & Ekspor Data Mikro' },
         { pattern: /^\/grid\/?$/, key: 'grid', ws: 'admin', title: 'Grid Vektor & Spasial' },
         { pattern: /^\/crop\/?$/, key: 'crop', ws: 'admin', title: 'Ekstraksi Hierarkis 7-Tier' },
         { pattern: /^\/training\/?$/, key: 'training', ws: 'admin', title: 'Pelatihan Active Learning & Model' },
@@ -5915,8 +5915,8 @@
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
             <button class="btn btn-secondary btn-sm" onclick="window.open('/api/export/' + AppState.activeBooklet + '/csv'); showToast('Mengunduh CSV Tabular BPS...', 'info')">Ekspor CSV</button>
             <button class="btn btn-secondary btn-sm" onclick="window.open('/api/export/' + AppState.activeBooklet + '/json'); showToast('Mengunduh JSON Data Mikro...', 'info')">Ekspor JSON</button>
-            <button class="btn btn-primary btn-sm" onclick="window.open('/api/export/' + AppState.activeBooklet + '/zip'); showToast('Paket FormGear ZIP siap diimpor ke FASIH-SM.', 'success')">
-              Kirim ke FASIH-SM
+            <button class="btn btn-primary btn-sm" onclick="window.open('/api/export/' + AppState.activeBooklet + '/zip'); showToast('Paket data mikro ZIP berhasil diunduh.', 'success')">
+              Ekspor Paket ZIP
             </button>
           </div>
         </div>
@@ -5966,7 +5966,7 @@
           <div class="calm-banner">
             <div class="status-inline">
               <span class="status-dot dot-green"></span>
-              <span style="color:var(--text-primary); font-weight:500;">Seluruh relasi aritmetika terverifikasi cocok 100%. Dokumen siap diekspor ke FASIH-SM.</span>
+              <span style="color:var(--text-primary); font-weight:500;">Seluruh relasi aritmetika terverifikasi cocok 100%. Dokumen valid dan siap diekspor.</span>
             </div>
           </div>
         `}
@@ -8264,9 +8264,9 @@
 
             <!-- Actions Right -->
             <div style="display:flex; align-items:center; gap:8px;">
-              <button class="btn btn-primary btn-sm" onclick="window.open('/api/export/' + AppState.activeBooklet + '/zip'); showToast('Paket FormGear ZIP siap diimpor ke FASIH-SM.', 'success')" style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; padding:5px 14px; background:linear-gradient(135deg, #10b981, #059669); border:none; box-shadow:0 2px 8px rgba(16,185,129,0.25);">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>FASIH-SM</span>
+              <button class="btn btn-primary btn-sm" onclick="window.open('/api/export/' + AppState.activeBooklet + '/zip'); showToast('Paket data mikro ZIP berhasil diunduh.', 'success')" style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; padding:5px 14px; background:linear-gradient(135deg, #10b981, #059669); border:none; box-shadow:0 2px 8px rgba(16,185,129,0.25);" title="Unduh paket data mikro ZIP">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Ekspor ZIP</span>
               </button>
               <a href="/kuesioner-digital/${bookletId}" target="_blank" class="btn btn-ghost btn-sm" style="display:flex; align-items:center; gap:5px; padding:5px 10px; font-size:11.5px;" title="Buka kuesioner digital dalam tab baru layar penuh">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>

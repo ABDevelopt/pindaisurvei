@@ -158,7 +158,7 @@ async def page_admin():
 async def favicon():
     return Response(status_code=204)
 
-# Kompatibilitas jika ada tab browser lama (SE2026/FASIH) yang masih memanggil port 8000
+# Kompatibilitas jika ada tab browser lama yang masih memanggil port 8000
 @app.get("/api/stats", include_in_schema=False)
 async def stats_alias():
     from api.routes_hitl import hitl_stats
